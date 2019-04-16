@@ -1,0 +1,74 @@
+<!--pages/home/home.wxml-->
+<van-cell-group>
+  <view class='my_container'>
+    商家首页
+    <van-cell
+      title="邀请下一级经销商注册"
+      label="邀请后，可发货给你的下级经销商，防止窜货"
+    />
+    
+    <van-cell
+      title="溯源大数据"
+      label="因为我们溯源无死角，所有假货无处藏身"
+      
+    />
+    <van-cell
+      title="我的订单"
+      label="时刻了解订单进展，畅想溯源防伪服务"
+      border="{{ false }}"
+    />
+  </view>
+  <view class='my_container'>
+    平台账号首页 
+    <van-cell
+      title="招聘销售员"
+      label="销售人员认证后可以促成商家采购溯源防伪方案"
+    />
+    
+    <van-cell
+      title="邀请厂家注册"
+      label="成功邀请的生产厂家，他的所有订单你能从中获益"
+      url="/pages/regest/regest"
+    />
+    <van-cell
+      title="我的订单"
+      label="时刻了解订单变化，推进交易进行"
+      border="{{ false }}"
+    />
+  </view>
+  <view class='my_container'>
+    销售账号首页 
+    <van-cell
+      title="生成新订单"
+      label="销售人员认证后可以促成商家采购溯源防伪方案"
+    />
+    
+    <van-cell
+      title="邀请厂家注册"
+      label="成功邀请的生产厂家，他的所有订单你能从中获益"
+      url="/pages/regest/regest"
+    />
+    <van-cell
+      title="我的订单"
+      label="时刻了解订单变化，推进交易进行"
+      border="{{ false }}"
+    />
+  </view>
+  <view class='my_container'>
+    无认证账号首页 
+    <van-cell
+      title="扫码取件"
+      label="销售人员认证后可以促成商家采购溯源防伪方案"
+    />
+    <van-cell
+      title="成为销售合伙人"
+      label="成功邀请的生产厂家，他的所有订单你能从中获益"
+      url="/pages/regest/partner_regest/partner_regest"
+    />
+    <van-cell
+      title="溯源大数据"
+      label="因为我们溯源无死角，所有假货无处藏身"
+      border="{{ false }}"
+    />
+  </view>
+</van-cell-group>
