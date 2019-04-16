@@ -1,0 +1,50 @@
+<!--pages/regest/regest.wxml-->
+
+
+<view class='my_container'>
+    <van-cell-group>
+      <van-field
+        value="{{ factory.receiver_name }}"
+        required
+        label="姓名"
+        left-icon="contact"
+        placeholder="请输入姓名"
+        bind:change="onChange"
+      />
+      <van-field
+        value="{{ factory.name }}"
+        required
+        label="电话"
+        left-icon="phone-o"
+        placeholder="国家区号+手机号"
+        bind:change="onChange"
+      />
+      <van-field
+        value="{{ factory.count }}"
+        required
+        type="textarea"
+        autosize
+        label="地址"
+        left-icon="home-o"
+        placeholder="所在国家和城市"
+        bind:change="onChange"
+      />
+      <van-field
+      value="{{ factory.img }}"
+      required
+      disabled
+      clearable
+      label="上传图片"
+      left-icon="photo-o"
+      icon="add-o"
+      placeholder=""
+      bind:click-icon="uploadImg"
+    />
+    <view class="my_center_container">
+      <image mode='aspectFit' src="{{imgSrc}}" wx:if="{{imgSrc}}"></image>
+    </view>
+  </van-cell-group>
+  </view>
+<view class='my_center_container'>
+  <van-button type="danger"  size="large">提交</van-button>
+</view>

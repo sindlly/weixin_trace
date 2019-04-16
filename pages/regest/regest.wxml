@@ -1,0 +1,95 @@
+<!--pages/regest/regest.wxml-->
+
+  <view class='my_container'>
+    <van-cell-group>
+    <van-field
+      value="{{ factory.img }}"
+      required
+      disabled
+      clearable
+      label="上传图片"
+      left-icon="photo-o"
+      icon="add-o"
+      placeholder=""
+      bind:click-icon="uploadImg"
+    />
+    <view class="my_center_container">
+      <image mode='aspectFit' src="{{imgSrc}}" wx:if="{{imgSrc}}"></image>
+    </view>
+    <van-field
+      value="{{ factory.name }}"
+      required
+      label="厂家名称"
+      left-icon="home-o"
+      placeholder="请输入厂家名称"
+      bind:change="onChange"
+    />
+    <van-field
+      value="{{ factory.count }}"
+      required
+      label="对公账户"
+      left-icon="cash-back-record"
+      placeholder="请输入对公账户"
+      bind:change="onChange"
+    />
+    <van-field
+      value="{{ factory.email }}"
+      required
+      label="电子邮箱"
+      left-icon="comment-circle-o"
+      placeholder="请输入电子邮箱"
+      bind:change="onChange"
+    />
+    <van-field
+      value="{{ factory.master }}"
+      required
+      label="负责人"
+      left-icon="contact"
+      placeholder="请输入负责人名称"
+      bind:change="onChange"
+    />
+    <van-field
+      value="{{ factory.phone }}"
+      required
+      label="手机号码"
+      left-icon="phone-o"
+      placeholder="请输入手机号码"
+      bind:change="onChange"
+    />
+    
+  </van-cell-group>
+</view>
+<view class='my_container'>
+    <van-cell-group>
+      <van-field
+        value="{{ factory.receiver_name }}"
+        required
+        label="收货人姓名"
+        left-icon="contact"
+        placeholder="请输入收货人姓名"
+        bind:change="onChange"
+      />
+      <van-field
+        value="{{ factory.name }}"
+        required
+        label="收货人手机号"
+        left-icon="phone-o"
+        placeholder="请输入收货人手机号"
+        bind:change="onChange"
+      />
+      <van-field
+        value="{{ factory.count }}"
+        required
+        type="textarea"
+        autosize
+        border="{{ false }}"
+        label="收货地址"
+        left-icon="home-o"
+        placeholder="请输入收货地址"
+        bind:change="onChange"
+      />
+  </van-cell-group>
+  </view>
+<view class='my_center_container'>
+  <van-button type="danger"  size="large">提交</van-button>
+</view>

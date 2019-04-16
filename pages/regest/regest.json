@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-field": "../../../miniprogram_npm/vant-weapp/field/index",
+    "van-nav-bar": "../../../miniprogram_npm/vant-weapp/nav-bar/index",
+    "van-button": "../../../miniprogram_npm/vant-weapp/button/index"
+  },
+  "navigationBarTitleText": "厂家注册"
+}

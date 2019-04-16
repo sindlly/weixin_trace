@@ -1,0 +1,4 @@
+/* pages/regest/regest.wxss */
+page{
+  background: rgb(252, 249, 249);
+}
