@@ -5,14 +5,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    all_goods: [{ tag: 1 }, { tag: 2 }, { tag: 3 }, { tag: 4 }, { tag: 1 }, { tag: 2 }, { tag: 3 }, { tag: 4 }],
+    daibaojia_goods: [{ tag: 1 }, { tag: 1 }, { tag: 1 }, { tag: 1 }],
+    daifukuan_goods: [{ tag: 2 }, { tag: 2 }, { tag: 2 }, { tag: 2 }],
+    daifahuo_goods: [{ tag: 3 }, { tag: 3 }, { tag: 3 }, { tag: 3 }],
+    yifahuo_goods: [{ tag: 4 }, { tag: 4 }, { tag: 4}, { tag: 4 }]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+       
   },
 
   /**

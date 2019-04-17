@@ -1,1 +1,8 @@
 /* pages/order_manage/goods_card/goods_card.wxss */
+page{
+  background: #eee;
+}
+.order_container{
+  padding: 5px 10px 5px 10px;
+  
+}

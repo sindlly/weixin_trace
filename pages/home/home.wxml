@@ -15,6 +15,7 @@
     <van-cell
       title="我的订单"
       label="时刻了解订单进展，畅想溯源防伪服务"
+      url="/pages/order_manage/order_manage"
       border="{{ false }}"
     />
   </view>

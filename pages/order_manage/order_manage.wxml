@@ -1,14 +1,21 @@
 <!--pages/order_manage/order_manage.wxml-->
 <!-- <view class='my_container'></view> -->
-  <van-tabs active="{{ active }}">
-  <van-tab title="标签 1">
-    <goods_card></goods_card>
-    <goods_card></goods_card>
+  <van-tabs active="{{ active }}" sticky animated>
+  <van-tab title="全部">
+    <goods_card perentData="{{all_goods}}"></goods_card>
   </van-tab>
-  <van-tab title="标签 2">内容 2</van-tab>
-  <van-tab title="标签 3">内容 3</van-tab>
-  <van-tab title="标签 4">内容 4</van-tab>
-  <van-tab title="标签 5">内容 5</van-tab>
+  <van-tab title="待报价">
+    <goods_card perentData="{{daibaojia_goods}}"></goods_card>
+  </van-tab>
+  <van-tab title="待付款">
+    <goods_card perentData="{{daifukuan_goods}}"></goods_card>
+  </van-tab>
+  <van-tab title="待发货">
+    <goods_card perentData="{{daifahuo_goods}}"></goods_card>
+  </van-tab>
+  <van-tab title="已发货">
+    <goods_card perentData="{{yifahuo_goods}}"></goods_card>
+    </van-tab>
 </van-tabs>
-
+  
 

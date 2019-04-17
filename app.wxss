@@ -16,3 +16,6 @@
    padding: 20rpx;
    text-align: center
  }
+ page{
+  background: rgb(252, 249, 249);
+}

@@ -7,5 +7,5 @@
     "van-tabs": "../../../miniprogram_npm/vant-weapp/tabs/index",
     "goods_card":"goods_card/goods_card"
   },
-  "navigationBarTitleText": "order"
+  "navigationBarTitleText": "我的订单"
 }
