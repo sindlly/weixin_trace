@@ -1,0 +1,16 @@
+<!--pages/order_manage/goods_card/goods_card.wxml-->
+<view class='my_container'>
+     <van-card
+    tag="标签"
+    price="10.00"
+    desc="描述信息"
+    title="商品标题"
+    thumb="{{ imageURL }}"
+  >
+    <view slot="footer">
+      <van-button size="small" round type="info" plain style='margin-right:10px'>查看物流</van-button>
+      <van-button size="small" round type="danger">支付尾款</van-button>
+    </view>
+  </van-card>
+</view>
+

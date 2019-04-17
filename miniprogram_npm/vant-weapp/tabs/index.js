@@ -53,7 +53,7 @@ VantComponent({
         },
         swipeThreshold: {
             type: Number,
-            value: 4
+            value: 5
         },
         offsetTop: {
             type: Number,

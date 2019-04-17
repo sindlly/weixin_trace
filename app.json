@@ -1,12 +1,13 @@
 {
   "pages": [
+    "pages/order_manage/order_manage",
     "pages/home/home",
     "pages/regest/courier_regest/courier_regest",
     "pages/regest/partner_regest/partner_regest",
     "pages/regest/regest",
     "pages/index/index",
-    "pages/logs/logs"
-    
+    "pages/logs/logs",
+    "pages/order_manage/goods_card/goods_card"
   ],
   "window": {
     "backgroundTextStyle": "light",

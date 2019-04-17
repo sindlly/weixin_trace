@@ -1,0 +1,14 @@
+<!--pages/order_manage/order_manage.wxml-->
+<!-- <view class='my_container'></view> -->
+  <van-tabs active="{{ active }}">
+  <van-tab title="标签 1">
+    <goods_card></goods_card>
+    <goods_card></goods_card>
+  </van-tab>
+  <van-tab title="标签 2">内容 2</van-tab>
+  <van-tab title="标签 3">内容 3</van-tab>
+  <van-tab title="标签 4">内容 4</van-tab>
+  <van-tab title="标签 5">内容 5</van-tab>
+</van-tabs>
+
+
