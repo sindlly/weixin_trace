@@ -1,1 +1,11 @@
 /* pages/home/home.wxss */
+.flex-end{
+  position:absolute;
+  right:20px;
+}
+.header-btn{
+  background: #aaa;
+}
+.flex-end button{
+  background: #aaa;
+}

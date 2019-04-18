@@ -5,37 +5,52 @@ Page({
    * 页面的初始数据
    */
   data: {
-      factory:{
+      business:{
        name:null,
-       count:null,
+       public_account:null,
        email:null,
-       master:null,
+       contact:null,
        phone:null,
-       receiver_name:null,
-       receiver_phone:null,
-       revicere_addr:null 
+       license:null,
+       receiving_info:{
+        name:null,
+        phone:null,
+        address:null
+       },
       },
-    imgSrc:null,
+      imgUrl:null
   },
   uploadImg: function () {
     var _this = this;
     wx.chooseImage({
-      count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: function (res) {
+        _this.data.business.license = res.tempFilePaths[0]
         _this.setData({
-          imgSrc: res.tempFilePaths[0],
-    
+          imgUrl : res.tempFilePaths[0]
         })
       }
     })
+  },
+  onChange:function(e){
+    // console.log(e)
+    let dataset = e.target.dataset
+    this.data[dataset.obj][dataset.item] = e.detail
+  },
+  onChange2:function(e){
+    let temp = e.target.dataset.obj
+    let dataset = temp.split(".")
+    this.data[dataset[0]][dataset[1]][dataset[2]] = e.detail
+  },
+  commit:function(){
+    console.log(this.data.business)
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**

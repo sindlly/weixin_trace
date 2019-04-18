@@ -1,60 +1,69 @@
 <!--pages/regest/regest.wxml-->
-
   <view class='my_container'>
     <van-cell-group>
     <van-field
-      value="{{ factory.img }}"
+      value=""
       required
       disabled
       clearable
-      label="上传图片"
+      label="上传营业执照"
       left-icon="photo-o"
       icon="add-o"
       placeholder=""
       bind:click-icon="uploadImg"
     />
     <view class="my_center_container">
-      <image mode='aspectFit' src="{{imgSrc}}" wx:if="{{imgSrc}}"></image>
+      <image mode='aspectFit' src="{{imgUrl}}" wx:if="{{imgUrl}}"></image>
     </view>
     <van-field
-      value="{{ factory.name }}"
+      :value="{{ business.name }}"
       required
       label="厂家名称"
       left-icon="home-o"
       placeholder="请输入厂家名称"
+      data-obj="business"
+      data-item="name"
       bind:change="onChange"
     />
     <van-field
-      value="{{ factory.count }}"
+      value="{{ business.public_account }}"
       required
       label="对公账户"
       left-icon="cash-back-record"
       placeholder="请输入对公账户"
+      data-obj="business"
+      data-item="public_account"
       bind:change="onChange"
     />
     <van-field
-      value="{{ factory.email }}"
+      value="{{ business.email }}"
       required
       label="电子邮箱"
       left-icon="comment-circle-o"
       placeholder="请输入电子邮箱"
       bind:change="onChange"
+      data-obj="business"
+      data-item="email"
     />
     <van-field
-      value="{{ factory.master }}"
+      value="{{ business.contact }}"
       required
       label="负责人"
       left-icon="contact"
       placeholder="请输入负责人名称"
       bind:change="onChange"
+      data-obj="business"
+      data-item="contact"
     />
     <van-field
-      value="{{ factory.phone }}"
+      value="{{ business.phone }}"
       required
       label="手机号码"
       left-icon="phone-o"
       placeholder="请输入手机号码"
       bind:change="onChange"
+      data-obj="business"
+      data-item="phone"
     />
     
   </van-cell-group>
@@ -62,23 +71,25 @@
 <view class='my_container'>
     <van-cell-group>
       <van-field
-        value="{{ factory.receiver_name }}"
+        value="{{ business.receiving_info.name }}"
         required
         label="收货人姓名"
         left-icon="contact"
         placeholder="请输入收货人姓名"
-        bind:change="onChange"
+        bind:change="onChange2"
+        data-obj="business.receiving_info.name"
       />
       <van-field
-        value="{{ factory.name }}"
+        value="{{ business.receiving_info.phone }}"
         required
         label="收货人手机号"
         left-icon="phone-o"
         placeholder="请输入收货人手机号"
-        bind:change="onChange"
+        bind:change="onChange2"
+        data-obj="business.receiving_info.phone"
       />
       <van-field
-        value="{{ factory.count }}"
+        value="{{ business.receiving_info.address }}"
         required
         type="textarea"
         autosize
@@ -86,10 +97,11 @@
         label="收货地址"
         left-icon="home-o"
         placeholder="请输入收货地址"
-        bind:change="onChange"
+        bind:change="onChange2"
+        data-obj="business.receiving_info.address"
       />
   </van-cell-group>
   </view>
 <view class='my_center_container'>
-  <van-button type="danger"  size="large">提交</van-button>
+  <van-button type="danger"  size="large" bindtap='commit'>提交</van-button>
 </view>

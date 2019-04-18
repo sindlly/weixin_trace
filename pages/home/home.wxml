@@ -1,4 +1,9 @@
 <!--pages/home/home.wxml-->
+<view class='my_container flex-row-center '>
+     <image  class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+     <van-button round type="danger" class='flex-end' custom-class="header-btn">圆形按钮></van-button>
+  </view>
 <van-cell-group>
   <view class='my_container'>
     商家首页
