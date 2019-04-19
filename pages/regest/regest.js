@@ -18,7 +18,7 @@ Page({
         address:null
        },
       },
-      imgUrl:null
+    imgSrc:null
   },
   uploadImg: function () {
     var _this = this;
@@ -28,7 +28,7 @@ Page({
       success: function (res) {
         _this.data.business.license = res.tempFilePaths[0]
         _this.setData({
-          imgUrl : res.tempFilePaths[0]
+          imgSrc : res.tempFilePaths[0]
         })
       }
     })

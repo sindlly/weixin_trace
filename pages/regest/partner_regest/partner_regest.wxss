@@ -1,1 +1,2 @@
 /* pages/regest/partner_regest/partner_regest.wxss */
+@import "../courier_regest/courier_regest.wxss";

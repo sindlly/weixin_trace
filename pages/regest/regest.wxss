@@ -1,4 +1,5 @@
 /* pages/regest/regest.wxss */
+@import "./courier_regest/courier_regest.wxss";
 page{
   background: rgb(252, 249, 249);
 }

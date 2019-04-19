@@ -1,50 +1,35 @@
 <!--pages/regest/regest.wxml-->
 
 
-<view class='my_container'>
-    <van-cell-group>
+<view class=''>
+    <van-cell-group style='backgroud:#fff'>
       <van-field
         value="{{ factory.receiver_name }}"
-        required
-        label="姓名"
-        left-icon="contact"
         placeholder="请输入姓名"
         bind:change="onChange"
       />
       <van-field
         value="{{ factory.name }}"
-        required
-        label="电话"
-        left-icon="phone-o"
         placeholder="国家区号+手机号"
         bind:change="onChange"
       />
       <van-field
         value="{{ factory.count }}"
-        required
-        type="textarea"
-        autosize
-        label="地址"
-        left-icon="home-o"
         placeholder="所在国家和城市"
         bind:change="onChange"
       />
-      <van-field
-      value="{{ factory.img }}"
-      required
-      disabled
-      clearable
-      label="上传图片"
-      left-icon="photo-o"
-      icon="add-o"
-      placeholder=""
-      bind:click-icon="uploadImg"
-    />
-    <view class="my_center_container">
-      <image mode='aspectFit' src="{{imgSrc}}" wx:if="{{imgSrc}}"></image>
-    </view>
+      <van-panel style='backgroud:#fff'>
+          <view class='img-title'>上传身份证（正面照）</view>
+          <view class='img-container'  bindtap="uploadImg" wx:if="{{!imgSrc}}" style='backgroud:#fff'>
+            <image mode='aspectFit' src="../../../img/+.png" style='width:50rpx;height:51rpx'></image>
+          </view>
+         <view class="my_center_container" bindtap="uploadImg" style='backgroud:#fff'>
+            <image mode='aspectFit' src="{{imgSrc}}" wx:if="{{imgSrc}}"></image>
+        </view>
+      </van-panel>
   </van-cell-group>
   </view>
 <view class='my_center_container'>
-  <van-button type="danger"  size="large">提交</van-button>
+  <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>完成</van-button>
+  <view class='tips'>合作协议细则></view>
 </view>

@@ -1,9 +1,11 @@
 {
   "pages": [
+    "pages/home/home",
+    "pages/regest/regest",
     "pages/regest/partner_regest/partner_regest",
     "pages/regest/courier_regest/courier_regest",
-    "pages/regest/regest",
-    "pages/home/home",
+    
+    
     "pages/order_manage/order_manage",
     
     
