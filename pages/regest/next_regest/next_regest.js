@@ -1,50 +1,60 @@
-// pages/home/home.js
-const app = getApp();
+// pages/regest/regest.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    home_type:1  //1显示商家首页，2显示平台账号首页，3显示销售首页，4显示无账号首页，5显示快递员首页
+    courier: {
+      company: null,
+      name: null,
+      phone: null,
+      email: null,
+      id_card: null,     
+    },
+    imgSrc: null,
   },
-  // 二维码扫描
-  getScancode: function () {
+  uploadImg: function () {
     var _this = this;
-    // 允许从相机和相册扫码
-    wx.scanCode({
-      success: (res) => {
-        
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res) {
+        _this.data.courier.id_card = res.tempFilePaths[0]
+        _this.setData({
+          imgSrc: res.tempFilePaths[0],
+        })
       }
     })
-    },
+  },
+  onChange: function (e) {
+    // console.log(e)
+    let dataset = e.target.dataset
+    this.data[dataset.obj][dataset.item] = e.detail
+  },
+  commit: function () {
+    console.log(this.data.courier)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-    // 所以此处加入 callback 以防止这种情况
-    app.userInfoReadyCallback = res => {
-      this.setData({
-        userInfo: res.userInfo,
 
-      })
-    }
-    // console.log(app.globalData.userInfo)
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
   },
 
   /**

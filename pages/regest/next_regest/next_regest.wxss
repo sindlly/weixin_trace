@@ -1,0 +1,31 @@
+/* pages/regest/partner_regest/partner_regest.wxss */
+.img-container{
+  width: 180rpx;
+  height: 180rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed #CCCCCC;
+  margin-left:15px;
+}
+.img-title{
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 24px;
+  padding: 15px;
+}
+.tips{
+  font-size: 26rpx;
+  color: #666666;
+  letter-spacing: 0;
+  margin-top: 23rpx;
+}
+.commit-btn button{
+  margin-top: 48rpx;
+  background: #1C92FF;
+  border-radius: 40.5px;
+  width: 580rpx;
+  height: 81rpx;
+  border: none;
+  
+}

@@ -1,14 +1,11 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/regest/next_regest/next_regest",
     "pages/regest/regest",
     "pages/regest/partner_regest/partner_regest",
     "pages/regest/courier_regest/courier_regest",
-    
-    
     "pages/order_manage/order_manage",
-    
-    
     "pages/index/index",
     "pages/logs/logs",
     "pages/order_manage/goods_card/goods_card"

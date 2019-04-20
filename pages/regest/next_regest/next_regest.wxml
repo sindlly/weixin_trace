@@ -1,0 +1,41 @@
+<!--pages/regest/regest.wxml-->
+
+
+<view class=''>
+    <van-cell-group style='backgroud:#fff'>
+    <van-field
+        value=""
+        placeholder="商店名称"
+        bind:change="onChange"
+        data-obj="courier"
+        data-item="company"
+      />
+      <van-field
+        value=""
+    
+        placeholder="商店地址"
+        bind:change="onChange"
+        data-obj="courier"
+        data-item="name"
+      />
+      <van-field
+        value=""
+        
+        placeholder="商店联系电话（国家区号+手机号）"
+        bind:change="onChange"
+        data-obj="courier"
+        data-item="phone"
+      />
+      <van-field
+        value=""
+        placeholder="联系人姓名"
+        bind:change="onChange"
+        data-obj="courier"
+        data-item="email"
+      />
+  </van-cell-group>
+  </view>
+<view class='my_center_container'>
+  <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>完成</van-button>
+  <view class='tips'>合作协议细则></view>
+</view>

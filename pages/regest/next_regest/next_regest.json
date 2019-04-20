@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-field": "../../../miniprogram_npm/vant-weapp/field/index",
+    "van-nav-bar": "../../../miniprogram_npm/vant-weapp/nav-bar/index",
+    "van-button": "../../../miniprogram_npm/vant-weapp/button/index",
+    "van-panel": "../../../miniprogram_npm/vant-weapp/panel/index"
+  },
+  "navigationBarTitleText": "下级经销商注册"
+}

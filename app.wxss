@@ -18,14 +18,21 @@
  }
  page{
   background: rgb(252, 249, 249);
+  font-family: PingFangSC-Medium;
 }
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
   margin: 20rpx;
   border-radius: 50%;
+  border: 2px solid #fff
 }
-
+/* flex 水平 */
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  
+}
 /* flex 水平居中 */
 .flex-row-center {
   display: flex;
