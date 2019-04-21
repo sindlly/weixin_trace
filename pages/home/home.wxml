@@ -5,10 +5,11 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
       <van-button round type="danger" class='flex-end' custom-class="header-btn">溯源大数据></van-button>
     </view>
-    <image src='../../img/Desert.jpg' class="header-img"></image>
+    <image src='../../img/bg.png' class="home-bg-img"></image>
+    <image src='../../img/banner.jpg' class="header-img"></image>
   </view>
   
-<van-cell-group>
+<van-cell-group class='my-van-cell-group'>
   <view class='home-content' name="商家首页" wx:if="{{home_type==1}}">
     <view class='flex-row-center content-hover'>
       <image src='../../img/saoma.png' class="cell-left-img"></image>

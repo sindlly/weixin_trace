@@ -1,27 +1,47 @@
 /* pages/home/home.wxss */
 .home-header{
-  background: #19A2FF;
+  position: relative;
+  background: #fff;
   width: 100%;
-  height: 500rpx;
+  height: 544rpx;
   text-align: center;
 }
 .userinfo-nickname{
+  
   font-family: PingFangSC-Medium;
   font-size: 32rpx;
   color: #FFFFFF;
   letter-spacing: 0;
+  position: relative;
+  z-index: 10;
+}
+.userinfo-avatar{
+  position: relative;
+  z-index: 10;
 }
 .flex-end{
   position:absolute;
   right:20px;
+  z-index: 10;
 }
 .header-btn{
   background: #aaa;
+  position: relative;
+  z-index: 10;
+}
+.home-bg-img{
+  position:fixed;
+  width:100%;
+  top:0;
+  left:0;
+  z-index: 1;
 }
 .header-img{
+  position: relative;
   width: 702rpx;
   height: 299rpx;
   border-radius: 10rpx;
+  z-index: 10;
 }
 .content-hover:click{
   background: #f2f3f5;
@@ -46,7 +66,7 @@
   height: 26rpx;
 }
 .home-content{
-  margin-top: 28rpx;
+  /* margin-top: 28rpx; */
   background: #fff;
   padding: 0 24rpx 0 36rpx;
 }
@@ -92,4 +112,7 @@
   font-size:12px;
   line-height:18px;
   color:#999;
+}
+.my-van-cell-group .van-hairline--top-bottom{
+  border-top: none;
 }
