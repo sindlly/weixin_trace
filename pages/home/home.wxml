@@ -25,6 +25,7 @@
     <image src='../../img/bigdata.png' class="cell-left-img"></image>
       <van-cell class='home-cell'
         label="因为我们溯源无死角，所有假货无处藏身"
+        url="/pages/bigdata/bigdata"
         clickable>
         <view slot="title">
             <view class="van-cell-text">溯源大数据<van-tag type="danger">5</van-tag></view>

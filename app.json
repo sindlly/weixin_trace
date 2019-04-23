@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/bigdata/bigdata",
+    
     "pages/regest/next_regest/next_regest",
     "pages/regest/regest",
     "pages/regest/partner_regest/partner_regest",
@@ -9,6 +11,7 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/order_manage/goods_card/goods_card"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
