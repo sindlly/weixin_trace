@@ -40,13 +40,14 @@ Page({
     //先上传图片数据
     wx.uploadFile({
       url:baseUrl+'/files',
+      method: "POST",
       filePath:_this.data.imgSrc,
       name:"files",
       header: {
         'content-type': 'application/json' // 默认值
       },
       success(res){
-        console.log(res)
+        console.log(JSON.parse(res.data.data.id))
       }
     })
 

@@ -33,19 +33,18 @@ Page({
       })
     }
     // 确认用户类型
-    // _this.setData({
-    //   home_type: 4
-    // })
-    console.log("her")
-    wx.request({
-      url: baseUrl+'/users', // 仅为示例，并非真实的接口地址
-      success(res) {
-        _this.setData({
-          home_type:4
-        })
-        console.log("dd")
-      }
+    _this.setData({
+      home_type: 1
     })
+    // wx.request({
+    //   url: baseUrl+'/users', // 仅为示例，并非真实的接口地址
+    //   success(res) {
+    //     _this.setData({
+    //       home_type:4
+    //     })
+    //     console.log("dd")
+    //   }
+    // })
   },
 
   /**
