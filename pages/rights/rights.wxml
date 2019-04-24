@@ -1,0 +1,27 @@
+<!--pages/home/home.wxml-->
+  <view class='home-header'>
+    <image src='../../img/bg.png' class="home-bg-img"></image>
+    <image src='../../img/banner.jpg' class="header-img"></image>
+    
+    <view class='steps'>
+      <view class='steps-title'>2步打假维权</view>
+      <van-steps
+        steps="{{ steps }}"
+        active="{{ 3 }}"
+        direction="vertical"
+        active-color="#1C92FF"
+        custom-class="{{'my-steps'}}"
+        border="{{false}}"
+      />
+    </view>
+  </view>
+  <van-panel>
+          <view class='img-title'>上传照片</view>
+          <view class='img-container'  bindtap="uploadImg" wx:if="{{!imgSrc}}" style='backgroud:#fff'>
+            <image mode='aspectFill' src="../../img/+.png" style='width:50rpx;height:51rpx'></image>
+          </view>
+         <view bindtap="uploadImg" style='backgroud:#fff;margin-left:15px;'>
+            <image class='right-img' mode='aspectFit' src="{{imgSrc}}" wx:if="{{imgSrc}}"></image>
+        </view>
+      </van-panel>
+

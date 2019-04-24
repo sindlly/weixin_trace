@@ -8,8 +8,8 @@
       class="{{ utils.bem('step', [direction, status(index, active)]) }} van-hairline"
     >
       <view class="van-step__title" style="{{ index === active ? 'color: ' + activeColor : '' }}">
-        <view>{{ item.text }}</view>
-        <view>{{ item.desc }}</view>
+        <view class='step-text'>{{ item.text }}</view>
+        <view class='step-desc'>{{ item.desc }}</view>
       </view>
       <view class="van-step__circle-container">
         <view class="van-step__circle" wx:if="{{ index !== active }}" style="{{ index < active ? 'background-color: ' + activeColor : '' }}" />

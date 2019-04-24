@@ -2,7 +2,8 @@
   "usingComponents": {
     "van-cell": "../../../miniprogram_npm/vant-weapp/cell/index",
     "van-button": "../../../miniprogram_npm/vant-weapp/button/index",
-    "van-panel": "../../../miniprogram_npm/vant-weapp/panel/index"
+    "van-panel": "../../../miniprogram_npm/vant-weapp/panel/index",
+    "van-field": "../../../miniprogram_npm/vant-weapp/field/index"
   },
   "navigationBarTitleText": "溯源大数据"
 }

@@ -28,5 +28,10 @@
   line-height: 60rpx;
   border: 1px solid #1C92FF;
   border-radius: 40.5px;
-
+}
+.my-input{
+  width: 702rpx !important;
+  height: 90rpx !important;
+  border: 1px solid #CCCCCC !important;
+  border-radius: 45px !important;
 }

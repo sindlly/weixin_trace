@@ -36,8 +36,12 @@
     title="商品条形码"
     value="{{mycode.used}}个"
     value-class="{{'cell-value'}}"
+    border="{{false}}"
   />
- 
+  <van-field input-class="{{'my-input'}}" placeholder="添加新的条形码">
+
+  </van-field>
+  
 </van-panel>
 
 <view style='width:100%;height:31rpx'></view>

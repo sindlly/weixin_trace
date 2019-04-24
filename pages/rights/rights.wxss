@@ -1,0 +1,71 @@
+/* pages/home/home.wxss */
+.home-header{
+  position: relative;
+  background: #fff;
+  width: 100%;
+  height: 700rpx;
+  text-align: center;
+}
+.flex-end{
+  position:absolute;
+  right:20px;
+  z-index: 10;
+}
+
+.home-bg-img{
+  position:fixed;
+  width:100%;
+  height: 370rpx;
+  top:0;
+  left:0;
+  z-index: 0;
+}
+.header-img{
+  position: relative;
+  width: 702rpx;
+  height: 299rpx;
+  border-radius: 10rpx;
+  z-index: 10;
+  margin-top: 40rpx;
+}
+.steps{
+  padding: 15rpx;
+  margin-top: 30rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  text-align: left;
+}
+.steps-title{
+font-family: PingFangSC-Medium;
+font-size: 32rpx;
+color: #333333;
+font-weight: bold;
+}
+.my-steps{
+  margin-top: 37rpx
+}
+.my-steps .van-step__wrapper .van-step .van-step__title{
+  display:flex;
+}
+.img-container{
+  width: 160rpx;
+  height: 160rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed #CCCCCC;
+  margin-left:15px;
+}
+.img-title{
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 24px;
+  padding: 15px;
+}
+.right-img{
+  width: 160rpx;
+  height: 160rpx;
+  border: 2px dashed #CCCCCC;
+}
