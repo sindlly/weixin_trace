@@ -8,9 +8,11 @@ App({
    
 
     // 登录
+    console.log("dd")
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        console.log(res)
       }
     })
     // 获取用户信息
@@ -36,6 +38,9 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    ROOTPATH: 'https://buildupstep.cn/api/v1',
+    HOST: 'http://119.28.66.197:7001/api',
+    DEFAULT_IMG: '38ec2f40-f352-11e7-b5f3-c93673e5d7ba'
   }
 })

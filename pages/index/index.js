@@ -42,6 +42,13 @@ Page({
         }
       })
     }
+
+    wx.request({
+      url: 'http://119.28.66.197:7001/api/users', // 仅为示例，并非真实的接口地址
+      success(res) {
+        console.log(res.data)
+      }
+    })
   },
   getUserInfo: function(e) {
     console.log(e)

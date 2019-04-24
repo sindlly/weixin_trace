@@ -1,12 +1,14 @@
 // pages/home/home.js
 const app = getApp();
+const baseUrl = app.globalData.HOST;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    home_type:1  //1显示商家首页，2显示平台账号首页，3显示销售首页，4显示无账号首页，5显示快递员首页
+    home_type:0  //1显示商家首页，2显示平台账号首页，3显示销售首页，4显示无账号首页，5显示快递员首页
   },
   // 二维码扫描
   getScancode: function () {
@@ -24,13 +26,26 @@ Page({
   onLoad: function (options) {
     // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
     // 所以此处加入 callback 以防止这种情况
+    let _this = this;
     app.userInfoReadyCallback = res => {
       this.setData({
         userInfo: res.userInfo,
-
       })
     }
-    // console.log(app.globalData.userInfo)
+    // 确认用户类型
+    // _this.setData({
+    //   home_type: 4
+    // })
+    console.log("her")
+    wx.request({
+      url: baseUrl+'/users', // 仅为示例，并非真实的接口地址
+      success(res) {
+        _this.setData({
+          home_type:4
+        })
+        console.log("dd")
+      }
+    })
   },
 
   /**

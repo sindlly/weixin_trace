@@ -1,4 +1,6 @@
 // pages/regest/regest.js
+const app = getApp();
+const baseUrl = app.globalData.HOST;
 Page({
 
   /**
@@ -10,7 +12,7 @@ Page({
       name: null,
       phone: null,
       email: null,
-      id_card: null,     
+      employee_card: null,     
     },
     imgSrc: null,
   },
@@ -21,7 +23,7 @@ Page({
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: function (res) {
-        _this.data.courier.id_card = res.tempFilePaths[0]
+        _this.data.courier.employee_card = res.tempFilePaths[0]
         _this.setData({
           imgSrc: res.tempFilePaths[0],
         })
@@ -34,7 +36,36 @@ Page({
     this.data[dataset.obj][dataset.item] = e.detail
   },
   commit: function () {
-    console.log(this.data.courier)
+    let _this = this
+    //先上传图片数据
+    wx.uploadFile({
+      url:baseUrl+'/files',
+      filePath:_this.data.imgSrc,
+      name:"files",
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res){
+        console.log(res)
+      }
+    })
+
+    // wx.request({
+    //   url: baseUrl + '/users', // 仅为示例，并非真实的接口地址
+    //   method:"POST",
+    //   header: {
+    //     'content-type': 'application/json' // 默认值
+    //   },
+    //   data:{
+    //     role_type:'courier',
+    //     role_id:50,
+    //     courier: _this.data.courier
+    //   },
+    //   success(res) {
+      
+    //     console.log("dd")
+    //   }
+    // })
   },
   /**
    * 生命周期函数--监听页面加载
