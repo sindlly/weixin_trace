@@ -18,7 +18,7 @@ Page({
         desc: '描述商品造假鉴定过程',
       }
     ],
-    imgSrc: null
+    imgSrcMap: []
   },
   // 二维码扫描
   getScancode: function () {
@@ -30,16 +30,26 @@ Page({
       }
     })
     },
-  uploadImg: function () {
+  uploadImg: function (event) {
+    console.log(event)
     var _this = this;
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: function (res) {
+        let arr = _this.data.imgSrcMap
+        if (event.target.dataset.index || event.target.dataset.index==0){
+          arr[event.currentTarget.dataset.index].src = res.tempFilePaths[0]
+        }else{
+          arr.push({
+            src: res.tempFilePaths[0]
+          })
+        }
         _this.setData({
-          imgSrc: res.tempFilePaths[0],
+          imgSrcMap : arr
         })
+        
       }
     })
   },

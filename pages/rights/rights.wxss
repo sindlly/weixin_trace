@@ -56,7 +56,7 @@ font-weight: bold;
   justify-content: center;
   align-items: center;
   border: 2px dashed #CCCCCC;
-  margin-left:15px;
+ 
 }
 .img-title{
   font-size: 28rpx;

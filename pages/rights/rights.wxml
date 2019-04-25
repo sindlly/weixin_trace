@@ -16,12 +16,15 @@
     </view>
   </view>
   <van-panel>
-          <view class='img-title'>上传照片</view>
-          <view class='img-container'  bindtap="uploadImg" wx:if="{{!imgSrc}}" style='backgroud:#fff'>
-            <image mode='aspectFill' src="../../img/+.png" style='width:50rpx;height:51rpx'></image>
+      <view class='img-title'>上传照片</view>
+      <view  class='flex-row'>
+        <view style='backgroud:#fff;margin-left:15px;' wx:for='{{imgSrcMap}}'>
+            <image class='right-img' mode='aspectFit' src="{{item.src}}" data-index='{{index}}'  bindtap="uploadImg"></image>
           </view>
-         <view bindtap="uploadImg" style='backgroud:#fff;margin-left:15px;'>
-            <image class='right-img' mode='aspectFit' src="{{imgSrc}}" wx:if="{{imgSrc}}"></image>
+        <view class='img-container' wx:if="{{imgSrcMap.length<3}}"  bindtap="uploadImg" style='backgroud:#fff'>
+          <image mode='aspectFill' src="../../img/+.png" style='width:50rpx;height:51rpx'></image>
         </view>
-      </van-panel>
+      </view>
+        
+  </van-panel>
 
