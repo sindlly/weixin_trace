@@ -17,14 +17,31 @@
   </view>
   <van-panel>
       <view class='img-title'>上传照片</view>
-      <view  class='flex-row'>
-        <view style='backgroud:#fff;margin-left:15px;' wx:for='{{imgSrcMap}}'>
+      <view  class='flex-row' style='padding-left:15px'>
+        <view style='backgroud:#fff;' wx:for='{{imgSrcMap}}'>
             <image class='right-img' mode='aspectFit' src="{{item.src}}" data-index='{{index}}'  bindtap="uploadImg"></image>
           </view>
         <view class='img-container' wx:if="{{imgSrcMap.length<3}}"  bindtap="uploadImg" style='backgroud:#fff'>
           <image mode='aspectFill' src="../../img/+.png" style='width:50rpx;height:51rpx'></image>
         </view>
       </view>
-        
+      <view class='img-title img-title2'>过程</view>
+       <van-field 
+          type="textarea"
+          placeholder="请输入描述文字，最多200字"
+          maxlength='{{200}}'
+          autosize
+          border="{{ false }}"
+          input-class="{{'my-textarea'}}"	
+        />  
+        <van-field 
+          
+          placeholder="请输手机号"
+          border="{{ false }}"
+          input-class="{{'my-input'}}"	
+        />  
   </van-panel>
 
+<view class='my_center_container'>
+  <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>提交</van-button>
+</view>

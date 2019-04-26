@@ -5,7 +5,8 @@
     "van-cell-group": "../../../miniprogram_npm/vant-weapp/cell-group/index",
     "van-button": "../../../miniprogram_npm/vant-weapp/button/index",
     "van-panel": "../../../miniprogram_npm/vant-weapp/panel/index",
-    "van-steps": "../../../miniprogram_npm/vant-weapp/steps/index"
+    "van-steps": "../../../miniprogram_npm/vant-weapp/steps/index",
+    "van-field": "../../../miniprogram_npm/vant-weapp/field/index"
   },
   "navigationBarTitleText": "2步打假维权"
 }
