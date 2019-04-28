@@ -6,30 +6,31 @@
     <van-field
         value=""
         placeholder="所属快递公司名称"
-        bind:change="onChange"
+        bind:blur="onChange"
         data-obj="courier"
         data-item="company"
+        error-message="{{errorMsg.com}}"
       />
       <van-field
         value=""
     
         placeholder="请输入姓名"
-        bind:change="onChange"
+        bind:blur="onChange"
         data-obj="courier"
         data-item="name"
       />
       <van-field
         value=""
         
-        placeholder="国家区号+手机号"
-        bind:change="onChange"
+        placeholder="手机号"
+        bind:blur="onChange"
         data-obj="courier"
         data-item="phone"
       />
       <van-field
         value=""
         placeholder="电子邮件"
-        bind:change="onChange"
+        bind:blur="onChange"
         data-obj="courier"
         data-item="email"
       />

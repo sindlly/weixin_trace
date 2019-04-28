@@ -4,19 +4,25 @@
 <view class=''>
     <van-cell-group style='backgroud:#fff'>
       <van-field
-        value="{{ factory.receiver_name }}"
+        value="{{ salesman.name }}"
         placeholder="请输入姓名"
         bind:change="onChange"
+        data-obj="salesman"
+        data-item="name"
       />
       <van-field
-        value="{{ factory.name }}"
-        placeholder="国家区号+手机号"
+        value="{{ salesman.phone }}"
+        placeholder="手机号"
         bind:change="onChange"
+        data-obj="salesman"
+        data-item="phone"
       />
       <van-field
-        value="{{ factory.count }}"
+        value="{{ salesman.address }}"
         placeholder="所在国家和城市"
         bind:change="onChange"
+        data-obj="salesman"
+        data-item="address"
       />
       <van-panel style='backgroud:#fff'>
           <view class='img-title'>上传身份证（正面照）</view>

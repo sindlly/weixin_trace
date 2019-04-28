@@ -1,19 +1,17 @@
 // pages/regest/regest.js
+const app = getApp();
+const baseUrl = app.globalData.HOST;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    factory: {
+    salesman: {
       name: null,
-      count: null,
-      email: null,
-      master: null,
       phone: null,
-      receiver_name: null,
-      receiver_phone: null,
-      revicere_addr: null
+      address:null,
+      id_card:null
     },
     imgSrc: null,
   },
@@ -24,12 +22,90 @@ Page({
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: function (res) {
+        _this.data.salesman.id_card = res.tempFilePaths[0]
         _this.setData({
           imgSrc: res.tempFilePaths[0],
 
         })
       }
     })
+  },
+  onChange: function (e) {
+    let dataset = e.target.dataset
+    this.data[dataset.obj][dataset.item] = e.detail
+  },
+  commit: function () {
+    let _this = this
+    if (_this.validate(this.data.salesman)) {
+      //先上传图片数据
+      wx.uploadFile({
+        url: baseUrl + '/files',
+        method: "POST",
+        filePath: _this.data.imgSrc,
+        name: "files",
+        header: {
+          'content-type': 'application/json'
+        },
+        success(res) {
+
+          _this.data.salesman.id_card = JSON.parse(res.data).data.data.id
+          wx.request({
+            url: baseUrl + '/users',
+            method: "POST",
+            header: {
+              'content-type': 'application/json'
+            },
+            data: {
+              role_type: 'salesman',
+              role_id: 40,
+              salesman: _this.data.salesman
+            },
+            success(res) {
+              console.log("he")
+              if (res.data.code == 0) {
+                wx.showModal({
+                  title: '恭喜您',
+                  content: '注册成功，等待管理员审核',
+                  showCancel: false,
+                  success(res) {
+                    if (res.confirm) {
+                      wx.redirectTo({
+                        url: '/pages/home/home'
+                      })
+                    }
+                  }
+                })
+              }
+              else {
+                wx.showToast({
+                  title: res.data.msg,
+                  icon: 'none',
+                  duration: 1000
+                })
+              }
+            }
+          })
+        }
+      })
+    }
+  },
+  //校验
+  validate(data) {
+    let flag = true
+    //校验有空数据
+    for (let i in data) {
+      console.log(i + ':' + data[i])
+      if (!data[i]) {
+        flag = false
+        wx.showToast({
+          title: '请填写所有内容',
+          icon: 'none',
+          duration: 1000
+        })
+        break;
+      }
+    }
+    return flag
   },
   /**
    * 生命周期函数--监听页面加载

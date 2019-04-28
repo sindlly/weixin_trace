@@ -5,5 +5,5 @@
     "van-button": "../../../miniprogram_npm/vant-weapp/button/index",
     "van-panel": "../../../miniprogram_npm/vant-weapp/panel/index"
   },
-  "navigationBarTitleText": "快递员注册"
+  "navigationBarTitleText": "注册"
 }

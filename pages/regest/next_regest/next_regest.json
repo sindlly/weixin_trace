@@ -5,5 +5,5 @@
     "van-button": "../../../miniprogram_npm/vant-weapp/button/index",
     "van-panel": "../../../miniprogram_npm/vant-weapp/panel/index"
   },
-  "navigationBarTitleText": "下级经销商注册"
+  "navigationBarTitleText": "商家（经销商）注册"
 }

@@ -1,13 +1,18 @@
 {
   "pages": [
+    "pages/regest/next_regest/next_regest",
+      "pages/regest/partner_regest/partner_regest",
+    "pages/regest/courier_regest/courier_regest",
+    "pages/regest/regest",
+    
     "pages/rights/rights",
     "pages/bigdata/bigdata",
     "pages/home/home",
-    "pages/regest/courier_regest/courier_regest",
+    
     "pages/index/index",
-    "pages/regest/next_regest/next_regest",
-    "pages/regest/regest",
-    "pages/regest/partner_regest/partner_regest",
+
+    
+  
     "pages/order_manage/order_manage",
     "pages/logs/logs",
     "pages/order_manage/goods_card/goods_card"

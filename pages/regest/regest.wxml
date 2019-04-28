@@ -16,63 +16,62 @@
       <image mode='aspectFit' src="{{imgUrl}}" wx:if="{{imgUrl}}"></image>
     </view> -->
     <van-field
-      value="{{ business.name }}"
+      value="{{ factory.name }}"
       placeholder="请输入厂家名称"
-      data-obj="business"
+      data-obj="factory"
       data-item="name"
       bind:change="onChange"
     />
     <van-field
-      value="{{ business.public_account }}"
+      value="{{ factory.public_account }}"
       placeholder="请输入对公账户"
-      data-obj="business"
+      data-obj="factory"
       data-item="public_account"
       bind:change="onChange"
     />
     <van-field
-      value="{{ business.email }}"
+      value="{{ factory.email }}"
       placeholder="请输入电子邮箱"
       bind:change="onChange"
-      data-obj="business"
+      data-obj="factory"
       data-item="email"
     />
     <van-field
-      value="{{ business.contact }}"
+      value="{{ factory.contact }}"
       placeholder="请输入负责人名称"
       bind:change="onChange"
-      data-obj="business"
+      data-obj="factory"
       data-item="contact"
     />
     <van-field
-      value="{{ business.phone }}"
+      value="{{ factory.phone }}"
       placeholder="请输入手机号码"
       bind:change="onChange"
-      data-obj="business"
+      data-obj="factory"
       data-item="phone"
     />
-    
   </van-cell-group>
 </view>
-<view class=''>
+<view class='' style='margin-top:15px'>
     <van-cell-group>
       <van-field
-        value="{{ business.receiving_info.name }}"
+        value="{{ factory.receiving_info.name }}"
         placeholder="请输入收货人姓名"
         bind:change="onChange2"
-        data-obj="business.receiving_info.name"
+        data-obj="factory.receiving_info.name"
       />
       <van-field
-        value="{{ business.receiving_info.phone }}"
+        value="{{ factory.receiving_info.phone }}"
         placeholder="请输入收货人手机号"
         bind:change="onChange2"
-        data-obj="business.receiving_info.phone"
+        data-obj="factory.receiving_info.phone"
       />
       <van-field
-        value="{{ business.receiving_info.address }}"
+        value="{{ factory.receiving_info.address }}"
         border="{{ false }}"
         placeholder="请输入收货地址"
         bind:change="onChange2"
-        data-obj="business.receiving_info.address"
+        data-obj="factory.receiving_info.address"
       />
   </van-cell-group>
   <van-panel style='backgroud:#fff'>
@@ -89,3 +88,4 @@
   <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>完成</van-button>
   <view class='tips'>合作协议细则></view>
 </view>
+<van-dialog id="van-dialog" />

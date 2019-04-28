@@ -40,7 +40,7 @@ App({
   globalData: {
     userInfo: null,
     ROOTPATH: 'https://buildupstep.cn/api/v1',
-    HOST: 'http://119.28.66.197:7001/api',
+    HOST: 'http://129.204.232.55:7001/api',
     DEFAULT_IMG: '38ec2f40-f352-11e7-b5f3-c93673e5d7ba'
   }
 })

@@ -7,31 +7,31 @@
         value=""
         placeholder="商店名称"
         bind:change="onChange"
-        data-obj="courier"
-        data-item="company"
+        data-obj="business"
+        data-item="name"
       />
       <van-field
         value=""
     
         placeholder="商店地址"
         bind:change="onChange"
-        data-obj="courier"
-        data-item="name"
+        data-obj="business"
+        data-item="address"
       />
       <van-field
         value=""
         
-        placeholder="商店联系电话（国家区号+手机号）"
+        placeholder="商店联系电话"
         bind:change="onChange"
-        data-obj="courier"
+        data-obj="business"
         data-item="phone"
       />
       <van-field
         value=""
         placeholder="联系人姓名"
         bind:change="onChange"
-        data-obj="courier"
-        data-item="email"
+        data-obj="business"
+        data-item="contact"
       />
   </van-cell-group>
   </view>

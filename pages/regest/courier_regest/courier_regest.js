@@ -15,6 +15,13 @@ Page({
       employee_card: null,     
     },
     imgSrc: null,
+    errorMsg:{
+      company: null,
+      name: null,
+      phone: null,
+      email: null,
+      employee_card: null, 
+    }
   },
   uploadImg: function () {
     var _this = this;
@@ -33,40 +40,83 @@ Page({
   onChange: function (e) {
     // console.log(e)
     let dataset = e.target.dataset
-    this.data[dataset.obj][dataset.item] = e.detail
+    this.data[dataset.obj][dataset.item] = e.detail.value
   },
   commit: function () {
     let _this = this
-    //先上传图片数据
-    wx.uploadFile({
-      url:baseUrl+'/files',
-      method: "POST",
-      filePath:_this.data.imgSrc,
-      name:"files",
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res){
-        console.log(JSON.parse(res.data.data.id))
-      }
-    })
+    _this.validate(this.data.courier)
+    if (_this.validate(this.data.courier)){
+      //先上传图片数据
+      wx.uploadFile({
+        url: baseUrl + '/files',
+        method: "POST",
+        filePath: _this.data.imgSrc,
+        name: "files",
+        header: {
+          'content-type': 'application/json'
+        },
+        success(res) {
+        
+          _this.data.courier.employee_card = JSON.parse(res.data).data.data.id
+           wx.request({
+            url: baseUrl + '/users', 
+            method:"POST",
+            header: {
+              'content-type': 'application/json' 
+            },
+            data:{
+              role_type:'courier',
+              role_id:50,
+              courier: _this.data.courier
+            },
+            success(res) {
+              if(res.data.code == 0){
+                wx.showModal({
+                  title: '恭喜您',
+                  content: '注册成功，等待管理员审核',
+                  showCancel:false,
+                  success(res) {
+                    if (res.confirm) {
+                      wx.redirectTo({
+                        url: '/pages/home/home'
+                      })
+                    } 
+                  }
+                })
+              }
+              else{
+                wx.showToast({
+                  title: res.msg,
+                  icon: 'none',
+                  duration: 1000
+                })
+              }
+            }
+          })
+        }
+      })
+    }
+    
 
-    // wx.request({
-    //   url: baseUrl + '/users', // 仅为示例，并非真实的接口地址
-    //   method:"POST",
-    //   header: {
-    //     'content-type': 'application/json' // 默认值
-    //   },
-    //   data:{
-    //     role_type:'courier',
-    //     role_id:50,
-    //     courier: _this.data.courier
-    //   },
-    //   success(res) {
-      
-    //     console.log("dd")
-    //   }
-    // })
+   
+  },
+  //校验
+  validate(data){
+    let flag = true
+    //校验有空数据
+    for (let i in data){
+      console.log(data[i])
+      if(!data[i]){
+        flag = false
+        wx.showToast({
+          title: '请填写所有内容',
+          icon:'none',
+          duration:1000
+        })
+        break;
+      }
+    }
+    return flag
   },
   /**
    * 生命周期函数--监听页面加载
