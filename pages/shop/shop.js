@@ -1,32 +1,53 @@
-// pages/order_manage/order_manage.js
+// pages/shop/shop.js
+const app = getApp();
+const baseUrl = app.globalData.HOST;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    all_goods: [{ tag: 1 }, { tag: 2 }, { tag: 3 }, { tag: 4 }, { tag: 1 }, { tag: 2 }, { tag: 3 }, { tag: 4 }],
-    daibaojia_goods: [{ tag: 1 }, { tag: 1 }, { tag: 1 }, { tag: 1 }],
-    daifukuan_goods: [{ tag: 2 }, { tag: 2 }, { tag: 2 }, { tag: 2 }],
-    daifahuo_goods: [{ tag: 3 }, { tag: 3 }, { tag: 3 }, { tag: 3 }],
-    yifahuo_goods: [{ tag: 4 }, { tag: 4 }, { tag: 4}, { tag: 4 }],
-    active:1
-  },
+      goods:[
+        {
+          name:"商品名",
+          standard:"20cm*20cm",
+          price:"20.00",
+          act_price:'10.00',
+        },
+        {
+          name: "商品名",
+          standard: "20cm*20cm",
+          price: "20.00",
+          act_price: '10.00',
+        }
+      ],
+    imageURL:'../../../img/bigdata.png'
 
+  },
+  //购买商品
+  buy:function(){
+    wx.navigateTo({
+      url: '/pages/order_manage/order_manage?active=2'
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      this.setData({
-        active:options.active
-      }) 
+    //获取商品列表
+    wx.request({
+      url: baseUrl+'/commodities', 
+      success(res) {
+        console.log(res.data)
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-      
+
   },
 
   /**

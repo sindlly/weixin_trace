@@ -1,0 +1,11 @@
+/* pages/shop/shop.wxss */
+.shop-title{
+  background: #eee
+}
+.van-card{
+  border-bottom: 1px solid #eee;
+  height: 200rpx;
+}
+.slot-footer{
+  margin-top: -50rpx;
+}

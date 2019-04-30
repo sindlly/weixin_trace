@@ -1,0 +1,13 @@
+<!--pages/shop/shop.wxml-->
+<view class='my_container flex-column-center shop-title'>title</view>
+<van-card wx:for="{{goods}}" wx:key="{{index}}"
+  desc="{{item.standard}}"
+  title="{{item.name}}"
+  price="{{item.act_price}}"
+  origin-price="{{item.price}}"
+  thumb="{{ imageURL }}"
+>
+<view slot="footer" class='slot-footer'>
+    <van-button size="mini" type="info" round bindtap='buy'>购买</van-button>
+  </view>
+</van-card>
