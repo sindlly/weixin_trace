@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-submit-bar": "../../../miniprogram_npm/vant-weapp/submit-bar/index",
+    "van-card": "../../../miniprogram_npm/vant-weapp/card/index",
+    "van-panel": "../../../miniprogram_npm/vant-weapp/panel/index",
+    "van-cell": "../../../miniprogram_npm/vant-weapp/cell/index",
+    "van-cell-group": "../../../miniprogram_npm/vant-weapp/cell-group/index"
+  },
+  "navigationBarTitleText": "付款明细"
+}

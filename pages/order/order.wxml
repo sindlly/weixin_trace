@@ -1,0 +1,54 @@
+<!--printer.wxml-->
+<view class="container">
+  <view class="order-address">
+    <view class='address-left'>
+      <image class='position-logo' bindtap='preview' src='../../../files/position.png'></image>
+    </view>
+    <view class='address-middle'>
+      <view class="address-contact">
+        <text>{{userInfo.name}}</text>
+        <text>{{userInfo.contact}}</text>
+      </view>
+      <view>
+        <text class='smaller-font'>{{userInfo.address.location}}</text>
+      </view>
+    </view>
+    <view class='address-right'>
+      <navigator class="item-buy" url="../../detail/detail?isFirstLogin=false" hover-class="none">></navigator>
+    </view>
+  </view>
+  <view class='order-commodity' wx:if="{{commodity}}">
+    <view class="item-container-left">
+      <image class="image-item" src='{{$root}}/files/{{commodity.picture_ids[0]}}/thumbnail' mode='widthFix'></image>
+    </view>
+    <view class="item-container-right">
+      <text class="item-title">{{commodity.name}}</text>
+      <text class="item-subtitle">{{commodity.description}}</text>
+      <view class='container-right-bottom'>
+        <text class="item-price">¥ {{commodity.act_price || commodity.price}}</text>
+        <text class="item-count">X {{count}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='order-number'>
+    <text class='smaller-font'>购买数量</text>
+    <view class='smaller-font'>
+      <button bindtap="countMinus" disabled="{{disabled}}">-</button>
+      <text class="count-value">{{count}}</text>
+      <button bindtap="countAdd">+</button>
+    </view>
+  </view>
+  <view class='order-count'>
+    <text class='smaller-font'>共 {{count}} 件商品</text>
+    <view class='smaller-font'>
+      小计
+      <text class="item-price">¥ {{count * (commodity.act_price || commodity.price) || 0}}</text>
+    </view>
+  </view>
+  <view class='order-sum'>
+    <view class='sum-price'>合计金额：
+      <text class="item-price">¥ {{count * (commodity.act_price || commodity.price) || 0}}</text>
+    </view>
+    <text class="sum-submit" bindtap="submitOrder">提交订单</text>
+  </view>
+</view>

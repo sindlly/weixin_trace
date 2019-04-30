@@ -1,47 +1,25 @@
-// pages/shop/shop.js
-const app = getApp();
-const baseUrl = app.globalData.HOST;
+// pages/goods_detail/goods_detail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-      goods:[
-        {
-          name:"商品名",
-          standard:"20cm*20cm",
-          price:"20.00",
-          act_price:'10.00',
-        },
-        {
-          name: "商品名",
-          standard: "20cm*20cm",
-          price: "20.00",
-          act_price: '10.00',
-        }
-      ],
-    imageURL:'../../../img/bigdata.png'
+    goods:
+      {
+        name: "商品名",
+        standard: "20cm*20cm",
+        price: "20.00",
+        act_price: '10.00',
+      },
+    imageURL: '../../../img/bigdata.png'
+  },
 
-  },
-  //购买商品
-  buy:function(){
-    wx.navigateTo({
-      // url: '/pages/order_manage/order_manage?active=2'
-      url: '/pages/order/order'
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //获取商品列表
-    wx.request({
-      url: baseUrl+'/commodities', 
-      success(res) {
-        console.log(res.data)
-      }
-    })
+
   },
 
   /**
