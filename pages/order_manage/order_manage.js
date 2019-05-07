@@ -1,4 +1,7 @@
 // pages/order_manage/order_manage.js
+const app = getApp();
+const baseUrl = app.globalData.HOST;
+const userInfo = app.globalData.userInfo;
 Page({
 
   /**
@@ -17,9 +20,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let _this = this
       this.setData({
-        active:options.active
+        active:options.active||0
       }) 
+    wx.request({
+      url: baseUrl + '/orders',
+      method: "get",
+      header: {
+        'content-type': 'application/json',
+        // 'access_token': $data.token,
+      },
+      success: function (res) {
+        let temp = res.data.data.data
+        _this.setData({
+          all_goods:temp
+        })
+      }
+    })
   },
 
   /**

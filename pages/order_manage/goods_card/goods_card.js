@@ -1,11 +1,13 @@
 // pages/order_manage/goods_card/goods_card.js
+const app = getApp();
+const baseUrl = app.globalData.HOST;
 Component({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    baseUrl: baseUrl
   },
   properties :{
     perentData:{

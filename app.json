@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/order_manage/order_manage",
     "pages/shop/shop",
     "pages/order/order",
     "pages/goods_detail/goods_detail",
-    "pages/order_manage/order_manage",
+   
     
     "pages/business_card/business_card",
     "pages/regest/next_regest/next_regest",

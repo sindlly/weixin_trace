@@ -7,5 +7,10 @@
   height: 200rpx;
 }
 .slot-footer{
-  margin-top: -50rpx;
+  margin-top: -107rpx;
+}
+.van-card__content{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around
 }

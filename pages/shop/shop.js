@@ -7,16 +7,17 @@ Page({
    * 页面的初始数据
    */
   data: {
+      baseUrl:baseUrl,
       goods:[
         {
           name:"商品名",
-          standard:"20cm*20cm",
+          brands:"20cm*20cm",
           price:"20.00",
           act_price:'10.00',
         },
         {
           name: "商品名",
-          standard: "20cm*20cm",
+          brands: "20cm*20cm",
           price: "20.00",
           act_price: '10.00',
         }
@@ -25,21 +26,26 @@ Page({
 
   },
   //购买商品
-  buy:function(){
+  buy:function(data){
+    
+    let id = data.target.dataset.id
     wx.navigateTo({
       // url: '/pages/order_manage/order_manage?active=2'
-      url: '/pages/order/order'
+      url: '/pages/order/order?id='+id
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let _this = this
     //获取商品列表
     wx.request({
       url: baseUrl+'/commodities', 
       success(res) {
-        console.log(res.data)
+       _this.setData({
+         goods:res.data.data.data
+       })
       }
     })
   },

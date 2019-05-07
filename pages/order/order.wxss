@@ -17,8 +17,10 @@
   align-items: flex-start;
   border-bottom: 2rpx solid #eee;
   background-color: #fff;
-  padding: 2vh;
+  padding: 15rpx;
+  box-sizing: border-box;
   margin-bottom: 1vh;
+  margin-top: 1vh;
 }
 
 .order-address {
@@ -172,4 +174,13 @@
 .smaller-font {
   font-size: 0.8rem;
   color: #999;
+}
+.van-card__content{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around
+}
+.van-card{
+  background: #fff !important;
+  /* border-bottom: 1rpx solid #eee */
 }

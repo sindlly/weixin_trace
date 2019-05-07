@@ -24,6 +24,7 @@ App({
           wx.getUserInfo({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
+              if (!res.userInfo.user_id) res.userInfo.user_id = "5cc552a3db479568fc30f0c3"
               this.globalData.userInfo = res.userInfo
               console.log(res.userInfo)
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -38,7 +39,9 @@ App({
     })
   },
   globalData: {
-    userInfo: null,
+    userInfo: {
+      user_id:'5cc552a3db479568fc30f0c3'
+    },
     ROOTPATH: 'https://buildupstep.cn/api/v1',
     HOST: 'http://129.204.232.55:7001/api',
     DEFAULT_IMG: '38ec2f40-f352-11e7-b5f3-c93673e5d7ba'

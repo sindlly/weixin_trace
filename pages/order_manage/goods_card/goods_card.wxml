@@ -3,16 +3,19 @@
 <view class='order_container' wx:for-items='{{perentData}}' wx:key="{{item}}">
 <van-panel>
      <van-card
-      tag="{{item.tag==1?'待报价':item.tag==2?'待付款':item.tag==3?'待发货':item.tag==4?'已发货':''}}"
-      price="10.00"
-      desc="描述信息xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-      num='5000'
-      title="商品标题xxxxxxxxxxxxx"
-      thumb="http://img.zcool.cn/community/012e3b554311800000019ae95629f5.jpg@2o.jpg"
+      tag="{{item.status=='CREATED'?'待报价':item.status==2?'待付款':item.status==3?'待发货':item.status==4?'已发货':''}}"
+      price="{{item.price}}"
+      desc="{{item.commodity.brands}}"
+      num='{{item.count}}'
+      title="{{item.commodity.name}}"
+      thumb="{{baseUrl}}/files/{{item.commodity.pictures[0]}}"
     >
-    <view slot="footer">
-      <van-button size="small" round type="info" plain style='margin-right:10px'>查看物流</van-button>
-      <van-button size="small" round type="danger">支付尾款</van-button>
+    <!-- 厂家订单footer -->
+    <view slot="footer" wx:if="{{item.buyer.role_type=='factory'}}">
+      <van-button size="small" round type="info" plain style='margin-right:10px' wx:if="{{item.status=='SHIPMENT'}}" >查看物流</van-button>
+      <van-button size="small" round type="info" plain style='margin-right:10px'wx:if="{{item.status}}">确认中</van-button>
+      <van-button size="small" round type="danger" wx:if="{{item.status=='QUOTED'}}">支付款项</van-button>
+      <van-button size="small" round type="danger" wx:if="{{item.status=='HALF_PAYED'}}">支付尾款</van-button>
     </view>
   </van-card>
   </van-panel>

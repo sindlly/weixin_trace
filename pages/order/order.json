@@ -1,4 +1,8 @@
 {
   "navigationBarTitleText": "确认订单",
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "van-card": "../../../miniprogram_npm/vant-weapp/card/index",
+    "van-cell": "../../../miniprogram_npm/vant-weapp/cell/index"
+  }
 }
