@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-button": "../../../miniprogram_npm/vant-weapp/button/index",
+    "van-card": "../../../miniprogram_npm/vant-weapp/card/index",
+    "van-panel": "../../../miniprogram_npm/vant-weapp/panel/index",
+    "van-steps": "../../../miniprogram_npm/vant-weapp/steps/index",
+    "van-cell-group": "../../../miniprogram_npm/vant-weapp/cell-group/index"
+  },
+  "navigationBarTitleText": "订单详情"
+}

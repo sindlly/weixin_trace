@@ -1,0 +1,8 @@
+/* pages/order_manage/goods_detail/goods_detail.wxss */
+.card-detail{
+  background-color: #fff !important;
+  margin-bottom: 15rpx
+}
+.step-desc{
+  margin-left: 0 !important
+}

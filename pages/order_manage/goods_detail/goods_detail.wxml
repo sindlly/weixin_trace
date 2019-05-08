@@ -1,0 +1,22 @@
+<!--pages/order_manage/goods_detail/goods_detail.wxml-->
+<van-card
+ tag="{{goods.status=='CREATED'?'待报价':goods.status=='QUOTED'?'待付款':goods.status=='ALL_PAYED'?'待发货':goods.status=='SHIPMENT'?'待发货':''}}"
+  num="{{goods.count}}"
+  price="{{goods.price}}"
+  desc="{{goods.commodity.brands}}"
+  title="{{goods.commodity.name}}
+  thumb="{{baseUrl}}/files/{{goods.commodity.pictures[0]}}"
+  custom-class="{{'card-detail'}}"
+/>
+<van-panel title="订单详情">
+  <van-steps
+  steps="{{ steps }}"
+  active="{{ active }}"
+  direction="vertical"
+  active-color="#27a9e7"
+/>
+</van-panel>
+<view style='height:15rpx'></view>
+<van-panel title="销售人员">
+  
+</van-panel>

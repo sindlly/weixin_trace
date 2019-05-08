@@ -25,16 +25,25 @@ Page({
         active:options.active||0
       }) 
     wx.request({
-      url: baseUrl + '/orders',
+      url: baseUrl + '/orders?embed=category',
       method: "get",
       header: {
         'content-type': 'application/json',
         // 'access_token': $data.token,
       },
       success: function (res) {
-        let temp = res.data.data.data
+        let all = res.data.data.data.all
+        let unQuoted = res.data.data.data.unQuoted
+        let unPaid = res.data.data.data.unPaid
+        let unSent = res.data.data.data.unSent
+        let unReceived = res.data.data.data.unReceived
         _this.setData({
-          all_goods:temp
+          all_goods: all,
+          daibaojia_goods: unQuoted,
+          daifukuan_goods: unPaid,
+          daifahuo_goods: unSent,
+          yifahuo_goods: unReceived
+
         })
       }
     })

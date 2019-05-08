@@ -13,7 +13,7 @@
   <van-tab title="待发货">
     <goods_card perentData="{{daifahuo_goods}}"></goods_card>
   </van-tab>
-  <van-tab title="已发货">
+  <van-tab title="待收货">
     <goods_card perentData="{{yifahuo_goods}}"></goods_card>
     </van-tab>
 </van-tabs>

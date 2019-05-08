@@ -15,6 +15,19 @@ Component({
       value:[]
     }
   },
+  methods:{
+    todetail: function (data) {
+      let id = data.currentTarget.dataset.id
+      
+      wx.navigateTo({
+        url: '/pages/order_manage/goods_detail/goods_detail?id='+id,
+      })
+    },
+    pay:function(){
+      console.log("hse")
+    }
+  },
+  
   /**
    * 生命周期函数--监听页面加载
    */
