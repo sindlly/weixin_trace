@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/intro/intro",
+    "pages/shop/shop",
     "pages/order_manage/order_manage",
     "pages/order_manage/goods_detail/goods_detail",
-    
-    "pages/shop/shop",
     "pages/order/order",
     "pages/goods_detail/goods_detail",
     "pages/business_card/business_card",
@@ -16,8 +16,8 @@
     "pages/home/home",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/order_manage/goods_card/goods_card"
-    
+    "pages/order_manage/goods_card/goods_card",
+    "pages/pay/pay"
   ],
   "window": {
     "backgroundTextStyle": "light",

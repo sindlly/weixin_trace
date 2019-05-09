@@ -1,0 +1,7 @@
+<!--pages/intro/intro.wxml-->
+<image src='../../img/intro-01.jpg' class='intro-img' mode='aspectFill'></image>
+<view class='action-area'>
+  <van-button class='btn btn1'  size="large" bindtap='jump'>购买区块链溯源码</van-button>
+  <van-button class='btn btn2'  size="large" bindtap='jump2' >点击了解溯源实物链</van-button>
+</view>
+<image src='../../img/intro-02.jpg' class='intro-img2' mode='aspectFill'></image>

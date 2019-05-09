@@ -9,6 +9,7 @@ Page({
   data: {
     baseUrl: baseUrl,
     goods:{},
+    salesman:{},
     active:-1,
     steps: [
       {
@@ -37,7 +38,7 @@ Page({
     let id = options.id
     let _this = this
     wx.request({
-      url: baseUrl +'/orders/'+id,
+      url: baseUrl + '/orders/' + id +'?embed=salesman',
       success:function(res){
         let data = res.data.data.data
         let steps = []
@@ -80,7 +81,8 @@ Page({
         _this.setData({
           goods: data,
           steps: steps,
-          active: active
+          active: active,
+          salesman: data.salesman.salesman
         })
         
       }

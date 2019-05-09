@@ -7,7 +7,15 @@
   title="{{goods.commodity.name}}
   thumb="{{baseUrl}}/files/{{goods.commodity.pictures[0]}}"
   custom-class="{{'card-detail'}}"
-/>
+>
+  <view slot="footer" wx:if="{{goods.buyer.role_type=='factory'}}">
+    <van-button size="small" round type="default" plain style='margin-right:10px' wx:if="{{goods.status=='SHIPMENT'}}" >查看物流</van-button>
+    <van-button size="small" round type="default" plain style='margin-right:10px'wx:if="{{goods.status=='QUOTED'&&goods.isStagePay}}">确认中</van-button>
+    <van-button size="small" round type="danger" wx:if="{{goods.status=='QUOTED'&&goods.isStagePay==false}}" catchtap='pay' >支付款项</van-button>
+    <van-button size="small" round type="danger" wx:if="{{goods.status=='HALF_PAYED'}}">支付尾款</van-button>
+  </view>
+</van-card>
+
 <van-panel title="订单详情">
   <van-steps
   steps="{{ steps }}"
@@ -18,5 +26,12 @@
 </van-panel>
 <view style='height:15rpx'></view>
 <van-panel title="销售人员">
-  
+  <view class='selesman'>
+    <image class='selesman_img' src='{{baseUrl}}/files/{{salesman.id_card}}'></image>
+    <view class='selesman_info'>
+      <view class='salesman_name'>{{salesman.name}}</view>
+      <view>{{salesman.phone}}</view>
+      <view>{{salesman.address}}</view>
+    </view>
+  </view>
 </van-panel>

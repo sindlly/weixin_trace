@@ -6,3 +6,23 @@
 .step-desc{
   margin-left: 0 !important
 }
+.selesman{
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx;
+}
+.selesman_img{
+  width: 180rpx;
+  height: 180rpx;
+}
+.selesman_info{
+  text-align: right;
+  font-size:28rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: #666
+}
+.salesman_name{
+  font-weight:800
+}
