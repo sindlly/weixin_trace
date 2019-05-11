@@ -14,8 +14,8 @@
     <view slot="footer" wx:if="{{item.buyer.role_type=='factory'}}">
       <van-button size="small" round type="default" plain style='margin-right:10px' wx:if="{{item.status=='SHIPMENT'}}" >查看物流</van-button>
       <van-button size="small" round type="default" plain style='margin-right:10px'wx:if="{{item.status=='QUOTED'&&item.isStagePay}}">确认中</van-button>
-      <van-button size="small" round type="danger" wx:if="{{item.status=='QUOTED'&&item.isStagePay==false}}" catchtap='pay' >支付款项</van-button>
-      <van-button size="small" round type="danger" wx:if="{{item.status=='HALF_PAYED'}}">支付尾款</van-button>
+      <van-button size="small" round type="danger" wx:if="{{item.status=='QUOTED'&&item.isStagePay==false}}" catchtap='pay' data-id="{{item._id}}" >支付款项</van-button>
+      <van-button size="small" round type="danger" wx:if="{{item.status=='HALF_PAYED'}}" data-id="{{item._id}}">支付尾款</van-button>
     </view>
   </van-card>
   </van-panel>

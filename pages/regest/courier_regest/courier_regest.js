@@ -96,9 +96,7 @@ Page({
         }
       })
     }
-    
-
-   
+ 
   },
   //校验
   validate(data){

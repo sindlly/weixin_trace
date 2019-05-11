@@ -28,6 +28,9 @@
       <view wx:if="{{ desc }}" class="van-card__desc desc-class">{{ desc }}</view>
       <slot wx:else name="desc" />
 
+      <view wx:if="{{ stageProportion }}" class="van-card__desc desc-class">{{ stageProportion }}</view>
+      <slot wx:else name="stageProportion" />
+
       <slot name="tags" />
 
       <view class="van-card__bottom">

@@ -23,8 +23,11 @@ Component({
         url: '/pages/order_manage/goods_detail/goods_detail?id='+id,
       })
     },
-    pay:function(){
-      console.log("hse")
+    pay: function (data){
+      let id = data.currentTarget.dataset.id
+      wx.navigateTo({
+        url: '/pages/pay/pay?id=' + id,
+      })
     }
   },
   

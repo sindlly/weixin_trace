@@ -1,1 +1,38 @@
 /* pages/pay/pay.wxss */
+.card-detail{
+  background-color: #fff !important;
+  margin-bottom: 15rpx
+}
+.price{
+  color: red !important
+}
+.img-container{
+  width: 180rpx;
+  height: 180rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed #CCCCCC;
+  margin-left:15px;
+}
+.img-title{
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 24px;
+  padding: 15px;
+}
+.commit-btn button{
+  margin-top: 48rpx;
+  background: #1C92FF;
+  border-radius: 40.5px;
+  width: 580rpx;
+  height: 81rpx;
+  line-height: 81rpx;
+  border: none;
+}
+.tips{
+  font-size: 26rpx;
+  color: #666666;
+  letter-spacing: 0;
+  margin-top: 23rpx;
+}

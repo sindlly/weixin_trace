@@ -1,2 +1,48 @@
 <!--pages/pay/pay.wxml-->
-<text>pages/pay/pay.wxml</text>
+<van-panel title="{{goods.commodity.name}}"  status="{{goods.status=='CREATED'?'待报价':goods.status=='QUOTED'?'待付款':goods.status=='ALL_PAYED'?'待发货':goods.status=='SHIPMENT'?'待发货':''}}">
+    <van-card
+    desc="销售个数：{{goods.count}}"
+    title="规格：{{goods.commodity.brands}}"
+    stageProportion="销售价：¥{{goods.price}}（首付比例：{{goods.stageProportion}}）"
+    thumb="{{baseUrl}}/files/{{goods.commodity.pictures[0]}}"
+    custom-class="{{'card-detail'}}"
+  >
+  </van-card>
+  <van-cell-group>
+    <van-cell title="收款账号({{goods.payee.bank}})" value="{{goods.payee.account}}" />
+    <van-cell title="付款金额" value="¥{{goods.price*goods.stageProportion}}" value-class="{{'price'}}" />
+  </van-cell-group>
+</van-panel>
+<view  style="margin-top:30rpx" ></view>
+<van-cell-group>
+  <van-field
+      label="付款账号"
+      placeholder="请填写付款账号"
+      bind:change="onChange"
+      data-obj="trade"
+      data-item="sponsor"
+    />
+    <van-field
+      label="交易单号"
+      placeholder="请填写交易单号"
+      bind:change="onChange"
+      data-obj="trade"
+      data-item="number"
+    />
+    <van-panel style='backgroud:#fff'>
+          <view class='img-title'>提交付款截图or票据</view>
+          <view class='img-container'  bindtap="uploadImg" wx:if="{{!imgSrc}}" style='backgroud:#fff'>
+            <image mode='aspectFit' src="../../img/+.png" style='width:50rpx;height:51rpx'></image>
+          </view>
+         <view class="my_center_container" bindtap="uploadImg" style='backgroud:#fff'>
+            <image mode='aspectFit' src="{{imgSrc}}" wx:if="{{imgSrc}}"></image>
+        </view>
+      </van-panel>
+</van-cell-group>
+<view class='my_center_container'>
+  <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>提交</van-button>
+  <view class='tips'>购买协议细则></view>
+</view>
+  
+
+

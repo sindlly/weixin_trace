@@ -21,6 +21,7 @@ VantComponent({
         lazyLoad: Boolean,
         thumbLink: String,
         originPrice: String,
+      stageProportion:String,
         thumbMode: {
             type: String,
             value: 'aspectFit'
