@@ -1,8 +1,10 @@
 {
   "pages": [
     "pages/order_manage/order_manage",
-    "pages/intro/intro",
     "pages/shop/shop",
+    
+    "pages/intro/intro",
+    
     
     "pages/order_manage/goods_detail/goods_detail",
     "pages/order/order",

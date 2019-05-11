@@ -60,8 +60,8 @@ Page({
               'content-type': 'application/json'
             },
             data: {
-                status:"FIRST_PAYED",
-                trade:[_this.data.trade]
+              status: _this.data.trade.type,
+              trade:[_this.data.trade]
               
             },
             success(res) {
@@ -124,7 +124,7 @@ Page({
     let id = options.id
     let _this = this
     _this.data.id = id;
-    _this.data.trade.type = "FIRST_PAYED"
+    _this.data.trade.type = "ALL_PAYED"
     wx.request({
       url: baseUrl + '/orders/' + id + '?embed=salesman',
       success: function (res) {
