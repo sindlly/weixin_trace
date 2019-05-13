@@ -7,7 +7,8 @@ Component({
    * 页面的初始数据
    */
   data: {
-    baseUrl: baseUrl
+    baseUrl: baseUrl,
+    role_type:"plat"
   },
   properties :{
     perentData:{
@@ -28,7 +29,20 @@ Component({
       wx.navigateTo({
         url: '/pages/pay/pay?id=' + id,
       })
+    },
+    setPrice:function(data){
+      let id = data.currentTarget.dataset.id
+      wx.navigateTo({
+        url: '/pages/setPrice/setPrice?id=' + id,
+      })
+    },
+    salesmanDetail:function(data){
+      let salesman = data.currentTarget.dataset.salesman
+      wx.navigateTo({
+        url: '/pages/salesman/salesman?salesman=' + JSON.stringify(salesman),
+      })
     }
+    
   },
   
   /**

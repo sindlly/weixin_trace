@@ -1,0 +1,11 @@
+<!--pages/salesman/salesman.wxml-->
+<van-panel title="销售人员">
+  <view class='selesman'>
+    <image class='selesman_img' src='{{baseUrl}}/files/{{id_card}}'></image>
+    <view class='selesman_info'>
+      <view class='salesman_name'>{{name}}</view>
+      <view>{{phone}}</view>
+      <view>{{address}}</view>
+    </view>
+  </view>
+</van-panel>

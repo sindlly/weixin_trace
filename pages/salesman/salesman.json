@@ -1,10 +1,10 @@
 {
   "usingComponents": {
-    "van-submit-bar": "../../../miniprogram_npm/vant-weapp/submit-bar/index",
+    "van-button": "../../../miniprogram_npm/vant-weapp/button/index",
     "van-card": "../../../miniprogram_npm/vant-weapp/card/index",
     "van-panel": "../../../miniprogram_npm/vant-weapp/panel/index",
-    "van-cell": "../../../miniprogram_npm/vant-weapp/cell/index",
+    "van-steps": "../../../miniprogram_npm/vant-weapp/steps/index",
     "van-cell-group": "../../../miniprogram_npm/vant-weapp/cell-group/index"
   },
-  "navigationBarTitleText": "付款明细"
+  "navigationBarTitleText": "销售人员信息"
 }

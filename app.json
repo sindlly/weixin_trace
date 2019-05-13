@@ -1,14 +1,11 @@
 {
   "pages": [
     "pages/order_manage/order_manage",
+    "pages/salesman/salesman",
     "pages/shop/shop",
-    
     "pages/intro/intro",
-    
-    
     "pages/order_manage/goods_detail/goods_detail",
     "pages/order/order",
-    "pages/goods_detail/goods_detail",
     "pages/business_card/business_card",
     "pages/regest/next_regest/next_regest",
     "pages/regest/partner_regest/partner_regest",
@@ -20,7 +17,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/order_manage/goods_card/goods_card",
-    "pages/pay/pay"
+    "pages/pay/pay",
+    "pages/setPrice/setPrice"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,25 +1,32 @@
-// pages/goods_detail/goods_detail.js
+// pages/salesman/salesman.js
+const app = getApp();
+const baseUrl = app.globalData.HOST;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    goods:
-      {
-        name: "商品名",
-        standard: "20cm*20cm",
-        price: "20.00",
-        act_price: '10.00',
-      },
-    imageURL: '../../../img/bigdata.png'
+    baseUrl: baseUrl,
+    name: '',
+    phone: '',
+    address: '',
+    id_card:''
+    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let selesman=JSON.parse(options.salesman)
+    console.log(selesman)
+    this.setData({
+      name: selesman.name,
+      phone: selesman.phone,
+      address: selesman.address,
+      id_card: selesman.id_card
+    })
   },
 
   /**

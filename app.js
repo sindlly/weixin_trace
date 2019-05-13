@@ -8,11 +8,17 @@ App({
    
 
     // 登录
-    console.log("dd")
+    let _this = this
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         console.log(res)
+        wx.request({
+          url: _this.globalData.HOST +'/auth/login?code='+res.code,
+          success:function(res){
+            console.log(res)
+          }
+        })
       }
     })
     // 获取用户信息
@@ -24,7 +30,8 @@ App({
           wx.getUserInfo({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
-              if (!res.userInfo.user_id) res.userInfo.user_id = "5cc552a3db479568fc30f0c3"
+              // if (!res.userInfo.user_id) res.userInfo.user_id = "5cc552a3db479568fc30f0c3"  //厂家用户
+              if (!res.userInfo.user_id) res.userInfo.user_id = "5cd8dc23e3a2d04ec0911fdd"  //平台用户
               this.globalData.userInfo = res.userInfo
               console.log(res.userInfo)
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回

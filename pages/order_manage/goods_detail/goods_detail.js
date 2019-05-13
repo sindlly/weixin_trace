@@ -1,4 +1,5 @@
 // pages/order_manage/goods_detail/goods_detail.js
+const util = require('../../../utils/util.js')
 const app = getApp();
 const baseUrl = app.globalData.HOST;
 Page({
@@ -52,7 +53,7 @@ Page({
                 desc: data.no
               }, {
                 text: '创建时间',
-                desc: data.created_at
+                desc: util.convertUTCTimeToLocalTime(data.created_at)
               }, {
                 text: '待报价',
                 desc: "定制的商品尺寸不同，需要时间评估费用"
@@ -66,16 +67,42 @@ Page({
                 desc: data.no
               }, {
                 text: '创建时间',
-                desc: data.created_at
+                desc: util.convertUTCTimeToLocalTime(data.created_at)
               }, {
                 text: '报价时间',
-                desc: data.updated_at
+                desc: util.convertUTCTimeToLocalTime(data.updated_at)
               }, {
                 text: '待收款',
                 desc: "买家在‘付款明细’页，上传付款账户和截图后，完成付款步骤"
               },]  
             active = 3
               break;
+          case "ALL_PAYED":
+            steps = [
+              {
+                text: '订单编号',
+                desc: data.no
+              }, {
+                text: '创建时间',
+                desc: util.convertUTCTimeToLocalTime(data.created_at)
+              }, {
+                text: '报价时间',
+                desc: util.convertUTCTimeToLocalTime(data.updated_at)
+              },
+              {
+                text: '付款时间',
+                desc: util.convertUTCTimeToLocalTime(data.trade[0].pay_at)
+              },  
+              {
+                text: '确认时间',
+                desc: util.convertUTCTimeToLocalTime(data.trade[0].pay_at)
+              },  
+              {
+                text: '待发货',
+                desc: "待发货：袋子制作完成，卖家发货并填写运单号，方便买家签收"
+              },]
+            active = 5
+            break;    
 
         }
         _this.setData({
