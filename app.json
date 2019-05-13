@@ -18,7 +18,10 @@
     "pages/logs/logs",
     "pages/order_manage/goods_card/goods_card",
     "pages/pay/pay",
-    "pages/setPrice/setPrice"
+    "pages/setPrice/setPrice",
+    "pages/ensureFactory/ensureFactory",
+    "pages/ensureMoney/ensureMoney",
+    "pages/courier/courier"
   ],
   "window": {
     "backgroundTextStyle": "light",

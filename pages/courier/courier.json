@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-card": "../../../miniprogram_npm/vant-weapp/card/index",
+    "van-panel": "../../../miniprogram_npm/vant-weapp/panel/index",
+    "van-button": "../../../miniprogram_npm/vant-weapp/button/index",
+    "van-field": "../../../miniprogram_npm/vant-weapp/field/index"
+  },
+  "navigationBarTitleText": "提交快递"
+}

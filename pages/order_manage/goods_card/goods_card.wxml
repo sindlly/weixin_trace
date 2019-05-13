@@ -14,15 +14,15 @@
     <view slot="footer" wx:if="{{role_type=='plat'}}">
       <van-button size="small" round type="default" plain style='margin-right:10px' catchtap='salesmanDetail' data-salesman='{{item.salesman.salesman}}'>销售人员</van-button>
       <!-- 待报价 -->
-      <van-button size="small" round type="default" plain style='margin-right:10px' wx:if="{{item.status=='CREATED'}}" >审核厂家</van-button>
+      <van-button size="small" round type="default" plain style='margin-right:10px' wx:if="{{item.status=='CREATED'}}" catchtap='ensureFactory' data-factory="{{item.buyer.factory}}">审核厂家</van-button>
       <van-button size="small" round type="default" plain style='margin-right:10px' wx:if="{{item.status=='CREATED'}}" catchtap='setPrice' data-id="{{item._id}}" >填写报价</van-button>
       <van-button size="small" round type="default" plain style='margin-right:10px' wx:if="{{item.status=='CREATED'}}" >设置抽佣</van-button>
       <!-- 待收款 -->
       <!-- <van-button size="small" round type="default" plain style='margin-right:10px'wx:if="{{item.status=='QUOTED'}}">销售人员</van-button> -->
-      <van-button size="small" round type="danger" wx:if="{{item.status=='QUOTED'}}" catchtap='pay' data-id="{{item._id}}" >确认收款</van-button>
+      <van-button size="small" round type="danger" wx:if="{{item.status=='QUOTED'}}" catchtap='ensureMoney' data-id="{{item._id}}" >确认收款</van-button>
       <!-- 待发货 -->
       <!-- <van-button size="small" round type="default" plain style='margin-right:10px'wx:if="{{item.status=='HALF_PAYED'||item.status=='ALL_PAYED'}}">销售人员</van-button> -->
-      <van-button size="small" round type="default" plain style='margin-right:10px'wx:if="{{item.status=='ALL_PAYED'||item.status=='ALL_PAYED'}}">提交快递</van-button>
+      <van-button size="small" round type="default" plain style='margin-right:10px'wx:if="{{item.status=='ALL_PAYED'||item.status=='ALL_PAYED'}}" catchtap='submitCourier' data-id="{{item._id}}">提交快递</van-button>
       <van-button size="small" round type="danger" wx:if="{{item.status=='HALF_PAYED'}}" data-id="{{item._id}}">支付尾款</van-button>
       <!-- 已发货 -->
       <!-- <van-button size="small" round type="default" plain style='margin-right:10px'wx:if="{{item.status=='SHIPMENT'}}">销售人员</van-button> -->

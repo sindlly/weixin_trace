@@ -1,0 +1,25 @@
+<!--pages/courier/courier.wxml-->
+<van-panel title="{{goods.commodity.name}}"  status="{{goods.status=='CREATED'?'待报价':goods.status=='QUOTED'?'待付款':goods.status=='ALL_PAYED'?'待发货':goods.status=='SHIPMENT'?'待发货':''}}" custom-class="{{'my-panel'}}">
+    <van-card
+    desc="销售个数：{{goods.count}}"
+    title="规格：{{goods.commodity.brands}}"
+    stageProportion="销售价：¥{{goods.price}}{{goods.isStagePay?'（首付比例：'+goods.stageProportion+'）':''}}"
+    thumb="{{baseUrl}}/files/{{goods.commodity.pictures[0]}}"
+    custom-class="{{'card-detail'}}"
+  >
+  </van-card>
+  <van-field
+    value="{{ scode }}"
+    clearable
+    label="快递单号"
+    placeholder="请输入快递单号"
+    bind:click-icon="onClickIcon"
+    use-button-slot
+  >
+    <van-button slot="button" size="small" type="primary" bindtap='getScode'>扫描条形码</van-button>
+  </van-field>
+  </van-panel>
+  <view class='my_center_container'>
+  <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>提交</van-button>
+  
+</view>

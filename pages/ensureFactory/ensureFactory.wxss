@@ -1,0 +1,20 @@
+/* pages/ensureFactory/ensureFactory.wxss */
+.img{
+  text-align: center;
+  background: #fff;
+}
+.commit-btn button{
+  margin-top: 48rpx;
+  background: #1C92FF;
+  border-radius: 40.5px;
+  width: 580rpx;
+  height: 81rpx;
+  line-height: 81rpx;
+  border: none;
+}
+.tips{
+  font-size: 26rpx;
+  color: #666666;
+  letter-spacing: 0;
+  margin-top: 23rpx;
+}

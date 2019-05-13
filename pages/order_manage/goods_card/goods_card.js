@@ -30,18 +30,41 @@ Component({
         url: '/pages/pay/pay?id=' + id,
       })
     },
+    // 设置抽佣
     setPrice:function(data){
       let id = data.currentTarget.dataset.id
       wx.navigateTo({
         url: '/pages/setPrice/setPrice?id=' + id,
       })
     },
+    //销售人员
     salesmanDetail:function(data){
       let salesman = data.currentTarget.dataset.salesman
       wx.navigateTo({
         url: '/pages/salesman/salesman?salesman=' + JSON.stringify(salesman),
       })
-    }
+    },
+    //审核厂家
+    ensureFactory: function (data){
+      let factory = data.currentTarget.dataset.factory
+      wx.navigateTo({
+        url: '/pages/ensureFactory/ensureFactory?factory=' + JSON.stringify(factory),
+      })
+    },
+    //确认付款
+    ensureMoney: function(data) {
+      let id = data.currentTarget.dataset.id
+      wx.navigateTo({
+        url: '/pages/ensureMoney/ensureMoney?id=' + id,
+      })
+    },
+    //提交快递
+    submitCourier: function (data) {
+      let id = data.currentTarget.dataset.id
+      wx.navigateTo({
+        url: '/pages/courier/courier?id=' + id,
+      })
+    },
     
   },
   

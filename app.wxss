@@ -45,3 +45,8 @@
   flex-direction: column;
   align-items: center;
 }
+/* 上下间隔30rpx */
+.height-30{
+  width: 100%;
+  height: 30rpx
+}

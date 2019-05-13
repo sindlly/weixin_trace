@@ -1,0 +1,26 @@
+<!--pages/ensureFactory/ensureFactory.wxml-->
+<view class='img'>
+  <image src='{{baseUrl}}/files/{{factory.license}}' mode='aspectFit'></image>
+</view>
+<view class='height-30'></view>
+<van-cell-group>
+  <van-cell title="厂家名称" value="{{factory.name}}" />
+  <van-cell title="对公账号" value="{{factory.public_account}}" />
+  <van-cell title="电子邮箱" value="{{factory.email}}"border="{{ false }}" />
+</van-cell-group>
+<view class='height-30'></view>
+<van-cell-group>
+  <van-cell title="负责人" value="{{factory.contact}}" />
+  <van-cell title="手机号" value="{{factory.phone}}" border="{{ false }}" />
+</van-cell-group>
+<view class='height-30'></view>
+<van-cell-group>
+  <van-cell title="收货人姓名" value="{{factory.receiving_info.name}}" />
+  <van-cell title="收货人手机号" value="{{factory.receiving_info.phone}}" />
+  <van-cell title="收货地址" value="{{factory.receiving_info.address}}" border="{{ false }}" />
+</van-cell-group>
+
+<view class='my_center_container'>
+  <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>完成审核</van-button>
+  <view class='tips'>合作协议细则></view>
+</view>

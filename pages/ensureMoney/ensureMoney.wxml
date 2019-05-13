@@ -1,0 +1,35 @@
+<!--pages/pay/pay.wxml-->
+<van-panel title="{{goods.commodity.name}}"  status="{{goods.status=='CREATED'?'待报价':goods.status=='QUOTED'?'待付款':goods.status=='ALL_PAYED'?'待发货':goods.status=='SHIPMENT'?'待发货':''}}">
+    <van-card
+    desc="销售个数：{{goods.count}}"
+    title="规格：{{goods.commodity.brands}}"
+    stageProportion="销售价：¥{{goods.price}}{{goods.isStagePay?'（首付比例：'+goods.stageProportion+'）':''}}"
+    thumb="{{baseUrl}}/files/{{goods.commodity.pictures[0]}}"
+    custom-class="{{'card-detail'}}"
+  >
+  </van-card>
+  <van-cell-group>
+    <van-cell title="收款账号({{goods.payee.bank}})" value="{{goods.payee.account}}" />
+    <van-cell title="付款金额" value="¥{{goods.price*(goods.isStagePay?goods.stageProportion:1)}}" value-class="{{'price'}}" />
+  </van-cell-group>
+</van-panel>
+<view  style="margin-top:30rpx" ></view>
+<van-cell-group>
+<van-cell-group>
+    <van-cell title="付款账号" value="{{}}" />
+    <van-cell title="交易单号" value="{{}}" value-class="{{'price'}}" />
+  </van-cell-group>
+    <van-panel style='backgroud:#fff'>
+    <view class='img-title'>付款票据</view>
+         <view class="my_center_container" style='backgroud:#fff'>
+            <image mode='aspectFit' src="{{imgSrc}}" wx:if="{{imgSrc}}"></image>
+        </view>
+      </van-panel>
+</van-cell-group>
+<view class='my_center_container'>
+  <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>核收</van-button>
+  <view class='tips'>购买协议细则></view>
+</view>
+  
+
+

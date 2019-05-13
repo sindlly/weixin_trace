@@ -1,0 +1,32 @@
+/* pages/courier/courier.wxss */
+.my-panel{
+  background: #fff
+}
+.my-img{
+  width: 80rpx;
+  height: 80rpx;
+}
+.img-container{
+  width: 180rpx;
+  height: 180rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed #CCCCCC;
+  margin-left:15px;
+}
+.img-title{
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 24px;
+  padding: 15px;
+}
+.commit-btn button{
+  margin-top: 48rpx;
+  background:red;
+  border-radius: 40.5px;
+  width: 580rpx;
+  height: 81rpx;
+  line-height: 81rpx;
+  border: none;
+}
