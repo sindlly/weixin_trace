@@ -85,7 +85,8 @@
       <image src='../../img/new_order.png' class="cell-left-img"></image>
       <van-cell class='home-cell'
         title="生成新订单"
-      label="销售人员认证后可以促成商家采购溯源防伪方案"
+        label="销售人员认证后可以促成商家采购溯源防伪方案"
+        url="/pages/apply/apply"
         clickable
       />
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
@@ -95,7 +96,7 @@
       <van-cell class='home-cell'
         title="邀请厂家注册"
         label="成功邀请的生产厂家，他的所有订单你能从中获益"
-        url="/pages/regest/regest"
+        url="/pages/invataFactory/invatFactory"
         clickable
       />
       <image src='../../img/Chevron.png' class="cell-right-img"></image>

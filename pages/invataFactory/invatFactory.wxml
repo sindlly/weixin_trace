@@ -1,0 +1,9 @@
+<!--pages/invataFactory/invatFactory.wxml-->
+
+<image src='../../img/invat1.jpg' class='intro-img' mode='aspectFill'></image>
+<view class='action-area'>
+  <van-button class='btn btn1'  size="large" bindtap='jump'>厂家注册</van-button>
+ 
+</view>
+<image src='../../img/invat2.jpg' class='intro-img2' mode='aspectFill'></image>
+

@@ -1,0 +1,33 @@
+/* pages/invataFactory/invatFactory.wxss */
+page{
+  background: #e8ebf6;
+}
+.action-area{
+  widows: 100%;
+  height: 100rpx;
+  display: flex;
+  justify-content: space-around;
+  margin:30rpx;
+
+}
+.btn button{
+ width: 640rpx ;
+ border-radius: 20rpx ;
+}
+.btn1 button{
+  background: #173261;
+  color: #fff;
+}
+.btn2 button{
+  border: 1rpx solid #173261;
+  color: #173261;
+  background: #e8ebf6;
+}
+.intro-img{
+  width: 100%;
+  height: 716rpx;
+}
+.intro-img2{
+  width: 100%;
+  height: 1397rpx;
+}
