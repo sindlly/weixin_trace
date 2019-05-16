@@ -1,5 +1,11 @@
 <!--pages/shop/shop.wxml-->
-<view class='my_container flex-column-center shop-title'>title</view>
+<view class='shop-title'>
+  <image src='../../img/bigdata.png' class='shop-title-img' data-url="../../img/bigdata.png"  bindtap='preview' show-menu-by-longpress ></image>
+  <view class='title-tip'>
+    <view>如需定制溯源袋，请联系市场总裁（扫码添加）</view>
+    <view>hi@goodstracing.net</view>
+  </view>
+</view>
 <van-card wx:for="{{goods}}" wx:key="{{index}}"
   desc="{{item.brands}}"
   title="{{item.name}}"

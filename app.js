@@ -13,12 +13,16 @@ App({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         console.log(res)
-        wx.request({
-          url: _this.globalData.HOST +'/auth/login?code='+res.code,
-          success:function(res){
-            console.log(res)
-          }
-        })
+        // wx.request({
+        //   url: _this.globalData.ROOTPATH +'/auth/login',
+        //   method:"post",
+        //   data:{
+        //     "code": res.code
+        //   },
+        //   success:function(res){
+        //     console.log(res)
+        //   }
+        // })
       }
     })
     // 获取用户信息
@@ -49,7 +53,7 @@ App({
     userInfo: {
       user_id:'5cc552a3db479568fc30f0c3'
     },
-    ROOTPATH: 'https://buildupstep.cn/api/v1',
+    ROOTPATH: 'http://buildupstep.cn/api',
     HOST: 'http://129.204.232.55:7001/api',
     DEFAULT_IMG: '38ec2f40-f352-11e7-b5f3-c93673e5d7ba'
   }

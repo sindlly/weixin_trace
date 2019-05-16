@@ -1,10 +1,11 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/shop/shop",
+    "pages/courier/courier",
     "pages/invataFactory/invatFactory",
     "pages/order_manage/order_manage",
     "pages/salesman/salesman",
-    "pages/shop/shop",
     "pages/intro/intro",
     "pages/order_manage/goods_detail/goods_detail",
     "pages/order/order",
@@ -22,8 +23,8 @@
     "pages/setPrice/setPrice",
     "pages/ensureFactory/ensureFactory",
     "pages/ensureMoney/ensureMoney",
-    "pages/courier/courier",
-    "pages/apply/apply"
+    "pages/apply/apply",
+    "pages/newOrder/newOrder"
   ],
   "window": {
     "backgroundTextStyle": "light",

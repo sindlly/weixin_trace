@@ -1,2 +1,45 @@
-<!--pages/apply/apply.wxml-->
-<text>pages/apply/apply.wxml</text>
+<!--pages/newOrder/newOrder.wxml-->
+<van-cell-group>
+  <van-field
+      label="所装商品名称"
+      
+      data-obj="factory"
+      data-item="name"
+      bind:change="onChange"
+    />
+    <van-field
+      label="长度（厘米）"
+      
+      data-obj="factory"
+      data-item="name"
+      bind:change="onChange"
+    />
+    <van-field
+      label="高度（厘米）"
+     
+      data-obj="factory"
+      data-item="name"
+      bind:change="onChange"
+    />
+    <van-field
+      label="宽度（厘米）"
+     
+      data-obj="factory"
+      data-item="name"
+      bind:change="onChange"
+    />
+    <van-field
+      label="厚度（厘米）"
+      
+      data-obj="factory"
+      data-item="name"
+      bind:change="onChange"
+    />
+    <van-field
+      label="数量"
+      
+      data-obj="factory"
+      data-item="name"
+      bind:change="onChange"
+    />
+</van-cell-group>

@@ -34,6 +34,22 @@ Page({
       url: '/pages/order/order?id='+id
     })
   },
+  preview:function(data){
+    var _this = this;
+    wx.getImageInfo({
+      src: data.currentTarget.dataset.url,
+      success: function (res) {
+        console.log(res)
+      }
+    })
+  
+    // let urls = []
+    // urls[0] = data.currentTarget.dataset.url
+    // wx.previewImage({
+    //   current: data.currentTarget.dataset.url, //当前图片地址
+    //   urls: urls
+    // })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

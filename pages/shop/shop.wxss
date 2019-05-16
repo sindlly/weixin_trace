@@ -1,6 +1,23 @@
 /* pages/shop/shop.wxss */
 .shop-title{
-  background: #eee
+  background: #DDEEFF;
+  height: 148rpx;
+  padding:0px 20rpx 0;
+  display: flex;  
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+
+}
+.shop-title-img{
+  width: 106rpx;
+  height: 106rpx;
+}
+.title-tip{
+  margin-left: 15rpx;
+  font-size: 28rpx;
+  color: #4785BE;
+  letter-spacing: 0;
 }
 .van-card{
   border-bottom: 1px solid #eee;
