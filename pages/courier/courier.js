@@ -10,9 +10,10 @@ Page({
     baseUrl: baseUrl,
     id:'',
     scode:'',
+    name: ''
   },
   getScode:function(){
-    var _this = this;
+    const _this = this;
     // 允许从相机和相册扫码
     wx.scanCode({
       success: (res) => {
@@ -20,6 +21,34 @@ Page({
         _this.setData({
           scode:res.result
         })
+      }
+    })
+  },
+  nameInput: function(event) {
+    this.setData({name: event.detail})
+  },
+  scodeInput: function (event) {
+    this.setData({ scode: event.detail })
+  },
+  commit: function() {
+    const express = {}
+    express.id = this.data.scode;
+    express.name = this.data.name;
+    wx.request({
+      url: baseUrl + '/orders/' + this.data.id,
+      method: 'PUT',
+      data: {
+        status: 'SHIPPED',
+        express,
+      },
+      header: {
+        'content-type': 'application/json',
+        // 'access_token': $data.token,
+      },
+      success: function (res) {
+        const data = res.data.data.data
+        // TODO
+        console.log(data)
       }
     })
   },

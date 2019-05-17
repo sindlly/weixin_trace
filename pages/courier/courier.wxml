@@ -9,17 +9,25 @@
   >
   </van-card>
   <van-field
+    value="{{ name }}"
+    clearable
+    label="快递名称"
+    placeholder="请输入快递公司名称"
+    bind:change="nameInput"
+    use-button-slot
+  >
+  </van-field>
+  <van-field
     value="{{ scode }}"
     clearable
     label="快递单号"
     placeholder="请输入快递单号"
-    bind:click-icon="onClickIcon"
+    bind:change="scodeInput"
     use-button-slot
   >
     <van-button slot="button" size="small" type="primary" bindtap='getScode'>扫描条形码</van-button>
   </van-field>
   </van-panel>
   <view class='my_center_container'>
-  <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>提交</van-button>
-  
+  <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>提交</van-button> 
 </view>
