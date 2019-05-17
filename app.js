@@ -1,10 +1,12 @@
 //app.js
+import './miniprogram_npm/weapp-cookie/index'
+// let cookie = cookies.set('uid', 100, { domain: '/' })
 App({
   onLaunch: function () {
     // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    // var logs = wx.getStorageSync('logs') || []
+    // logs.unshift(Date.now())
+    // wx.setStorageSync('logs', logs)
    
 
     // 登录
@@ -12,30 +14,31 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        console.log(res)
-        // wx.request({
-        //   url: _this.globalData.ROOTPATH +'/auth/login',
-        //   method:"post",
-        //   data:{
-        //     "code": res.code
-        //   },
-        //   success:function(res){
-        //     console.log(res)
-        //   }
-        // })
+        // console.log(res)
+        wx.request({
+          url: _this.globalData.ROOTPATH +'/auth/login',
+          method:"post",
+          data:{
+            "code": res.code
+          },
+          success:function(res){
+            if(res.data.data.data.isRegistered == false){
+              _this.globalData.userInfo.user_type = 4
+            }
+          }
+        })
       }
     })
     // 获取用户信息
     wx.getSetting({
       success: res => {
-        
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               // if (!res.userInfo.user_id) res.userInfo.user_id = "5cc552a3db479568fc30f0c3"  //厂家用户
-              if (!res.userInfo.user_id) res.userInfo.user_id = "5cd8dc23e3a2d04ec0911fdd"  //平台用户
+              // if (!res.userInfo.user_id) res.userInfo.user_id = "5cd8dc23e3a2d04ec0911fdd"  //平台用户
               this.globalData.userInfo = res.userInfo
               console.log(res.userInfo)
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -51,10 +54,11 @@ App({
   },
   globalData: {
     userInfo: {
-      user_id:'5cc552a3db479568fc30f0c3'
+      user_id:'5cc552a3db479568fc30f0c3',
+      user_type: 0
     },
     ROOTPATH: 'http://buildupstep.cn/api',
-    HOST: 'http://129.204.232.55:7001/api',
+    HOST: 'http://buildupstep.cn/api',
     DEFAULT_IMG: '38ec2f40-f352-11e7-b5f3-c93673e5d7ba'
   }
 })

@@ -1,0 +1,106 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "set-cookie-parser@^2.3.5",
+        "scope": null,
+        "escapedName": "set-cookie-parser",
+        "name": "set-cookie-parser",
+        "rawSpec": "^2.3.5",
+        "spec": ">=2.3.5 <3.0.0",
+        "type": "range"
+      },
+      "E:\\my\\weixin_trace\\node_modules\\weapp-cookie"
+    ]
+  ],
+  "_cnpm_publish_time": 1548775510935,
+  "_from": "set-cookie-parser@>=2.3.5 <3.0.0",
+  "_hasShrinkwrap": false,
+  "_id": "set-cookie-parser@2.3.5",
+  "_inCache": true,
+  "_location": "/set-cookie-parser",
+  "_nodeVersion": "11.8.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/set-cookie-parser_2.3.5_1548775510542_0.7951999733333119"
+  },
+  "_npmUser": {
+    "name": "nfriedly",
+    "email": "nathan@nfriedly.com"
+  },
+  "_npmVersion": "6.5.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "set-cookie-parser@^2.3.5",
+    "scope": null,
+    "escapedName": "set-cookie-parser",
+    "name": "set-cookie-parser",
+    "rawSpec": "^2.3.5",
+    "spec": ">=2.3.5 <3.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/weapp-cookie"
+  ],
+  "_resolved": "http://iot.dev.npmjs.com:80/set-cookie-parser/-/set-cookie-parser-2.3.5.tgz",
+  "_shasum": "e2c16c93f063dee2486c5d48e26621ad75fd3bab",
+  "_shrinkwrap": null,
+  "_spec": "set-cookie-parser@^2.3.5",
+  "_where": "E:\\my\\weixin_trace\\node_modules\\weapp-cookie",
+  "author": {
+    "name": "Nathan Friedly",
+    "url": "http://nfriedly.com/"
+  },
+  "bugs": {
+    "url": "https://github.com/nfriedly/set-cookie-parser/issues"
+  },
+  "dependencies": {},
+  "description": "Parses set-cookie headers into objects",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "husky": "^0.14.3",
+    "mocha": "^5.0.1",
+    "prettier": "^1.13.4",
+    "pretty-quick": "^1.6.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "e2c16c93f063dee2486c5d48e26621ad75fd3bab",
+    "size": 4486,
+    "noattachment": false,
+    "tarball": "http://iot.dev.npmjs.com:80/set-cookie-parser/-/set-cookie-parser-2.3.5.tgz"
+  },
+  "gitHead": "1638cfe004c8f8ae995d890d9d270eb98c687889",
+  "homepage": "https://github.com/nfriedly/set-cookie-parser",
+  "keywords": [
+    "set-cookie",
+    "set",
+    "cookie",
+    "cookies",
+    "header",
+    "parser"
+  ],
+  "license": "MIT",
+  "main": "./lib/set-cookie.js",
+  "maintainers": [
+    {
+      "name": "nfriedly",
+      "email": "nathan@nfriedly.com"
+    }
+  ],
+  "name": "set-cookie-parser",
+  "optionalDependencies": {},
+  "publish_time": 1548775510935,
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nfriedly/set-cookie-parser.git"
+  },
+  "scripts": {
+    "precommit": "npm test",
+    "test": "eslint . --ignore-pattern '!.eslintrc.js' && mocha"
+  },
+  "version": "2.3.5"
+}

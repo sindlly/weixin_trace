@@ -1,6 +1,7 @@
 // pages/home/home.js
 const app = getApp();
 const baseUrl = app.globalData.HOST;
+const userInfo = app.globalData.userInfo
 
 Page({
 
@@ -8,7 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    home_type:0  //1显示商家首页，2显示平台账号首页，3显示销售首页，4显示无账号首页，5显示快递员首页
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    home_type: userInfo.user_type  //1显示商家首页，2显示平台账号首页，3显示销售首页，4显示无账号首页，5显示快递员首页
   },
   // 二维码扫描
   getScancode: function () {
@@ -34,7 +36,7 @@ Page({
     }
     // 确认用户类型
     _this.setData({
-      home_type: 3
+      home_type: userInfo.user_type||3
     })
     // wx.request({
     //   url: baseUrl+'/users', // 仅为示例，并非真实的接口地址

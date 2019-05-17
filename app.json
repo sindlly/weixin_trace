@@ -23,8 +23,7 @@
     "pages/setPrice/setPrice",
     "pages/ensureFactory/ensureFactory",
     "pages/ensureMoney/ensureMoney",
-    "pages/apply/apply",
-    "pages/newOrder/newOrder"
+    "pages/apply/apply"
   ],
   "window": {
     "backgroundTextStyle": "light",

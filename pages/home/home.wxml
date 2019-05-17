@@ -1,4 +1,5 @@
 <!--pages/home/home.wxml-->
+
   <view class='home-header'>
     <view class='my_container flex-row-center'>
       <image  class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
@@ -179,7 +180,7 @@
   </view>
   
 </van-cell-group>
-
+<button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
 <view class='footer flex-row'>
     <view class='footer-item flex-column-center' bindtap='jump'>
       <image src='../../img/icon-mendian.png' class='footer-img'></image>

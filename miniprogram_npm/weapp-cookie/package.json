@@ -1,0 +1,121 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "weapp-cookie",
+        "scope": null,
+        "escapedName": "weapp-cookie",
+        "name": "weapp-cookie",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "E:\\my\\weixin_trace"
+    ]
+  ],
+  "_cnpm_publish_time": 1553071174499,
+  "_from": "weapp-cookie@latest",
+  "_hasShrinkwrap": false,
+  "_id": "weapp-cookie@1.3.5",
+  "_inCache": true,
+  "_location": "/weapp-cookie",
+  "_nodeVersion": "8.12.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/weapp-cookie_1.3.5_1553071174338_0.5463241450591618"
+  },
+  "_npmUser": {
+    "name": "charleslo",
+    "email": "charleslo@foxmail.com"
+  },
+  "_npmVersion": "6.7.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "weapp-cookie",
+    "scope": null,
+    "escapedName": "weapp-cookie",
+    "name": "weapp-cookie",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "http://iot.dev.npmjs.com:80/weapp-cookie/-/weapp-cookie-1.3.5.tgz",
+  "_shasum": "31d3c73611d56a7183f449c00ef2076c145ab99d",
+  "_shrinkwrap": null,
+  "_spec": "weapp-cookie",
+  "_where": "E:\\my\\weixin_trace",
+  "author": {
+    "name": "Charles Lo"
+  },
+  "bugs": {
+    "url": "https://github.com/charleslo1/weapp-cookie/issues"
+  },
+  "dependencies": {
+    "set-cookie-parser": "^2.3.5"
+  },
+  "description": "一行代码让微信小程序支持 cookie，以保证基于 cookie 的服务器会话机制不会失效，与 web 端共用会话机制",
+  "devDependencies": {
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-html": "^3.2.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-eslint": "^4.0.0",
+    "gulp-watch": "^4.3.11",
+    "gulp-webserver": "^0.9.1",
+    "mocha": "^5.2.0",
+    "rollup": "^0.49.3",
+    "rollup-plugin-babel": "^3.0.7",
+    "rollup-plugin-commonjs": "^8.2.1",
+    "rollup-plugin-node-resolve": "^3.4.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "31d3c73611d56a7183f449c00ef2076c145ab99d",
+    "size": 91804,
+    "noattachment": false,
+    "tarball": "http://iot.dev.npmjs.com:80/weapp-cookie/-/weapp-cookie-1.3.5.tgz"
+  },
+  "gitHead": "b1a5540c798db30388cd691e3c49c4db4c316a2c",
+  "homepage": "https://github.com/charleslo1/weapp-cookie#readme",
+  "keywords": [
+    "wxapp",
+    "cookie"
+  ],
+  "license": "ISC",
+  "main": "dist/weapp-cookie.js",
+  "maintainers": [
+    {
+      "name": "charleslo",
+      "email": "charleslo@foxmail.com"
+    }
+  ],
+  "name": "weapp-cookie",
+  "optionalDependencies": {},
+  "publish_time": 1553071174499,
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charleslo1/weapp-cookie.git"
+  },
+  "scripts": {
+    "build": "gulp build",
+    "lint": "gulp lint",
+    "test": "mocha"
+  },
+  "version": "1.3.5"
+}

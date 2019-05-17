@@ -1,0 +1,46 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_global\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'build' ]
+2 info using npm@4.1.1
+3 info using node@v10.15.3
+4 verbose run-script [ 'prebuild', 'build', 'postbuild' ]
+5 info lifecycle weapp-cookie@1.3.5~prebuild: weapp-cookie@1.3.5
+6 silly lifecycle weapp-cookie@1.3.5~prebuild: no script for prebuild, continuing
+7 info lifecycle weapp-cookie@1.3.5~build: weapp-cookie@1.3.5
+8 verbose lifecycle weapp-cookie@1.3.5~build: unsafe-perm in lifecycle true
+9 verbose lifecycle weapp-cookie@1.3.5~build: PATH: C:\Program Files\nodejs\node_global\node_modules\npm\bin\node-gyp-bin;E:\my\weixin_trace\miniprogram_npm\weapp-cookie\node_modules\.bin;C:\Users\sindlly\bin;E:\develop\developTools\Git\mingw64\bin;E:\develop\developTools\Git\usr\local\bin;E:\develop\developTools\Git\usr\bin;E:\develop\developTools\Git\usr\bin;E:\develop\developTools\Git\mingw64\bin;E:\develop\developTools\Git\usr\bin;C:\Users\sindlly\bin;C:\Program Files (x86)\Intel\iCLS Client;C:\Program Files\Intel\iCLS Client;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;E:\develop\developTools\Git\cmd;E:\develop\python;E:\develop\python\Scripts;C:\Program Files\nodejs\node_global;C:\Program Files\MongoDB\Server\3.2\bin;C:\Program Files\MySQL\MySQL Server 5.5\bin;C:\Program Files\nodejs;C:\Program Files\nodejs\node_global;E:\my\Egret Wing 3\bin;C:\Users\sindlly\AppData\Roaming\npm;E:\develop\developTools\Git\usr\bin\vendor_perl;E:\develop\developTools\Git\usr\bin\core_perl
+10 verbose lifecycle weapp-cookie@1.3.5~build: CWD: E:\my\weixin_trace\miniprogram_npm\weapp-cookie
+11 silly lifecycle weapp-cookie@1.3.5~build: Args: [ '/d /s /c', 'gulp build' ]
+12 silly lifecycle weapp-cookie@1.3.5~build: Returned: code: 1  signal: null
+13 info lifecycle weapp-cookie@1.3.5~build: Failed to exec build script
+14 verbose stack Error: weapp-cookie@1.3.5 build: `gulp build`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (C:\Program Files\nodejs\node_global\node_modules\npm\lib\utils\lifecycle.js:279:16)
+14 verbose stack     at EventEmitter.emit (events.js:189:13)
+14 verbose stack     at ChildProcess.<anonymous> (C:\Program Files\nodejs\node_global\node_modules\npm\lib\utils\spawn.js:40:14)
+14 verbose stack     at ChildProcess.emit (events.js:189:13)
+14 verbose stack     at maybeClose (internal/child_process.js:970:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:259:5)
+15 verbose pkgid weapp-cookie@1.3.5
+16 verbose cwd E:\my\weixin_trace\miniprogram_npm\weapp-cookie
+17 error Windows_NT 6.1.7601
+18 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_global\\node_modules\\npm\\bin\\npm-cli.js" "run" "build"
+19 error node v10.15.3
+20 error npm  v4.1.1
+21 error code ELIFECYCLE
+22 error weapp-cookie@1.3.5 build: `gulp build`
+22 error Exit status 1
+23 error Failed at the weapp-cookie@1.3.5 build script 'gulp build'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the weapp-cookie package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     gulp build
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs weapp-cookie
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls weapp-cookie
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]
