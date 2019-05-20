@@ -1,1 +1,26 @@
 /* pages/setPrice/setPrice.wxss */
+.my_panle{
+  padding: 15rpx;
+}
+.commit-btn button{
+  margin: 30rpx 0;
+
+  border-radius: 40.5px;
+  width: 580rpx;
+  height: 81rpx;
+  line-height: 81rpx;
+  border: none;
+}
+.my_footer{
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:center;
+
+}
+.disabled{
+  display: none !important
+}
+.van-field__button{
+  padding-left: 0 !important
+}

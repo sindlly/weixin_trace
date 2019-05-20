@@ -14,7 +14,9 @@ Page({
     DEFALUT_IMG: app.globalData.DEFALUT_IMG,
     token: '',
     goods_detail:{},
-    baseUrl: baseUrl
+    baseUrl: baseUrl,
+    remark:null,
+    logo:null
   },
 
   countMinus: function () {
@@ -32,34 +34,94 @@ Page({
       disabled: false
     })
   },
-
+  onChange: function (e) {
+    console.log(e)
+    let dataset = e.target.dataset
+    this.remark = e.detail.value
+  },
+  uploadImg: function () {
+    var _this = this;
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res) {
+        _this.setData({
+          imgSrc: res.tempFilePaths[0],
+        })
+      }
+    })
+  },
   submitOrder: function () {
+    let _this = this;
     wx.showToast({
       title: '',
       mask: true,
       icon: 'loading'
     })
-    let subData = {
-      commodity : this.data.commodityId,
-      count: this.data.count,
-      buyer: userInfo.user_id
-    }
-    wx.request({
-      url: baseUrl + '/orders',
-      method: "post",
-      data: subData,
-      header: {
-        'content-type': 'application/json',
-        // 'access_token': $data.token,
-      },
-      success: function (res) {
-        wx.navigateTo({
-          url: '/pages/order_manage/order_manage'
-          // url: '/pages/order_manage/order_manage?active=2'
-          // url: '/pages/order/order'
-        })
+    
+    if (_this.data.goods_detail.isCustom){
+      wx.uploadFile({
+        url: baseUrl + '/files',
+        method: "POST",
+        filePath: _this.data.imgSrc,
+        name: "files",
+        header: {
+          'content-type': 'application/json'
+        },
+        success(res) {
+          _this.logo = JSON.parse(res.data).data.data.id
+          let subData = {
+            commodity: _this.data.commodityId,
+            count: _this.data.count,
+            buyer: userInfo.user_id,
+            remarks: _this.remark,
+            logo: _this.logo,
+          }
+          wx.request({
+            url: baseUrl + '/orders',
+            method: "post",
+            data: subData,
+            header: {
+              'content-type': 'application/json',
+              // 'access_token': $data.token,
+            },
+            success: function (res) {
+              wx.navigateTo({
+                url: '/pages/order_manage/order_manage'
+                // url: '/pages/order_manage/order_manage?active=2'
+                // url: '/pages/order/order'
+              })
+            }
+          })
+        }
+      })
+    }else{
+      let subData = {
+        commodity: _this.data.commodityId,
+        count: _this.data.count,
+        buyer: userInfo.user_id,
+        
       }
-    })
+      wx.request({
+        url: baseUrl + '/orders',
+        method: "post",
+        data: subData,
+        header: {
+          'content-type': 'application/json',
+          // 'access_token': $data.token,
+        },
+        success: function (res) {
+          wx.navigateTo({
+            url: '/pages/order_manage/order_manage'
+            // url: '/pages/order_manage/order_manage?active=2'
+            // url: '/pages/order/order'
+          })
+        }
+      })
+    }
+    
+    
     
   },
 

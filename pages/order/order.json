@@ -3,6 +3,8 @@
   "enablePullDownRefresh": true,
   "usingComponents": {
     "van-card": "../../../miniprogram_npm/vant-weapp/card/index",
-    "van-cell": "../../../miniprogram_npm/vant-weapp/cell/index"
+    "van-cell": "../../../miniprogram_npm/vant-weapp/cell/index",
+    "van-field": "../../../miniprogram_npm/vant-weapp/field/index",
+    "van-panel": "../../../miniprogram_npm/vant-weapp/panel/index"
   }
 }

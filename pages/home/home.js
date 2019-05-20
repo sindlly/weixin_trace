@@ -1,7 +1,8 @@
 // pages/home/home.js
 const app = getApp();
 const baseUrl = app.globalData.HOST;
-const userInfo = app.globalData.userInfo
+const userInfo = wx.getStorageSync('userInfo')
+
 
 Page({
 
@@ -10,10 +11,10 @@ Page({
    */
   data: {
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    home_type: userInfo.user_type  //1显示商家首页，2显示平台账号首页，3显示销售首页，4显示无账号首页，5显示快递员首页
+    home_type: userInfo.role_type  //1显示商家首页，2显示平台账号首页，3显示销售首页，4显示无账号首页，5显示快递员首页
   },
-  // 二维码扫描
-  getScancode: function () {
+  // 二维码扫描验货
+  check: function () {
     var _this = this;
     // 允许从相机和相册扫码
     wx.scanCode({
@@ -22,6 +23,20 @@ Page({
       }
     })
     },
+  //发货  
+  send: function () {
+    var _this = this;
+    // 允许从相机和相册扫码
+    wx.scanCode({
+      success: (res) => {
+        wx.navigateTo({
+          url: '/pages/send/send'
+          
+        })
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -36,8 +51,9 @@ Page({
     }
     // 确认用户类型
     _this.setData({
-      home_type: userInfo.user_type||3
+      home_type: userInfo.role_type
     })
+   
     // wx.request({
     //   url: baseUrl+'/users', // 仅为示例，并非真实的接口地址
     //   success(res) {

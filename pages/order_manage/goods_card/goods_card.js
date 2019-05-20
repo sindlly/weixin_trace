@@ -1,6 +1,7 @@
 // pages/order_manage/goods_card/goods_card.js
 const app = getApp();
 const baseUrl = app.globalData.HOST;
+const userInfo = wx.getStorageSync('userInfo')
 Component({
 
   /**
@@ -8,7 +9,7 @@ Component({
    */
   data: {
     baseUrl: baseUrl,
-    role_type:"plat"
+    role_type: userInfo.role_type
   },
   properties :{
     perentData:{

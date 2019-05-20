@@ -11,7 +11,7 @@
   </view>
   
 <van-cell-group class='my-van-cell-group'>
-  <view class='home-content' name="商家首页" wx:if="{{home_type==1}}">
+  <view class='home-content' name="商家首页" wx:if="{{home_type=='factory'}}">
     <view class='flex-row-center content-hover'>
       <image src='../../img/regest.png' class="cell-left-img"></image>
       <van-cell class='home-cell'
@@ -49,7 +49,7 @@
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
     </view> 
   </view>
-  <view class='home-content' name="平台账号首页" wx:if="{{home_type==2}}">
+  <view class='home-content' name="平台账号首页" wx:if="{{home_type=='platform'}}">
     <view class='flex-row-center content-hover'>
       <image src='../../img/zhaomu.png' class="cell-left-img"></image>
       <van-cell class='home-cell'
@@ -64,7 +64,7 @@
       <van-cell class='home-cell'
         title="邀请厂家注册"
         label="成功邀请的生产厂家，他的所有订单你能从中获益"
-        url="/pages/regest/regest"
+        url="/pages/invataFactory/invatFactory"
         clickable
       />
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
@@ -81,13 +81,13 @@
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
     </view> 
   </view>
-  <view class='home-content' name="销售账号首页" wx:if="{{home_type==3}}">
+  <view class='home-content' name="销售账号首页" wx:if="{{home_type=='salesman'}}">
     <view class='flex-row-center content-hover'>
       <image src='../../img/new_order.png' class="cell-left-img"></image>
       <van-cell class='home-cell'
         title="生成新订单"
         label="销售人员认证后可以促成商家采购溯源防伪方案"
-        url="/pages/apply/apply"
+        url="/pages/shop/shop"
         clickable
       />
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
@@ -186,11 +186,11 @@
       <image src='../../img/icon-mendian.png' class='footer-img'></image>
       <view class='footer-text'>店铺</view>
     </view>
-    <view class='footer-item flex-column-center center-item-border' bindtap='getScancode'>
+    <view class='footer-item flex-column-center center-item-border' bindtap='check'>
       <image src='../../img/icon-yanhuo.png' class='footer-img'></image>
       <view class='footer-text'>验货</view>
     </view>
-    <view class='footer-item flex-column-center'>
+    <view class='footer-item flex-column-center' bindtap='send'>
       <image src='../../img/icon-fahuo.png' class='footer-img'></image>
       <view class='footer-text'>发货</view>
     </view>

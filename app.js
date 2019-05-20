@@ -22,35 +22,41 @@ App({
             "code": res.code
           },
           success:function(res){
+            let role_type = ''
             if(res.data.data.data.isRegistered == false){
-              _this.globalData.userInfo.user_type = 4
+              user_type = 4
             }
+            else{
+              role_type = res.data.data.data.user.role_type
+            }
+            // 获取用户信息
+            wx.getSetting({
+              success: res => {
+                if (res.authSetting['scope.userInfo']) {
+                  // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+                  wx.getUserInfo({
+                    success: res => {
+                      // 可以将 res 发送给后台解码出 unionId
+                      // if (!res.userInfo.user_id) res.userInfo.user_id = "5cc552a3db479568fc30f0c3"  //厂家用户
+                      // if (!res.userInfo.user_id) res.userInfo.user_id = "5cd8dc23e3a2d04ec0911fdd"  //平台用户
+                      _this.globalData.userInfo = res.userInfo
+                      // _this.globalData.userInfo.role_type = role_type
+                      wx.setStorageSync('userInfo', Object.assign(_this.globalData.userInfo,{role_type:role_type}))
+                      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+                      // 所以此处加入 callback 以防止这种情况
+                      if (_this.userInfoReadyCallback) {
+                        _this.userInfoReadyCallback(res)
+                      }
+                    }
+                  })
+                }
+              }
+            })
           }
         })
       }
     })
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              // 可以将 res 发送给后台解码出 unionId
-              // if (!res.userInfo.user_id) res.userInfo.user_id = "5cc552a3db479568fc30f0c3"  //厂家用户
-              // if (!res.userInfo.user_id) res.userInfo.user_id = "5cd8dc23e3a2d04ec0911fdd"  //平台用户
-              this.globalData.userInfo = res.userInfo
-              console.log(res.userInfo)
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              }
-            }
-          })
-        }
-      }
-    })
+    
   },
   globalData: {
     userInfo: {

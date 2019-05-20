@@ -17,10 +17,10 @@
   align-items: flex-start;
   border-bottom: 2rpx solid #eee;
   background-color: #fff;
-  padding: 15rpx;
+  padding: 30rpx;
   box-sizing: border-box;
-  margin-bottom: 1vh;
-  margin-top: 1vh;
+  /* margin-bottom: 1vh;
+  margin-top: 1vh; */
 }
 
 .order-address {
@@ -173,7 +173,7 @@
 
 .smaller-font {
   font-size: 0.8rem;
-  color: #999;
+  color: #333;
 }
 .van-card__content{
   display: flex;
@@ -183,4 +183,29 @@
 .van-card{
   background: #fff !important;
   /* border-bottom: 1rpx solid #eee */
+}
+/* .textarea{
+  height: 300rpx !important
+} */
+
+.img-container{
+  width: 180rpx;
+  height: 180rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed #CCCCCC;
+  margin-left:15px;
+}
+.img-title{
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 24px;
+  padding: 15px;
+}
+.tips{
+  font-size: 26rpx;
+  color: #666666;
+  letter-spacing: 0;
+  margin-top: 23rpx;
 }

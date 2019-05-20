@@ -8,17 +8,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    all_goods: [{ tag: 1 }, { tag: 2 }, { tag: 3 }, { tag: 4 }, { tag: 1 }, { tag: 2 }, { tag: 3 }, { tag: 4 }],
-    daibaojia_goods: [{ tag: 1 }, { tag: 1 }, { tag: 1 }, { tag: 1 }],
-    daifukuan_goods: [{ tag: 2 }, { tag: 2 }, { tag: 2 }, { tag: 2 }],
-    daifahuo_goods: [{ tag: 3 }, { tag: 3 }, { tag: 3 }, { tag: 3 }],
-    yifahuo_goods: [{ tag: 4 }, { tag: 4 }, { tag: 4}, { tag: 4 }],
-    active:0
+    all_goods: [],
+    daibaojia_goods: [],
+    daifukuan_goods: [],
+    daifahuo_goods: [],
+    yifahuo_goods: [],
+    active:0,
+    title: ["全部", "待报价","待付款","待发货","已发货"]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
+  
   onLoad: function (options) {
     let _this = this
       this.setData({
@@ -32,15 +34,26 @@ Page({
         // 'access_token': $data.token,
       },
       success: function (res) {
+        // 厂家：全部、待报价、待付款、待发货、已发货
+        // 平台：全部、待报价、待核收、待发货、已发货
+        // 销售：全部、待报价、待付款、待发货、已发货
+
         let all = res.data.data.data.all
         let unQuoted = res.data.data.data.unQuoted
-        let unPaid = res.data.data.data.unPaid
         let unSent = res.data.data.data.unSent
         let unReceived = res.data.data.data.unReceived
+        let unPaid = res.data.data.data.unPaid  // 厂家 销售  待付款（销售只是看看）
+        let unCheck = res.data.data.data.unCheck  //平台  待核收
+        let unPaidOrUnCheck = unPaid || unCheck
+        if (unCheck){
+          _this.setData({
+            title: ["全部", "待报价", "待核收", "待发货", "已发货"]
+          })
+        }
         _this.setData({
           all_goods: all,
           daibaojia_goods: unQuoted,
-          daifukuan_goods: unPaid,
+          daifukuan_goods: unPaidOrUnCheck,
           daifahuo_goods: unSent,
           yifahuo_goods: unReceived
 

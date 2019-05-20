@@ -1,18 +1,36 @@
 // pages/setPrice/setPrice.js
+const app = getApp();
+const baseUrl = app.globalData.HOST;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    imgUrl:"",
+    radio:"1"
   },
-
+  changeRadio:function(res){
+    this.setData({
+      radio:res.detail
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let id = options.id
+    let _this = this
+    wx.request({
+      url: baseUrl + '/orders/' + id + '?embed=salesman',
+      success: function (res) {
+        let data = res.data.data.data
 
+        _this.setData({
+          imgUrl: baseUrl + '/files/'+data.logo
+        })
+      }
+    })
   },
 
   /**
