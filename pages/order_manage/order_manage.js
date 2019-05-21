@@ -1,7 +1,7 @@
 // pages/order_manage/order_manage.js
 const app = getApp();
 const baseUrl = app.globalData.HOST;
-const userInfo = app.globalData.userInfo;
+const userInfo = wx.getStorageSync('userInfo')
 Page({
 
   /**
@@ -44,11 +44,12 @@ Page({
         let unReceived = res.data.data.data.unReceived
         let unPaid = res.data.data.data.unPaid  // 厂家 销售  待付款（销售只是看看）
         let unCheck = res.data.data.data.unCheck  //平台  待核收
-        let unPaidOrUnCheck = unPaid || unCheck
-        if (unCheck){
+        let unPaidOrUnCheck = unPaid
+        if (userInfo.role_type =="platform"){
           _this.setData({
             title: ["全部", "待报价", "待核收", "待发货", "已发货"]
           })
+          unPaidOrUnCheck = unCheck
         }
         _this.setData({
           all_goods: all,

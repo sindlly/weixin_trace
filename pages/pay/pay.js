@@ -124,11 +124,11 @@ Page({
     let id = options.id
     let _this = this
     _this.data.id = id;
-    _this.data.trade.type = "ALL_PAYED"
     wx.request({
       url: baseUrl + '/orders/' + id + '?embed=salesman',
       success: function (res) {
         let data = res.data.data.data
+        _this.data.trade.type = data.isStagePay ?"FIRST_PAYED":"ALL_PAYED"
         _this.setData({
           goods: data,
           

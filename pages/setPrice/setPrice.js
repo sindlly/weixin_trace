@@ -8,11 +8,33 @@ Page({
    */
   data: {
     imgUrl:"",
-    radio:"1"
+    remark:'',
+    radio:"1",
+    id:'',
+    obj:{
+      status:'QUOTED'
+    },
   },
   changeRadio:function(res){
     this.setData({
       radio:res.detail
+    })
+  },
+  onChange: function (e) {
+    // console.log(e)
+    let dataset = e.target.dataset
+    this.data[dataset.obj][dataset.item] = parseFloat(e.detail)
+  },
+  commit: function(){
+    wx.request({
+      url: baseUrl + '/orders/' +this.data.id,
+      method:'put',
+      data:this.data.obj,
+      success:function(){
+        wx.navigateTo({
+          url: '/pages/order_manage/order_manage?active=2',
+        })
+      }
     })
   },
   /**
@@ -20,6 +42,7 @@ Page({
    */
   onLoad: function (options) {
     let id = options.id
+    this.data.id = id
     let _this = this
     wx.request({
       url: baseUrl + '/orders/' + id + '?embed=salesman',
@@ -27,7 +50,8 @@ Page({
         let data = res.data.data.data
 
         _this.setData({
-          imgUrl: baseUrl + '/files/'+data.logo
+          imgUrl: baseUrl + '/files/'+data.logo,
+          remark: data.remarks
         })
       }
     })

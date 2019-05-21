@@ -1,6 +1,6 @@
 const app = getApp();
 const baseUrl = app.globalData.HOST;
-const userInfo = app.globalData.userInfo;
+const userInfo = wx.getStorageSync('userInfo'); 
 
 Page({
 

@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/order_manage/order_manage",
     "pages/home/home",
+    "pages/order_manage/order_manage",
+    
     "pages/courier/courier",
     "pages/shop/shop",
     

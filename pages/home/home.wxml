@@ -25,12 +25,12 @@
     <view class='flex-row-center'>
     <image src='../../img/bigdata.png' class="cell-left-img"></image>
       <van-cell class='home-cell'
-        label="因为我们溯源无死角，所有假货无处藏身"
-        url="/pages/bigdata/bigdata"
+        label="购买、定制二维码"
+        url="/pages/shop/shop"
         clickable>
         <view slot="title">
-            <view class="van-cell-text">溯源大数据<van-tag type="danger">5</van-tag></view>
-            <view class='home-label'>因为我们溯源无死角，所有假货无处藏身</view>
+            <view class="van-cell-text">溯源二维码商店<van-tag type="danger">5</van-tag></view>
+            <view class='home-label'>购买、定制二维码</view>
         </view>
       </van-cell>
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
@@ -181,7 +181,7 @@
   
 </van-cell-group>
 <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
-<view class='footer flex-row'>
+<view class='footer flex-row' wx:if="{{home_type=='factory'}}">
     <view class='footer-item flex-column-center' bindtap='jump'>
       <image src='../../img/icon-mendian.png' class='footer-img'></image>
       <view class='footer-text'>店铺</view>

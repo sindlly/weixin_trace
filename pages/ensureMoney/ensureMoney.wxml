@@ -16,13 +16,13 @@
 <view  style="margin-top:30rpx" ></view>
 <van-cell-group>
 <van-cell-group>
-    <van-cell title="付款账号" value="{{}}" />
-    <van-cell title="交易单号" value="{{}}" value-class="{{'price'}}" />
+    <van-cell title="付款账号" value="{{goods.trade[0].number}}" />
+    <van-cell title="交易单号" value="{{goods.trade[0].sponsor}}" value-class="{{'price'}}" />
   </van-cell-group>
     <van-panel style='backgroud:#fff'>
     <view class='img-title'>付款票据</view>
          <view class="my_center_container" style='backgroud:#fff'>
-            <image mode='aspectFit' src="{{imgSrc}}" wx:if="{{imgSrc}}"></image>
+            <image mode='aspectFit' src="{{imgSrc}}" bindtap="previewImage"></image>
         </view>
       </van-panel>
 </van-cell-group>

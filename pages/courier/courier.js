@@ -46,9 +46,9 @@ Page({
         // 'access_token': $data.token,
       },
       success: function (res) {
-        const data = res.data.data.data
-        // TODO
-        console.log(data)
+        wx.navigateTo({
+          url: '/pages/order_manage/order_manage?active=4',
+        })
       }
     })
   },

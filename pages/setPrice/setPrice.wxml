@@ -3,41 +3,40 @@
   <image src='{{imgUrl}}' mode='aspectFit'></image>
 </van-panel>
 <view class='my_panle'>
-  <van-cell title="描述"  label="描述信息" border="{{ false }}" /> 
+  <van-cell title="描述"  label="{{remark}}" border="{{ false }}" /> 
 </view>
 
 <view class='my_panle'>
   <van-field
       label="首付百分比"
-      data-obj="factory"
-      data-item="name"
+      data-obj="obj"
+      data-item="stageProportion"
       bind:change="onChange"
     />
     <van-field
       label="尾款时限"
-      data-obj="factory"
-      data-item="name"
-      bind:change="onChange"
+      
       use-button-slot
       disabled
       input-class="{{'disabled'}}"
     >
     
-    <van-radio-group slot="button" value="{{ radio }}" bind:change="changeRadio">
-        <van-radio name="1">发货前</van-radio>
+    <van-radio-group slot="button" value="{{ '2' }}" >
+        <!-- <van-radio name="1">发货前</van-radio> -->
         <van-radio name="2">发货后</van-radio>
     </van-radio-group>
     </van-field>
     <van-field
       label="总报价"
-      data-obj="factory"
-      data-item="name"
+      data-obj="obj"
+      data-item="price"
+      type="number"
       bind:change="onChange"
     />
     <van-field
       label="抽佣百分比"
-      data-obj="factory"
-      data-item="name"
+      data-obj="obj"
+      data-item="commisionProportion"
       bind:change="onChange"
     />
 </view>
