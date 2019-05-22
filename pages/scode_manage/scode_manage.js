@@ -1,25 +1,36 @@
-// pages/bigdata/bigdata.js
+// pages/scode_manage/scode_manage.js
+const app = getApp();
+const baseUrl = app.globalData.HOST;
+const userInfo = wx.getStorageSync('userInfo')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    mycode:{
-      used:5000,
-      left:38493,
-    }
+    activeName: ''
   },
-  goToScode:function(){
+  onChange(event) {
+    this.setData({
+      activeName: event.detail
+    });
+  },
+  goToAddScode(){
     wx.navigateTo({
-      url: '/pages/scode_manage/scode_manage',
+      url: '/pages/scode_manage/add_scode/add_scode',
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    //获取绑定商品列表
+    wx.request({
+      url: baseUrl + '/barcodes',
+      success:function(){
+        
+      }
+    })
   },
 
   /**

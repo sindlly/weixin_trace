@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-field": "../../../miniprogram_npm/vant-weapp/field/index",
+    "van-cell": "../../../miniprogram_npm/vant-weapp/cell/index",
+    "van-collapse": "../../../miniprogram_npm/vant-weapp/collapse/index",
+    "van-collapse-item": "../../../miniprogram_npm/vant-weapp/collapse-item/index",
+    "van-button": "../../../miniprogram_npm/vant-weapp/button/index"
+  },
+  "navigationBarTitleText": "条形码管理"
+}

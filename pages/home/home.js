@@ -36,7 +36,18 @@ Page({
       }
     })
   },
-
+  //跳转到店铺
+  jump:function(){
+    wx.navigateTo({
+      url: '/pages/business_card/business_card',
+    })
+  },
+  //跳转到溯源大数据页
+  goToBigData:function(){
+    wx.navigateTo({
+      url: '/pages/bigdata/bigdata',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

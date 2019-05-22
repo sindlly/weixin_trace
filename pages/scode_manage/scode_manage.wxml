@@ -1,0 +1,7 @@
+<!--pages/scode_manage/scode_manage.wxml-->
+
+<van-button size="large" bindtap='goToAddScode'>点击添加条形码信息</van-button>
+<van-cell-group>
+  <van-cell title="已绑定条码" value="条数" />
+</van-cell-group>
+

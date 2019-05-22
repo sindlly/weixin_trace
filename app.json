@@ -1,13 +1,13 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/order_manage/order_manage",
-    
-    "pages/courier/courier",
+    "pages/invatSalesman/invatSalesman",
     "pages/shop/shop",
+    "pages/scode_manage/scode_manage",
     
+    "pages/order_manage/order_manage",
+    "pages/courier/courier",
     "pages/invataFactory/invatFactory",
-    
     "pages/salesman/salesman",
     "pages/intro/intro",
     "pages/order_manage/goods_detail/goods_detail",
@@ -26,7 +26,9 @@
     "pages/setPrice/setPrice",
     "pages/ensureFactory/ensureFactory",
     "pages/ensureMoney/ensureMoney",
-    "pages/apply/apply"
+    "pages/apply/apply",
+    "pages/logistic/logistic",
+    "pages/scode_manage/add_scode/add_scode"
   ],
   "window": {
     "backgroundTextStyle": "light",

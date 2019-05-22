@@ -30,7 +30,7 @@
 <van-panel>
   <view slot='header' class='my-panel-header'>
       <view class='panel-title'>我的条形码</view>
-      <view class='my-button'>条码管理</view>
+      <view class='my-button' bindtap='goToScode'>条码管理</view>
   </view>
    <van-cell
     title="商品条形码"

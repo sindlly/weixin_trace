@@ -1,25 +1,23 @@
-// pages/bigdata/bigdata.js
+// pages/logistic/logistic.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    mycode:{
-      used:5000,
-      left:38493,
-    }
+      name:'',
+      id:''
   },
-  goToScode:function(){
-    wx.navigateTo({
-      url: '/pages/scode_manage/scode_manage',
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
+    this.setData({
+      name:options.name,
+      id:options.id
+    })
   },
 
   /**

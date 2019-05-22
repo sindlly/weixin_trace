@@ -1,23 +1,21 @@
-// pages/bigdata/bigdata.js
+// pages/invatSalesman/invatSalesman.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    mycode:{
-      used:5000,
-      left:38493,
-    }
+
   },
-  goToScode:function(){
-    wx.navigateTo({
-      url: '/pages/scode_manage/scode_manage',
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
+  jump:function(){
+    wx.navigateTo({
+      url: '/pages/regest/partner_regest/partner_regest',
+    })
+  },
   onLoad: function (options) {
 
   },

@@ -17,6 +17,7 @@ Page({
       type:null,
       number:null
     },
+    status: '', // FIRST_PAYED 首付已付
   },
 
   onChange: function (e) {
@@ -60,7 +61,7 @@ Page({
               'content-type': 'application/json'
             },
             data: {
-              status: _this.data.trade.type,
+              status: _this.data.trade.type == "ALL_PAYED" ? "ALL_PAYED" :"FIRST_PAYED",
               trade:[_this.data.trade]
               
             },
@@ -128,10 +129,20 @@ Page({
       url: baseUrl + '/orders/' + id + '?embed=salesman',
       success: function (res) {
         let data = res.data.data.data
-        _this.data.trade.type = data.isStagePay ?"FIRST_PAYED":"ALL_PAYED"
+        _this.data.status = res.data.data.data.status
+        if (_this.data.status == "FIRST_PAYED") {
+          wx.setNavigationBarTitle({
+            title: '尾款明细'
+          })
+        } else {
+          wx.setNavigationBarTitle({
+            title: '付款明细'
+          })
+        }
+        _this.data.trade.type = data.isStagePay ?"FIRST_PAYED":"ALL_PAYED"  //是否是定制商品，定制商品需首付，一般商品付全款
         _this.setData({
           goods: data,
-          
+          status: res.data.data.data.status
         })
 
       }

@@ -4,7 +4,7 @@
     <view class='my_container flex-row-center'>
       <image  class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      <van-button round type="danger" class='flex-end' custom-class="header-btn" wx:if='{{home_type!=4}}'>溯源大数据></van-button>
+      <van-button round type="danger" class='flex-end' custom-class="header-btn" wx:if='{{home_type!=4}}' bindtap='goToBigData'>溯源大数据></van-button>
     </view>
     <image src='../../img/bg.png' class="home-bg-img"></image>
     <image src='../../img/banner.jpg' class="header-img"></image>
@@ -55,6 +55,7 @@
       <van-cell class='home-cell'
         title="招聘销售员"
         label="销售人员认证后可以促成商家采购溯源防伪方案"
+        url="/pages/invatSalesman/invatSalesman"
         clickable
       />
       <image src='../../img/Chevron.png' class="cell-right-img"></image>

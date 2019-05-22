@@ -22,6 +22,7 @@ VantComponent({
         thumbLink: String,
         originPrice: String,
       stageProportion:String,
+      commission:String,
         thumbMode: {
             type: String,
             value: 'aspectFit'

@@ -9,7 +9,8 @@ Component({
    */
   data: {
     baseUrl: baseUrl,
-    role_type: userInfo.role_type
+    role_type: userInfo.role_type,
+    showDialog:true
   },
   properties :{
     perentData:{
@@ -66,6 +67,40 @@ Component({
         url: '/pages/courier/courier?id=' + id,
       })
     },
+    //查看快递
+    lookLogistics:function(e){
+      let express = e.currentTarget.dataset.express
+      wx.navigateTo({
+        url: '/pages/logistic/logistic?id=' + express.id + "&name=" + express.name,
+      })
+    },
+    //确认收货
+    conform:function(e){
+      let id = e.currentTarget.dataset.id
+      wx.showModal({
+        title: '确认收货',
+        content: '请确定您已收到货物',
+        success(res) {
+          if (res.confirm) {
+            wx.request({
+              url: baseUrl + '/orders/' + id,
+              method:'put',
+              data:{
+                status:'FINISHED'
+              },
+              success:function(){
+                wx.redirectTo({
+                  url: '/pages/order_manage/order_manage',
+                })
+              }
+
+            })
+          } else if (res.cancel) {
+            
+          }
+        }
+      })
+    }
     
   },
   

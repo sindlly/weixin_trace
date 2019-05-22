@@ -8,7 +8,6 @@ page{
   display: flex;
   justify-content: space-around;
   margin:30rpx;
-
 }
 .btn button{
  width: 640rpx ;

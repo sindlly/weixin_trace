@@ -1,0 +1,63 @@
+<!--pages/scode_manage/add_scode/add_scode.wxml-->
+<van-cell-group>
+<van-field
+    value="{{ username }}"
+    clearable
+    label="商品名称"
+    placeholder="请输入商品名称"
+    data-obj="scode"
+    data-item="name"
+    bind:blur="onChange"
+  />
+  <van-field
+    value="{{ username }}"
+    clearable
+    label="商品描述"
+    placeholder="请输入商品描述"
+    data-obj="scode"
+    data-item="description"
+    bind:blur="onChange"
+  />
+  <van-field
+    value="{{ username }}"
+    clearable
+    label="商品属性名"
+    placeholder="请输入商品属性"
+    data-obj="scode"
+    data-item="attributes_name"
+    bind:blur="onChange"
+  />
+  <van-field
+    value="{{ username }}"
+    clearable
+    label="商品属性值"
+    placeholder="请输入商品属性值"
+    data-obj="scode"
+    data-item="attributes_value"
+    bind:blur="onChange"
+  />
+  <van-field
+    label="制造商"
+    placeholder="请输入制造商名称"
+    data-obj="scode"
+    data-item="manufacturer"
+    bind:blur="onChange"
+  />
+  <van-field
+    value="{{ scodes }}"
+    clearable
+    label="条形码"
+    placeholder="请输入或扫描条形码"
+    bind:change="scodeInput"
+    use-button-slot
+    data-obj="scode"
+    data-item="barcode"
+    bind:blur="onChange"
+  >
+    <van-button slot="button" size="small" type="primary" bindtap='getScode'>扫描条形码</van-button>
+  </van-field>
+</van-cell-group>
+
+<view class='my_center_container'>
+  <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>提交</van-button>
+</view>

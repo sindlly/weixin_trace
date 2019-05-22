@@ -5,6 +5,7 @@
     "van-card": "../../../miniprogram_npm/vant-weapp/card/index",
     "van-panel": "../../../miniprogram_npm/vant-weapp/panel/index",
     "van-cell": "../../../miniprogram_npm/vant-weapp/cell/index",
+    "van-dialog": "../../../miniprogram_npm/vant-weapp/dialog/index",
     "van-cell-group": "../../../miniprogram_npm/vant-weapp/cell-group/index"
   }
 }
