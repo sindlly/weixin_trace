@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/scode_manage/scode_manage",
     "pages/home/home",
     "pages/invatSalesman/invatSalesman",
     "pages/shop/shop",
-    "pages/scode_manage/scode_manage",
+    
     
     "pages/order_manage/order_manage",
     "pages/courier/courier",

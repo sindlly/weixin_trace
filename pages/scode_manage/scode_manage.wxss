@@ -1,1 +1,12 @@
 /* pages/scode_manage/scode_manage.wxss */
+.van-card__content{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around
+}
+.van-card{
+  background: #fff !important
+}
+.van-cell__value{
+  color: red !important
+}

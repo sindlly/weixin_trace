@@ -1,7 +1,7 @@
 <!--pages/scode_manage/add_scode/add_scode.wxml-->
 <van-cell-group>
 <van-field
-    value="{{ username }}"
+    value="{{ editscode.name }}"
     clearable
     label="商品名称"
     placeholder="请输入商品名称"
@@ -10,7 +10,7 @@
     bind:blur="onChange"
   />
   <van-field
-    value="{{ username }}"
+    value="{{ editscode.description }}"
     clearable
     label="商品描述"
     placeholder="请输入商品描述"
@@ -19,7 +19,7 @@
     bind:blur="onChange"
   />
   <van-field
-    value="{{ username }}"
+    value="{{ editscode.attributes[0].name }}"
     clearable
     label="商品属性名"
     placeholder="请输入商品属性"
@@ -28,7 +28,7 @@
     bind:blur="onChange"
   />
   <van-field
-    value="{{ username }}"
+    value="{{ editscode.attributes[0].value }}"
     clearable
     label="商品属性值"
     placeholder="请输入商品属性值"
@@ -37,6 +37,7 @@
     bind:blur="onChange"
   />
   <van-field
+    value="{{editscode.manufacturer}}"
     label="制造商"
     placeholder="请输入制造商名称"
     data-obj="scode"
@@ -44,7 +45,7 @@
     bind:blur="onChange"
   />
   <van-field
-    value="{{ scodes }}"
+    value="{{ barcode }}"
     clearable
     label="条形码"
     placeholder="请输入或扫描条形码"
@@ -56,6 +57,15 @@
   >
     <van-button slot="button" size="small" type="primary" bindtap='getScode'>扫描条形码</van-button>
   </van-field>
+  <van-panel>
+          <view class='img-title'>上传商品图片</view>
+          <view class='img-container'  bindtap="uploadImg" wx:if="{{!imgSrc}}" style='backgroud:#fff'>
+            <image mode='aspectFit' src="../../../img/+.png" style='width:50rpx;height:51rpx'></image>
+          </view>
+         <view class="my_center_container" bindtap="uploadImg" style='backgroud:#fff'>
+            <image mode='aspectFit' src="{{imgSrc}}" wx:if="{{imgSrc}}"></image>
+        </view>
+      </van-panel>
 </van-cell-group>
 
 <view class='my_center_container'>

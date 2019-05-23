@@ -1,7 +1,23 @@
 <!--pages/scode_manage/scode_manage.wxml-->
 
-<van-button size="large" bindtap='goToAddScode'>点击添加条形码信息</van-button>
 <van-cell-group>
-  <van-cell title="已绑定条码" value="条数" />
+  <van-cell title="已绑定条码" value="{{num}}条" />
+  <van-button size="large" bindtap='goToAddScode'>点击添加条形码信息</van-button>
 </van-cell-group>
+
+<view style='margin: 30rpx 0;background:#fff' wx:for-items="{{barcodes}}" wx:key="{{item}}">
+ <van-panel title="{{item.name}}" status="已绑定条形码">
+    <van-card
+    commission="{{item.attributes[0].name}}:{{item.attributes[0].value}}"
+    desc="生产厂商：{{item.manufacturer}}"
+    title="条形码：{{item.barcode}}"
+    stageProportion="描述：{{item.description}}"
+    thumb="{{baseUrl}}/files/{{ item.image }}"
+    >
+    <view slot="footer">
+      <van-button size="small" round type="info" data-id="{{item.barcode}}" bindtap='edit'>修改信息</van-button>
+    </view>
+  </van-card>
+</van-panel>
+</view>
 
