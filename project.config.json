@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -14,8 +14,8 @@
 		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.5",
-	"appid": "wx88168e0c2c6b3bf2",
+	"libVersion": "2.7.0",
+	"appid": "wxb2b7399af2b7876e",
 	"projectname": "weixin_trace",
 	"debugOptions": {
 		"hidedInDevtools": []
