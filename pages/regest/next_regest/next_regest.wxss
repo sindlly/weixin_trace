@@ -26,6 +26,7 @@
   border-radius: 40.5px;
   width: 580rpx;
   height: 81rpx;
+  line-height: 81rpx;
   border: none;
   
 }

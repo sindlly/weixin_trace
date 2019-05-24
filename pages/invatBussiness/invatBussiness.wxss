@@ -1,0 +1,51 @@
+/* pages/invatBussiness/invatBussiness.wxss */
+page{
+  background: #e8ebf6;
+}
+.action-area{
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  top:160rpx;
+}
+.btn button{
+ width:600rpx;
+ height: 80rpx;
+ line-height: 80rpx;
+
+ /* border-radius:10rpx; */
+}
+.btn1 button{
+  background: #173261;
+  color: #fff;
+}
+.btn2 button{
+  border: 1rpx solid #173261;
+  color: #173261;
+  background: #e8ebf6;
+}
+.intro-img{
+  width: 100%;
+  height: 360rpx;
+}
+.intro-img2{
+  width: 100%;
+  height: 1924rpx;
+  top:-115rpx;
+  position:relative;
+  z-index:-1;
+}
+.userinfo-nickname{
+  display:inline-block;
+  width:100%;
+  text-align:center;
+  font-size:32rpx;
+  position:relative;
+  top:80rpx;
+  color:#173261;
+}
+  .nickname{
+    display: inline-block;
+    width: 332rpx;
+    text-align: left
+  }

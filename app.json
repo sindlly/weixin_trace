@@ -1,5 +1,7 @@
 {
   "pages": [
+    
+    "pages/invatBussiness/invatBussiness",
     "pages/home/home",
     "pages/scode_manage/scode_manage",
     "pages/invatSalesman/invatSalesman",

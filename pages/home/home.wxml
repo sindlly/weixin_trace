@@ -1,11 +1,7 @@
 <!--pages/home/home.wxml-->
   <view class='home-header'>
     <view class='my_container flex-row-center'>
-      <!-- <image  class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image> -->
-      <view  class="userinfo-avatar">
-      <open-data type="userAvatarUrl"></open-data>
-      </view>
-      
+      <image  class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
       <van-button round type="danger" class='flex-end' custom-class="header-btn" wx:if='{{home_type!=4}}' bindtap='goToBigData'>溯源大数据></van-button>
     </view>

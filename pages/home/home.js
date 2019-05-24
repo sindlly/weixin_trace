@@ -10,7 +10,8 @@ Page({
    */
   data: {
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    home_type: userInfo.role_type  //1显示商家首页，2显示平台账号首页，3显示销售首页，4显示无账号首页，5显示快递员首页
+    home_type: userInfo.role_type,  //1显示商家首页，2显示平台账号首页，3显示销售首页，4显示无账号首页，5显示快递员首页
+    userInfo: userInfo
   },
   bindGetUserInfo:function(res){
     console.log(res)
