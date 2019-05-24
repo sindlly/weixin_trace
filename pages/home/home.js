@@ -13,13 +13,23 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     home_type: userInfo.role_type  //1显示商家首页，2显示平台账号首页，3显示销售首页，4显示无账号首页，5显示快递员首页
   },
-  // 二维码扫描验货
+  bindGetUserInfo:function(res){
+    console.log(res)
+    wx.setStorageSync('userInfo',res.detail.userInfo)
+    wx.reLaunch({
+      url: '/pages/home/home',
+    })
+  },
+ // 二维码扫描验货
   check: function () {
     var _this = this;
     // 允许从相机和相册扫码
     wx.scanCode({
       success: (res) => {
-        
+        console.log(res)
+        wx.navigateTo({
+          url: '/pages/check/check',
+        })
       }
     })
     },
@@ -56,13 +66,18 @@ Page({
     // 所以此处加入 callback 以防止这种情况
     let _this = this;
     app.userInfoReadyCallback = res => {
+      console.log(res)
       this.setData({
-        userInfo: res.userInfo,
+        userInfo: res,
+      })
+      // 确认用户类型
+      _this.setData({
+        home_type: res.role_type || 4
       })
     }
     // 确认用户类型
     _this.setData({
-      home_type: userInfo.role_type
+      home_type: userInfo.role_type||4
     })
    
     // wx.request({

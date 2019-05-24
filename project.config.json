@@ -14,8 +14,8 @@
 		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.5",
-	"appid": "wx88168e0c2c6b3bf2",
+	"libVersion": "2.0.4",
+	"appid": "wxb2b7399af2b7876e",
 	"projectname": "weixin_trace",
 	"debugOptions": {
 		"hidedInDevtools": []

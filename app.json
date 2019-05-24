@@ -1,11 +1,9 @@
 {
   "pages": [
-    "pages/scode_manage/scode_manage",
     "pages/home/home",
+    "pages/scode_manage/scode_manage",
     "pages/invatSalesman/invatSalesman",
     "pages/shop/shop",
-    
-    
     "pages/order_manage/order_manage",
     "pages/courier/courier",
     "pages/invataFactory/invatFactory",
@@ -29,7 +27,8 @@
     "pages/ensureMoney/ensureMoney",
     "pages/apply/apply",
     "pages/logistic/logistic",
-    "pages/scode_manage/add_scode/add_scode"
+    "pages/scode_manage/add_scode/add_scode",
+    "pages/check/check"
   ],
   "window": {
     "backgroundTextStyle": "light",

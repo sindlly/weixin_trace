@@ -1,8 +1,11 @@
 <!--pages/home/home.wxml-->
 
+<button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+
   <view class='home-header'>
     <view class='my_container flex-row-center'>
-      <image  class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <!-- <image  class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image> -->
+      <open-data type="userAvatarUrl" class="userinfo-avatar"></open-data>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
       <van-button round type="danger" class='flex-end' custom-class="header-btn" wx:if='{{home_type!=4}}' bindtap='goToBigData'>溯源大数据></van-button>
     </view>
@@ -181,7 +184,6 @@
   </view>
   
 </van-cell-group>
-<button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
 <view class='footer flex-row' wx:if="{{home_type=='factory'}}">
     <view class='footer-item flex-column-center' bindtap='jump'>
       <image src='../../img/icon-mendian.png' class='footer-img'></image>
@@ -196,3 +198,14 @@
       <view class='footer-text'>发货</view>
     </view>
 </view>
+<view class='footer flex-row' wx:if="{{home_type=='salesman'}}">
+    <view class='footer-item flex-column-center'>
+    </view>
+    <view class='footer-item flex-column-center center-item-border' bindtap='check'>
+      <image src='../../img/icon-yanhuo.png' class='footer-img'></image>
+      <view class='footer-text'>验货</view>
+    </view>
+    <view class='footer-item flex-column-center' >
+    </view>
+</view>
+

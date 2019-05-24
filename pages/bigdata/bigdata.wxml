@@ -1,18 +1,18 @@
 <!--pages/bigdata/bigdata.wxml-->
-<van-panel title="我的窜货" header-class="{{'panel-title'}}">
+<van-panel title="我的溯源码" header-class="{{'panel-title'}}">
    <van-cell
     title="已使用溯源码"
-    value="{{mycode.used}}个"
+    value="{{mycode.totalTracings-mycode.unUsedTracings}}个"
     value-class="{{'cell-value'}}"
   />
   <van-cell
     title="剩余溯源码"
-    value="{{mycode.left}}个"
+    value="{{mycode.unUsedTracings}}个"
     border="{{false}}"
     value-class="{{'cell-value'}}"
   />
 </van-panel>
-<view style='width:100%;height:31rpx'></view>
+<!-- <view style='width:100%;height:31rpx'></view>
 <van-panel title="我的窜货" header-class="{{'panel-title'}}">
    <van-cell
     title="窜货报警"
@@ -25,26 +25,26 @@
     value-class="{{'cell-value'}}"
     border="{{false}}"
   />
-</van-panel>
+</van-panel> -->
 <view style='width:100%;height:31rpx'></view>
-<van-panel>
+<van-panel wx:if="{{mycode.userInfo.role_type == 'factory'}}">
   <view slot='header' class='my-panel-header'>
       <view class='panel-title'>我的条形码</view>
       <view class='my-button' bindtap='goToScode'>条码管理</view>
   </view>
    <van-cell
     title="商品条形码"
-    value="{{mycode.used}}个"
+    value="{{mycode.barcodes}}个"
     value-class="{{'cell-value'}}"
     border="{{false}}"
   />
-  <van-field input-class="{{'my-input'}}" placeholder="添加新的条形码">
+  <!-- <van-field input-class="{{'my-input'}}" placeholder="添加新的条形码">
 
-  </van-field>
+  </van-field> -->
   
 </van-panel>
 
-<view style='width:100%;height:31rpx'></view>
+<!-- <view style='width:100%;height:31rpx'></view>
 <van-panel title="我的身份" header-class="{{'panel-title'}}">
    <van-cell
     title="汕头市安利励生物科技公司"
@@ -57,4 +57,4 @@
     value-class="{{'cell-value'}}"
     border="{{false}}"
   />
-</van-panel>
+</van-panel> -->

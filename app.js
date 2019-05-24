@@ -23,17 +23,20 @@ App({
           },
           success:function(res){
             let role_type = ''
+            let user_id=''
             if(res.data.data.data.isRegistered == false){
-              user_type = 4
+              role_type = 4
             }
             else{
               role_type = res.data.data.data.user.role_type
+              user_id = res.data.data.data.user._id
             }
-            let user_id = res.data.data.data.user._id
+            
             // 获取用户信息
             wx.getSetting({
               success: res => {
                 if (res.authSetting['scope.userInfo']) {
+                  
                   // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
                   wx.getUserInfo({
                     success: res => {
@@ -46,7 +49,7 @@ App({
                       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
                       // 所以此处加入 callback 以防止这种情况
                       if (_this.userInfoReadyCallback) {
-                        _this.userInfoReadyCallback(res)
+                        _this.userInfoReadyCallback(_this.globalData.userInfo)
                       }
                     }
                   })
