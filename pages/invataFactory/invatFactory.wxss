@@ -10,8 +10,8 @@ page{
   margin:30rpx;
 }
 .btn button{
- width: 640rpx ;
- border-radius: 20rpx ;
+ width:700rpx;
+ border-radius:10rpx;
 }
 .btn1 button{
   background: #173261;
