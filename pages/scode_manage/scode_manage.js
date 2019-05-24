@@ -34,12 +34,12 @@ Page({
     wx.request({
       url: baseUrl + '/barcodes',
       success:function(res){
-        if(res.code === 200) {
+        
           _this.setData({
             barcodes: res.data.data.data,
             num: res.data.data.meta.count
           })
-        }
+        
       }
     })
   },

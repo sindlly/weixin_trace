@@ -1,0 +1,27 @@
+<!--pages/check/check.wxml-->
+<van-switch-cell
+  title="{{switch_title}}"
+  checked="{{ switch_checked }}"
+  bind:change="switchOnChange"
+/>
+<van-cell title="添加商品">
+  <van-icon slot="right-icon" name="add-o" class="custom-icon" bindtap='openPicker' />
+</van-cell>
+<view wx:for-items='{{goods}}' wx:key="{{item}}">
+<van-cell title="{{item.text}}" value="{{item.value}}" >
+  <van-icon slot="right-icon" name="delete" class="custom-icon  icon-delete" data-index='{{index}}' bindtap='deleteGoods' />
+</van-cell>
+</view>
+<view class='my_center_container'>
+  <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>提交</van-button>
+</view>
+
+<van-picker 
+  wx:if='{{showPicker}}' 
+  columns="{{ columns }}"
+  show-toolbar
+  title="商品名称"
+  bind:confirm="picked"
+  bind:cancel="onCancel"
+  custom-class="{{'my_picker'}}"
+/>

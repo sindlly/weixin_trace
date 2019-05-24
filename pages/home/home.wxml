@@ -16,7 +16,7 @@
       <van-cell class='home-cell'
         title="邀请下一级经销商注册"
         label="邀请后，可发货给你的下级经销商，防止窜货"
-        url="/pages/regest/next_regest/next_regest"
+        url="/pages/invatBussiness/invatBussiness"
         clickable
       />
       <image src='../../img/Chevron.png' class="cell-right-img"></image>

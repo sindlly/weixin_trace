@@ -1,5 +1,7 @@
 {
   "pages": [
+  
+    "pages/send/send",
     "pages/home/home",
     "pages/invatBussiness/invatBussiness",
     

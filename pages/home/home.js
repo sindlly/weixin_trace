@@ -89,9 +89,9 @@ Page({
     // 允许从相机和相册扫码
     wx.scanCode({
       success: (res) => {
+        console.log(res)
         wx.navigateTo({
-          url: '/pages/send/send'
-          
+          url: '/pages/send/send?id='+res.result
         })
       }
     })
