@@ -4,21 +4,24 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
 		"nodeModules": true,
 		"autoAudits": false,
-		"checkInvalidKey": true
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
-<<<<<<< HEAD
 	"libVersion": "2.0.4",
-=======
-	"libVersion": "2.7.0",
->>>>>>> b0e09e479061dcd3220163967fb333d856d600bd
 	"appid": "wxb2b7399af2b7876e",
 	"projectname": "weixin_trace",
 	"debugOptions": {

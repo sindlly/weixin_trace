@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
   "pages": [
     "pages/home/home",
@@ -38,44 +37,4 @@
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"
-=======
-{
-  "pages": [
-    "pages/invataFactory/invatFactory",
-    "pages/home/home",
-    "pages/scode_manage/scode_manage",
-    "pages/invatSalesman/invatSalesman",
-    "pages/shop/shop",
-    "pages/order_manage/order_manage",
-    "pages/courier/courier",
-    "pages/salesman/salesman",
-    "pages/intro/intro",
-    "pages/order_manage/goods_detail/goods_detail",
-    "pages/order/order",
-    "pages/business_card/business_card",
-    "pages/regest/next_regest/next_regest",
-    "pages/regest/partner_regest/partner_regest",
-    "pages/regest/courier_regest/courier_regest",
-    "pages/regest/regest",
-    "pages/rights/rights",
-    "pages/bigdata/bigdata",
-    "pages/index/index",
-    "pages/logs/logs",
-    "pages/order_manage/goods_card/goods_card",
-    "pages/pay/pay",
-    "pages/setPrice/setPrice",
-    "pages/ensureFactory/ensureFactory",
-    "pages/ensureMoney/ensureMoney",
-    "pages/apply/apply",
-    "pages/logistic/logistic",
-    "pages/scode_manage/add_scode/add_scode"
-  ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
-  },
-  "sitemapLocation": "sitemap.json"
->>>>>>> b0e09e479061dcd3220163967fb333d856d600bd
 }

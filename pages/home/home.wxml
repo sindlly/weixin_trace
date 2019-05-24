@@ -1,19 +1,18 @@
-<<<<<<< HEAD
 <!--pages/home/home.wxml-->
-
-<button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
-
   <view class='home-header'>
     <view class='my_container flex-row-center'>
       <!-- <image  class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image> -->
-      <open-data type="userAvatarUrl" class="userinfo-avatar"></open-data>
+      <view  class="userinfo-avatar">
+      <open-data type="userAvatarUrl"></open-data>
+      </view>
+      
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
       <van-button round type="danger" class='flex-end' custom-class="header-btn" wx:if='{{home_type!=4}}' bindtap='goToBigData'>溯源大数据></van-button>
     </view>
     <image src='../../img/bg.png' class="home-bg-img"></image>
     <image src='../../img/banner.jpg' class="header-img"></image>
   </view>
-  
+  <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
 <van-cell-group class='my-van-cell-group'>
   <view class='home-content' name="商家首页" wx:if="{{home_type=='factory'}}">
     <view class='flex-row-center content-hover'>
@@ -210,203 +209,3 @@
     </view>
 </view>
 
-=======
-<!--pages/home/home.wxml-->
-
-  <view class='home-header'>
-    <view class='my_container flex-row-center'>
-      <image  class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      <van-button round type="danger" class='flex-end' custom-class="header-btn" wx:if='{{home_type!=4}}' bindtap='goToBigData'>溯源大数据></van-button>
-    </view>
-    <image src='../../img/bg.png' class="home-bg-img"></image>
-    <image src='../../img/banner.jpg' class="header-img"></image>
-  </view>
-  
-<van-cell-group class='my-van-cell-group'>
-  <view class='home-content' name="商家首页" wx:if="{{home_type=='factory'}}">
-    <view class='flex-row-center content-hover'>
-      <image src='../../img/regest.png' class="cell-left-img"></image>
-      <van-cell class='home-cell'
-        title="邀请下一级经销商注册"
-        label="邀请后，可发货给你的下级经销商，防止窜货"
-        url="/pages/regest/next_regest/next_regest"
-        clickable
-      />
-      <image src='../../img/Chevron.png' class="cell-right-img"></image>
-    </view>
-    <view class='flex-row-center'>
-    <image src='../../img/bigdata.png' class="cell-left-img"></image>
-      <van-cell class='home-cell'
-        label="购买、定制二维码"
-        url="/pages/shop/shop"
-        clickable>
-        <view slot="title">
-            <view class="van-cell-text">溯源二维码商店<van-tag type="danger">5</van-tag></view>
-            <view class='home-label'>购买、定制二维码</view>
-        </view>
-      </van-cell>
-      <image src='../../img/Chevron.png' class="cell-right-img"></image>
-    </view>
-    <view class='flex-row-center content-hover'>
-    <image src='../../img/icon_my_order.png' class="cell-left-img"></image>
-      <van-cell class='home-cell'
-        url="/pages/order_manage/order_manage"
-        border="{{ false }}"
-        clickable>
-        <view slot="title">
-            <view class="van-cell-text">我的订单<van-tag type="danger">5</van-tag></view>
-            <view class='home-label'>时刻了解订单进展，畅想溯源防伪服务</view>
-        </view>
-        </van-cell>
-      <image src='../../img/Chevron.png' class="cell-right-img"></image>
-    </view> 
-  </view>
-  <view class='home-content' name="平台账号首页" wx:if="{{home_type=='platform'}}">
-    <view class='flex-row-center content-hover'>
-      <image src='../../img/zhaomu.png' class="cell-left-img"></image>
-      <van-cell class='home-cell'
-        title="招聘销售员"
-        label="销售人员认证后可以促成商家采购溯源防伪方案"
-        url="/pages/invatSalesman/invatSalesman"
-        clickable
-      />
-      <image src='../../img/Chevron.png' class="cell-right-img"></image>
-    </view>
-    <view class='flex-row-center'>
-    <image src='../../img/regest.png' class="cell-left-img"></image>
-      <van-cell class='home-cell'
-        title="邀请厂家注册"
-        label="成功邀请的生产厂家，他的所有订单你能从中获益"
-        url="/pages/invataFactory/invatFactory"
-        clickable
-      />
-      <image src='../../img/Chevron.png' class="cell-right-img"></image>
-    </view>
-    <view class='flex-row-center content-hover'>
-    <image src='../../img/icon_my_order.png' class="cell-left-img"></image>
-      <van-cell class='home-cell'
-        title="我的订单"
-        label="时刻了解订单变化，推进交易进行"
-        url="/pages/order_manage/order_manage"
-        border="{{ false }}"
-        clickable
-      />
-      <image src='../../img/Chevron.png' class="cell-right-img"></image>
-    </view> 
-  </view>
-  <view class='home-content' name="销售账号首页" wx:if="{{home_type=='salesman'}}">
-    <view class='flex-row-center content-hover'>
-      <image src='../../img/new_order.png' class="cell-left-img"></image>
-      <van-cell class='home-cell'
-        title="生成新订单"
-        label="销售人员认证后可以促成商家采购溯源防伪方案"
-        url="/pages/shop/shop"
-        clickable
-      />
-      <image src='../../img/Chevron.png' class="cell-right-img"></image>
-    </view>
-    <view class='flex-row-center'>
-    <image src='../../img/regest.png' class="cell-left-img"></image>
-      <van-cell class='home-cell'
-        title="邀请厂家注册"
-        label="成功邀请的生产厂家，他的所有订单你能从中获益"
-        url="/pages/invataFactory/invatFactory"
-        clickable
-      />
-      <image src='../../img/Chevron.png' class="cell-right-img"></image>
-    </view>
-    <view class='flex-row-center content-hover'>
-    <image src='../../img/icon_my_order.png' class="cell-left-img"></image>
-      <van-cell class='home-cell'
-        title="我的订单"
-        label="时刻了解订单变化，推进交易进行"
-        url="/pages/order_manage/order_manage"
-        border="{{ false }}"
-        clickable
-      />
-      <image src='../../img/Chevron.png' class="cell-right-img"></image>
-    </view> 
-  </view>
-  <view class='home-content' name="无账号首页 " wx:if="{{home_type==4}}">
-    <view class='flex-row-center content-hover'>
-      <image src='../../img/courier.png' class="cell-left-img"></image>
-      <van-cell class='home-cell'
-        title="成为快递员"
-        label="销售人员认证后可以促成商家采购溯源防伪方案"
-        url="/pages/regest/courier_regest/courier_regest"
-        clickable
-      />
-      <image src='../../img/Chevron.png' class="cell-right-img"></image>
-    </view>
-    <view class='flex-row-center'>
-    <image src='../../img/partner.png' class="cell-left-img"></image>
-      <van-cell class='home-cell'
-        title="成为销售合伙人"
-      label="成功邀请的生产厂家，他的所有订单你能从中获益"
-      url="/pages/regest/partner_regest/partner_regest"
-        clickable
-      />
-      <image src='../../img/Chevron.png' class="cell-right-img"></image>
-    </view>
-    <view class='flex-row-center content-hover'>
-    <image src='../../img/bussiness.png' class="cell-left-img"></image>
-      <van-cell class='home-cell'
-        title="认证商家"
-        label="因为我们溯源无死角，所有假货无处藏身"
-        url="/pages/regest/regest"
-        border="{{ false }}"
-        clickable
-      />
-      <image src='../../img/Chevron.png' class="cell-right-img"></image>
-    </view> 
-  </view>
-   <view class='home-content' name="快递员账号首页 " wx:if="{{home_type==5}}">
-    <view class='flex-row-center content-hover'>
-      <image src='../../img/saoma.png' class="cell-left-img"></image>
-      <van-cell class='home-cell'
-        title="扫码取件"
-      label="销售人员认证后可以促成商家采购溯源防伪方案"
-        clickable
-      />
-      <image src='../../img/Chevron.png' class="cell-right-img"></image>
-    </view>
-    <view class='flex-row-center'>
-    <image src='../../img/partner.png' class="cell-left-img"></image>
-      <van-cell class='home-cell'
-        title="成为销售合伙人"
-      label="成功邀请的生产厂家，他的所有订单你能从中获益"
-      url="/pages/regest/partner_regest/partner_regest"
-        clickable
-      />
-      <image src='../../img/Chevron.png' class="cell-right-img"></image>
-    </view>
-    <view class='flex-row-center content-hover'>
-    <image src='../../img/bigdata.png' class="cell-left-img"></image>
-      <van-cell class='home-cell'
-        title="溯源大数据"
-        label="因为我们溯源无死角，所有假货无处藏身"
-        border="{{ false }}"
-        clickable
-      />
-      <image src='../../img/Chevron.png' class="cell-right-img"></image>
-    </view> 
-  </view>
-  
-</van-cell-group>
-<button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
-<view class='footer flex-row' wx:if="{{home_type=='factory'}}">
-    <view class='footer-item flex-column-center' bindtap='jump'>
-      <image src='../../img/icon-mendian.png' class='footer-img'></image>
-      <view class='footer-text'>店铺</view>
-    </view>
-    <view class='footer-item flex-column-center center-item-border' bindtap='check'>
-      <image src='../../img/icon-yanhuo.png' class='footer-img'></image>
-      <view class='footer-text'>验货</view>
-    </view>
-    <view class='footer-item flex-column-center' bindtap='send'>
-      <image src='../../img/icon-fahuo.png' class='footer-img'></image>
-      <view class='footer-text'>发货</view>
-    </view>
-</view>
->>>>>>> b0e09e479061dcd3220163967fb333d856d600bd
