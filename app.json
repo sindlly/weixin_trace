@@ -1,10 +1,8 @@
 {
   "pages": [
-  
     "pages/send/send",
     "pages/home/home",
     "pages/invatBussiness/invatBussiness",
-    
     "pages/scode_manage/scode_manage",
     "pages/invatSalesman/invatSalesman",
     "pages/shop/shop",
