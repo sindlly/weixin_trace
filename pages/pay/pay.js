@@ -9,28 +9,28 @@ Page({
    */
   data: {
     baseUrl: baseUrl,
-    id:'',
-    imgSrc:'',
-    trade:{
-      sponsor:null,
-      voucher:null,
-      type:null,
-      number:null
+    id: '',
+    imgSrc: '',
+    trade: {
+      sponsor: null,
+      voucher: null,
+      type: null,
+      number: null
     },
     status: '', // FIRST_PAYED 首付已付
   },
 
-  onChange: function (e) {
+  onChange: function(e) {
     let dataset = e.target.dataset
     this.data[dataset.obj][dataset.item] = e.detail
   },
-  uploadImg: function () {
+  uploadImg: function() {
     var _this = this;
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
-      success: function (res) {
+      success: function(res) {
         _this.data.trade.voucher = res.tempFilePaths[0]
         _this.setData({
           imgSrc: res.tempFilePaths[0],
@@ -38,7 +38,7 @@ Page({
       }
     })
   },
-  commit: function () {
+  commit: function() {
     let _this = this
     // _this.validate(this.data.trade)
     if (_this.validate(this.data.trade)) {
@@ -61,9 +61,9 @@ Page({
               'content-type': 'application/json'
             },
             data: {
-              status: _this.data.trade.type == "ALL_PAYED" ? "ALL_PAYED" :"FIRST_PAYED",
-              trade:[_this.data.trade]
-              
+              status: _this.data.trade.type == "ALL_PAYED" ? "ALL_PAYED" : "FIRST_PAYED",
+              trade: [_this.data.trade]
+
             },
             success(res) {
               if (res.data.code == 0) {
@@ -79,8 +79,7 @@ Page({
                     }
                   }
                 })
-              }
-              else {
+              } else {
                 wx.showToast({
                   title: res.data.msg,
                   icon: 'none',
@@ -88,14 +87,14 @@ Page({
                 })
               }
             },
-            catch(res){
+            catch (res) {
               wx.showToast({
                 title: res.msg,
                 icon: 'none',
                 duration: 1000
               })
             }
-        
+
           })
         }
       })
@@ -108,7 +107,7 @@ Page({
     //校验有空数据
     // debugger;
     for (let i in data) {
-      console.log(i+":"+data[i])
+      console.log(i + ":" + data[i])
       if (!data[i]) {
         flag = false
         wx.showToast({
@@ -121,13 +120,13 @@ Page({
     }
     return flag
   },
-  onLoad: function (options) {
+  onLoad: function(options) {
     let id = options.id
     let _this = this
     _this.data.id = id;
     wx.request({
       url: baseUrl + '/orders/' + id + '?embed=salesman',
-      success: function (res) {
+      success: function(res) {
         let data = res.data.data.data
         _this.data.status = res.data.data.data.status
         if (_this.data.status == "FIRST_PAYED") {
@@ -139,7 +138,7 @@ Page({
             title: '付款明细'
           })
         }
-        _this.data.trade.type = data.isStagePay ?"FIRST_PAYED":"ALL_PAYED"  //是否是定制商品，定制商品需首付，一般商品付全款
+        _this.data.trade.type = data.isStagePay ? "FIRST_PAYED" : "ALL_PAYED" //是否是定制商品，定制商品需首付，一般商品付全款
         _this.setData({
           goods: data,
           status: res.data.data.data.status
@@ -152,49 +151,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

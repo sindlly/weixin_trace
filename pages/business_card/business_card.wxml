@@ -1,22 +1,22 @@
 <!--pages/business_card/business_card.wxml-->
-<van-panel style='backgroud:#fff'>
-    <view class='img-title'>上传产品图片</view>
-    <view class='img-container'  bindtap="uploadImg" wx:if="{{!imgSrc}}" style='backgroud:#fff'>
-      <image mode='aspectFit' src="../../img/+.png" style='width:50rpx;height:51rpx'></image>
-    </view>
-    <view class="my_center_container" bindtap="uploadImg" style='backgroud:#fff'>
-      <image mode='aspectFit' src="{{imgSrc}}" wx:if="{{imgSrc}}"></image>
+<!-- <van-panel style='backgroud:#fff'>
+  <view class='img-title'>上传产品图片</view>
+  <view class='img-container' bindtap="uploadImg" wx:if="{{!imgSrc}}" style='backgroud:#fff'>
+    <image mode='aspectFit' src="../../img/+.png" style='width:50rpx;height:51rpx'></image>
   </view>
-</van-panel>
+  <view class="my_center_container" bindtap="uploadImg" style='backgroud:#fff'>
+    <image mode='aspectFit' src="{{imgSrc}}" wx:if="{{imgSrc}}"></image>
+  </view>
+</van-panel> -->
 <van-panel style='backgroud:#fff'>
-    <view class='img-title'>上传广告图片</view>
-    <view class='img-container'  bindtap="uploadImg" wx:if="{{!imgSrc}}" style='backgroud:#fff'>
-      <image mode='aspectFit' src="../../img/+.png" style='width:50rpx;height:51rpx'></image>
-    </view>
-    <view class="my_center_container" bindtap="uploadImg" style='backgroud:#fff'>
-      <image mode='aspectFit' src="{{imgSrc}}" wx:if="{{imgSrc}}"></image>
+  <view class='img-title'>上传广告图片</view>
+  <view class='img-container' bindtap="uploadImg" wx:if="{{!imgSrc}}" style='backgroud:#fff'>
+    <image mode='aspectFit' src="../../img/+.png" style='width:50rpx;height:51rpx'></image>
+  </view>
+  <view class="my_center_container" bindtap="uploadImg" style='backgroud:#fff'>
+    <image mode='aspectFit' src="{{imgSrc}}" wx:if="{{imgSrc}}"></image>
   </view>
 </van-panel>
 <view class='my_center_container'>
-  <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>完成</van-button>
+  <van-button type="danger" class='commit-btn' size="large" bindtap='commit'>完成</van-button>
 </view>

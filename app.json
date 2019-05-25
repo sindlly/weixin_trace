@@ -1,10 +1,11 @@
 {
   "pages": [
-    "pages/send/send",
+    "pages/business_card/business_card",
     "pages/home/home",
-    "pages/invatBussiness/invatBussiness",
-    "pages/scode_manage/scode_manage",
     "pages/invatSalesman/invatSalesman",
+    "pages/invatBussiness/invatBussiness",
+    "pages/send/send",
+    "pages/scode_manage/scode_manage",
     "pages/shop/shop",
     "pages/order_manage/order_manage",
     "pages/courier/courier",
@@ -13,7 +14,6 @@
     "pages/intro/intro",
     "pages/order_manage/goods_detail/goods_detail",
     "pages/order/order",
-    "pages/business_card/business_card",
     "pages/regest/next_regest/next_regest",
     "pages/regest/partner_regest/partner_regest",
     "pages/regest/courier_regest/courier_regest",

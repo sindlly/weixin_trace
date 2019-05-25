@@ -1,5 +1,6 @@
 /**app.wxss**/
 @import "./miniprogram_npm/vant-weapp/common/index.wxss";
+
 .container {
   height: 100%;
   display: flex;
@@ -8,45 +9,59 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
-} 
-.my_container{
+}
+
+.my_container {
   padding: 20rpx;
- }
- .my_center_container{
-   padding: 20rpx;
-   text-align: center
- }
- page{
-  background: rgb(252, 249, 249);
+}
+
+.my_center_container {
+  padding: 20rpx;
+  text-align: center;
+}
+
+page {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  /* background: silver; */
   font-family: PingFangSC-Medium;
 }
+
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
   margin: 20rpx;
   border-radius: 50%;
-  border: 2px solid #fff
+  border: 2px solid #fff;
 }
+
 /* flex 水平 */
+
 .flex-row {
   display: flex;
   flex-direction: row;
-  
 }
+
 /* flex 水平居中 */
+
 .flex-row-center {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
+
 /* flex 垂直居中 */
+
 .flex-column-center {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 /* 上下间隔30rpx */
-.height-30{
+
+.height-30 {
   width: 100%;
-  height: 30rpx
+  height: 30rpx;
 }
