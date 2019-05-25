@@ -5,8 +5,7 @@
     "van-switch-cell": "../../../miniprogram_npm/vant-weapp/switch-cell/index",
     "van-cell": "../../../miniprogram_npm/vant-weapp/cell/index",
     "van-panel": "../../../miniprogram_npm/vant-weapp/panel/index",
-    "van-field": "../../../miniprogram_npm/vant-weapp/field/index",
     "van-button": "../../../miniprogram_npm/vant-weapp/button/index"
   },
-  "navigationBarTitleText": "发货"
+  "navigationBarTitleText": "绑定商品"
 }

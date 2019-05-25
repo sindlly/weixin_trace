@@ -1,0 +1,21 @@
+/* pages/check/check.wxss */
+.custom-icon{
+  font-size: 36rpx !important;
+}
+.my_picker{
+  width: 100%;
+  position: fixed !important;
+  bottom: 0
+}
+.icon-delete{
+  margin-left: 40rpx;
+}
+.commit-btn button{
+  margin-top: 48rpx;
+  background: #1C92FF;
+  border-radius: 40.5px;
+  width: 580rpx;
+  height: 81rpx;
+  line-height: 81rpx;
+  border: none;
+}
