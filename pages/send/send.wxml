@@ -4,14 +4,31 @@
   checked="{{ switch_checked }}"
   bind:change="switchOnChange"
 />
-<van-cell title="添加商品">
+<van-cell title="选择经销商" wx:if="{{ switch_checked }}">
   <van-icon slot="right-icon" name="add-o" class="custom-icon" bindtap='openPicker' />
 </van-cell>
-<view wx:for-items='{{goods}}' wx:key="{{item}}">
-<van-cell title="{{item.text}}" value="{{item.value}}" >
-  <van-icon slot="right-icon" name="delete" class="custom-icon  icon-delete" data-index='{{index}}' bindtap='deleteGoods' />
-</van-cell>
-</view>
+
+<van-panel title="商品列表" status="已绑定商品">
+    <view wx:for-items='{{bind_goods}}' wx:key="{{item}}">
+      <van-cell title="{{item.name}}" value="{{item.barcode}}" >
+      <van-icon slot="right-icon" name="delete" class="custom-icon  icon-delete" data-index='{{index}}' bindtap='deleteGoods' />
+      </van-cell>
+    </view>
+</van-panel>
+
+<van-field
+    value="{{ barcode }}"
+    clearable
+    label="快递单号"
+    placeholder="请输入或扫描快递单号"
+    bind:change="scodeInput"
+    use-button-slot
+    data-obj="scode"
+    data-item="barcode"
+    bind:blur="onChange"
+  >
+  <van-button slot="button" size="small" type="primary" bindtap='getScode'>扫描条形码</van-button>
+  </van-field>
 <view class='my_center_container'>
   <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>提交</van-button>
 </view>
@@ -20,7 +37,7 @@
   wx:if='{{showPicker}}' 
   columns="{{ columns }}"
   show-toolbar
-  title="商品名称"
+  title="经销商名称"
   bind:confirm="picked"
   bind:cancel="onCancel"
   custom-class="{{'my_picker'}}"

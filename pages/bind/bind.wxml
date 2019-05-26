@@ -1,0 +1,33 @@
+<!--pages/check/check.wxml-->
+<van-cell title="溯源A码:" value="{{id}}">
+</van-cell>
+<van-cell title="添加商品" wx:if='{{!isBind}}'>
+  <van-icon slot="right-icon" name="add-o" class="custom-icon" bindtap='openPicker' />
+</van-cell>
+<view wx:for-items='{{goods}}' wx:key="{{item}}">
+<van-cell title="{{item.text}}" value="{{item.value}}" >
+  <van-icon slot="right-icon" name="delete" class="custom-icon  icon-delete" data-index='{{index}}' bindtap='deleteGoods' />
+</van-cell>
+</view>
+<!-- 已绑定商品，只展示 -->
+<van-panel title="商品列表" wx:if='{{isBind}}' >
+    <view wx:for-items='{{bind_goods}}' wx:key="{{item}}">
+      <van-cell title="{{item.name}}" value="{{item.barcode}}" >
+      </van-cell>
+    </view>
+</van-panel>
+
+<view class='my_center_container'>
+  <van-button wx:if='{{!isBind}}' type="danger" class='commit-btn'  size="large" bindtap='commit'>提交</van-button>
+  <van-button wx:if='{{isBind}}' type="danger" class='commit-btn'  size="large" bindtap='gohome'>返回首页</van-button>
+</view>
+
+<van-picker 
+  wx:if='{{showPicker}}' 
+  columns="{{ columns }}"
+  show-toolbar
+  title="商品名称"
+  bind:confirm="picked"
+  bind:cancel="onCancel"
+  custom-class="{{'my_picker'}}"
+/>

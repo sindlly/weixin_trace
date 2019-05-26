@@ -1,7 +1,6 @@
 // pages/check/check.js
 const app = getApp();
 const baseUrl = app.globalData.HOST;
-
 Page({
 
   /**
@@ -15,8 +14,8 @@ Page({
     showPicker:false,
     columns: [{text:'杭州',value:"23445"}, '宁波', '温州', '嘉兴', '湖州'],
     goods:[],
-    bind_goods:[],
-    barcode:''
+    isBind:false,
+    bind_goods:[]
   },
 
   /**
@@ -58,19 +57,17 @@ Page({
       goods:goods_temp
     })
   },
-  getScode: function () {
-    const _this = this;
-    // 允许从相机和相册扫码
-    wx.scanCode({
-      success: (res) => {
-        console.log(res)
-        _this.setData({
-          barcode: res.result
-        })
-      }
+  gohome:function(){
+    wx.reLaunch({
+      url: '/pages/home/home',
     })
   },
   commit:function(){
+    wx.showToast({
+      title: '成功',
+      icon: 'success',
+      duration: 2000
+    })
     let _this = this
     let goods = this.data.goods
     let products = []
@@ -86,19 +83,31 @@ Page({
       method:'put',
       data:commitData,
       success:function(){
-        
+        wx.showToast({
+          title: '绑定成功',
+          icon: 'success',
+          duration: 2000,
+          success:()=>{
+            wx.reLaunch({
+              url: '/pages/home/home',
+            })
+          }
+        })
       }
     })
   },
   onLoad: function (options) {
-    let id = options.id || '0110c64a7cb7f8048e6a1071095c3926d64209dfe2e600c021616b15aa5b7a088c385a526970c3910e249d847e61f90248935ca77aa733019dccf880b3adb97ed9'
-    this.data.id = id
+    let id = options.id || '762ed648-0877-49b0-a0c0-f6aef0c16552'
+    this.setData({
+      id : id
+    })
     wx.request({
       url: baseUrl +'/tracings/'+id,
       success:res=>{
-        this.setData({
-          bind_goods:res.data.data.data.products
-        })
+          this.setData({
+            isBind: res.data.data.data.state =="UNBIND"?false:true,
+            bind_goods:res.data.data.data.products
+          })
       }
     })
     wx.request({
