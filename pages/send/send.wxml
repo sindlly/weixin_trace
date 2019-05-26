@@ -7,16 +7,44 @@
 <van-cell title="选择经销商" wx:if="{{ switch_checked }}">
   <van-icon slot="right-icon" name="add-o" class="custom-icon" bindtap='openPicker' />
 </van-cell>
-
+<van-cell title="{{business_name}}" wx:if="{{ business_name }}">
+  
+</van-cell>
+<view class='height-30'></view>
 <van-panel title="商品列表" status="已绑定商品">
     <view wx:for-items='{{bind_goods}}' wx:key="{{item}}">
       <van-cell title="{{item.name}}" value="{{item.barcode}}" >
-      <van-icon slot="right-icon" name="delete" class="custom-icon  icon-delete" data-index='{{index}}' bindtap='deleteGoods' />
       </van-cell>
     </view>
 </van-panel>
+<view class='height-30'></view>
+<van-panel title="客户信息" wx:if="{{ !switch_checked }}">
+  <van-field
+    label="客户姓名:"
+    placeholder="请输入客户姓名"
+    bind:blur="onChange"
+    data-obj="record"
+    data-item="reciver_name"
+  />
+  <van-field
+    bind:blur="onChange"
+    label="客户电话:"
+    placeholder="请输入电话号码"
+    data-obj="record"
+    data-item="reciver_phone"
+  />
+  <van-field
+    bind:blur="onChange"
+    label="收货地址:"
+    placeholder="请输入收货地址"
+    data-obj="record"
+    data-item="reciver_address"
+  />
+      
+</van-panel>
 
-<van-field
+<!-- <view class='height-30'></view> -->
+<!-- <van-field
     value="{{ barcode }}"
     clearable
     label="快递单号"
@@ -28,7 +56,7 @@
     bind:blur="onChange"
   >
   <van-button slot="button" size="small" type="primary" bindtap='getScode'>扫描条形码</van-button>
-  </van-field>
+  </van-field> -->
 <view class='my_center_container'>
   <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>提交</van-button>
 </view>

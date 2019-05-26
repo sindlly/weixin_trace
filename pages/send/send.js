@@ -11,12 +11,15 @@ Page({
     id:'',
     baseUrl: baseUrl,
     switch_title:'发货至经销商',
-    switch_checked:true,
+    switch_checked:true,   //true：发送至经销商，false：发送至C端客户
     showPicker:false,
     columns: [{text:'杭州',value:"23445"}, '宁波', '温州', '嘉兴', '湖州'],
     goods:[],
     bind_goods:[],
-    barcode:''
+    barcode:'',
+    record:{},
+    business_id:'',
+    business_name:null,
   },
 
   /**
@@ -25,8 +28,14 @@ Page({
   switchOnChange:function(e){
     this.setData({
       switch_title: e.detail ? '发货至经销商' :'发货给消费者',
-      switch_checked: e.detail
+      switch_checked: e.detail,
+      business_name:null
     })
+  },
+  onChange: function (e) {
+    console.log(e)
+    let dataset = e.target.dataset
+    this.data[dataset.obj][dataset.item] = e.detail.value
   },
   openPicker:function(){
     this.setData({
@@ -38,11 +47,12 @@ Page({
     const { picker, value, index } = event.detail
     let goods_temp = this.data.goods
     goods_temp.push(value)
-    console.log(goods_temp);
+    console.log("id:"+event.detail.value.value);
     this.setData({
       showPicker:false,
-      goods:goods_temp
-      
+      goods:goods_temp,
+      business_id: event.detail.value.value,
+      business_name: event.detail.value.text
     })
   },
   onCancel:function(){
@@ -72,19 +82,22 @@ Page({
   },
   commit:function(){
     let _this = this
-    let goods = this.data.goods
-    let products = []
-    for (let i=0;i<goods.length;i++){
-      products[i] = goods[i].value
+    _this.data.record.reciver_type="consumer"
+    let comsumerData ={
+      operation:"send",
+      record: _this.data.record
     }
-    let commitData = {
-      operation:'bind',
-      products:products,
+    let businessData ={
+      operation: "send",
+      record: {
+        reciver_type: 'business',
+        reciver: _this.data.business_id, //经销商ID
+      }
     }
     wx.request({
       url: baseUrl + '/tracings/' + _this.data.id,
       method:'put',
-      data:commitData,
+      data: _this.data.switch_checked ? businessData : comsumerData,
       success:function(){
         
       }
@@ -102,16 +115,18 @@ Page({
       }
     })
     wx.request({
-      url: baseUrl +'/barcodes',
+      url: baseUrl +'/users/'+wx.getStorageSync('userInfo').user_id+"/businesses",
       success:res =>{
         let temp = res.data.data.data
+        
         let goods_temp = []
         for(let i=0;i<temp.length;i++){
           goods_temp[i] = {
-            text:temp[i].name,
+            text: temp[i].business.name,
             value:temp[i]._id,
           }
         }
+        console.log(goods_temp)
         this.setData({
           columns: goods_temp
         })
