@@ -36,6 +36,16 @@ Page({
             case "UNBIND": //未绑定商品
                 // todo 
                 // 提示未绑定商品
+                wx.hideLoading();
+                wx.showToast({
+                  title: '未绑定商品',
+                  duration: 2000,
+                  success:function(){
+                    wx.reLaunch({
+                      url: '/pages/home/home',
+                    })
+                  }
+                })
                 break;
             case "BIND": 
               //TODO
