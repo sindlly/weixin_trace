@@ -1,9 +1,10 @@
 {
   "pages": [
     "pages/tracing/tracing",
+    "pages/home/home",
     "pages/send/send",
     "pages/bind/bind",
-    "pages/home/home",
+    
     "pages/business_card/business_card",
     "pages/invatSalesman/invatSalesman",
     "pages/invatBussiness/invatBussiness",

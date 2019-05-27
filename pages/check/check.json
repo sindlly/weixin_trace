@@ -3,6 +3,7 @@
     "van-card": "../../../miniprogram_npm/vant-weapp/card/index",
     "van-cell": "../../../miniprogram_npm/vant-weapp/cell/index",
     "van-panel": "../../../miniprogram_npm/vant-weapp/panel/index",
+    "van-steps": "../../../miniprogram_npm/vant-weapp/steps/index",
     "van-button": "../../../miniprogram_npm/vant-weapp/button/index"
   },
   "navigationBarTitleText": "验证商品"
