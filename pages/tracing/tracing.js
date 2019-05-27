@@ -46,7 +46,7 @@ Page({
             case "SEND": //经销商已发货
               //TODO
               wx.reLaunch({
-                url: '/pages/send/send?id=' + id,
+                url: '/pages/check/check?id=' + id,
               })
               break;
             case "EXPRESSED": //已绑定快递信息

@@ -1,18 +1,51 @@
 // pages/check/check.js
+const app = getApp();
+const baseUrl = app.globalData.HOST;
+const util = require('../../utils/util.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    baseUrl: baseUrl,
+    bind_goods:[],
+    active: -1,
+    steps: [
+      
+    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    let id = options.id || '0110c64a7cb7f8048e6a1071095c3926d64209dfe2e600c021616b15aa5b7a088c385a526970c3910e249d847e61f90248935ca77aa733019dccf880b3adb97ed9'
+    this.data.id = id
+    wx.request({
+      url: baseUrl + '/tracings/' + id,
+      success: res => {
+        let records = res.data.data.data.records;
+        let steps_temp = []
+        for(let i=0;i<records.length;i++){
+          steps_temp[i] ={
+            text: records[i].sender,
+            desc: util.convertUTCTimeToLocalTime(records[i].send_at),
+          }
+          if (i == records.length -1){
+            steps_temp[i+1] = {
+              text: records[i].reciver,
+            }
+          }
+        }
+
+        
+        this.setData({
+          bind_goods: res.data.data.data.products,
+          steps: steps_temp
+        })
+      }
+    })
   },
 
   /**
