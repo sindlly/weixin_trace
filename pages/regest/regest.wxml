@@ -1,91 +1,31 @@
 <!--pages/regest/regest.wxml-->
-  <view class=''>
-    <van-cell-group>
-    <!-- <van-field
-      value=""
-      required
-      disabled
-      clearable
-      label="上传营业执照"
-      left-icon="photo-o"
-      icon="add-o"
-      placeholder=""
-      bind:click-icon="uploadImg"
-    />
-    <view class="my_center_container">
-      <image mode='aspectFit' src="{{imgUrl}}" wx:if="{{imgUrl}}"></image>
-    </view> -->
-    <van-field
-      value="{{ factory.name }}"
-      placeholder="请输入厂家名称"
-      data-obj="factory"
-      data-item="name"
-      bind:change="onChange"
-    />
-    <van-field
-      value="{{ factory.public_account }}"
-      placeholder="请输入对公账户"
-      data-obj="factory"
-      data-item="public_account"
-      bind:change="onChange"
-    />
-    <van-field
-      value="{{ factory.email }}"
-      placeholder="请输入电子邮箱"
-      bind:change="onChange"
-      data-obj="factory"
-      data-item="email"
-    />
-    <van-field
-      value="{{ factory.contact }}"
-      placeholder="请输入负责人名称"
-      bind:change="onChange"
-      data-obj="factory"
-      data-item="contact"
-    />
-    <van-field
-      value="{{ factory.phone }}"
-      placeholder="请输入手机号码"
-      bind:change="onChange"
-      data-obj="factory"
-      data-item="phone"
-    />
+<view class=''>
+  <van-cell-group>
+    <van-field value="{{ factory.name }}" placeholder="请输入厂家名称" data-obj="factory" data-item="name" bind:change="onChange" />
+    <van-field value="{{ factory.public_account }}" placeholder="请输入对公账户" data-obj="factory" data-item="public_account" bind:change="onChange" />
+    <van-field value="{{ factory.email }}" placeholder="请输入电子邮箱" bind:change="onChange" data-obj="factory" data-item="email" />
+    <van-field value="{{ factory.contact }}" placeholder="请输入负责人名称" bind:change="onChange" data-obj="factory" data-item="contact" />
+    <van-field value="{{ factory.phone }}" placeholder="请输入负责人手机号码" bind:change="onChange" data-obj="factory" data-item="phone" />
   </van-cell-group>
 </view>
 <view class='' style='margin-top:15px'>
-    <van-cell-group>
-      <van-field
-        value="{{ factory.receiving_info.name }}"
-        placeholder="请输入收货人姓名"
-        bind:change="onChange2"
-        data-obj="factory.receiving_info.name"
-      />
-      <van-field
-        value="{{ factory.receiving_info.phone }}"
-        placeholder="请输入收货人手机号"
-        bind:change="onChange2"
-        data-obj="factory.receiving_info.phone"
-      />
-      <van-field
-        value="{{ factory.receiving_info.address }}"
-        border="{{ false }}"
-        placeholder="请输入收货地址"
-        bind:change="onChange2"
-        data-obj="factory.receiving_info.address"
-      />
+  <van-cell-group>
+    <van-field value="{{ factory.receiving_info.address }}" border="{{ false }}" placeholder="请输入收货地址" bind:change="onChange2" data-obj="factory.receiving_info.address" />
+    <van-field value="{{ factory.receiving_info.name }}" placeholder="请输入收货人姓名" bind:change="onChange2" data-obj="factory.receiving_info.name" />
+    <van-field value="{{ factory.receiving_info.phone }}" placeholder="请输入收货人手机号" bind:change="onChange2" data-obj="factory.receiving_info.phone" />
   </van-cell-group>
   <van-panel style='backgroud:#fff'>
-          <view class='img-title'>上传企业营业执照</view>
-          <view class='img-container'  bindtap="uploadImg" wx:if="{{!imgSrc}}" style='backgroud:#fff'>
-            <image mode='aspectFit' src="../../img/+.png" style='width:50rpx;height:51rpx'></image>
-          </view>
-         <view class="my_center_container" bindtap="uploadImg" style='backgroud:#fff'>
-            <image mode='aspectFit' src="{{imgSrc}}" wx:if="{{imgSrc}}"></image>
-        </view>
-      </van-panel>
-  </view>
+    <view class='img-title'>上传企业营业执照</view>
+    <view class='img-container' bindtap="uploadImg" wx:if="{{!imgSrc}}" style='backgroud:#fff'>
+      <image mode='aspectFit' src="../../img/+.png" style='width:50rpx;height:51rpx'></image>
+    </view>
+    <view class="my_center_container" bindtap="uploadImg" style='backgroud:#fff'>
+      <image mode='aspectFit' src="{{imgSrc}}" wx:if="{{imgSrc}}"></image>
+    </view>
+  </van-panel>
+</view>
 <view class='my_center_container'>
-  <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>完成</van-button>
+  <van-button type="danger" class='commit-btn' size="large" bindtap='commit'>完成</van-button>
   <view class='tips'>合作协议细则></view>
 </view>
 <van-dialog id="van-dialog" />

@@ -1,52 +1,23 @@
 <!--pages/regest/regest.wxml-->
 
-
 <view class=''>
-    <van-cell-group style='backgroud:#fff'>
-    <van-field
-        value=""
-        placeholder="所属快递公司名称"
-        bind:blur="onChange"
-        data-obj="courier"
-        data-item="company"
-        error-message="{{errorMsg.com}}"
-      />
-      <van-field
-        value=""
-    
-        placeholder="请输入姓名"
-        bind:blur="onChange"
-        data-obj="courier"
-        data-item="name"
-      />
-      <van-field
-        value=""
-        
-        placeholder="手机号"
-        bind:blur="onChange"
-        data-obj="courier"
-        data-item="phone"
-      />
-      <van-field
-        value=""
-        placeholder="电子邮件"
-        bind:blur="onChange"
-        data-obj="courier"
-        data-item="email"
-      />
-      <van-panel>
-          <view class='img-title'>快递员工作证（正面照）</view>
-          <view class='img-container'  bindtap="uploadImg" wx:if="{{!imgSrc}}" style='backgroud:#fff'>
-            <image mode='aspectFit' src="../../../img/+.png" style='width:50rpx;height:51rpx'></image>
-          </view>
-         <view class="my_center_container" bindtap="uploadImg" style='backgroud:#fff'>
-            <image mode='aspectFit' src="{{imgSrc}}" wx:if="{{imgSrc}}"></image>
-        </view>
-      </van-panel>
-    
+  <van-cell-group style='backgroud:#fff'>
+    <van-field value="" placeholder="请输入您的姓名" bind:blur="onChange" data-obj="courier" data-item="name" />
+    <van-field value="" placeholder="请输入您的手机号" bind:blur="onChange" data-obj="courier" data-item="phone" />
+    <van-field value="" placeholder="请输入您的邮箱地址" bind:blur="onChange" data-obj="courier" data-item="email" />
+    <van-field value="" placeholder="请输入您所属快递公司名称" bind:blur="onChange" data-obj="courier" data-item="company" error-message="{{errorMsg.com}}" />
+    <van-panel>
+      <view class='img-title'>快递员工作证（正面照）</view>
+      <view class='img-container' bindtap="uploadImg" wx:if="{{!imgSrc}}" style='backgroud:#fff'>
+        <image mode='aspectFit' src="../../../img/+.png" style='width:50rpx;height:51rpx'></image>
+      </view>
+      <view class="my_center_container" bindtap="uploadImg" style='backgroud:#fff'>
+        <image mode='aspectFit' src="{{imgSrc}}" wx:if="{{imgSrc}}"></image>
+      </view>
+    </van-panel>
   </van-cell-group>
-  </view>
+</view>
 <view class='my_center_container'>
-  <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>完成</van-button>
+  <van-button type="danger" class='commit-btn' size="large" bindtap='commit'>完成</van-button>
   <view class='tips'>合作协议细则></view>
 </view>
