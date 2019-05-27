@@ -39,6 +39,7 @@ Page({
               user_id = res.data.data.data.user._id
             }
             wx.setStorageSync('userInfo', Object.assign(userInfo, { role_type: role_type, user_id: user_id }))
+            console.log(wx.getStorageSync('userInfo'))
             wx.reLaunch({
               url: '/pages/home/home',
             })
@@ -117,7 +118,8 @@ Page({
     let _this = this;
     app.userInfoReadyCallback = res => {
       console.log(res)
-      this.setData({
+      // debugger
+      _this.setData({
         userInfo: res,
       })
       // 确认用户类型

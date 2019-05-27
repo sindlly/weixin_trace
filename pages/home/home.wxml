@@ -10,7 +10,7 @@
 </view>
 <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
 <van-cell-group class='my-van-cell-group'>
-  <view class='home-content' name="商家首页" wx:if="{{home_type=='factory'}}">
+  <view class='home-content' name="商家首页" wx:if="{{home_type=='factory'||'business'}}">
     <view class='flex-row-center content-hover'>
       <image src='../../img/regest.png' class="cell-left-img"></image>
       <van-cell class='home-cell' title="邀请下一级经销商注册" label="邀请后，可发货给你的下级经销商，防止窜货" url="/pages/invatBussiness/invatBussiness" clickable />
@@ -28,7 +28,7 @@
       </van-cell>
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
     </view>
-    <view class='flex-row-center content-hover'>
+    <view class='flex-row-center content-hover' wx:if="{{home_type=='factory'}}">
       <image src='../../img/icon_my_order.png' class="cell-left-img"></image>
       <van-cell class='home-cell' url="/pages/order_manage/order_manage" border="{{ false }}" clickable>
         <view slot="title">
@@ -110,7 +110,7 @@
     </view>
   </view>
 </van-cell-group>
-<view class='footer flex-row' wx:if="{{home_type=='factory'}}">
+<view class='footer flex-row' wx:if="{{home_type=='factory'||'business'}}">
   <view class='footer-item flex-column-center' bindtap='jump'>
     <image src='../../img/icon-mendian.png' class='footer-img'></image>
     <view class='footer-text'>店铺</view>
