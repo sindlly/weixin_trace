@@ -124,7 +124,7 @@
     <view class='footer-text'>发货</view>
   </view>
 </view>
-<view class='footer flex-row' wx:if="{{home_type=='salesman'}}">
+<view class='footer flex-row' wx:if="{{home_type=='salesman'||home_type==4}}">
   <view class='footer-item flex-column-center'>
   </view>
   <view class='footer-item flex-column-center center-item-border' bindtap='check'>

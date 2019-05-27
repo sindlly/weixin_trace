@@ -9,18 +9,6 @@ Page({
   data: {
       baseUrl:baseUrl,
       goods:[
-        {
-          name:"商品名",
-          brands:"20cm*20cm",
-          price:"20.00",
-          act_price:'10.00',
-        },
-        {
-          name: "商品名",
-          brands: "20cm*20cm",
-          price: "20.00",
-          act_price: '10.00',
-        }
       ],
     imageURL:'../../../img/bigdata.png'
 
