@@ -78,9 +78,20 @@ Page({
     wx.scanCode({
       success: (res) => {
         console.log(res)
-        wx.navigateTo({
-          url: '/pages/check/check',
-        })
+        let result = res.result;
+        let patt = new RegExp("https://buildupstep.cn/page/tracing/code?")
+        if (patt.test(result)){
+          wx.navigateTo({
+            url: '/pages/tracing/tracing?'+result.split("?")[1],
+          })
+        }else{
+          wx.showToast({
+            title: '无效的溯源码',
+            icon: 'error',
+            duration: 1200
+          })
+        }
+        
       }
     })
     },
