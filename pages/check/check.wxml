@@ -1,6 +1,7 @@
 <!--pages/check/check.wxml-->
-<image src='{{banner}}' class="banner"></image>
+<image src='{{baseUrl}}/files/{{banner}}' class="banner"></image>
 <view  wx:for-items='{{bind_goods}}' wx:key="{{item}}">
+<view class='height-30'></view>
 <van-panel title="{{item.name}}">
     <van-card
     commission="{{item.attributes[0].name}}:{{item.attributes[0].value}}"
@@ -11,6 +12,7 @@
     />
 </van-panel>
 </view>
+<view class='height-30'></view>
 <van-panel title="溯源码生命周期">
   <van-steps
   steps="{{ steps }}"
@@ -19,7 +21,7 @@
   active-color="#27a9e7"
 />
 </van-panel>
-
+<view class='height-30'></view>
 <view class='my_center_container'>
   <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>确认收货</van-button>
 </view>

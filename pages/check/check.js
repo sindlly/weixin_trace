@@ -9,13 +9,28 @@ Page({
    */
   data: {
     baseUrl: baseUrl,
+    banner:'',
     bind_goods:[],
     active: -1,
+    id:"",
     steps: [
       
     ]
   },
-
+  commit:function(){
+    wx.request({
+      url: baseUrl + '/tracings/' + this.data.id,
+      method: 'put',
+      data: {
+        operation :'receive'
+      },
+      success: function () {
+        wx.reLaunch({
+          url: '/pages/home/home',
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -28,21 +43,23 @@ Page({
         let records = res.data.data.data.records;
         let steps_temp = []
         for(let i=0;i<records.length;i++){
+          const sender = records[i].sender 
+          const name = sender[sender.role_type].name
           steps_temp[i] ={
-            text: records[i].sender,
+            text: name,
             desc: util.convertUTCTimeToLocalTime(records[i].send_at),
           }
-          if (i == records.length -1){
-            steps_temp[i+1] = {
-              text: records[i].reciver,
-            }
-          }
+          // if (i == records.length -1){
+          //   steps_temp[i+1] = {
+          //     text: records[i].reciver,
+          //   }
+          // }
         }
-
-        
         this.setData({
           bind_goods: res.data.data.data.products,
-          steps: steps_temp
+          steps: steps_temp,
+          banner:res.data.data.data.owner.factory.banner,
+          id:id
         })
       }
     })

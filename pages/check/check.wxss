@@ -1,4 +1,10 @@
 /* pages/check/check.wxss */
+page{
+  background: #e8ebf6;
+}
+.banner{
+  width: 100%;
+}
 .commit-btn button{
   margin-top: 48rpx;
   background: #1C92FF;
@@ -7,4 +13,7 @@
   height: 81rpx;
   line-height: 81rpx;
   border: none;
+}
+.step-desc{
+  margin-left : 0px !important;
 }

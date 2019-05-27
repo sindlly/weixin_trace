@@ -6,7 +6,7 @@
   font-weight: 800;
 }
 .step-desc{
-  margin-left: 20rpx;
+  /* margin-left: 20rpx; */
   font-family: PingFangSC-Regular;
   font-size: 28rpx;
   color: #666666;
