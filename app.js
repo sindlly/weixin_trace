@@ -45,7 +45,7 @@ App({
                       // if (!res.userInfo.user_id) res.userInfo.user_id = "5cd8dc23e3a2d04ec0911fdd"  //平台用户
                       _this.globalData.userInfo = res.userInfo
                       // _this.globalData.userInfo.role_type = role_type
-                      wx.setStorageSync('userInfo', Object.assign(_this.globalData.userInfo, { role_type: role_type, user_id: user_id}))
+                      wx.setStorageSync('userInfo', Object.assign(_this.globalData.userInfo, { role_type: role_type, user_id: user_id})) 
                       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
                       // 所以此处加入 callback 以防止这种情况
                       if (_this.userInfoReadyCallback) {

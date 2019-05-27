@@ -1,9 +1,8 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/tracing/tracing",
-    
-    
+      "pages/tracing/tracing",
+  
     "pages/send/send",
     "pages/bind/bind",
     "pages/business_card/business_card",

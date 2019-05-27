@@ -15,7 +15,8 @@ Page({
   },
   bindGetUserInfo:function(res){
     console.log(res)
-    wx.setStorageSync('userInfo',res.detail.userInfo)
+    let userInfo = res.detail.userInfo
+    // wx.setStorageSync('userInfo',res.detail.userInfo)
     let _this = this
     wx.login({
       success: res => {
@@ -37,33 +38,32 @@ Page({
               role_type = res.data.data.data.user.role_type
               user_id = res.data.data.data.user._id
             }
-
-            // 获取用户信息
-            wx.getSetting({
-              success: res => {
-                if (res.authSetting['scope.userInfo']) {
-
-                  // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-                  wx.getUserInfo({
-                    success: res => {
-                      // 可以将 res 发送给后台解码出 unionId
-                      
-                      // _this.globalData.userInfo = res.userInfo
-                      // _this.globalData.userInfo.role_type = role_type
-                      wx.setStorageSync('userInfo', Object.assign(res.userInfo, { role_type: role_type, user_id: user_id }))
-                      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-                      // 所以此处加入 callback 以防止这种情况
-                      if (_this.userInfoReadyCallback) {
-                        _this.userInfoReadyCallback(res)
-                      }
-                      wx.reLaunch({
-                        url: '/pages/home/home',
-                      })
-                    }
-                  })
-                }
-              }
+            wx.setStorageSync('userInfo', Object.assign(userInfo, { role_type: role_type, user_id: user_id }))
+            wx.reLaunch({
+              url: '/pages/home/home',
             })
+            // 获取用户信息
+            // wx.getSetting({
+            //   success: res => {
+            //     if (res.authSetting['scope.userInfo']) {
+
+            //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+            //       wx.getUserInfo({
+            //         success: res => {
+            //           wx.setStorageSync('userInfo', Object.assign(res.userInfo, { role_type: role_type, user_id: user_id }))
+            //           // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+            //           // 所以此处加入 callback 以防止这种情况
+            //           if (_this.userInfoReadyCallback) {
+            //             _this.userInfoReadyCallback(res)
+            //           }
+            //           wx.reLaunch({
+            //             url: '/pages/home/home',
+            //           })
+            //         }
+            //       })
+            //     }
+            //   }
+            // })
           }
         })
       }
@@ -130,7 +130,9 @@ Page({
     if (userInfo){
       _this.setData({
         home_type: userInfo.role_type || 4,
-        canIUse:false
+        canIUse:false,
+        // userInfo: userInfo,
+
       })
     }
     

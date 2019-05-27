@@ -55,10 +55,12 @@ Page({
           //   }
           // }
         }
+        const owner = res.data.data.data.owner
+        const banner = owner[owner.role_type].banner
         this.setData({
           bind_goods: res.data.data.data.products,
           steps: steps_temp,
-          banner:res.data.data.data.owner.factory.banner,
+          banner:banner,
           id:id
         })
       }
