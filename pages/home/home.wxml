@@ -10,7 +10,7 @@
 </view>
 <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
 <van-cell-group class='my-van-cell-group'>
-  <view class='home-content' name="商家首页" wx:if="{{home_type=='factory'||'business'}}">
+  <view class='home-content' name="商家首页" wx:if="{{home_type=='factory'||home_type=='business'}}">
     <view class='flex-row-center content-hover'>
       <image src='../../img/regest.png' class="cell-left-img"></image>
       <van-cell class='home-cell' title="邀请下一级经销商注册" label="邀请后，可发货给你的下级经销商，防止窜货" url="/pages/invatBussiness/invatBussiness" clickable />
@@ -21,7 +21,7 @@
       <van-cell class='home-cell' label="购买、定制二维码" url="/pages/shop/shop" clickable>
         <view slot="title">
           <view class="van-cell-text">溯源二维码商店
-            <van-tag type="danger">5</van-tag>
+            <!-- <van-tag type="danger">5</van-tag> -->
           </view>
           <view class='home-label'>购买、定制二维码</view>
         </view>
@@ -33,7 +33,7 @@
       <van-cell class='home-cell' url="/pages/order_manage/order_manage" border="{{ false }}" clickable>
         <view slot="title">
           <view class="van-cell-text">我的订单
-            <van-tag type="danger">5</van-tag>
+            <!-- <van-tag type="danger">5</van-tag> -->
           </view>
           <view class='home-label'>时刻了解订单进展，畅想溯源防伪服务</view>
         </view>
@@ -110,7 +110,7 @@
     </view>
   </view>
 </van-cell-group>
-<view class='footer flex-row' wx:if="{{home_type=='factory'||'business'}}">
+<view class='footer flex-row' wx:if="{{home_type=='factory'||home_type=='business'}}">
   <view class='footer-item flex-column-center' bindtap='jump'>
     <image src='../../img/icon-mendian.png' class='footer-img'></image>
     <view class='footer-text'>店铺</view>
