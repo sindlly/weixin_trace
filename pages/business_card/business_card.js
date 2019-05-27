@@ -1,4 +1,7 @@
 // pages/business_card/business_card.js
+const app = getApp();
+const baseUrl = app.globalData.HOST;
+const user_id = app.globalData.userInfo.user_id
 Page({
 
   /**
@@ -26,8 +29,7 @@ Page({
 
   commit: function() {
     let _this = this
-    // _this.validate(this.data.trade)
-    if (_this.validate(this.data.trade)) {
+    if (this.data.imgSrc) {
       //先上传图片数据
       wx.uploadFile({
         url: baseUrl + '/files',
@@ -40,21 +42,20 @@ Page({
         success(res) {
           _this.data.bannerId = JSON.parse(res.data).data.data.id
           wx.request({
-            url: baseUrl + '/users/' + _this.data.id,
+            url: baseUrl + '/users/' + user_id,
             method: "put",
             header: {
               'content-type': 'application/json'
             },
             data: {
-              status: _this.data.trade.type == "ALL_PAYED" ? "ALL_PAYED" : "FIRST_PAYED",
-              trade: [_this.data.trade]
-
+              operation: 'banner',
+              banner: _this.data.bannerId
             },
             success(res) {
               if (res.data.code == 0) {
                 wx.showModal({
                   title: '提示',
-                  content: '提交成功，等待审查',
+                  content: '广告图上传成功',
                   showCancel: false,
                   success(res) {
                     if (res.confirm) {
@@ -81,6 +82,12 @@ Page({
             }
           })
         }
+      })
+    } else {
+      wx.showToast({
+        title: '请选择您要上传的广告图',
+        icon: 'none',
+        duration: 1000
       })
     }
   },
