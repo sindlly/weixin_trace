@@ -19,6 +19,7 @@ Page({
     })
   },
   onLoad: function (options) {
+    console.log(options)
     this.setData({
       invat_name: decodeURI(options.invat_name) || "溯源码",
       invat_id: options.invat_id
@@ -28,6 +29,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    path: "/pages/invatBussiness/invatBussiness?invat_id=" + invat_id + "&invat_name=" + invat_name
+    return {
+      path: "/pages/invatBussiness/invatBussiness?invat_id=" + this.data.invat_id + "&invat_name=" + this.data.invat_name
+    }
+    
   }
 })
