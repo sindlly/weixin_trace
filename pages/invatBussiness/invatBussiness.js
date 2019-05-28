@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-      name:"溯源码"
+      name:"溯源码",
+    invat_id:'',
+    invat_name:'',
   },
 
   /**
@@ -13,61 +15,20 @@ Page({
    */
   jump:function(){
     wx.navigateTo({
-      url: "/pages/regest/next_regest/next_regest",
+      url: "/pages/regest/next_regest/next_regest?invat_id=" + this.data.invat_id + "&invat_name=" + this.data.invat_name,
     })
   },
   onLoad: function (options) {
+    console.log(options)
     this.setData({
-      name: options.id || "溯源码"
+      invat_name: decodeURI(options.invat_name) || "溯源码",
+      invat_id: options.invat_id
     })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    path: "/pages/invatBussiness/invatBussiness?invat_id=" + invat_id + "&invat_name=" + invat_name
   }
 })

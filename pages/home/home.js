@@ -14,6 +14,8 @@ Page({
     home_type: userInfo.role_type||4,  //1显示商家首页，2显示平台账号首页，3显示销售首页，4显示无账号首页，5显示快递员首页
     userInfo: userInfo,
     showDialog:false,
+    invat_name: userInfo.nickName,
+    invat_id:userInfo.user_id,
   },
   bindGetUserInfo:function(res){
     console.log(res)

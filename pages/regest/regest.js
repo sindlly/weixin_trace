@@ -80,7 +80,7 @@ Page({
                   showCancel: false,
                   success(res) {
                     if (res.confirm) {
-                      wx.redirectTo({
+                      wx.reLaunch({
                         url: '/pages/home/home'
                       })
                     }

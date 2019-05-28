@@ -1,7 +1,7 @@
 <!--pages/invatBussiness/invatBussiness.wxml-->
 <image src='../../img/bussiness1.png' class='intro-img' mode='aspectFill'></image>
 <view class="userinfo-nickname">
-<text class='nickname'>{{name}}</text>
+<text class='nickname'>{{invat_name}}</text>
 </view>
 <view class='action-area'>
   <van-button class='btn' type='info'  size="large" bindtap='jump' round>注册成为荣誉商家</van-button>

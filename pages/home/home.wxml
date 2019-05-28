@@ -18,7 +18,7 @@
   <view class='home-content' name="商家首页" wx:if="{{home_type=='factory'||home_type=='business'}}">
     <view class='flex-row-center content-hover'>
       <image src='../../img/regest.png' class="cell-left-img"></image>
-      <van-cell class='home-cell' title="邀请下一级经销商注册" label="邀请后，可发货给你的下级经销商，防止窜货" url="/pages/invatBussiness/invatBussiness" clickable />
+      <van-cell class='home-cell' title="邀请下一级经销商注册" label="邀请后，可发货给你的下级经销商，防止窜货" url="/pages/invatBussiness/invatBussiness?invat_name={{invat_name}}&invat_id={{invat_id}}" clickable />
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
     </view>
     <view class='flex-row-center'>
