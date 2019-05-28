@@ -6,7 +6,9 @@
     "van-button": "../../../miniprogram_npm/vant-weapp/button/index",
     "van-notice-bar": "../../../miniprogram_npm/vant-weapp/notice-bar/index",
     "van-badge": "../../../miniprogram_npm/vant-weapp/badge/index",
+    "van-dialog": "../../../miniprogram_npm/vant-weapp/dialog/index",
     "van-badge-group": "../../../miniprogram_npm/vant-weapp/badge-group/index"
+    
   },
   "navigationBarTitleText": "想鉴你"
 }
