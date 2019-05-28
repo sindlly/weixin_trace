@@ -9,16 +9,17 @@ Page({
    */
   data: {
     imgSrc: '',
-    bannerId: '' // banner图地址
+    bannerId: '', // banner图地址
+    baseUrl
   },
 
-  uploadImg: function() {
+  uploadImg: function () {
     var _this = this;
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
-      success: function(res) {
+      success: function (res) {
         _this.data.imgSrc = res.tempFilePaths[0]
         _this.setData({
           imgSrc: res.tempFilePaths[0],
@@ -27,7 +28,7 @@ Page({
     })
   },
 
-  commit: function() {
+  commit: function () {
     let _this = this
     if (this.data.imgSrc) {
       //先上传图片数据
@@ -95,56 +96,68 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-
+  onLoad: function (options) {
+    wx.request({
+      url: baseUrl + '/users/' + userInfo.user_id,
+      success: res => {
+        const {
+          data
+        } = res.data.data
+        console.log(data)
+        const roleType = data.role_type
+        this.setData({
+          bannerId: data[roleType].banner
+        })
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })
