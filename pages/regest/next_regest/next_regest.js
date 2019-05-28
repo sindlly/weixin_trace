@@ -13,6 +13,7 @@ Page({
       phone: null,
       contact: null,
     },
+    inviter:'',
     imgSrc: null,
   },
   onChange: function(e) {
@@ -31,7 +32,8 @@ Page({
         data: {
           role_type: 'business',
           role_id: 30,
-          business: _this.data.business
+          business: _this.data.business,
+          inviter: _this.data.inviter
         },
         success(res) {
           if (res.data.code == 0) {
@@ -41,7 +43,7 @@ Page({
               showCancel: false,
               success(res) {
                 if (res.confirm) {
-                  wx.redirectTo({
+                  wx.reLaunch({
                     url: '/pages/home/home'
                   })
                 }
@@ -80,14 +82,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    console.log(options)
+    this.setData({
+      inviter: options.invat_id
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+    
   },
 
   /**

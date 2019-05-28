@@ -1,4 +1,5 @@
 // pages/home/home.js
+import Dialog from '../../miniprogram_npm/vant-weapp/dialog/dialog';
 const app = getApp();
 const baseUrl = app.globalData.HOST;
 const userInfo = wx.getStorageSync('userInfo')
@@ -10,8 +11,11 @@ Page({
    */
   data: {
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    home_type: userInfo.role_type,  //1显示商家首页，2显示平台账号首页，3显示销售首页，4显示无账号首页，5显示快递员首页
-    userInfo: userInfo
+    home_type: userInfo.role_type||4,  //1显示商家首页，2显示平台账号首页，3显示销售首页，4显示无账号首页，5显示快递员首页
+    userInfo: userInfo,
+    showDialog:false,
+    invat_name: userInfo.nickName,
+    invat_id:userInfo.user_id,
   },
   bindGetUserInfo:function(res){
     console.log(res)
@@ -120,6 +124,14 @@ Page({
       url: '/pages/bigdata/bigdata',
     })
   },
+  getUserInfo(event) {
+    this.bindGetUserInfo(event)
+    console.log(event.detail);
+  },
+
+  onClose() {
+    this.setData({ close: false });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -146,6 +158,10 @@ Page({
         canIUse:false,
         // userInfo: userInfo,
 
+      })
+    }else{
+      _this.setData({
+        showDialog:true
       })
     }
     

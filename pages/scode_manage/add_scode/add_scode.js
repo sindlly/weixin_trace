@@ -76,7 +76,7 @@ Page({
             method: _this.data.isEdit ? "put" :"post",
             data: initData,
             success: function (res) {
-              wx.navigateTo({
+              wx.reLaunch({
                 url: '/pages/scode_manage/scode_manage',
 
               })
@@ -91,7 +91,7 @@ Page({
         method: "put",
         data: initData,
         success: function (res) {
-          wx.navigateTo({
+          wx.reLaunch({
             url: '/pages/scode_manage/scode_manage',
 
           })
