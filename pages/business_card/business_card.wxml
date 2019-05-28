@@ -12,7 +12,7 @@
   <view class='img-title'>上传广告图片</view>
   <view class="my_center_container" bindtap="uploadImg" style='backgroud:#fff'>
     <image mode='aspectFit' src="{{imgSrc}}" wx:if="{{imgSrc}}"></image>
-    <image mode='aspectFit' src="{{baseUrl}}/files/{{bannerId}}" wx:if="{{!imgSrc}}" ></image>
+    <image mode='aspectFit' src="{{baseUrl}}/files/{{bannerId}}" wx:if="{{bannerId && !imgSrc}}" ></image>
   </view>
     <view class='img-container' bindtap="uploadImg" style='backgroud:#fff'>
     <image mode='aspectFit' src="../../img/+.png" style='width:50rpx;height:51rpx'></image>
