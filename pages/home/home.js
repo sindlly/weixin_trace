@@ -96,6 +96,12 @@ Page({
       }
     })
   },
+  // 用户审核
+  checkUser: function() {
+    wx.navigateTo({
+      url: '/pages/user/user'
+    })
+  },
   //发货  
   send: function() {
     var _this = this;

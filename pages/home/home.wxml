@@ -144,4 +144,14 @@
   <view class='footer-item flex-column-center'>
   </view>
 </view>
+<view class='footer flex-row' wx:if="{{home_type=='platform'}}">
+  <view class='footer-item flex-column-center'>
+  </view>
+  <view class='footer-item flex-column-center center-item-border' bindtap='checkUser'>
+    <image src='../../img/sousuo.png' class='footer-img'></image>
+    <view class='footer-text'>用户审核</view>
+  </view>
+  <view class='footer-item flex-column-center'>
+  </view>
+</view>
 <van-dialog id="van-dialog" show="{{showDialog}}" confirm-button-open-type="getUserInfo" bind:close="onClose" bind:getuserinfo="getUserInfo" title="提示" message="授权登录溯源实物链平台" show-cancel-button="true" />

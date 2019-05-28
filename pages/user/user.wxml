@@ -1,0 +1,41 @@
+<!--pages/user/user.wxml-->
+
+<!-- <view>内容</view>
+<view slot="footer">
+  <van-button size="small">按钮</van-button>
+  <van-button size="small" type="danger">按钮</van-button>
+</view> -->
+<view wx:for="{{userList}}">
+  <van-panel title="[ {{item.role_name}} ]{{item[item.role_type].name}}" desc="{{item.regTime}}" status="{{item.state}}" use-footer-slot>
+    <view wx:if="{{item.role_type === 'business'}}" class='user-detail'>
+      <text>联系人：{{item[item.role_type].contact}}</text>
+      <text>联系电话：{{item[item.role_type].phone}}</text>
+      <text>联系地址：{{item[item.role_type].address}}</text>
+    </view>
+    <view wx:if="{{item.role_type === 'factory'}}" class='user-detail'>
+      <text>联系人：{{item[item.role_type].contact}}</text>
+      <text>联系电话：{{item[item.role_type].phone}}</text>
+      <text>电子邮件：{{item[item.role_type].email}}</text>
+      <text>对公账户：{{item[item.role_type].public_account}}</text>
+      <text>收货人名称：{{item[item.role_type].receiving_info.name}}</text>
+      <text>收货人电话：{{item[item.role_type].receiving_info.phone}}</text>
+      <text>收货人地址：{{item[item.role_type].receiving_info.address}}</text>
+      <image mode='aspectFit' src="{{baseUrl}}/files/{{item[item.role_type].license}}" bindtap="previewImage"></image>
+    </view>
+    <view wx:if="{{item.role_type === 'courier'}}" class='user-detail'>
+      <text>公司名称：{{item[item.role_type].company}}</text>
+      <text>联系电话：{{item[item.role_type].phone}}</text>
+      <text>电子邮件：{{item[item.role_type].email}}</text>
+      <image mode='aspectFit' src="{{baseUrl}}/files/{{item[item.role_type].employee_card}}" bindtap="previewImage"></image>
+    </view>
+    <view wx:if="{{item.role_type === 'salesman'}}" class='user-detail'>
+      <text>联系电话：{{item[item.role_type].phone}}</text>
+      <text>联系地址：{{item[item.role_type].address}}</text>
+      <image mode='aspectFit' src="{{baseUrl}}/files/{{item[item.role_type].id_card}}" bindtap="previewImage"></image>
+    </view>
+    <view class='footer-btn'>
+      <van-button size="small">不通过</van-button>
+      <van-button size="small" type="danger" class='footer-btn-right'>通过</van-button>
+    </view>
+  </van-panel>
+</view>

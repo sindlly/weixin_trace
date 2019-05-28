@@ -1,0 +1,20 @@
+/* pages/tracing/tracing.wxss */
+
+.footer-btn {
+  text-align: right;
+  padding: 10px 15px;
+}
+
+.footer-btn-right {
+  margin-left: 20rpx;
+}
+
+.user-detail {
+  padding: 10px 15px;
+}
+
+.user-detail text {
+  display: block;
+  font-size: 14px;
+  color: #999;
+}
