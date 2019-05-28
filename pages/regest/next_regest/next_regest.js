@@ -43,7 +43,7 @@ Page({
               showCancel: false,
               success(res) {
                 if (res.confirm) {
-                  wx.relaunch({
+                  wx.reLaunch({
                     url: '/pages/home/home'
                   })
                 }
