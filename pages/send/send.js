@@ -33,7 +33,6 @@ Page({
     })
   },
   onChange: function (e) {
-    console.log(e)
     let dataset = e.target.dataset
     this.data[dataset.obj][dataset.item] = e.detail.value
   },
@@ -43,11 +42,9 @@ Page({
     })
   },
   picked: function (event){
-    console.log(event)
     const { picker, value, index } = event.detail
     let goods_temp = this.data.goods
     goods_temp.push(value)
-    console.log("id:"+event.detail.value.value);
     this.setData({
       showPicker:false,
       goods:goods_temp,
@@ -73,7 +70,6 @@ Page({
     // 允许从相机和相册扫码
     wx.scanCode({
       success: (res) => {
-        console.log(res)
         _this.setData({
           barcode: res.result
         })
@@ -104,7 +100,7 @@ Page({
     })
   },
   onLoad: function (options) {
-    let id = options.id || '0110c64a7cb7f8048e6a1071095c3926d64209dfe2e600c021616b15aa5b7a088c385a526970c3910e249d847e61f90248935ca77aa733019dccf880b3adb97ed9'
+    let id = options.id
     this.data.id = id
     wx.request({
       url: baseUrl +'/tracings/'+id,
@@ -126,7 +122,6 @@ Page({
             value:temp[i]._id,
           }
         }
-        console.log(goods_temp)
         this.setData({
           columns: goods_temp
         })

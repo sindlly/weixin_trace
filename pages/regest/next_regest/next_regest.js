@@ -65,7 +65,6 @@ Page({
     let flag = true
     //校验有空数据
     for (let i in data) {
-      console.log(i + ':' + data[i])
       if (!data[i]) {
         flag = false
         wx.showToast({
@@ -82,7 +81,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options)
     this.setData({
       inviter: options.invat_id
     })

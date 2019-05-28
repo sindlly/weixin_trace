@@ -35,7 +35,6 @@ Page({
     })
   },
   onChange: function (e) {
-    console.log(e)
     let dataset = e.target.dataset
     this.remark = e.detail.value
   },

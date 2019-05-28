@@ -107,7 +107,6 @@ Page({
     //校验有空数据
     // debugger;
     for (let i in data) {
-      console.log(i + ":" + data[i])
       if (!data[i]) {
         flag = false
         wx.showToast({

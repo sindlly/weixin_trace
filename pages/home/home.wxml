@@ -3,10 +3,10 @@
   <view class='my_container flex-row-center'>
     <!-- <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image> -->
     <view class="userinfo-avatar">
-        <open-data  type="userAvatarUrl"></open-data>
+      <open-data type="userAvatarUrl"></open-data>
     </view>
     <view class="userinfo-nickname">
-      <open-data  type="userNickName"></open-data>
+      <open-data type="userNickName"></open-data>
     </view>
     <van-button round type="danger" class='flex-end' custom-class="header-btn" wx:if='{{home_type!=4}}' bindtap='goToBigData'>溯源大数据></van-button>
   </view>
@@ -21,7 +21,7 @@
       <van-cell class='home-cell' title="邀请下一级经销商注册" label="邀请后，可发货给你的下级经销商，防止窜货" url="/pages/invatBussiness/invatBussiness?invat_name={{invat_name}}&invat_id={{invat_id}}" clickable />
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
     </view>
-    <view class='flex-row-center'>
+    <view class='flex-row-center' wx:if="{{home_type=='factory'}}">
       <image src='../../img/bigdata.png' class="cell-left-img"></image>
       <van-cell class='home-cell' label="购买、定制二维码" url="/pages/shop/shop" clickable>
         <view slot="title">
@@ -43,6 +43,11 @@
           <view class='home-label'>时刻了解订单进展，畅想溯源防伪服务</view>
         </view>
       </van-cell>
+      <image src='../../img/Chevron.png' class="cell-right-img"></image>
+    </view>
+    <view class='flex-row-center content-hover' wx:if="{{home_type=='business'}}">
+      <image src='../../img/bigdata.png' class="cell-left-img"></image>
+      <van-cell class='home-cell' title="溯源大数据" bindtap='goToBigData' label="因为我们溯源无死角，所有假货无处藏身" border="{{ false }}" clickable />
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
     </view>
   </view>
@@ -110,7 +115,7 @@
     </view>
     <view class='flex-row-center content-hover'>
       <image src='../../img/bigdata.png' class="cell-left-img"></image>
-      <van-cell class='home-cell' title="溯源大数据" label="因为我们溯源无死角，所有假货无处藏身" border="{{ false }}" clickable />
+      <van-cell class='home-cell' title="溯源大数据" label="因为我们溯源无死角，所有假货无处藏身" bindtap='goToBigData' border="{{ false }}" clickable />
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
     </view>
   </view>
@@ -139,12 +144,4 @@
   <view class='footer-item flex-column-center'>
   </view>
 </view>
-<van-dialog id="van-dialog" 
-  show="{{showDialog}}"
-  confirm-button-open-type="getUserInfo"
-  bind:close="onClose"
-  bind:getuserinfo="getUserInfo"
-  title="提示"
-  message="授权登录溯源实物链平台"
-  show-cancel-button = "true"
-/>
+<van-dialog id="van-dialog" show="{{showDialog}}" confirm-button-open-type="getUserInfo" bind:close="onClose" bind:getuserinfo="getUserInfo" title="提示" message="授权登录溯源实物链平台" show-cancel-button="true" />

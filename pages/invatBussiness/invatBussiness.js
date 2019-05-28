@@ -19,7 +19,6 @@ Page({
     })
   },
   onLoad: function (options) {
-    console.log(options)
     this.setData({
       invat_name: decodeURI(options.invat_name) || "溯源码",
       invat_id: options.invat_id

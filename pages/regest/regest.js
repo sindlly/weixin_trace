@@ -36,7 +36,6 @@ Page({
     })
   },
   onChange:function(e){
-    // console.log(e)
     let dataset = e.target.dataset
     this.data[dataset.obj][dataset.item] = e.detail
   },
@@ -72,7 +71,6 @@ Page({
               factory: _this.data.factory
             },
             success(res) {
-              console.log("he")
               if (res.data.code == 0) {
                 wx.showModal({
                   title: '恭喜您',
@@ -105,7 +103,6 @@ Page({
     let flag = true
     //校验有空数据
     for (let i in data) {
-      console.log(data[i])
       if (!data[i]) {
         flag = false
         wx.showToast({

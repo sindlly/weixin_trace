@@ -61,7 +61,6 @@ Page({
               salesman: _this.data.salesman
             },
             success(res) {
-              console.log("he")
               if (res.data.code == 0) {
                 wx.showModal({
                   title: '恭喜您',
@@ -94,7 +93,6 @@ Page({
     let flag = true
     //校验有空数据
     for (let i in data) {
-      console.log(i + ':' + data[i])
       if (!data[i]) {
         flag = false
         wx.showToast({

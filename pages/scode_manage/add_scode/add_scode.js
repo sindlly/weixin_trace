@@ -21,7 +21,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onChange: function (e) {
-    console.log(e)
     let dataset = e.target.dataset
     this.data[dataset.obj][dataset.item] = e.detail.value
   },
@@ -30,7 +29,6 @@ Page({
     // 允许从相机和相册扫码
     wx.scanCode({
       success: (res) => {
-        console.log(res)
         _this.setData({
           barcode: res.result
         })

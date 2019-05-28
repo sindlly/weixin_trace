@@ -16,7 +16,6 @@ Page({
    */
   onLoad: function (options) {
     let factory = JSON.parse(options.factory)
-    console.log(factory)
     this.setData({
       factory:factory
     })

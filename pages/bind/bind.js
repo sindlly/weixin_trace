@@ -33,11 +33,9 @@ Page({
     })
   },
   picked: function (event){
-    console.log(event)
     const { picker, value, index } = event.detail
     let goods_temp = this.data.goods
     goods_temp.push(value)
-    console.log(goods_temp);
     this.setData({
       showPicker:false,
       goods:goods_temp

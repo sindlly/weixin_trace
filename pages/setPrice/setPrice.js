@@ -21,7 +21,6 @@ Page({
     })
   },
   onChange: function (e) {
-    // console.log(e)
     let dataset = e.target.dataset
     this.data[dataset.obj][dataset.item] = parseFloat(e.detail)
   },

@@ -31,7 +31,6 @@ Page({
     })
     },
   uploadImg: function (event) {
-    console.log(event)
     var _this = this;
     wx.chooseImage({
       count: 1,

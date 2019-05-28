@@ -14,7 +14,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     wx.showLoading()
     let type = options.type || "outer_code" //inner_code outer_code
     let id = options.id || '0110c64a7cb7f8048e6a1071095c3926d64209dfe2e600c021616b15aa5b7a088c385a526970c3910e249d847e61f90248935ca77aa733019dccf880b3adb97ed9'

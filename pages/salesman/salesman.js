@@ -20,7 +20,6 @@ Page({
    */
   onLoad: function (options) {
     let selesman=JSON.parse(options.salesman)
-    console.log(selesman)
     this.setData({
       name: selesman.name,
       phone: selesman.phone,

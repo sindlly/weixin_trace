@@ -103,7 +103,6 @@ Page({
         const {
           data
         } = res.data.data
-        console.log(data)
         const roleType = data.role_type
         this.setData({
           bannerId: data[roleType].banner

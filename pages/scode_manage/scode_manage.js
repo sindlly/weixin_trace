@@ -19,7 +19,6 @@ Page({
     })
   },
   edit:function(e){
-    console.log(e)
     let id = e.currentTarget.dataset.id
     wx.navigateTo({
       url: '/pages/scode_manage/add_scode/add_scode?id='+id,

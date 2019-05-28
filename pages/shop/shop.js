@@ -27,7 +27,6 @@ Page({
     wx.getImageInfo({
       src: data.currentTarget.dataset.url,
       success: function (res) {
-        console.log(res)
       }
     })
   

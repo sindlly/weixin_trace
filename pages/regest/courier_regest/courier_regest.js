@@ -38,7 +38,6 @@ Page({
     })
   },
   onChange: function (e) {
-    // console.log(e)
     let dataset = e.target.dataset
     this.data[dataset.obj][dataset.item] = e.detail.value
   },
@@ -103,7 +102,6 @@ Page({
     let flag = true
     //校验有空数据
     for (let i in data){
-      console.log(data[i])
       if(!data[i]){
         flag = false
         wx.showToast({
