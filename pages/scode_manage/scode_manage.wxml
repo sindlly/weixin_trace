@@ -2,7 +2,7 @@
 
 <van-cell-group>
   <van-cell title="已绑定条码数量" value="{{num}}条" />
-  <van-button size="large" bindtap='goToAddScode'>点击添加条形码信息</van-button>
+  <!-- <van-button size="large" bindtap='goToAddScode' type='info'>点击添加条形码信息</van-button> -->
 </van-cell-group>
 
 <view style='margin: 30rpx 0;background:#fff' wx:for-items="{{barcodes}}" wx:key="{{item}}">
@@ -19,5 +19,9 @@
     </view>
   </van-card>
 </van-panel>
+</view>
+
+<view class='my_center_container'>
+  <van-button type="danger" class='commit-btn' size="large" bindtap='goToAddScode'>点击添加条形码信息</van-button>
 </view>
 
