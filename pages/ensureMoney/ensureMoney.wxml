@@ -1,5 +1,5 @@
 <!--pages/pay/pay.wxml-->
-<van-panel title="{{goods.commodity.name}}"  status="{{goods.status=='CREATED'?'待报价':goods.status=='QUOTED'?'待付款':goods.status=='ALL_PAYED'?'待发货':goods.status=='SHIPMENT'?'待发货':''}}">
+<van-panel title="{{goods.commodity.name}}"  status="{{goods.status=='CREATED'?'待报价':goods.status=='QUOTED'?'待付款':goods.status=='ALL_PAYED'?'待核收':goods.status=='SHIPMENT'?'待发货':''}}">
     <van-card
     desc="销售个数：{{goods.count}}"
     title="规格：{{goods.commodity.brands}}"

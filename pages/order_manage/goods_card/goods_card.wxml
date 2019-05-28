@@ -3,16 +3,16 @@
 <view class='order_container' wx:for-items='{{perentData}}' wx:key="{{item}}">
 <van-panel  data-id="{{item._id}}" bindtap='todetail'>
      <van-card
-      tag="{{item.status=='CREATED'?'待报价':item.status=='QUOTED'?'待付款':item.status=='ALL_PAYED'||'FIRST_PAYED'?'待发货':item.status=='SHIPMENT'?'待发货':item.status=='FINISHED'?'已结束':''}}"
+      tag="{{item.status=='CREATED'?'待报价':item.status=='QUOTED'?'待付款':item.status=='ALL_PAYED'||item.status=='FIRST_PAYED'?'待核收':item.status=='SHIPMENT'||item.status=='PAYMENT_CONFIRMED'?'待发货':item.status=='SHIPPED'?'已发货':item.status=='FINISHED'?'已结束':''}}"
       price="{{item.price}}"
-      desc="{{item.commodity.brands}}"
+      desc="{{item.commodity.description}}"
       num='{{item.count}}'
       title="{{item.commodity.name}}"
       thumb="{{baseUrl}}/files/{{item.commodity.pictures[0]}}"
     >
   <!-- 平台订单footer -->
     <view slot="footer" wx:if="{{role_type=='platform'}}">
-      <van-button size="small" round type="default" plain style='margin-right:10px' catchtap='salesmanDetail' data-salesman='{{item.salesman.salesman}}'>销售人员</van-button>
+      <van-button size="small" wx:if="{{item.buyer.inviter}}" round type="default" plain style='margin-right:10px' catchtap='salesmanDetail' data-salesman='{{item.salesman.salesman}}'>销售人员</van-button>
       <!-- 待报价 -->
       <!-- <van-button size="small" round type="default" plain style='margin-right:10px' wx:if="{{item.status=='CREATED'}}" catchtap='ensureFactory' data-factory="{{item.buyer.factory}}">审核厂家</van-button> -->
       <van-button size="small" round type="default" plain style='margin-right:10px' wx:if="{{item.status=='CREATED'}}" catchtap='setPrice' data-id="{{item._id}}" >填写报价</van-button>

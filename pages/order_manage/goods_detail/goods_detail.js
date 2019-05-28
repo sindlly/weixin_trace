@@ -13,22 +13,6 @@ Page({
     salesman:{},
     active:-1,
     steps: [
-      {
-        text: '订单编号',
-        desc: '描述信息'
-      },
-      {
-        text: '创建时间',
-        desc: '描述信息'
-      },
-      {
-        text: '报价时间',
-        desc: '描述信息'
-      },
-      {
-        text: '步骤四',
-        desc: '描述信息'
-      }
     ]
   },
 
