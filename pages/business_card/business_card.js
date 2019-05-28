@@ -1,7 +1,7 @@
 // pages/business_card/business_card.js
 const app = getApp();
 const baseUrl = app.globalData.HOST;
-const user_id = app.globalData.userInfo.user_id
+const userInfo = wx.getStorageSync('userInfo')
 Page({
 
   /**
@@ -42,7 +42,7 @@ Page({
         success(res) {
           _this.data.bannerId = JSON.parse(res.data).data.data.id
           wx.request({
-            url: baseUrl + '/users/' + user_id,
+            url: baseUrl + '/users/' + userInfo.user_id,
             method: "put",
             header: {
               'content-type': 'application/json'
