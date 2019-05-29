@@ -1,4 +1,4 @@
-/* pages/tracing/tracing.wxss */
+/* pages/user/user.wxss */
 
 .footer-btn {
   text-align: right;

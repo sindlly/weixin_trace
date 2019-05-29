@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "van-panel": "../../../miniprogram_npm/vant-weapp/panel/index",
-    "van-button": "../../../miniprogram_npm/vant-weapp/button/index"
+    "van-button": "../../../miniprogram_npm/vant-weapp/button/index",
+      "van-dialog": "../../../miniprogram_npm/vant-weapp/dialog/index"
   },
   "navigationBarTitleText": "用户审核"
 }

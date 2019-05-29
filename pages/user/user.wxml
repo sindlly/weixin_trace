@@ -1,11 +1,6 @@
 <!--pages/user/user.wxml-->
 
-<!-- <view>内容</view>
-<view slot="footer">
-  <van-button size="small">按钮</van-button>
-  <van-button size="small" type="danger">按钮</van-button>
-</view> -->
-<view wx:for="{{userList}}">
+<view wx:key="{{index}}" wx:for="{{userList}}">
   <van-panel title="[ {{item.role_name}} ]{{item[item.role_type].name}}" desc="{{item.regTime}}" status="{{item.state}}" use-footer-slot>
     <view wx:if="{{item.role_type === 'business'}}" class='user-detail'>
       <text>联系人：{{item[item.role_type].contact}}</text>
@@ -34,8 +29,9 @@
       <image mode='aspectFit' src="{{baseUrl}}/files/{{item[item.role_type].id_card}}" bindtap="previewImage"></image>
     </view>
     <view class='footer-btn'>
-      <van-button size="small">不通过</van-button>
-      <van-button size="small" type="danger" class='footer-btn-right'>通过</van-button>
+      <van-button size="small" id="{{item._id}}" data-state="rejected" bindtap="commitVerify">不通过</van-button>
+      <van-button size="small" id="{{item._id}}" data-state="passed" type="danger" class='footer-btn-right' bindtap="commitVerify">通过</van-button>
     </view>
   </van-panel>
+  <van-dialog id="van-dialog" />
 </view>
