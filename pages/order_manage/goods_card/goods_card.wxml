@@ -36,7 +36,7 @@
     <van-button size="small" round type="danger" wx:if="{{item.status=='QUOTED'}}" data-id="{{item._id}}" catchtap="pay">支付款项</van-button>
       <van-button size="small" round type="danger" wx:if="{{item.status=='HALF_PAYED'||item.status=='FIRST_PAYED'}}" data-id="{{item._id}}" catchtap="pay">支付尾款</van-button>
       <van-button size="small" round type="default" plain style='margin-right:10px' wx:if="{{item.status=='SHIPPED'}}" data-express="{{item.express}}" catchtap='lookLogistics' >查看物流</van-button> 
-      <van-button size="small" round type="default" plain style='margin-right:10px' wx:if="{{item.status=='SHIPPED'}}"catchtap='conform' data-id="{{item._id}}" >确认收货</van-button> 
+      <van-button size="small" round type="default" plain style='margin-right:10px' wx:if="{{item.status=='SHIPPED'}}" catchtap='conform' data-id="{{item._id}}" >确认收货</van-button> 
        <van-button size="small" round  wx:if="{{item.status=='FINISHED'}}" data-id="{{item._id}}">已完成</van-button>  
     </view>
 

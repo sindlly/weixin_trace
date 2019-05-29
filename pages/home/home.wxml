@@ -54,12 +54,12 @@
   <view class='home-content' name="平台账号首页" wx:if="{{home_type=='platform'}}">
     <view class='flex-row-center content-hover'>
       <image src='../../img/zhaomu.png' class="cell-left-img"></image>
-      <van-cell class='home-cell' title="招聘销售员" label="销售人员认证后可以促成商家采购溯源防伪方案" url="/pages/invatSalesman/invatSalesman" clickable />
+      <van-cell class='home-cell' title="招聘销售员" label="销售人员认证后可以促成商家采购溯源防伪方案" url="/pages/invatSalesman/invatSalesman?invat_name={{invat_name}}&invat_id={{invat_id}}" clickable />
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
     </view>
     <view class='flex-row-center'>
       <image src='../../img/regest.png' class="cell-left-img"></image>
-      <van-cell class='home-cell' title="邀请厂家注册" label="成功邀请的生产厂家，他的所有订单你能从中获益" url="/pages/invataFactory/invatFactory" clickable />
+      <van-cell class='home-cell' title="邀请厂家注册" label="成功邀请的生产厂家，他的所有订单你能从中获益" url="/pages/invataFactory/invatFactory?invat_name={{invat_name}}&invat_id={{invat_id}}" clickable />
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
     </view>
     <view class='flex-row-center content-hover'>

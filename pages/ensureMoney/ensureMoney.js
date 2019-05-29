@@ -64,15 +64,18 @@ Page({
       success: function (res) {
         let data = res.data.data.data
         _this.data.status = res.data.data.data.status
-        if (_this.data.status =="FIRST_PAYED"){
-          wx.setNavigationBarTitle({
-            title: '尾款明细'
-          })
-        }else{
-          wx.setNavigationBarTitle({
-            title: '首付明细'
-          })
+        if (_this.data.isStagePay){
+          if (_this.data.status == "FIRST_PAYED") {
+            wx.setNavigationBarTitle({
+              title: '尾款明细'
+            })
+          } else {
+            wx.setNavigationBarTitle({
+              title: '首付明细'
+            })
+          }
         }
+        
         _this.setData({
           goods: data, 
           imgSrc:baseUrl+'/files/'+data.trade[0].voucher
