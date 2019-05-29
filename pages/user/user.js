@@ -10,9 +10,7 @@ Page({
    */
   data: {
     baseUrl,
-    userList: [{
-      state: ''
-    }],
+    userList: [],
     currentUser: {}
   },
 
@@ -74,7 +72,7 @@ Page({
           if (state === 'unreview') item.state = '未审核'
           if (role_type === 'business') {
             item.role_name = '经销商'
-          } else if (role_type === 'platform') {
+          } else if (role_type === 'factory') {
             item.role_name = '厂家'
           } else if (role_type === 'courier') {
             item.role_name = '快递'

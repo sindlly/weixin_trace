@@ -35,3 +35,4 @@
   </van-panel>
   <van-dialog id="van-dialog" />
 </view>
+<view wx:if="{{userList.length < 1}}" class="no-content-container">暂无用户需要审核</view>
