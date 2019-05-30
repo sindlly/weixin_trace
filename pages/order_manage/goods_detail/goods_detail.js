@@ -182,60 +182,118 @@ Page({
                 desc: util.convertUTCTimeToLocalTime(data.trade[0].pay_at)
               },
               {
-                text: '核收时间',
-                desc: util.convertUTCTimeToLocalTime(data.allPaymentConfirm_at)
+                text: data.allPaymentConfirm_at?'核收时间':'首付核收时间',
+                desc: data.allPaymentConfirm_at ? util.convertUTCTimeToLocalTime(data.allPaymentConfirm_at) : util.convertUTCTimeToLocalTime(data.firstPaymentConfirm_at)
               },
               {
                 text: '待发货',
-                desc: "待发货：提交快递，发货至客户"
+                desc: data.role_type=='platform'?"待发货：提交快递，发货至客户":"等待平台发送快递"
               },]
             active = 5
             break;    
           case "SHIPPED":  //已发货等待确定
-            steps = [
-              {
-                text: '订单编号',
-                desc: data.no
-              }, {
-                text: '创建时间',
-                desc: util.convertUTCTimeToLocalTime(data.created_at)
-              }, 
-              {
-                text: '付款时间',
-                desc: util.convertUTCTimeToLocalTime(data.allPaymentConfirm_at)
-              },
-              {
-                text: '发货时间',
-                desc: util.convertUTCTimeToLocalTime(data.express.send_at)
-              },
-              {
-                text: '待收货',
-                desc: "待收货：确认后完成交易"
-              },]
+            if (!data.isStagePay){
+              steps = [
+                {
+                  text: '订单编号',
+                  desc: data.no
+                }, {
+                  text: '创建时间',
+                  desc: util.convertUTCTimeToLocalTime(data.created_at)
+                },
+                {
+                  text: '付款时间',
+                  desc: util.convertUTCTimeToLocalTime(data.allPaymentConfirm_at)
+                },
+                {
+                  text: '发货时间',
+                  desc: util.convertUTCTimeToLocalTime(data.express.send_at)
+                },
+                {
+                  text: '待收货',
+                  desc: "待收货：确认后完成交易"
+                },]
+            }else{
+              steps = [
+                {
+                  text: '订单编号',
+                  desc: data.no
+                }, {
+                  text: '创建时间',
+                  desc: util.convertUTCTimeToLocalTime(data.created_at)
+                }, {
+                  text: '报价时间',
+                  desc: util.convertUTCTimeToLocalTime(data.quote_at)
+                }, {
+                  text: '首付时间',
+                  desc: util.convertUTCTimeToLocalTime(data.trade[0].pay_at)
+                }, {
+                  text: '首付确认时间',
+                  desc: util.convertUTCTimeToLocalTime(data.firstPaymentConfirm_at)
+                },
+                {
+                  text: '发货时间',
+                  desc: util.convertUTCTimeToLocalTime(data.express.send_at)
+                },
+                {
+                  text: '确认收货',
+                  desc:'点击确认收货完成订单'
+                }]
+            }
+            
             active = 5
             break;
           case "FINISHED":  //已发货等待确定
-            steps = [
-              {
-                text: '订单编号',
-                desc: data.no
-              }, {
-                text: '创建时间',
-                desc: util.convertUTCTimeToLocalTime(data.created_at)
-              },
-              {
-                text: '付款时间',
-                desc: util.convertUTCTimeToLocalTime(data.allPaymentConfirm_at)
-              },
-              {
-                text: '发货时间',
-                desc: util.convertUTCTimeToLocalTime(data.express.send_at)
-              },
-              {
-                text: '确认时间',
-                desc: util.convertUTCTimeToLocalTime(data.finish_at)
-              },]
-            active = 5
+            if (!data.isStagePay){
+              steps = [
+                {
+                  text: '订单编号',
+                  desc: data.no
+                }, {
+                  text: '创建时间',
+                  desc: util.convertUTCTimeToLocalTime(data.created_at)
+                },
+                {
+                  text: '付款时间',
+                  desc: util.convertUTCTimeToLocalTime(data.allPaymentConfirm_at)
+                },
+                {
+                  text: '发货时间',
+                  desc: util.convertUTCTimeToLocalTime(data.express.send_at)
+                },
+                {
+                  text: '确认时间',
+                  desc: util.convertUTCTimeToLocalTime(data.finish_at)
+                },]
+            }else{
+              steps = [
+                {
+                  text: '订单编号',
+                  desc: data.no
+                }, {
+                  text: '创建时间',
+                  desc: util.convertUTCTimeToLocalTime(data.created_at)
+                }, {
+                  text: '报价时间',
+                  desc: util.convertUTCTimeToLocalTime(data.quote_at)
+                }, {
+                  text: '首付时间',
+                  desc: util.convertUTCTimeToLocalTime(data.trade[0].pay_at)
+                }, {
+                  text: '首付确认时间',
+                  desc: util.convertUTCTimeToLocalTime(data.firstPaymentConfirm_at)
+                },
+                {
+                  text: '发货时间',
+                  desc: util.convertUTCTimeToLocalTime(data.express.send_at)
+                },
+                {
+                  text: '确认收货时间',
+                  desc: util.convertUTCTimeToLocalTime(data.finish_at)
+                }]
+            }
+            
+            active = 6
             break;
         }
         _this.setData({
