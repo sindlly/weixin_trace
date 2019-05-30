@@ -3,7 +3,7 @@
   position: relative;
   background: #fff;
   width: 100%;
-  height: 700rpx;
+  max-height: 790rpx;
   text-align: center;
 }
 .flex-end{
@@ -93,6 +93,7 @@ font-weight: bold;
   border-radius: 40.5px;
   width: 580rpx;
   height: 81rpx;
+  line-height:81rpx;
   border: none;
   
 }

@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/rights/rights",
     "pages/home/home",
     "pages/user/user",
     "pages/business_card/business_card",
@@ -21,7 +22,6 @@
     "pages/regest/partner_regest/partner_regest",
     "pages/regest/courier_regest/courier_regest",
     "pages/regest/regest",
-    "pages/rights/rights",
     "pages/bigdata/bigdata",
     "pages/index/index",
     "pages/logs/logs",

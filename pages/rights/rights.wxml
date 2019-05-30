@@ -1,47 +1,32 @@
 <!--pages/home/home.wxml-->
-  <view class='home-header'>
-    <image src='../../img/bg.png' class="home-bg-img"></image>
-    <image src='../../img/banner.jpg' class="header-img"></image>
-    
-    <view class='steps'>
-      <view class='steps-title'>2步打假维权</view>
-      <van-steps
-        steps="{{ steps }}"
-        active="{{ 3 }}"
-        direction="vertical"
-        active-color="#1C92FF"
-        custom-class="{{'my-steps'}}"
-        border="{{false}}"
-      />
+<view class='home-header'>
+  <image src='../../img/bg.png' class="home-bg-img"></image>
+  <image src='../../img/banner.jpg' class="header-img"></image>
+  <view class='steps'>
+    <view class='steps-title'>2步打假维权</view>
+    <van-steps steps="{{ steps }}" active="{{ 4 }}" direction="vertical" active-color="#1C92FF" custom-class="{{'my-steps'}}" border="{{false}}" />
+  </view>
+</view>
+<van-panel>
+  <view class='img-title'>选择打假商品：</view>
+  <van-cell-group>
+    <van-field value="{{ productsColums }}" placeholder="未选择商品" border="{{ false }}" disabled bind:change="onSelectChange" />
+  </van-cell-group>
+  <van-picker columns="{{ columns }}" bind:change="onSelect" visible-item-count="3" />
+  <view class='img-title'>上传照片：</view>
+  <view class='flex-row' style='padding-left:15px'>
+    <view style='backgroud:#fff;' wx:for='{{imgSrcMap}}'>
+      <image class='right-img' mode='aspectFit' src="{{item.src}}" data-index='{{index}}' bindtap="selectImg"></image>
+    </view>
+    <view class='img-container' wx:if="{{imgSrcMap.length<3}}" bindtap="selectImg" style='backgroud:#fff'>
+      <image mode='aspectFill' src="../../img/+.png" style='width:50rpx;height:51rpx'></image>
     </view>
   </view>
-  <van-panel>
-      <view class='img-title'>上传照片</view>
-      <view  class='flex-row' style='padding-left:15px'>
-        <view style='backgroud:#fff;' wx:for='{{imgSrcMap}}'>
-            <image class='right-img' mode='aspectFit' src="{{item.src}}" data-index='{{index}}'  bindtap="uploadImg"></image>
-          </view>
-        <view class='img-container' wx:if="{{imgSrcMap.length<3}}"  bindtap="uploadImg" style='backgroud:#fff'>
-          <image mode='aspectFill' src="../../img/+.png" style='width:50rpx;height:51rpx'></image>
-        </view>
-      </view>
-      <view class='img-title img-title2'>过程</view>
-       <van-field 
-          type="textarea"
-          placeholder="请输入描述文字，最多200字"
-          maxlength='{{200}}'
-          autosize
-          border="{{ false }}"
-          input-class="{{'my-textarea'}}"	
-        />  
-        <van-field 
-          
-          placeholder="请输手机号"
-          border="{{ false }}"
-          input-class="{{'my-input'}}"	
-        />  
-  </van-panel>
+  <view class='img-title img-title2'>过程描述：</view>
+  <van-field type="textarea" placeholder="请输入描述文字，最多200字" maxlength='{{200}}' autosize border="{{ false }}" input-class="{{'my-textarea'}}" />
+  <van-field placeholder="请输您的手机号" border="{{ false }}" input-class="{{'my-input'}}" />
+</van-panel>
 
 <view class='my_center_container'>
-  <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>提交</van-button>
+  <van-button type="danger" class='commit-btn' size="large" bindtap='commit'>提交</van-button>
 </view>
