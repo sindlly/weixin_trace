@@ -120,15 +120,35 @@ Page({
                   desc: util.convertUTCTimeToLocalTime(data.created_at)
                 }, {
                   text: '报价时间',
-                  desc: util.convertUTCTimeToLocalTime(data.updated_at)
+                  desc: util.convertUTCTimeToLocalTime(data.quote_at)
                 }, {
-                  text: '待收款',
-                  desc: "买家在‘付款明细’页，上传付款账户和截图后，完成付款步骤"
+                  text: _this.data.role_type=='platform'?'待收款':'待付款',
+                  desc: _this.data.role_type == 'platform' ? "买家在‘付款明细’页，上传付款账户和截图后，完成付款步骤" :'点击支付款项，上传付款账户和截图后，完成付款步骤'
                 },]  
             }
             
             active = 3
               break;
+          case "FIRST_PAYED":  //支付了首付款，1、等待确认；2、已确认
+            steps = [
+              {
+                text: '订单编号',
+                desc: data.no
+              }, {
+                text: '创建时间',
+                desc: util.convertUTCTimeToLocalTime(data.created_at)
+              }, {
+                text: '报价时间',
+                desc: util.convertUTCTimeToLocalTime(data.quote_at)
+              }, {
+                text: '首付时间',
+                desc: util.convertUTCTimeToLocalTime(data.trade[0].pay_at)
+              }, {
+                text: '待确认',
+                desc: "待确认：等待平台核收款项"
+              }]
+            active = 4
+            break;
           case "ALL_PAYED":  //待核收
             steps = [
               {
