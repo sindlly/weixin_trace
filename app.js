@@ -67,8 +67,8 @@ App({
       user_id: '5cc51b34cc1a8864b525c159',
       user_type: 'business'
     },
-    ROOTPATH: 'http://buildupstep.cn/api',
-    HOST: 'http://buildupstep.cn/api',
+    ROOTPATH: 'https://buildupstep.cn/api',
+    HOST: 'https://buildupstep.cn/api',
     DEFAULT_IMG: '38ec2f40-f352-11e7-b5f3-c93673e5d7ba'
   }
 });

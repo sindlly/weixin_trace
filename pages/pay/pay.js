@@ -128,7 +128,7 @@ Page({
       success: function(res) {
         let data = res.data.data.data
         _this.data.status = res.data.data.data.status
-        if (_this.data.status == "FIRST_PAYED") {
+        if (_this.data.status == "FINISHED") {
           wx.setNavigationBarTitle({
             title: '尾款明细'
           })
