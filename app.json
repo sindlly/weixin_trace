@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/rights/rights",
     "pages/home/home",
+    "pages/rights/rights",
+    
     "pages/user/user",
     "pages/business_card/business_card",
     "pages/tracing/tracing",

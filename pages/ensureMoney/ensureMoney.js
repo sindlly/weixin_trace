@@ -34,12 +34,18 @@ Page({
         "isAllPaymentConfirmed": true
       } 
     }
+    if (this.data.status == "FINISHED"){
+      commit_data = {
+        "status": "PAYMENT_CONFIRMED",
+        "isLastPaymentConfirmed": true
+      } 
+    }
     wx.request({
       url: baseUrl + '/orders/' + this.data.id,
       method: 'put',
       data: commit_data,
       success: function () {
-        wx.navigateTo({
+        wx.reLaunch({
           url: '/pages/order_manage/order_manage?active=3',
         })
       }

@@ -17,6 +17,7 @@ Page({
       type: null,
       number: null
     },
+    first_trade:{},
     status: '', // FIRST_PAYED 首付已付
   },
 
@@ -53,7 +54,8 @@ Page({
         },
         success(res) {
           _this.data.trade.voucher = JSON.parse(res.data).data.data.id
-
+          let status = _this.data.trade.type == "ALL_PAYED" ? "ALL_PAYED": "FIRST_PAYED"
+          if (_this.data.status == "SHIPPED") status = "FINISHED"
           wx.request({
             url: baseUrl + '/orders/' + _this.data.id,
             method: "put",
@@ -61,9 +63,8 @@ Page({
               'content-type': 'application/json'
             },
             data: {
-              status: _this.data.trade.type == "ALL_PAYED" ? "ALL_PAYED" : "FIRST_PAYED",
+              status: status,
               trade: [_this.data.trade]
-
             },
             success(res) {
               if (res.data.code == 0) {
@@ -73,7 +74,7 @@ Page({
                   showCancel: false,
                   success(res) {
                     if (res.confirm) {
-                      wx.redirectTo({
+                      wx.reLaunch({
                         url: '/pages/home/home'
                       })
                     }
@@ -128,7 +129,7 @@ Page({
       success: function(res) {
         let data = res.data.data.data
         _this.data.status = res.data.data.data.status
-        if (_this.data.status == "FINISHED") {
+        if (_this.data.status == "SHIPPED") {
           wx.setNavigationBarTitle({
             title: '尾款明细'
           })
@@ -138,6 +139,7 @@ Page({
           })
         }
         _this.data.trade.type = data.isStagePay ? "FIRST_PAYED" : "ALL_PAYED" //是否是定制商品，定制商品需首付，一般商品付全款
+        if (_this.data.status == "SHIPPED") _this.data.trade.type = "ALL_PAYED"
         _this.setData({
           goods: data,
           status: res.data.data.data.status

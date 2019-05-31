@@ -236,14 +236,14 @@ Page({
                   desc: util.convertUTCTimeToLocalTime(data.express.send_at)
                 },
                 {
-                  text: '确认收货',
-                  desc:'点击确认收货完成订单'
+                  text: '确认收货-支付尾款',
+                  desc:'确认收货并支付尾款'
                 }]
             }
             
-            active = 5
+            active = 6
             break;
-          case "FINISHED":  //已发货等待确定
+          case "FINISHED":  //确定
             if (!data.isStagePay){
               steps = [
                 {
@@ -290,10 +290,14 @@ Page({
                 {
                   text: '确认收货时间',
                   desc: util.convertUTCTimeToLocalTime(data.finish_at)
+                },
+                {
+                  text: '尾款支付时间',
+                  desc: util.convertUTCTimeToLocalTime(data.finish_at)
                 }]
             }
             
-            active = 6
+            active = 8
             break;
         }
         _this.setData({
