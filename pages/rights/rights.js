@@ -130,7 +130,7 @@ Page({
    */
   onLoad: function(options) {
     const _this = this;
-    const key = options.key
+    const key = options.key || '01ee33f0a81bf6adc56dd259268246498f3252c02757a6ac40a4061f82370c2e982b4e6ca9f6cd45ca0b8e41bd640a350cc14644efc93d7538c16da30caf9c5b47'
     this.setData({
       key
     })

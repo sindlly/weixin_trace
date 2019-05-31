@@ -17,7 +17,7 @@
     <van-button size="small" round type="danger" style='margin-right:10px'wx:if="{{goods.status=='PAYMENT_CONFIRMED'&&goods.role_type=='platform'}}" catchtap='submitCourier' data-id="{{goods._id}}">提交快递</van-button>
     <van-button size="small" round type="danger" style='margin-right:10px' wx:if="{{goods.status=='SHIPPED'&&role_type!='platform'&&!goods.isStagePay}}"  catchtap='conform' data-id="{{goods._id}}" >确认收货</van-button>
     <van-button size="small" round type="danger"  style='margin-right:10px' wx:if="{{goods.status=='SHIPPED'&&goods.isStagePay}}" catchtap='pay' data-id="{{goods._id}}" >支付尾款</van-button> 
-    <van-button size="small" round type="danger" wx:if="{{goods.status=='FINISHED'&&goods.isLastPayed}}" catchtap='ensureMoney' data-id="{{goods._id}}" >确认尾款</van-button>
+    <van-button size="small" round type="danger" wx:if="{{goods.status=='FINISHED'&&goods.isLastPayed && !goods.isLastPaymentConfirmed}}" catchtap='ensureMoney' data-id="{{goods._id}}" >确认尾款</van-button>
   </view>
 </van-card>
 <van-cell title="购买方" value="{{goods.buyer.factory.name}}" />

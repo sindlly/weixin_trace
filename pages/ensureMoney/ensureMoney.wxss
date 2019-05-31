@@ -23,7 +23,7 @@
 }
 .commit-btn button{
   margin-top: 48rpx;
-  background: #1C92FF;
+  background: #f44;
   border-radius: 40.5px;
   width: 580rpx;
   height: 81rpx;
