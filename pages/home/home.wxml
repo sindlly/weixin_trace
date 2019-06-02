@@ -1,5 +1,5 @@
 <!--pages/home/home.wxml-->
-<view class='home-header'>
+<view class='home-header' bindtap='gotoIntro'>
   <view class='my_container flex-row-center'>
     <!-- <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image> -->
     <view class="userinfo-avatar">
@@ -8,7 +8,7 @@
     <view class="userinfo-nickname">
       <open-data type="userNickName"></open-data>
     </view>
-    <van-button round type="danger" class='flex-end' custom-class="header-btn" wx:if='{{home_type!=4}}' bindtap='goToBigData'>溯源大数据></van-button>
+    <van-button round type="danger" class='flex-end' custom-class="header-btn"  catchtap='goToBigData'>溯源大数据></van-button>
   </view>
   <image src='../../img/bg.png' class="home-bg-img"></image>
   <image src='../../img/banner.jpg' class="header-img"></image>
@@ -88,17 +88,17 @@
   <view class='home-content' name="无账号首页 " wx:if="{{home_type==4}}">
     <view class='flex-row-center content-hover'>
       <image src='../../img/courier.png' class="cell-left-img"></image>
-      <van-cell class='home-cell' title="成为快递员" label="销售人员认证后可以促成商家采购溯源防伪方案" url="/pages/regest/courier_regest/courier_regest" clickable />
+      <van-cell class='home-cell' title="成为快递员" label="销售人员认证后可以促成商家采购溯源防伪方案" url="/pages/invatCourier/invatCourier" clickable />
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
     </view>
     <view class='flex-row-center'>
       <image src='../../img/partner.png' class="cell-left-img"></image>
-      <van-cell class='home-cell' title="成为销售合伙人" label="成功邀请的生产厂家，他的所有订单你能从中获益" url="/pages/regest/partner_regest/partner_regest" clickable />
+      <van-cell class='home-cell' title="成为销售合伙人" label="成功邀请的生产厂家，他的所有订单你能从中获益" url="/pages/invatSalesman/invatSalesman" clickable />
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
     </view>
     <view class='flex-row-center content-hover'>
       <image src='../../img/bussiness.png' class="cell-left-img"></image>
-      <van-cell class='home-cell' title="认证商家" label="因为我们溯源无死角，所有假货无处藏身" url="/pages/regest/regest" border="{{ false }}" clickable />
+      <van-cell class='home-cell' title="认证商家" label="因为我们溯源无死角，所有假货无处藏身" url="/pages/invatBussiness/invatBussiness" border="{{ false }}" clickable />
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
     </view>
   </view>
