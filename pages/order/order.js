@@ -1,6 +1,6 @@
 const app = getApp();
 const baseUrl = app.globalData.HOST;
-const userInfo = wx.getStorageSync('userInfo'); 
+const userInfo = wx.getStorageSync('userInfo');
 
 Page({
 
@@ -13,53 +13,68 @@ Page({
     $root: app.globalData.ROOTPATH,
     DEFALUT_IMG: app.globalData.DEFALUT_IMG,
     token: '',
-    goods_detail:{},
+    goods_detail: {},
     baseUrl: baseUrl,
-    remark:null,
-    logo:null
+    remarks: {
+      product: '',
+      width: '',
+      height: '',
+      length: '',
+      thick: '',
+    },
+    factories: [],
+    selectFactories: [], 
+    logo: null
   },
 
-  countMinus: function () {
+  countMinus: function() {
     if (this.data.count > 1) this.setData({
-      count: this.data.count - 1
+      count: parseInt(this.data.count) - 1
     })
     else this.setData({
       disabled: true,
     })
   },
 
-  countAdd: function () {
+  countAdd: function() {
     this.setData({
-      count: this.data.count + 1,
+      count: parseInt(this.data.count) + 1,
       disabled: false
     })
+    console.log(this.data)
   },
-  onChange: function (e) {
+  onChange: function(e) {
     let dataset = e.target.dataset
-    this.remark = e.detail.value
+    this.remarks = e.detail.value
   },
-  uploadImg: function () {
+  uploadImg: function() {
     var _this = this;
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
-      success: function (res) {
+      success: function(res) {
         _this.setData({
           imgSrc: res.tempFilePaths[0],
         })
       }
     })
   },
-  submitOrder: function () {
+  bindInput: function(e) {
+    this.setData({
+      count: e.detail.value
+    })
+    console.log(this.data)
+  },
+  submitOrder: function() {
     let _this = this;
     wx.showToast({
       title: '',
       mask: true,
       icon: 'loading'
     })
-    
-    if (_this.data.goods_detail.isCustom){
+
+    if (_this.data.goods_detail.isCustom) {
       wx.uploadFile({
         url: baseUrl + '/files',
         method: "POST",
@@ -74,7 +89,7 @@ Page({
             commodity: _this.data.commodityId,
             count: _this.data.count,
             buyer: userInfo.user_id,
-            remarks: _this.remark,
+            remarks: _this.remarks,
             logo: _this.logo,
           }
           wx.request({
@@ -83,24 +98,20 @@ Page({
             data: subData,
             header: {
               'content-type': 'application/json',
-              // 'access_token': $data.token,
             },
-            success: function (res) {
+            success: function(res) {
               wx.navigateTo({
                 url: '/pages/order_manage/order_manage'
-                // url: '/pages/order_manage/order_manage?active=2'
-                // url: '/pages/order/order'
               })
             }
           })
         }
       })
-    }else{
+    } else {
       let subData = {
         commodity: _this.data.commodityId,
         count: _this.data.count,
         buyer: userInfo.user_id,
-        
       }
       wx.request({
         url: baseUrl + '/orders',
@@ -108,51 +119,57 @@ Page({
         data: subData,
         header: {
           'content-type': 'application/json',
-          // 'access_token': $data.token,
         },
-        success: function (res) {
+        success: function(res) {
           wx.navigateTo({
             url: '/pages/order_manage/order_manage'
-            // url: '/pages/order_manage/order_manage?active=2'
-            // url: '/pages/order/order'
           })
         }
       })
     }
-    
-    
-    
   },
 
-  onLoad: function (options) {
+  onLoad: function(options) {
     const id = options.id
     const _this = this
     _this.setData({
-      commodityId:id
+      commodityId: id
     })
-    // 设置用户信息及token
-    // _this.setData({
-    //   userInfo,
-    //   token
-    // })
-
+    //获取商品信息
     wx.request({
-      url: baseUrl+'/commodities/'+id,
+      url: baseUrl + '/commodities/' + id,
       method: "GET",
       header: {
         'content-type': 'application/json',
-        // 'access_token': $data.token,
       },
-      success: function (res) {
+      success: function(res) {
         let temp = res.data.data.data
         _this.setData({
-          goods_detail:temp
+          goods_detail: temp
+        })
+      }
+    })
+    // 获取被该用户邀请注册的
+    wx.request({
+      url: baseUrl + '/users/' + userInfo.user_id + '/factories',
+      method: "GET",
+      header: {
+        'content-type': 'application/json',
+      },
+      success: function(res) {
+        const {users} = res.data.data.data
+        const selectFactories = users.map(item => {
+          return item.factory.name
+        })
+        _this.setData({
+          factories: users,
+          selectFactories
         })
       }
     })
   },
 
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     // const userInfo = wx.getStorageSync('user_info');
     // const _this = this;
 

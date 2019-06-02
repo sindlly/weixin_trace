@@ -8,6 +8,11 @@
   position: relative;
 }
 
+.product-info {
+  height: calc(100% - 50px);
+  overflow: scroll;
+}
+
 .order-commodity, .order-address, .order-number, .order-count, .order-sum {
   width: 100%;
   display: flex;
@@ -15,7 +20,7 @@
   flex-wrap: nowrap;
   justify-content: center;
   align-items: flex-start;
-  border-bottom: 2rpx solid #eee;
+  /* border-bottom: 2rpx solid #eee; */
   background-color: #fff;
   padding: 30rpx;
   box-sizing: border-box;
@@ -68,6 +73,12 @@
   padding: 0;
 }
 
+.order-number-input {
+  display: inline-block;
+  min-width: 80rpx;
+  text-align: center;
+}
+
 .order-number .count-value {
   height: 64rpx;
   line-height: 64rpx;
@@ -81,6 +92,17 @@
   align-items: center;
 }
 
+.factory-invite-text {
+  float: right;
+  color: #1989fa
+}
+
+.factory-container {
+  padding: 10px 15px;
+  font-size: 28rpx;
+  color: silver
+}
+
 .order-sum {
   padding: 0;
   font-size: 13pt;
@@ -89,7 +111,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  border: none;
+  border-top: 1rpx solid #eee;
 }
 
 .order-sum .sum-submit {
@@ -175,37 +197,42 @@
   font-size: 0.8rem;
   color: #333;
 }
-.van-card__content{
+
+.van-card__content {
   display: flex;
   flex-direction: column;
-  justify-content: space-around
+  justify-content: space-around;
 }
-.van-card{
+
+.van-card {
   background: #fff !important;
-  /* border-bottom: 1rpx solid #eee */
+  border-bottom: 1rpx solid #eee;
 }
+
 /* .textarea{
   height: 300rpx !important
 } */
 
-.img-container{
+.img-container {
   width: 180rpx;
   height: 180rpx;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px dashed #CCCCCC;
-  margin-left:15px;
+  border: 2px dashed #ccc;
+  margin-left: 15px;
 }
-.img-title{
+
+.img-title {
   font-size: 28rpx;
-  color: #333333;
+  color: #333;
   line-height: 24px;
   padding: 15px;
 }
-.tips{
+
+.tips {
   font-size: 26rpx;
-  color: #666666;
+  color: #666;
   letter-spacing: 0;
   margin-top: 23rpx;
 }
