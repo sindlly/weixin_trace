@@ -136,6 +136,12 @@ Page({
       url: '/pages/bigdata/bigdata',
     })
   },
+  //跳转到 平台介绍页
+  gotoIntro:function(){
+    wx.navigateTo({
+      url: '/pages/intro/intro',
+    })
+  },
   getUserInfo(event) {
     this.bindGetUserInfo(event)
   },
