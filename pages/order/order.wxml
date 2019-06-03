@@ -32,7 +32,7 @@
   </view>
   <view wx:if="{{goods_detail.isCustom}}">
     <view class='img-title'>选择厂家:
-      <text class="factory-invite-text" bindtap='jumpToReg'>邀请新厂家></text>
+      <text class="factory-invite-text" bindtap='inviteFactory'>邀请新厂家></text>
     </view>
     <view class="factory-container">
       <picker mode="selector" bindchange="pickerChange" value="{{index}}" range="{{selectFactories}}">

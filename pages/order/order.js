@@ -23,7 +23,9 @@ Page({
     factories: [],
     selectFactories: [],
     logo: null,
-    index: undefined
+    index: undefined,
+    invat_name: userInfo.nickName,
+    invat_id: userInfo.user_id,
   },
 
   validate(data) {
@@ -78,6 +80,12 @@ Page({
   },
   onThickChange: function(e) {
     this.data.thick = e.detail
+  },
+
+  inviteFactory: function() {
+    wx.navigateTo({
+      url: `/pages/invatFactory/invatFactory?invat_name=${this.data.invat_name}&invat_id=${this.data.invat_id}`,
+    })
   },
 
   uploadImg: function() {
@@ -193,9 +201,28 @@ Page({
           'content-type': 'application/json',
         },
         success: function(res) {
-          wx.navigateTo({
-            url: '/pages/order_manage/order_manage'
-          })
+          wx.hideLoading()
+          console.log(res)
+          if (res.data.code === 0) {
+            wx.showToast({
+              title: '订单生成成功',
+              icon: 'none',
+              duration: 2000,
+              success: function () {
+                setTimeout(() => {
+                  wx.navigateTo({
+                    url: '/pages/order_manage/order_manage'
+                  })
+                }, 1000)
+              }
+            })
+          } else {
+            wx.showToast({
+              title: res.data.msg,
+              icon: 'none',
+              duration: 2000,
+            })
+          }
         }
       })
     }
