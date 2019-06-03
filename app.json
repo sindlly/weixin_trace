@@ -1,5 +1,11 @@
 {
   "pages": [
+    "pages/invatFactory/invatFactory",
+    "pages/invatSalesman/invatSalesman",
+    "pages/invatBussiness/invatBussiness",
+    "pages/invatCourier/invatCourier",
+    
+    
     "pages/home/home",
     "pages/rights/rights",
     
@@ -8,10 +14,7 @@
     "pages/tracing/tracing",
     "pages/send/send",
     "pages/bind/bind",
-    "pages/invatSalesman/invatSalesman",
-    "pages/invatBussiness/invatBussiness",
-    "pages/invatFactory/invatFactory",
-    "pages/invatCourier/invatCourier",
+    
     "pages/scode_manage/scode_manage",
     "pages/shop/shop",
     "pages/order_manage/order_manage",

@@ -1,7 +1,12 @@
 <!--pages/invatSalesman/invatSalesman.wxml-->
+<view class='back-home' bindtap='backHome'>
+  <van-icon name="arrow-left" />
+</view>
+
 <view class='invate-image-container '>
   <image src='../../img/invatSalesman.jpg' class='intro-img' mode="scaleToFill"></image>
 </view>
 <view class='action-area'>
-  <van-button class='btn' size="large" bindtap='jump'>点击认证</van-button>
+  <van-button class='btn' size="large"  open-type="getUserInfo" 
+	bindgetuserinfo="bindGetUserInfo">点击认证</van-button>
 </view>

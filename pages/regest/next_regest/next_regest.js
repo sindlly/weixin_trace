@@ -49,7 +49,11 @@ Page({
                 }
               }
             })
-          } else {
+          } else if (res.data.code == 10004) {
+            wx.reLaunch({
+              url: '/pages/home/home'
+            })
+          }else {
             wx.showToast({
               title: res.data.msg,
               icon: 'none',

@@ -82,6 +82,10 @@ Page({
                     } 
                   }
                 })
+              } else if (res.data.code == 10004) {
+                wx.reLaunch({
+                  url: '/pages/home/home'
+                })
               }
               else{
                 wx.showToast({

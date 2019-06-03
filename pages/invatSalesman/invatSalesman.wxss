@@ -22,7 +22,18 @@
 .btn button {
   width: 640rpx;
   border-radius: 20rpx;
-  background: #173261;
-  color: #fff;
+  background: #FCD652;
+  color: #154191;
   border: none;
+}
+.back-home{
+  position: fixed;
+  z-index: 1000;
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 50rpx;
+  border-radius: 20rpx;
+  background: #ddd;
+  top: 10rpx;
+  left: 10rpx;
 }
