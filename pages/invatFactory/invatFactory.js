@@ -1,4 +1,4 @@
-// pages/invataFactory/invatFactory.js
+// pages/invatFactory/invatFactory.js
 const app = getApp();
 const baseUrl = app.globalData.HOST;
 Page({
@@ -60,7 +60,7 @@ Page({
   onLoad: function (options) {
     this.setData({
       invat_name: decodeURI(options.invat_name) || "溯源码",
-      invat_id: options.invat_id||0
+      invat_id: options.invat_id || 0
     })
   },
   /**

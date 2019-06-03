@@ -1,4 +1,4 @@
-/* pages/invataFactory/invatFactory.wxss */
+/* pages/invatFactory/invatFactory.wxss */
 page{
   background: #e8ebf6;
 }
