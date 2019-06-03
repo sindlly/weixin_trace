@@ -27,13 +27,16 @@
   border: none;
 }
 .back-home{
-  position: fixed;
-  z-index: 1000;
-  width: 40rpx;
-  height: 40rpx;
-  line-height: 50rpx;
-  border-radius: 20rpx;
-  background: #ddd;
-  top: 10rpx;
-  left: 10rpx;
+position:absolute;
+z-index:1000;
+width:44rpx;
+height:44rpx;
+border-radius:22rpx;
+background:#ddd;
+opacity:.5;
+top:10rpx;
+left:10rpx;
+display: flex;
+justify-content: center;
+align-items: center;
 }
