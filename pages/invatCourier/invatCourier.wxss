@@ -49,15 +49,17 @@ page{
     width: 332rpx;
     text-align: left
   }
-  .back-home{
-  position: absolute;
-  z-index: 1000;
-  width: 40rpx;
-  height: 40rpx;
-  line-height: 50rpx;
-  border-radius: 20rpx;
-  background: #ddd;
-  opacity: .8;
-  top: 10rpx;
-  left: 10rpx;
+ .back-home{
+position:absolute;
+z-index:1000;
+width:44rpx;
+height:44rpx;
+border-radius:22rpx;
+background:#ddd;
+opacity:.5;
+top:10rpx;
+left:10rpx;
+display: flex;
+justify-content: center;
+align-items: center;
 }

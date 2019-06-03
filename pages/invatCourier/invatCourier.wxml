@@ -1,6 +1,6 @@
 <!--pages/invatBussiness/invatBussiness.wxml-->
 <view class='back-home' bindtap='backHome'>
-  <van-icon name="arrow-left" />
+  <van-icon name="wap-home" />
 </view>
 <image src='../../img/bussiness1.png' class='intro-img' mode='aspectFill'></image>
 
