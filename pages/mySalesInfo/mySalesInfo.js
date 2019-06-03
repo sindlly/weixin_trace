@@ -13,7 +13,8 @@ Page({
     baseUrl: baseUrl,
     factory:'',
     totalCommission:'',
-    totalPrice:''
+    totalPrice:'',
+    
   },
 
   /**

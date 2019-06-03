@@ -12,6 +12,7 @@ Page({
       totalTracings:'',
       unUsedTracings:'',
       barcodes:'',
+      role_type: userInfo.role_type
     }
   },
   goToScode:function(){

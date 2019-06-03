@@ -1,12 +1,12 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/mySalesInfo/mySalesInfo",
+   
     "pages/invatCourier/invatCourier",
     "pages/invatSalesman/invatSalesman",
     "pages/invatFactory/invatFactory",
     "pages/invatBussiness/invatBussiness",
-    
-    "pages/mySalesInfo/mySalesInfo",
     "pages/mySalesInfo/myFactory/myFactory",
     
     "pages/bigdata/bigdata",
