@@ -1,12 +1,13 @@
 {
   "pages": [
-    "pages/invatFactory/invatFactory",
-    "pages/invatSalesman/invatSalesman",
-    "pages/invatBussiness/invatBussiness",
-    "pages/invatCourier/invatCourier",
-    
-    
     "pages/home/home",
+    "pages/invatBussiness/invatBussiness",
+    "pages/invatFactory/invatFactory",
+    
+    
+    
+    "pages/invatSalesman/invatSalesman",
+    "pages/invatCourier/invatCourier",
     "pages/rights/rights",
     
     "pages/user/user",

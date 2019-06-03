@@ -8,7 +8,7 @@ Page({
    */
   data: {
       name:"溯源码",
-    invat_id:0,
+    invat_id:"",
     invat_name:'溯源码',
   },
 
