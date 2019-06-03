@@ -15,19 +15,19 @@
 
   <view wx:if="{{goods_detail.isCustom}}">
     <van-cell-group>
-      <van-field value="{{ remarks.product }}" label="商品名称:" placeholder="请输入名称" border="{{ false }}" bind:change="onChange" />
+      <van-field value="{{ product }}" label="商品名称:" placeholder="请输入名称" border="{{ false }}" bind:change="onProductChange" />
     </van-cell-group>
     <van-cell-group>
-      <van-field value="{{ remarks.length }}" label="长度(厘米):" placeholder="请输入长度" border="{{ false }}" bind:change="onChange" />
+      <van-field value="{{ length }}" label="长度(厘米):" placeholder="请输入长度" border="{{ false }}" bind:change="onLengthChange" />
     </van-cell-group>
     <van-cell-group>
-      <van-field value="{{ remarks.width }}" label="宽度(厘米):" placeholder="请输入宽度" border="{{ false }}" bind:change="onChange" />
+      <van-field value="{{ width }}" label="宽度(厘米):" placeholder="请输入宽度" border="{{ false }}" bind:change="onWidthChange" />
     </van-cell-group>
     <van-cell-group>
-      <van-field value="{{ remarks.height }}" label="高度(厘米):" placeholder="请输入高度" border="{{ false }}" bind:change="onChange" />
+      <van-field value="{{height }}" label="高度(厘米):" placeholder="请输入高度" border="{{ false }}" bind:change="onHeightChange" />
     </van-cell-group>
     <van-cell-group>
-      <van-field value="{{ remarks.thick }}" label="厚度(厘米):" placeholder="请输入厚度" border="{{ false }}" bind:change="onChange" />
+      <van-field value="{{thick }}" label="厚度(厘米):" placeholder="请输入厚度" border="{{ false }}" bind:change="onThickChange" />
     </van-cell-group>
   </view>
   <view wx:if="{{goods_detail.isCustom}}">
@@ -35,9 +35,9 @@
       <text class="factory-invite-text" bindtap='jumpToReg'>邀请新厂家></text>
     </view>
     <view class="factory-container">
-      <picker bindchange="bindPickerChange" value="{{index}}" range="{{selectFactories}}">
+      <picker mode="selector" bindchange="pickerChange" value="{{index}}" range="{{selectFactories}}">
         <view class="picker">
-          {{selectFactories[index] || "请选择厂家"}}
+           {{selectFactories[index] || "请选择厂家"}}
         </view>
       </picker>
     </view>

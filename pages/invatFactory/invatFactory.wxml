@@ -1,4 +1,4 @@
-<!--pages/invataFactory/invatFactory.wxml-->
+<!--pages/invatFactory/invatFactory.wxml-->
 <view class='back-home' bindtap='backHome'>
   <van-icon name="arrow-left" />
 </view>

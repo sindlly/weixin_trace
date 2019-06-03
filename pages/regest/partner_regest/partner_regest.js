@@ -10,8 +10,8 @@ Page({
     salesman: {
       name: null,
       phone: null,
-      address:null,
-      id_card:null
+      address: null,
+      id_card: null
     },
     imgSrc: null,
   },
@@ -25,7 +25,6 @@ Page({
         _this.data.salesman.id_card = res.tempFilePaths[0]
         _this.setData({
           imgSrc: res.tempFilePaths[0],
-
         })
       }
     })
@@ -47,7 +46,6 @@ Page({
           'content-type': 'application/json'
         },
         success(res) {
-
           _this.data.salesman.id_card = JSON.parse(res.data).data.data.id
           wx.request({
             url: baseUrl + '/users',
@@ -78,8 +76,7 @@ Page({
                 wx.reLaunch({
                   url: '/pages/home/home'
                 })
-              }
-              else {
+              } else {
                 wx.showToast({
                   title: res.data.msg,
                   icon: 'none',
