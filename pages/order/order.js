@@ -100,7 +100,7 @@ Page({
               'content-type': 'application/json',
             },
             success: function(res) {
-              wx.navigateTo({
+              wx.reLaunch({
                 url: '/pages/order_manage/order_manage'
               })
             }
@@ -121,7 +121,7 @@ Page({
           'content-type': 'application/json',
         },
         success: function(res) {
-          wx.navigateTo({
+          wx.reLaunch({
             url: '/pages/order_manage/order_manage'
           })
         }
