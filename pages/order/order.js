@@ -190,7 +190,7 @@ Page({
     } else {
       let subData = {
         commodity: _this.data.commodityId,
-        count: _this.data.count,
+        count: parseInt(_this.data.count),
         buyer: userInfo.user_id,
       }
       wx.request({

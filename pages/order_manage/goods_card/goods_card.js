@@ -89,7 +89,7 @@ Component({
                 status:'FINISHED'
               },
               success:function(){
-                wx.redirectTo({
+                wx.navigateTo({
                   url: '/pages/order_manage/order_manage',
                 })
               }

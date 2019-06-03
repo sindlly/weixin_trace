@@ -2,17 +2,13 @@
   "pages": [
     "pages/home/home",
     "pages/mySalesInfo/mySalesInfo",
-   
     "pages/invatCourier/invatCourier",
     "pages/invatSalesman/invatSalesman",
     "pages/invatFactory/invatFactory",
     "pages/invatBussiness/invatBussiness",
     "pages/mySalesInfo/myFactory/myFactory",
-    
     "pages/bigdata/bigdata",
-    
     "pages/tracing/tracing",
-    
     "pages/rights/rights",
     "pages/user/user",
     "pages/business_card/business_card",
@@ -41,7 +37,6 @@
     "pages/logistic/logistic",
     "pages/scode_manage/add_scode/add_scode",
     "pages/check/check"
-    
   ],
   "window": {
     "backgroundTextStyle": "light",
