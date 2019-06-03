@@ -74,10 +74,26 @@ Page({
             method: _this.data.isEdit ? "put" :"post",
             data: initData,
             success: function (res) {
-              wx.redirectTo({
-                url: '/pages/scode_manage/scode_manage',
-
-              })
+              if(res.data.code === 0) {
+                wx.showToast({
+                  title: '条形码添加成功',
+                  icon: 'none',
+                  duration: 2000,
+                  success: function() {
+                    setTimeout(() => {
+                      wx.navigateTo({
+                        url: '/pages/scode_manage/scode_manage',
+                      })
+                    } , 1000)
+                  }
+                })
+              } else {
+                wx.showToast({
+                  title: res.data.msg,
+                  icon: 'none',
+                  duration: 2000,
+                })
+              }
             }
           })
         }
@@ -89,20 +105,33 @@ Page({
         method: "put",
         data: initData,
         success: function (res) {
-          wx.redirectTo({
-            url: '/pages/scode_manage/scode_manage',
-
-          })
+          if (res.data.code === 0) {
+            wx.showToast({
+              title: '条形码修改成功',
+              icon: 'none',
+              duration: 2000,
+              success: function () {
+                setTimeout(() => {
+                  wx.navigateTo({
+                    url: '/pages/scode_manage/scode_manage',
+                  })
+                }, 1000)
+              }
+            })
+          } else {
+            wx.showToast({
+              title: res.data.msg,
+              icon: 'none',
+              duration: 2000,
+            })
+          }
         }
       })
     }
-    
-
-    
   },
   onLoad: function (options) {
     if(options.id){
-      this.isEdit = true
+      this.data.isEdit = true
       this.data.barcode_id = options.id
       wx.request({
         url: baseUrl + '/barcodes/' + options.id,
@@ -125,7 +154,6 @@ Page({
         }
       })
     }
-    
   },
 
   /**
