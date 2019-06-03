@@ -1,40 +1,36 @@
-// pages/bigdata/bigdata.js
+// pages/mySalesInfo/mySalesInfo.js
 const app = getApp();
 const baseUrl = app.globalData.HOST;
-const userInfo = wx.getStorageSync('userInfo')
+const util = require('../../utils/util.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    mycode:{
-      totalTracings:'',
-      unUsedTracings:'',
-      barcodes:'',
-    }
+    salesman:{},
+    updated_at:'',
+    baseUrl: baseUrl,
+    factory:'',
+    totalCommission:'',
+    totalPrice:''
   },
-  goToScode:function(){
-    wx.navigateTo({
-      url: '/pages/scode_manage/scode_manage',
-    })
-  },
-  gotoMyInfo:function(){
-    wx.navigateTo({
-      url: '/pages/mySalesInfo/mySalesInfo'
-    })
-   
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let id = wx.getStorageSync('userInfo').user_id
     wx.request({
-      url: baseUrl + '/users/' + userInfo.user_id+'/statistics',
-      success: res =>{
-         this.setData({
-           mycode:res.data.data.data.data
-         }) 
+      url: baseUrl+'/users/'+id+"/sales",
+      success:res=>{
+        this.setData({
+          salesman:res.data.data.data.user.salesman,
+          updated_at: util.convertUTCTimeToLocalTime(res.data.data.data.user.updated_at),
+          factory: res.data.data.data.factory,
+          totalCommission: res.data.data.data.totalCommission,
+          totalPrice: res.data.data.data.totalPrice
+        })
       }
     })
   },
