@@ -68,7 +68,7 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      path: "/pages/factory/factory?invat_id=" + this.data.invat_id + "&invat_name=" + this.data.invat_name
+      path: "/pages/invatFactory/invatFactory?invat_id=" + this.data.invat_id + "&invat_name=" + this.data.invat_name
     }
   }
 })

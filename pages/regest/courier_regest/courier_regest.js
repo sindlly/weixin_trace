@@ -83,8 +83,17 @@ Page({
                   }
                 })
               } else if (res.data.code == 10004) {
-                wx.reLaunch({
-                  url: '/pages/home/home'
+                wx.showToast({
+                  title: res.data.msg,
+                  icon: 'none',
+                  duration: 2000,
+                  success: function () {
+                    setTimeout(() => {
+                      wx.reLaunch({
+                        url: '/pages/home/home'
+                      })
+                    }, 1000)
+                  }
                 })
               }
               else{
