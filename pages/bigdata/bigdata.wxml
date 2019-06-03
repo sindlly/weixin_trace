@@ -58,3 +58,6 @@
     border="{{false}}"
   />
 </van-panel> -->
+<view class='my_center_container'>
+  <van-button type="danger" class='commit-btn' size="large" bindtap='gotoMyInfo'>我的销售信息</van-button>
+</view>

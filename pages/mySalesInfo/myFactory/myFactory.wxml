@@ -1,0 +1,26 @@
+<!--pages/mySalesInfo/mySalesInfo.wxml-->
+<van-panel title="{{item.barcode}}">
+    <van-card
+    title="销售名称：{{salesman.name}}"
+    commission="地址：{{salesman.address}}"
+    desc="电话：{{salesman.phone}}"
+    stageProportion="认证时间：{{updated_at}}"
+    thumb="{{baseUrl}}/files/{{ salesman.id_card }}"
+    >
+  </van-card>
+</van-panel>
+
+ <van-panel title="邀请厂商" status="{{factoryNum}}个" >
+    <view  wx:for="{{factories}}" wx:key="{{item}}">
+    <van-card
+    title="厂家名称：{{item.factory.name}}"
+    desc="手机号：{{item.factory.phone}}"
+    commission="邮箱：{{item.factory.email}}"
+    stageProportion="对公账号：{{item.factory.public_account}}"
+    thumb="{{baseUrl}}/files/{{ item.factory.banner }}"
+    >
+  </van-card>
+    </view>
+    
+</van-panel>
+

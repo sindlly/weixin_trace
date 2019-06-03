@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-card": "../../../miniprogram_npm/vant-weapp/card/index",
+    "van-cell": "../../../miniprogram_npm/vant-weapp/cell/index",
+    "van-panel": "../../../miniprogram_npm/vant-weapp/panel/index",
+    "van-button": "../../../miniprogram_npm/vant-weapp/button/index"
+  },
+  "navigationBarTitleText": "销售人员信息"
+}

@@ -35,3 +35,12 @@
   border: 1px solid #CCCCCC !important;
   border-radius: 45px !important;
 }
+.commit-btn button{
+  margin-top: 48rpx;
+  background: #1C92FF;
+  border-radius: 40.5px;
+  width: 580rpx;
+  height: 81rpx;
+  line-height: 81rpx;
+  border: none;
+}

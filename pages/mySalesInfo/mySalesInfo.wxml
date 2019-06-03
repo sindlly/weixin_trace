@@ -1,0 +1,15 @@
+<!--pages/mySalesInfo/mySalesInfo.wxml-->
+<van-panel title="{{item.barcode}}">
+    <van-card
+    title="销售名称：{{salesman.name}}"
+    commission="地址：{{salesman.address}}"
+    desc="电话：{{salesman.phone}}"
+    stageProportion="认证时间：{{updated_at}}"
+    thumb="{{baseUrl}}/files/{{ salesman.id_card }}"
+    >
+  </van-card>
+</van-panel>
+
+<van-cell title="成交总额" value="{{totalCommission}}（RMB）" />
+<van-cell title="交易总额" value="{{totalPrice}}（RMB）" />
+<van-cell title="邀请厂家" is-link url="/pages/mySalesInfo/myFactory/myFactory" value="{{factory}}个" />
