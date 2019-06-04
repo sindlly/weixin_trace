@@ -12,7 +12,7 @@ Page({
     switch_title:'发货至经销商',
     switch_checked:true,
     showPicker:false,
-    columns: [{text:'杭州',value:"23445"}, '宁波', '温州', '嘉兴', '湖州'],
+    columns: [],
     goods:[],
     isBind:false,
     bind_goods:[]
@@ -97,7 +97,6 @@ Page({
             title: '绑定失败',
             icon: 'none',
             duration: 2000,
-            
           })
         }
         
@@ -105,7 +104,7 @@ Page({
     })
   },
   onLoad: function (options) {
-    let id = options.id || '762ed648-0877-49b0-a0c0-f6aef0c16552'
+    let id = options.id || '01ff3972349cc4ddd49e47dc36af04d2048c7b712d74eafb975225d36d235d6b85dea3810744a80e5b454c07d1b232bda844f540b9eaec933ee8459b82a3ad6ef8'
     this.setData({
       id : id
     })

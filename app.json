@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/bind/bind",
     "pages/home/home",
     "pages/mySalesInfo/mySalesInfo",
     "pages/invatCourier/invatCourier",
@@ -13,7 +14,7 @@
     "pages/user/user",
     "pages/business_card/business_card",
     "pages/send/send",
-    "pages/bind/bind",
+    
     "pages/scode_manage/scode_manage",
     "pages/shop/shop",
     "pages/order_manage/order_manage",

@@ -19,3 +19,7 @@
   line-height: 81rpx;
   border: none;
 }
+.myValue{
+  flex: 2 !important;
+  text-overflow: ellipsis;
+}
