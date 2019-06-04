@@ -119,7 +119,7 @@ Page({
     })
   },
   onLoad: function (options) {
-    let id = options.id
+    let id = options.id ||"01ff3972349cc4ddd49e47dc36af04d2048c7b712d74eafb975225d36d235d6b85dea3810744a80e5b454c07d1b232bda844f540b9eaec933ee8459b82a3ad6ef8"
     this.data.id = id
     wx.request({
       url: baseUrl +'/tracings/'+id,

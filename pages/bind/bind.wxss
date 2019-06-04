@@ -9,6 +9,7 @@
 }
 .icon-delete{
   margin-left: 40rpx;
+  color: red;
 }
 .commit-btn button{
   margin-top: 48rpx;

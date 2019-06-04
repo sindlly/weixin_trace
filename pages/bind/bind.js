@@ -1,6 +1,7 @@
 // pages/check/check.js
 const app = getApp();
 const baseUrl = app.globalData.HOST;
+const userInfo = wx.getStorageSync('userInfo')
 Page({
 
   /**
@@ -15,7 +16,8 @@ Page({
     columns: [],
     goods:[],
     isBind:false,
-    bind_goods:[]
+    bind_goods:[],
+    showCommit:false,
   },
 
   /**
@@ -94,7 +96,7 @@ Page({
           })
         } else {
           wx.showToast({
-            title: '绑定失败',
+            title: res.data.msg,
             icon: 'none',
             duration: 2000,
           })
@@ -113,7 +115,8 @@ Page({
       success:res=>{
           this.setData({
             isBind: res.data.data.data.state =="UNBIND"?false:true,
-            bind_goods:res.data.data.data.products
+            bind_goods:res.data.data.data.products,
+            showCommit:res.data.data.data.owner._id==userInfo.user_id?true:false
           })
       }
     })
