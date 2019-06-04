@@ -111,8 +111,9 @@ Page({
         let result = res.result;
         let patt = new RegExp("https://buildupstep.cn/page/tracing/code?")
         if (patt.test(result)) {
+          console.log(result.split("?")[1])
           wx.navigateTo({
-            url: '/pages/send/send?id=' + result.split("?")[1]
+            url: '/pages/tracing/tracing?' + result.split("?")[1],
           })
         } else {
           wx.showToast({

@@ -75,7 +75,7 @@ Page({
                   success(res) {
                     if (res.confirm) {
                       wx.reLaunch({
-                        url: '/pages/home/home'
+                        url: '/pages/order_manage/order_manage'
                       })
                     }
                   }

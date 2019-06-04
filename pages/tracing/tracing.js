@@ -17,7 +17,14 @@ Page({
     wx.showLoading()
     let type = options.type || "outer_code" //inner_code outer_code
     let id = options.id
-    console.log(options)
+    if(options.q){
+      let q = decodeURI(options.q)
+      type = q.split("?")[1].split("&")[0].split("=")[1]
+      id = q.split("?")[1].split("&")[1].split("=")[1]
+    }
+    console.log(type)
+    console.log("ssss")
+    console.log(decodeURI(options.q))
     this.data.id = id
     wx.request({
       url: baseUrl + '/tracings/' + id,
@@ -33,7 +40,7 @@ Page({
             })
           }
           // 溯源码外袋
-          if (type == "outer_code") {
+          else if(type == "outer_code") {
             switch (data.state) {
               case "UNBIND":
                 // 提示未绑定商品

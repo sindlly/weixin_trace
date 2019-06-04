@@ -190,6 +190,29 @@ Page({
                 desc: data.role_type=='platform'?"待发货：提交快递，发货至客户":"等待平台发送快递"
               },]
             active = 5
+            break;
+          case "PRINTED":  //已核收，待发货（平台状态）
+            steps = [
+              {
+                text: '订单编号',
+                desc: data.no
+              }, {
+                text: '创建时间',
+                desc: util.convertUTCTimeToLocalTime(data.created_at)
+              },
+              {
+                text: '付款时间',
+                desc: util.convertUTCTimeToLocalTime(data.trade[0].pay_at)
+              },
+              {
+                text: data.allPaymentConfirm_at ? '核收时间' : '首付核收时间',
+                desc: data.allPaymentConfirm_at ? util.convertUTCTimeToLocalTime(data.allPaymentConfirm_at) : util.convertUTCTimeToLocalTime(data.firstPaymentConfirm_at)
+              },
+              {
+                text: '待发货',
+                desc: data.role_type == 'platform' ? "待发货：提交快递，发货至客户" : "等待平台发送快递"
+              },]
+            active = 5
             break;    
           case "SHIPPED":  //已发货等待确定
             if (!data.isStagePay){

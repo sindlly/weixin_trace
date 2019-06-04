@@ -61,11 +61,11 @@ Page({
     })
   },
   commit:function(){
-    wx.showToast({
-      title: '成功',
-      icon: 'success',
-      duration: 2000
-    })
+    // wx.showToast({
+    //   title: '成功',
+    //   icon: 'success',
+    //   duration: 2000
+    // })
     let _this = this
     let goods = this.data.goods
     let products = []
@@ -80,17 +80,27 @@ Page({
       url: baseUrl + '/tracings/' + _this.data.id,
       method:'put',
       data:commitData,
-      success:function(){
-        wx.showToast({
-          title: '绑定成功',
-          icon: 'success',
-          duration: 2000,
-          success:()=>{
-            wx.reLaunch({
-              url: '/pages/home/home',
-            })
-          }
-        })
+      success:function(res){
+        if (res.data.code == 0) {
+          wx.showToast({
+            title: '绑定成功',
+            icon: 'success',
+            duration: 2000,
+            success: () => {
+              wx.reLaunch({
+                url: '/pages/home/home',
+              })
+            }
+          })
+        } else {
+          wx.showToast({
+            title: '绑定失败',
+            icon: 'none',
+            duration: 2000,
+            
+          })
+        }
+        
       }
     })
   },

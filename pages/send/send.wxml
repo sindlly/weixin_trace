@@ -70,3 +70,5 @@
   bind:cancel="onCancel"
   custom-class="{{'my_picker'}}"
 />
+
+<van-dialog id="van-dialog" show="{{showDialog}}" bind:close="goHome" bind:confirm="goHome" title="提示" message="还未绑定商品,请先扫描袋内码绑定商品" show-cancel-button="true" />

@@ -20,6 +20,7 @@ Page({
     record:{},
     business_id:'',
     business_name:null,
+    showDialog:false,
   },
 
   /**
@@ -76,6 +77,11 @@ Page({
       }
     })
   },
+  goHome: function () {
+    wx.reLaunch({
+      url: '/pages/home/home',
+    })
+  },
   commit:function(){
     let _this = this
     _this.data.record.reciver_type="consumer"
@@ -95,7 +101,20 @@ Page({
       method:'put',
       data: _this.data.switch_checked ? businessData : comsumerData,
       success:function(){
-        
+        if (res.data.code == 0) {
+          wx.showModal({
+            title: '提示',
+            content: '绑定成功',
+            showCancel: false,
+            success(res) {
+              if (res.confirm) {
+                wx.redirectTo({
+                  url: '/pages/home/home'
+                })
+              }
+            }
+          })
+        } 
       }
     })
   },
@@ -105,6 +124,11 @@ Page({
     wx.request({
       url: baseUrl +'/tracings/'+id,
       success:res=>{
+        if (res.data.data.data.products.length == 0){
+          this.setData({
+            showDialog:true
+          })
+        }
         this.setData({
           bind_goods:res.data.data.data.products
         })
