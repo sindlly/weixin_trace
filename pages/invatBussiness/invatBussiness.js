@@ -48,11 +48,11 @@ Page({
     })
 
   },
-  jump: function () {
-    wx.navigateTo({
-      url: '/pages/regest/regest',
-    })
-  },
+  // jump: function () {
+  //   wx.navigateTo({
+  //     url: '/pages/regest/regest',
+  //   })
+  // },
   jump:function(){
     wx.navigateTo({
       url: "/pages/regest/next_regest/next_regest?invat_id=" + this.data.invat_id + "&invat_name=" + this.data.invat_name,

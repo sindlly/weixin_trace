@@ -31,10 +31,10 @@
     </van-cell-group>
   </view>
   <view wx:if="{{goods_detail.isCustom}}">
-    <view class='img-title'>选择厂家:
+    <view class='img-title' wx:if="{{role_type == 'salesman'}}">选择厂家:
       <text class="factory-invite-text" bindtap='inviteFactory'>邀请新厂家></text>
     </view>
-    <view class="factory-container">
+    <view class="factory-container" wx:if="{{role_type == 'salesman'}}">
       <picker mode="selector" bindchange="pickerChange" value="{{index}}" range="{{selectFactories}}">
         <view class="picker">
            {{selectFactories[index] || "请选择厂家"}}

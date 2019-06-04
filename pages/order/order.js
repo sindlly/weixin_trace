@@ -26,6 +26,7 @@ Page({
     index: undefined,
     invat_name: userInfo.nickName,
     invat_id: userInfo.user_id,
+    role_type: userInfo.role_type
   },
 
   validate(data) {
@@ -138,7 +139,7 @@ Page({
           let subData = {
             commodity: _this.data.commodityId,
             count: parseInt(_this.data.count),
-            buyer: _this.data.selectedFactory,
+            // buyer: _this.data.selectedFactory,
             remarks: {
               product: _this.data.product,
               width: _this.data.width,
@@ -148,6 +149,7 @@ Page({
             },
             logo: _this.data.logo,
           }
+          if (_this.data.selectedFactory) subData.buyer = _this.data.selectedFactory
           console.log(subData)
           if (_this.validate(subData)) {
             wx.request({
