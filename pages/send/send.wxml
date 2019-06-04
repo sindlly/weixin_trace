@@ -1,4 +1,5 @@
 <!--pages/check/check.wxml-->
+<view wx:if="{{showCommit}}">
 <van-switch-cell
   title="{{switch_title}}"
   checked="{{ switch_checked }}"
@@ -10,6 +11,8 @@
 <van-cell title="{{business_name}}" wx:if="{{ business_name }}">
   
 </van-cell>
+</view>
+
 <view class='height-30'></view>
 <van-panel title="商品列表" status="已绑定商品">
     <view wx:for-items='{{bind_goods}}' wx:key="{{item}}">
@@ -57,8 +60,12 @@
   >
   <van-button slot="button" size="small" type="primary" bindtap='getScode'>扫描条形码</van-button>
   </van-field> -->
-<view class='my_center_container'>
+<view class='my_center_container' wx:if="{{showCommit}}">
   <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>提交</van-button>
+</view>
+<view class='my_center_container' wx:if="{{!showCommit}}">
+  <van-button type="danger" class='commit-btn'  size="large" bindtap='goHome'>返回首页</van-button>
+  <view class='tips'>非自己的溯源码不能操作></view>
 </view>
 
 <van-picker 
@@ -72,3 +79,5 @@
 />
 
 <van-dialog id="van-dialog" show="{{showDialog}}" bind:close="goHome" bind:confirm="goHome" title="提示" message="还未绑定商品,请先扫描袋内码绑定商品" show-cancel-button="true" />
+
+<van-dialog id="van-dialog" show="{{showDialogToBusiness}}"  bind:close="onClose"  title="提示" bind:confirm="goInvatBusiness" message="您还未邀请过经销商，是否前往邀请" show-cancel-button="true" />

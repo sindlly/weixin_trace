@@ -1,7 +1,10 @@
 {
   "pages": [
+    "pages/check/check",
+    
     "pages/send/send",
     "pages/bind/bind",
+    
     "pages/home/home",
     
     "pages/mySalesInfo/mySalesInfo",
@@ -38,8 +41,8 @@
     "pages/ensureMoney/ensureMoney",
     "pages/apply/apply",
     "pages/logistic/logistic",
-    "pages/scode_manage/add_scode/add_scode",
-    "pages/check/check"
+    "pages/scode_manage/add_scode/add_scode"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

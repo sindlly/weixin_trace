@@ -17,7 +17,7 @@ Page({
     goods:[],
     isBind:false,
     bind_goods:[],
-    showCommit:false,
+    showDialog:false
   },
 
   /**
@@ -115,8 +115,7 @@ Page({
       success:res=>{
           this.setData({
             isBind: res.data.data.data.state =="UNBIND"?false:true,
-            bind_goods:res.data.data.data.products,
-            showCommit:res.data.data.data.owner._id==userInfo.user_id?true:false
+            bind_goods:res.data.data.data.products
           })
       }
     })

@@ -19,3 +19,9 @@
   line-height: 81rpx;
   border: none;
 }
+.tips{
+  font-size: 26rpx;
+  color: #666666;
+  letter-spacing: 0;
+  margin-top: 23rpx;
+}

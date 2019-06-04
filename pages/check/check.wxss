@@ -17,3 +17,10 @@ page{
 .step-desc{
   margin-left : 0px !important;
 }
+.danger{
+  color: red;
+  margin-top: 0;
+  padding: 0 0 20rpx 0;
+  font-size: 26rpx;
+  text-decoration: underline
+}

@@ -1,7 +1,7 @@
 // pages/check/check.js
 const app = getApp();
 const baseUrl = app.globalData.HOST;
-
+const userInfo = wx.getStorageSync('userInfo')
 Page({
 
   /**
@@ -21,6 +21,8 @@ Page({
     business_id:'',
     business_name:null,
     showDialog:false,
+    showDialogToBusiness:false,
+    showCommit: false,
   },
 
   /**
@@ -33,14 +35,27 @@ Page({
       business_name:null
     })
   },
+  //没有经销商就先邀请
+  goInvatBusiness:function(){
+    wx.navigateTo({
+      url: '/pages/invatBussiness/invatBussiness?invat_name=' + wx.getStorageSync("userInfo").nickName + '&invat_id=' + wx.getStorageSync("userInfo").user_id,
+    })
+  },
   onChange: function (e) {
     let dataset = e.target.dataset
     this.data[dataset.obj][dataset.item] = e.detail.value
   },
   openPicker:function(){
-    this.setData({
-      showPicker:true
-    })
+    if (this.data.columns.length == 0) {
+      this.setData({
+        showDialogToBusiness: true
+      })
+    }else{
+      this.setData({
+        showPicker: true
+      })
+    }
+    
   },
   picked: function (event){
     const { picker, value, index } = event.detail
@@ -96,6 +111,16 @@ Page({
         reciver: _this.data.business_id, //经销商ID
       }
     }
+    if (_this.data.switch_checked){
+      if (!_this.data.business_id){
+        wx.showToast({
+          title: "请选择经销售",
+          icon: 'none',
+          duration: 2000,
+        })  
+      return     
+      }
+    }
     wx.request({
       url: baseUrl + '/tracings/' + _this.data.id,
       method:'put',
@@ -124,12 +149,14 @@ Page({
     wx.request({
       url: baseUrl +'/tracings/'+id,
       success:res=>{
+        
         if (res.data.data.data.products.length == 0){
           this.setData({
             showDialog:true
           })
         }
         this.setData({
+          showCommit: res.data.data.data.owner._id == userInfo.user_id ? true : false,
           bind_goods:res.data.data.data.products
         })
       }

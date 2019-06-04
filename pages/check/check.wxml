@@ -22,7 +22,16 @@
 />
 </van-panel>
 <view class='height-30'></view>
-<view class='my_center_container'>
+<view class='my_center_container' wx:if="{{!showCommit & !isReceved}}">
   <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>确认收货</van-button>
+  </view>
+  
+<view class='my_center_container' wx:if="{{isReceved}}">
+  <van-button type="danger" class='commit-btn'  size="large" bindtap='goHome'>返回首页</van-button>
 </view>
+
+<view class='my_center_container danger' wx:if="{{isReceved & showCommit == true}}">
+  <text type="danger" class='danger' bindtap='goToRight'>发现假货，需要维权</text>
+</view>
+
  

@@ -75,7 +75,7 @@ Page({
                   url: '/pages/send/send?id=' + id,
                 })
                 break;
-              case "REVEIVED": //客户已收货
+              case "RECEIVED": //客户已收货
                 wx.reLaunch({
                   url: '/pages/check/check?id=' + id,
                 })
