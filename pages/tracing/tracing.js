@@ -17,14 +17,16 @@ Page({
     wx.showLoading()
     let type = options.type || "outer_code" //inner_code outer_code
     let id = options.id
+    console.log("s")
+    console.log(decodeURIComponent(options.q))
     if(options.q){
-      let q = decodeURI(options.q)
+      let q = decodeURIComponent(options.q)
       type = q.split("?")[1].split("&")[0].split("=")[1]
       id = q.split("?")[1].split("&")[1].split("=")[1]
     }
     console.log(type)
-    console.log("ssss")
-    console.log(decodeURI(options.q))
+    console.log(id)
+  
     this.data.id = id
     wx.request({
       url: baseUrl + '/tracings/' + id,
@@ -84,7 +86,12 @@ Page({
           wx.showToast({
             title: res.data.msg,
             duration: 2000,
-            icon: 'none'
+            icon: 'none',
+            success:function(){
+              wx.reLaunch({
+                url: '/pages/home/home',
+              })
+            }
           })
         }
       }
