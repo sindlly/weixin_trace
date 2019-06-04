@@ -2,12 +2,12 @@
 <van-panel title="我的溯源码" header-class="{{'panel-title'}}">
    <van-cell
     title="已使用溯源码"
-    value="{{mycode.totalTracings-mycode.unUsedTracings}}个"
+    value="{{mycode.totalTracings-mycode.unUsedTracings || 0}}个"
     value-class="{{'cell-value'}}"
   />
   <van-cell
     title="剩余溯源码"
-    value="{{mycode.unUsedTracings}}个"
+    value="{{mycode.unUsedTracings || 0}}个"
     border="{{false}}"
     value-class="{{'cell-value'}}"
   />
