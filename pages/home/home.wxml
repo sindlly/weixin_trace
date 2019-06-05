@@ -155,3 +155,7 @@
   </view>
 </view>
 <van-dialog id="van-dialog" show="{{showDialog}}" confirm-button-open-type="getUserInfo" bind:close="onClose" bind:getuserinfo="getUserInfo" title="提示" message="授权登录溯源实物链平台" show-cancel-button="true" />
+<view class='loading' wx:if="{{showLoading}}">
+    <van-loading type="spinner" />
+</view>
+

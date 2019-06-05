@@ -3,8 +3,6 @@ import Dialog from '../../miniprogram_npm/vant-weapp/dialog/dialog';
 const app = getApp();
 const baseUrl = app.globalData.HOST;
 const userInfo = wx.getStorageSync('userInfo')
-
-
 Page({
   /**
    * 页面的初始数据
@@ -16,6 +14,7 @@ Page({
     showDialog: false,
     invat_name: userInfo.nickName,
     invat_id: userInfo.user_id,
+    showLoading:true
   },
   bindGetUserInfo: function(res) {
     let userInfo = res.detail.userInfo
@@ -197,7 +196,61 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    console.log("sss")
+    let _this = this;
+    // wx.showLoading()
+    _this.setData({
+      showLoading: true
+    })
+    wx.login({
+      success: res => {
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        wx.request({
+          url: baseUrl + '/auth/login',
+          method: 'post',
+          data: {
+            code: res.code
+          },
+          success: function (res) {
+            let role_type = '';
+            let user_id = '';
+            if (res.data.data.data.isRegistered == false) {
+              role_type = 4;
+            } else {
+              role_type = res.data.data.data.user.role_type;
+              user_id = res.data.data.data.user._id;
+            }
+            // 获取用户信息
+            wx.getSetting({
+              success: res => {
+                if (res.authSetting['scope.userInfo']) {
+                  // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+                  wx.getUserInfo({
+                    success: res => {
+                     wx.setStorageSync(
+                        'userInfo',
+                        Object.assign(res.userInfo, {
+                          role_type: role_type,
+                          user_id: user_id
+                        })
+                      );
+                      _this.onLoad()
+                      _this.setData({
+                        showLoading:false
+                      })
+                      // wx.hideLoading()
+                      if (_this.userInfoReadyCallback) {
+                        _this.userInfoReadyCallback(_this.globalData.userInfo);
+                      }
+                    }
+                  });
+                }
+              }
+            });
+          }
+        });
+      }
+    });
   },
 
   /**

@@ -7,6 +7,7 @@
     "van-notice-bar": "../../../miniprogram_npm/vant-weapp/notice-bar/index",
     "van-badge": "../../../miniprogram_npm/vant-weapp/badge/index",
     "van-dialog": "../../../miniprogram_npm/vant-weapp/dialog/index",
+    "van-loading": "../../../miniprogram_npm/vant-weapp/loading/index",
     "van-badge-group": "../../../miniprogram_npm/vant-weapp/badge-group/index"
     
   },
