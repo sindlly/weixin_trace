@@ -1,0 +1,46 @@
+/* pages/bigdata/bigdata.wxss */
+.panel-title{
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #666 !important;
+
+}
+.cell-value{
+  color: #333 !important;
+}
+.marginTop{
+  margin-top: 31rpx;
+}
+.my-panel-header{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px 10px 0;
+  margin-left: 15px;
+  border-bottom: 1rpx solid #eee;
+  line-height: 60rpx;
+}
+.my-button{
+  width: 160rpx;
+  height: 60rpx;
+  font-size: 26rpx;
+  color: #1C92FF;
+  text-align: center;
+  line-height: 60rpx;
+  border: 1px solid #1C92FF;
+  border-radius: 40.5px;
+}
+.my-input{
+  width: 702rpx !important;
+  height: 90rpx !important;
+  border: 1px solid #CCCCCC !important;
+  border-radius: 45px !important;
+}
+.commit-btn button{
+  margin-top: 48rpx;
+  background: #1C92FF;
+  border-radius: 40.5px;
+  width: 580rpx;
+  height: 81rpx;
+  line-height: 81rpx;
+  border: none;
+}

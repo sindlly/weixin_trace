@@ -1,0 +1,16 @@
+<!--pages/bigdata/bigdata.wxml-->
+<van-panel>
+  <view slot='header' class='my-panel-header'>
+    <view class='panel-title'>新增假货举报</view>
+    <view class='cell-value' bindtap='goToScode'>{{count}}</view>
+  </view>
+</van-panel>
+<view style='width:100%;height:31rpx'></view>
+<van-panel>
+  <view slot='header' class='my-panel-header'>
+    <view class='panel-title'>假货溯源信息</view>
+  </view>
+  <view wx:for="{{counterfeits}}" wx:key="{{index}}">
+  <image mode='aspectFit' src="{{baseUrl + '/files/' + item.barcode.image}}"></image>
+</view>
+</van-panel>

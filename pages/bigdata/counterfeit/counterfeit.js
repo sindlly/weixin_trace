@@ -8,53 +8,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-    mycode: {
-      totalTracings: '',
-      unUsedTracings: '',
-      barcodes: '',
-      role_type: userInfo.role_type
-    },
-    counterfeitsCount: 0
+    baseUrl: baseUrl,
+    count: 0,
+    counterfeits: [],
+  },
 
-  },
-  goToScode: function() {
-    wx.navigateTo({
-      url: '/pages/scode_manage/scode_manage',
-    })
-  },
-  gotoMyInfo: function() {
-    wx.navigateTo({
-      url: '/pages/mySalesInfo/mySalesInfo'
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    wx.request({
-      url: baseUrl + '/users/' + userInfo.user_id + '/statistics',
-      success: res => {
-        this.setData({
-          mycode: res.data.data.data.data
-        })
-      }
-    })
-
     // 获假货
     wx.request({
-      url: baseUrl + '/counterfeits',
+      url: baseUrl + '/counterfeits?state=UNHANDLED',
       success: res => {
-        console.log(res)
+        const data = res.data.data
         this.setData({
-          counterfeitsCount: res.data.data.meta.count
+          count: data.meta.count,
+          counterfeits: data.data
         })
       }
-    })
-  },
-
-  showCounterfeit: function() {
-    wx.navigateTo({
-      url: '/pages/bigdata/counterfeit/counterfeit',
     })
   },
 
