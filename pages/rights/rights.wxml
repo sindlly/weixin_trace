@@ -8,14 +8,20 @@
   </view>
 </view>
 <van-panel>
-  <view class='img-title'>选择打假商品：</view>
   <van-cell-group>
-    <van-field value="{{ productsColums }}" placeholder="未选择商品" border="{{ false }}" disabled bind:change="onSelectChange" />
+    <!-- <van-field value="{{ productsColums }}" placeholder="未选择商品" border="{{ false }}" disabled bind:change="onSelectChange" /> -->
+    <view class='img-title' >打假商品：</view>
+    <view  class='img-title img-content'>
+      <picker mode="selector" bindchange="pickerChange" value="{{index}}" range="{{productsColums}}">
+        <view class="picker">
+          {{productsColums[index] || "请选择您要打假商品"}}
+        </view>
+      </picker>
+    </view>
   </van-cell-group>
-  <van-picker columns="{{ columns }}" bind:change="onSelect" visible-item-count="3" />
   <view class='img-title'>上传照片：</view>
   <view class='flex-row' style='padding-left:15px'>
-    <view style='backgroud:#fff;' wx:for='{{imgSrcMap}}'>
+    <view style='backgroud:#fff;' wx:key='{{index}}' wx:for='{{imgSrcMap}}'>
       <image class='right-img' mode='aspectFit' src="{{item.src}}" data-index='{{index}}' bindtap="selectImg"></image>
     </view>
     <view class='img-container' wx:if="{{imgSrcMap.length<3}}" bindtap="selectImg" style='backgroud:#fff'>
@@ -23,10 +29,9 @@
     </view>
   </view>
   <view class='img-title img-title2'>过程描述：</view>
-  <van-field type="textarea" placeholder="请输入描述文字，最多200字" maxlength='{{200}}' autosize border="{{ false }}" input-class="{{'my-textarea'}}" />
-  <van-field placeholder="请输您的手机号" border="{{ false }}" input-class="{{'my-input'}}" />
+  <van-field type="textarea" placeholder="请输入描述文字，最多200字" maxlength='{{200}}' autosize border="{{ false }}" input-class="{{'my-textarea'}}" bindchange="descriptionChange"/>
+  <van-field placeholder="请输您的手机号" border="{{ false }}" input-class="{{'my-input'}}" bindchange="phoneChange"/>
 </van-panel>
-
 <view class='my_center_container'>
   <van-button type="danger" class='commit-btn' size="large" bindtap='commit'>提交</van-button>
 </view>

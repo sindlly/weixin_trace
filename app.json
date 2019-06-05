@@ -1,12 +1,10 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/rights/rights",
     "pages/check/check",
-    
     "pages/send/send",
     "pages/bind/bind",
-    
-    
     "pages/mySalesInfo/mySalesInfo",
     "pages/invatCourier/invatCourier",
     "pages/invatSalesman/invatSalesman",
@@ -15,11 +13,8 @@
     "pages/mySalesInfo/myFactory/myFactory",
     "pages/bigdata/bigdata",
     "pages/tracing/tracing",
-    "pages/rights/rights",
     "pages/user/user",
     "pages/business_card/business_card",
-    
-    
     "pages/scode_manage/scode_manage",
     "pages/shop/shop",
     "pages/order_manage/order_manage",

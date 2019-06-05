@@ -98,7 +98,7 @@
     </view>
     <view class='flex-row-center content-hover'>
       <image src='../../img/bussiness.png' class="cell-left-img"></image>
-      <van-cell class='home-cell' title="认证商家" label="因为我们溯源无死角，所有假货无处藏身" url="/pages/invatBussiness/invatBussiness" border="{{ false }}" clickable />
+      <van-cell class='home-cell' title="认证商家" label="因为我们溯源无死角，所有假货无处藏身" url="/pages/invatFactory/invatFactory" border="{{ false }}" clickable />
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
     </view>
   </view>

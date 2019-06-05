@@ -10,34 +10,34 @@ Page({
    */
   data: {
     baseUrl: baseUrl,
-    banner:'',
-    bind_goods:[],
+    banner: '',
+    bind_goods: [],
     active: -1,
-    id:"",
-    steps: [
-    ],
+    id: '',
+    key: '',
+    steps: [],
     showCommit: true,
-    isReceved:false,
+    isReceved: false,
   },
-  goToRight:function(){
+  goToRight: function () {
     wx.navigateTo({
-      url: '/pages/rights/rights?key='+this.data.id,
+      url: '/pages/rights/rights?key=' + this.data.id + '&id=' + this.data.key,
     })
   },
-  goHome:function(){
+  goHome: function () {
     wx.reLaunch({
       url: '/pages/home/home',
     })
   },
-  commit:function(){
+  commit: function () {
     wx.request({
       url: baseUrl + '/tracings/' + this.data.id,
       method: 'put',
       data: {
-        operation :'receive'
+        operation: 'receive'
       },
       success: function (res) {
-        if(res.data.code == 0){
+        if (res.data.code == 0) {
           wx.showToast({
             title: '确认成功',
             icon: 'success',
@@ -61,29 +61,31 @@ Page({
     wx.request({
       url: baseUrl + '/tracings/' + id,
       success: res => {
+        this.setData({
+          key: res.data.data.data._id
+        })
         let records = res.data.data.data.records;
         let steps_temp = []
         let banner = ''
-        for(let i=0;i<records.length;i++){
-          const sender = records[i].sender 
+        for (let i = 0; i < records.length; i++) {
+          const sender = records[i].sender
           const name = sender[sender.role_type].name
-          steps_temp[i] ={
+          steps_temp[i] = {
             text: name,
             desc: util.convertUTCTimeToLocalTime(records[i].send_at),
           }
-          if (i == records.length -1){
+          if (i == records.length - 1) {
             banner = sender[sender.role_type].banner
           }
         }
         const owner = res.data.data.data.owner
-        // const banner = owner[owner.role_type].banner
         this.setData({
           bind_goods: res.data.data.data.products,
           steps: steps_temp,
-          banner:banner,
-          id:id,
+          banner: banner,
+          id: id,
           showCommit: res.data.data.data.owner._id == userInfo.user_id ? true : false,
-          isReceved: res.data.data.data.state == "RECEIVED"?true:false
+          isReceved: res.data.data.data.state == "RECEIVED" ? true : false
         })
       }
     })
@@ -93,48 +95,48 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   }
 })

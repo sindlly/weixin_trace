@@ -18,12 +18,14 @@ Page({
         desc: '描述商品造假鉴定过程',
       }
     ],
-    key: 'asdf', // 溯源码
-    barcodeId: '', // 条形码ID
+    key: '', // 溯源码
+    index: '', // 条形码index
     products: '', // 条形码产品
     productsColums: [],
     imgSrcMap: [],
-    imageIds: []
+    images: [],
+    description: '',
+    phone: ''
   },
 
   onSelect(event) {
@@ -37,23 +39,66 @@ Page({
     })
   },
 
+  descriptionChange: function(e) {
+    this.setData({
+      description: e.detail
+    })
+  },
+
+  phoneChange: function(e) {
+    this.setData({
+      phone: e.detail
+    })
+  },
+
   commit: function() {
+    wx.showLoading()
     let _this = this
     const tempFilePaths = this.data.imgSrcMap
     this.uploadimg({
       url: baseUrl + '/files',
       path: tempFilePaths,
-    }, (key) => {
+    }, (id) => {
+      const {
+        images,
+        description,
+        phone,
+        index,
+        products
+      } = this.data
+      const params = {
+        barcode: products[index]._id,
+        images,
+        description,
+        phone,
+        key: id
+      }
       wx.request({
-        url: baseUrl + '/tracings/' + key,
+        url: baseUrl + '/counterfeits',
+        method: "post",
+        data: params,
+        header: {
+          'content-type': 'application/json',
+        },
         success: res => {
+          wx.hideLoading()
           if (res.data.code === 0) {
-            const products = res.data.data.products
-            const productsColums = products.map((item) => {
-              return item.name
+            wx.showToast({
+              title: '提交成功',
+              icon: 'none',
+              duration: 2000,
+              success: function() {
+                setTimeout(()=> {
+                  wx.navigateTo({
+                    url: '/pages/home/home',
+                  })
+                }, 1000)
+              }
             })
-            _this.setData({
-              products
+          } else {
+            wx.showToast({
+              title: res.data.msg,
+              icon: 'none'
             })
           }
         }
@@ -82,7 +127,7 @@ Page({
           'content-type': 'application/json'
         },
         success: (res) => {
-          that.data.imageIds.push(JSON.parse(res.data).data.data[0].id)
+          that.data.images.push(JSON.parse(res.data).data.data.id)
           success++;
         },
         fail: () => {
@@ -91,7 +136,7 @@ Page({
         complete: () => {
           i++;
           if (i == data.path.length) {
-            if (callback) callback(that.data.key)
+            if (callback) callback(that.data.id)
           } else {
             data.i = i;
             data.success = success;
@@ -125,26 +170,43 @@ Page({
     })
   },
 
+  pickerChange: function(e) {
+    const index = e.detail.value
+    this.setData({
+      index,
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
     const _this = this;
-    const key = options.key || '01ee33f0a81bf6adc56dd259268246498f3252c02757a6ac40a4061f82370c2e982b4e6ca9f6cd45ca0b8e41bd640a350cc14644efc93d7538c16da30caf9c5b47'
+    const id = options.id || '5cf6130f65779e2cafbc2a23';
+    const key = options.key || '01ff3972349cc4ddd49e47dc36af04d2048c7b712d74eafb975225d36d235d6b85dea3810744a80e5b454c07d1b232bda844f540b9eaec933ee8459b82a3ad6ef8'
     this.setData({
-      key
+      key,
+      id,
     })
     // 溯源详情
     wx.request({
       url: baseUrl + '/tracings/' + key,
       success: res => {
         if (res.data.code === 0) {
-          const products = res.data.data.products
+          const {
+            products
+          } = res.data.data.data
           const productsColums = products.map((item) => {
             return item.name
           })
           _this.setData({
-            products
+            products,
+            productsColums
+          })
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none'
           })
         }
       }
