@@ -14,7 +14,7 @@ Page({
     showDialog: false,
     invat_name: userInfo.nickName,
     invat_id: userInfo.user_id,
-    showLoading:true
+    showLoading:false
   },
   bindGetUserInfo: function(res) {
     let userInfo = res.detail.userInfo
@@ -175,7 +175,8 @@ Page({
         home_type: userInfo.role_type || 4,
         canIUse: false,
         // userInfo: userInfo,
-
+        showLoading: false
+        
       })
     } else {
       _this.setData({
@@ -196,12 +197,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    console.log("sss")
     let _this = this;
     // wx.showLoading()
-    _this.setData({
-      showLoading: true
-    })
+    if (wx.getStorageSync('userInfo') && wx.getStorageSync('userInfo').role_type == 4){
+      console.log(userInfo.role_type)
+      _this.setData({
+        showLoading: true
+      })
+    }
+    debugger
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
@@ -216,6 +220,7 @@ Page({
             let user_id = '';
             if (res.data.data.data.isRegistered == false) {
               role_type = 4;
+              // user_id = res.data.data.data.user._id;
             } else {
               role_type = res.data.data.data.user.role_type;
               user_id = res.data.data.data.user._id;
@@ -235,9 +240,7 @@ Page({
                         })
                       );
                       _this.onLoad()
-                      _this.setData({
-                        showLoading:false
-                      })
+                      
                       // wx.hideLoading()
                       if (_this.userInfoReadyCallback) {
                         _this.userInfoReadyCallback(_this.globalData.userInfo);
