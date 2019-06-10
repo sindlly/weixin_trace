@@ -1,7 +1,7 @@
 <!--pages/user/user.wxml-->
 
 <view wx:key="{{index}}" wx:for="{{userList}}">
-  <van-panel title="[ {{item.role_name}} ]{{item[item.role_type].name}}" desc="{{item.regTime}}" status="{{item.state}}" use-footer-slot>
+  <van-panel title="[ {{item.role_name}} ]{{item[item.role_type].name}}" desc="{{item.regTime}}" status="{{item.state}}">
     <view wx:if="{{item.role_type === 'business'}}" class='user-detail'>
       <text>联系人：{{item[item.role_type].contact}}</text>
       <text>联系电话：{{item[item.role_type].phone}}</text>

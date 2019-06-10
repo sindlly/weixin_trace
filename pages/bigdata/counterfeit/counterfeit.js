@@ -11,6 +11,7 @@ Page({
     baseUrl: baseUrl,
     count: 0,
     counterfeits: [],
+    results: ['误把新包装当做假货', '其它']
   },
 
   /**
@@ -26,6 +27,54 @@ Page({
           count: data.meta.count,
           counterfeits: data.data
         })
+      }
+    })
+  },
+
+  closeCase: function(e) {
+    const {
+      id
+    } = e.target.dataset
+    const {
+      results
+    } = this.data
+    wx.showActionSheet({
+      itemList: results,
+      success(res) {
+        wx.request({
+          url: baseUrl + '/counterfeits/' + id,
+          method: 'put',
+          data: {
+            state: 'RESOLVED',
+            result: results[res.tapIndex]
+          },
+          success: function(res) {
+            if (res.data.code === 0) {
+              wx.showToast({
+                title: '结案成功',
+                icon: 'none',
+                duration: 2000,
+              })
+              this.onLoad()
+            } else {
+              wx.showToast({
+                title: res.data.msg,
+                icon: 'none',
+                duration: 2000
+              })
+            }
+          },
+          fail: function(error) {
+            wx.showToast({
+              title: error,
+              icon: 'none',
+              duration: 2000
+            })
+          }
+        })
+      },
+      fail(res) {
+        console.log(res.errMsg)
       }
     })
   },

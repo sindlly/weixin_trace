@@ -1,17 +1,20 @@
 /* pages/bigdata/bigdata.wxss */
-.panel-title{
+
+.panel-title {
   font-family: PingFangSC-Regular;
   font-size: 28rpx;
   color: #666 !important;
-
 }
-.cell-value{
+
+.cell-value {
   color: #333 !important;
 }
-.marginTop{
+
+.marginTop {
   margin-top: 31rpx;
 }
-.my-panel-header{
+
+.my-panel-header {
   display: flex;
   justify-content: space-between;
   padding: 10px 15px 10px 0;
@@ -19,28 +22,64 @@
   border-bottom: 1rpx solid #eee;
   line-height: 60rpx;
 }
-.my-button{
+
+.my-button {
   width: 160rpx;
   height: 60rpx;
   font-size: 26rpx;
-  color: #1C92FF;
+  color: #1c92ff;
   text-align: center;
   line-height: 60rpx;
-  border: 1px solid #1C92FF;
+  border: 1px solid #1c92ff;
   border-radius: 40.5px;
 }
-.my-input{
+
+.my-input {
   width: 702rpx !important;
   height: 90rpx !important;
-  border: 1px solid #CCCCCC !important;
+  border: 1px solid #ccc !important;
   border-radius: 45px !important;
 }
-.commit-btn button{
+
+.commit-btn button {
   margin-top: 48rpx;
-  background: #1C92FF;
+  background: #1c92ff;
   border-radius: 40.5px;
   width: 580rpx;
   height: 81rpx;
   line-height: 81rpx;
   border: none;
+}
+
+.counterfeit-container {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  border-bottom: 1px dashed silver
+}
+
+.counterfeit-left {
+  width: 40%;
+  display: flex
+}
+
+.counterfeit-left image {
+  width: 150px;
+  height: 117px;
+}
+
+.counterfeit-right {
+  font-size: 24rpx;
+  margin-left: 20rpx;
+}
+
+.counterfeit-right text {
+  color: #666;
+  display: block;
+  padding-bottom: 5px;
+}
+
+.counterfeit-right button {
+  background-color: #1C92FF;
+  color: #fff
 }
