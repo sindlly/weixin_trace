@@ -49,7 +49,7 @@ Page({
   },
   jump: function () {
     wx.navigateTo({
-      url: '/pages/regest/regest',
+      url: '/pages/regest/regest?invat_id=' + this.data.invat_id,
     })
   },
   backHome: function () {

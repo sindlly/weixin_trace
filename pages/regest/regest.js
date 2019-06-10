@@ -20,7 +20,8 @@ Page({
         address:null
        },
       },
-    imgSrc:null
+    imgSrc:null,
+    inviter:''
   },
   uploadImg: function () {
     var _this = this;
@@ -68,7 +69,8 @@ Page({
             data: {
               role_type: 'factory',
               role_id: 20,
-              factory: _this.data.factory
+              factory: _this.data.factory,
+              inviter: _this.data.inviter
             },
             success(res) {
               if (res.data.code == 0) {
@@ -123,7 +125,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.setData({
+      inviter: options.invat_id
+    })
   },
 
   /**
