@@ -8,7 +8,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    scode:{},
+    scode:{
+      name:null,
+      description: null,
+      attributes_name: null,
+      attributes_value: null,
+      manufacturer: null,
+      barcode: null,
+    },
     editscode:{},
     barcode:'',
     imgSrc:"",
@@ -35,6 +42,23 @@ Page({
       }
     })
   },
+  //校验
+  validate(data) {
+    let flag = true
+    //校验有空数据
+    for (let i in data) {
+      if (!data[i]) {
+        flag = false
+        wx.showToast({
+          title: '请填写所有内容',
+          icon: 'none',
+          duration: 1000
+        })
+        break;
+      }
+    }
+    return flag
+  },
   uploadImg: function () {
     var _this = this;
     wx.chooseImage({
@@ -51,6 +75,30 @@ Page({
   commit:function(){
     let _this =this
     let initData = this.data.scode
+    if (initData.barcode&&initData.barcode.length >= 30) {
+      wx.showToast({
+        title: '条形码最多30位',
+        icon: 'none',
+        duration: 1000,
+      })
+      return
+    }
+    
+    if (!initData.image){
+      if (!_this.data.isUpdateImg) {
+        wx.showToast({
+          title: '请上传商品图片',
+          icon: 'none',
+          duration: 1000,
+        })
+        return
+      }
+    }
+    
+    if (!_this.validate(initData)){
+      return
+    }
+    
     initData.attributes=[{
       name: initData.attributes_name,
       value: initData.attributes_value

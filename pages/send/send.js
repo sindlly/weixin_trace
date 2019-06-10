@@ -97,6 +97,49 @@ Page({
       url: '/pages/home/home',
     })
   },
+  //校验
+  validate(data) {
+    let flag = true
+    //校验有空数据
+    for (let i in data) {
+      if (!data[i]) {
+        flag = false
+        wx.showToast({
+          title: '请填写完整客户信息',
+          icon: 'none',
+          duration: 1000
+        })
+        break;
+      }
+    }
+    return flag
+  },
+  //发货  
+  send: function () {
+    var _this = this;
+    // 允许从相机和相册扫码
+    wx.scanCode({
+      success: (res) => {
+        let result = res.result;
+        let patt = new RegExp("https://buildupstep.cn/page/tracing/code?")
+        if (patt.test(result)) {
+          console.log(result.split("?")[1])
+          wx.navigateTo({
+            url: '/pages/tracing/tracing?' + result.split("?")[1],
+          })
+        } else {
+          wx.showToast({
+            title: '无效的溯源码',
+            icon: 'none',
+            duration: 1200
+          })
+          wx.reLaunch({
+            url: '/pages/home/home',
+          })
+        }
+      }
+    })
+  },
   commit:function(){
     let _this = this
     _this.data.record.reciver_type="consumer"
@@ -120,31 +163,49 @@ Page({
         })  
       return     
       }
+    }else{
+      let data =　{
+        reciver_name: _this.data.record.reciver_name||null,
+        reciver_phone: _this.data.record.reciver_phone||null,
+        reciver_address: _this.data.record.reciver_address||null
+      }
+      if(!_this.validate(data)){
+        return
+      }
     }
     wx.request({
       url: baseUrl + '/tracings/' + _this.data.id,
       method:'put',
       data: _this.data.switch_checked ? businessData : comsumerData,
-      success:function(){
+      success:function(res){
         if (res.data.code == 0) {
           wx.showModal({
             title: '提示',
-            content: '绑定成功',
-            showCancel: false,
+            content: '发送成功',
+            // showCancel: false,
+            confirmText:'再次发货',
             success(res) {
               if (res.confirm) {
-                wx.redirectTo({
+                _this.send()
+              } else if (res.cancel) {
+                wx.reLaunch({
                   url: '/pages/home/home'
                 })
               }
             }
           })
-        } 
+        } else{
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none',
+            duration: 1200
+          })
+        }
       }
     })
   },
   onLoad: function (options) {
-    let id = options.id ||"01ff3972349cc4ddd49e47dc36af04d2048c7b712d74eafb975225d36d235d6b85dea3810744a80e5b454c07d1b232bda844f540b9eaec933ee8459b82a3ad6ef8"
+    let id = options.id ||"01c825a971d647d89b05fd10d3f6090dca81ebd5125ea7167e6d9a39ceb1fd3e0a06dbc5b4e68b4c199fd48764e3a8d564abcf0e417d765f73f618e89f4042e4c2"
     this.data.id = id
     wx.request({
       url: baseUrl +'/tracings/'+id,

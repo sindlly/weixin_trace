@@ -22,6 +22,7 @@
 
 <view class='my_center_container' >
   <van-button wx:if='{{!isBind}}' type="danger" class='commit-btn'  size="large" bindtap='commit'>提交</van-button>
+  <view class='tips' wx:if='{{!isBind}}' bindtap='gohome'>返回首页></view>
   <van-button wx:if='{{isBind}}' type="danger" class='commit-btn'  size="large" bindtap='gohome'>返回首页</van-button>
 </view>
 
