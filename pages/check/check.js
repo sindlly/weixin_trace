@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    notice_text:'',
     baseUrl: baseUrl,
     banner: '',
     bind_goods: [],
@@ -18,6 +19,7 @@ Page({
     steps: [],
     showCommit: true,
     isReceved: false,
+    showBackHome:true
   },
   goToRight: function () {
     wx.navigateTo({
@@ -56,7 +58,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let id = options.id || "01ff3972349cc4ddd49e47dc36af04d2048c7b712d74eafb975225d36d235d6b85dea3810744a80e5b454c07d1b232bda844f540b9eaec933ee8459b82a3ad6ef8"
+    let id = options.id || "01c825a971d647d89b05fd10d3f6090dca81ebd5125ea7167e6d9a39ceb1fd3e0a06dbc5b4e68b4c199fd48764e3a8d564abcf0e417d765f73f618e89f4042e4c2"
     this.data.id = id
     wx.request({
       url: baseUrl + '/tracings/' + id,
@@ -79,13 +81,31 @@ Page({
           }
         }
         const owner = res.data.data.data.owner
+        const state = res.data.data.data.state        
+        let notice_text = ""
+        if(state == "BIND"){
+          notice_text="正品待售"
+        }else if(state == "SEND"){
+          if (records[records.length - 1].reciver_type =="consumer"){
+            notice_text = "正品已出售时间:" + util.convertUTCTimeToLocalTime(records[records.length - 1].send_at)
+          }else{
+            notice_text = "正品待售"
+          }
+        } else if (state == "RECEIVED"){
+          if (res.data.data.data.isEnd == true){
+            notice_text = "正品签收时间:" + util.convertUTCTimeToLocalTime(records[records.length - 1].reciver_at)
+          } else {
+            notice_text = "正品待售"
+          }
+        }
         this.setData({
           bind_goods: res.data.data.data.products,
           steps: steps_temp,
           banner: banner,
           id: id,
           showCommit: res.data.data.data.owner._id == userInfo.user_id ? true : false,
-          isReceved: res.data.data.data.state == "RECEIVED" ? true : false
+          isReceved: state == "RECEIVED" ? true : false,
+          notice_text: notice_text
         })
       }
     })

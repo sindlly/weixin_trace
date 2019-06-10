@@ -1,4 +1,7 @@
 <!--pages/check/check.wxml-->
+<van-notice-bar
+  text="{{notice_text}}"
+/>
 <image src='{{baseUrl}}/files/{{banner}}' class="banner"></image>
 <view  wx:for-items='{{bind_goods}}' wx:key="{{item}}">
 <view class='height-30'></view>
@@ -24,9 +27,10 @@
 <view class='height-30'></view>
 <view class='my_center_container' wx:if="{{!showCommit & !isReceved}}">
   <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>确认收货</van-button>
+  <view class='tips' bindtap='gohome'>返回首页></view>
   </view>
   
-<view class='my_center_container' wx:if="{{isReceved}}">
+<view class='my_center_container' wx:if="{{isReceved || showBackHome}}">
   <van-button type="danger" class='commit-btn'  size="large" bindtap='goHome'>返回首页</van-button>
 </view>
 

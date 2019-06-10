@@ -1,10 +1,15 @@
 {
   "pages": [
-    "pages/home/home",
-    "pages/rights/rights",
-    "pages/check/check",
     "pages/send/send",
+    
+    "pages/check/check",
+    
+    "pages/home/home",
+    
     "pages/bind/bind",
+    "pages/scode_manage/scode_manage",
+    "pages/rights/rights",
+   
     "pages/mySalesInfo/mySalesInfo",
     "pages/invatCourier/invatCourier",
     "pages/invatSalesman/invatSalesman",
@@ -16,7 +21,7 @@
     "pages/tracing/tracing",
     "pages/user/user",
     "pages/business_card/business_card",
-    "pages/scode_manage/scode_manage",
+   
     "pages/shop/shop",
     "pages/order_manage/order_manage",
     "pages/courier/courier",
