@@ -210,7 +210,7 @@ Page({
               title: '订单生成成功',
               icon: 'none',
               duration: 2000,
-              success: function () {
+              success: function() {
                 setTimeout(() => {
                   wx.navigateTo({
                     url: '/pages/order_manage/order_manage'
@@ -250,26 +250,28 @@ Page({
         })
       }
     })
-    // 获取被该用户邀请注册的
-    wx.request({
-      url: baseUrl + '/users/' + userInfo.user_id + '/factories',
-      method: "GET",
-      header: {
-        'content-type': 'application/json',
-      },
-      success: function(res) {
-        const {
-          users
-        } = res.data.data.data
-        const selectFactories = users.map(item => {
-          return item.factory.name
-        })
-        _this.setData({
-          factories: users,
-          selectFactories
-        })
-      }
-    })
+    // 销售获取被其邀请的厂家信息
+    if (this.data.role_type === 'salesman') {
+      wx.request({
+        url: baseUrl + '/users/' + userInfo.user_id + '/factories',
+        method: "GET",
+        header: {
+          'content-type': 'application/json',
+        },
+        success: function(res) {
+          const {
+            users
+          } = res.data.data.data
+          const selectFactories = users.map(item => {
+            return item.factory.name
+          })
+          _this.setData({
+            factories: users,
+            selectFactories
+          })
+        }
+      })
+    }
   },
 
   onPullDownRefresh: function() {

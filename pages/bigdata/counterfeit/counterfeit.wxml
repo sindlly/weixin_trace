@@ -10,7 +10,16 @@
   <view slot='header' class='my-panel-header'>
     <view class='panel-title'>假货溯源信息</view>
   </view>
-  <view wx:for="{{counterfeits}}" wx:key="{{index}}">
-  <image mode='aspectFit' src="{{baseUrl + '/files/' + item.barcode.image}}"></image>
-</view>
+  <view wx:for="{{counterfeits}}" wx:key="{{index}}" class='counterfeit-container'>
+    <view class='counterfeit-left'>
+      <image mode='aspectFit' src="{{baseUrl + '/files/' + item.barcode.image}}" mode='scaleToFill'></image>
+    </view>
+    <view class='counterfeit-right'>
+      <text>商品名：{{item.barcode.name}}</text>
+      <text>制造商：{{item.barcode.manufacturer}}</text>
+      <text>源头：{{item.factory && item.factory[item.factory.role_type].name || '未知'}}</text>
+      <text>上家：{{item.sender && item.sender[item.sender.role_type].name || '未知'}}</text>
+      <button type="default" size="mini" data-id="{{item._id}}" bindtap='closeCase'>一键结案</button>
+    </view>
+  </view>
 </van-panel>
