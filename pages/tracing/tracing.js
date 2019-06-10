@@ -17,15 +17,11 @@ Page({
     wx.showLoading()
     let type = options.type || "outer_code" //inner_code outer_code
     let id = options.id
-    console.log("s")
-    console.log(decodeURIComponent(options.q))
     if(options.q){
       let q = decodeURIComponent(options.q)
       type = q.split("?")[1].split("&")[0].split("=")[1]
       id = q.split("?")[1].split("&")[1].split("=")[1]
     }
-    console.log(type)
-    console.log(id)
   
     this.data.id = id
     wx.request({
@@ -76,9 +72,16 @@ Page({
                 })
                 break;
               case "RECEIVED": //客户已收货
-                wx.reLaunch({
-                  url: '/pages/check/check?id=' + id,
-                })
+                //如果是经销商，则跳到send页
+                if(wx.getStorageSync("userInfo").role_type=="business"){
+                  wx.reLaunch({
+                    url: '/pages/send/send?id=' + id,
+                  })
+                }else{
+                  wx.reLaunch({
+                    url: '/pages/check/check?id=' + id,
+                  })
+                }
                 break;
             }
           }
