@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/tracing/tracing",
+   
     "pages/send/send",
     "pages/check/check",
     "pages/bind/bind",
@@ -15,7 +17,7 @@
     "pages/mySalesInfo/myFactory/myFactory",
     "pages/bigdata/bigdata",
     "pages/bigdata/counterfeit/counterfeit",
-    "pages/tracing/tracing",
+    
     "pages/user/user",
     "pages/business_card/business_card",
    

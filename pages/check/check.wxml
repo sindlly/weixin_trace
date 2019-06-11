@@ -25,7 +25,7 @@
 />
 </van-panel>
 <view class='height-30'></view>
-<view class='my_center_container' wx:if="{{!showCommit & !isReceved}}">
+<view class='my_center_container' wx:if="{{!showCommit & !isReceved &isOwner}}"> 
   <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>确认收货</van-button>
   <view class='tips' bindtap='gohome'>返回首页></view>
   </view>

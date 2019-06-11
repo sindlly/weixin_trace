@@ -17,6 +17,7 @@ Page({
     id: '',
     key: '',
     steps: [],
+    isOnwer:false,
     showCommit: true,
     isReceved: false,
     showBackHome:true
@@ -63,6 +64,7 @@ Page({
     wx.request({
       url: baseUrl + '/tracings/' + id,
       success: res => {
+        this.data.isOnwer = res.data.data.data.owner._id == wx.getStorageSync('userInfo').user_id ? true : false
         this.setData({
           key: res.data.data.data._id
         })
