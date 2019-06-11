@@ -1,32 +1,42 @@
 /* pages/courier/courier.wxss */
-.my-panel{
-  background: #fff
+
+.my-panel {
+  background: #fff;
 }
-.my-img{
+
+.my-img {
   width: 80rpx;
   height: 80rpx;
 }
-.img-container{
+
+.img-container {
   width: 180rpx;
   height: 180rpx;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px dashed #CCCCCC;
-  margin-left:15px;
+  border: 2px dashed #ccc;
+  margin-left: 15px;
 }
-.img-title{
+
+.img-title {
   font-size: 28rpx;
-  color: #333333;
+  color: #333;
   line-height: 24px;
   padding: 15px;
 }
-.commit-btn button{
+
+.commit-btn button {
   margin-top: 48rpx;
-  background:red;
+  background: red;
   border-radius: 40.5px;
   width: 580rpx;
   height: 81rpx;
   line-height: 81rpx;
   border: none;
+}
+
+.scan-button {
+  background-color: #1c92ff;
+  color: #fff;
 }

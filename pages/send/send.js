@@ -163,16 +163,18 @@ Page({
         })  
       return     
       }
-    }else{
-      let data =　{
-        reciver_name: _this.data.record.reciver_name||null,
-        reciver_phone: _this.data.record.reciver_phone||null,
-        reciver_address: _this.data.record.reciver_address||null
-      }
-      if(!_this.validate(data)){
-        return
-      }
     }
+    // 关闭客户信息验证
+    // else{
+    //   let data =　{
+    //     reciver_name: _this.data.record.reciver_name||null,
+    //     reciver_phone: _this.data.record.reciver_phone||null,
+    //     reciver_address: _this.data.record.reciver_address||null
+    //   }
+    //   if(!_this.validate(data)){
+    //     return
+    //   }
+    // }
     wx.request({
       url: baseUrl + '/tracings/' + _this.data.id,
       method:'put',
