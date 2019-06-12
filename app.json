@@ -1,8 +1,10 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/send/send",
     "pages/check/check",
+    
+    "pages/send/send",
+    
     "pages/bind/bind",
     "pages/scode_manage/scode_manage",
     "pages/rights/rights",

@@ -34,7 +34,16 @@ const convertUTCTimeToLocalTime= UTCDateString => {
   return dateStr;
 }
 //2017-11-16 PM 01:23
+const getHours = date => {
+  let now = new Date()
+  let old = new Date(date)
+  let time = parseInt((now.getTime() - old.getTime()) / (1000 * 60 * 60))
+  return time
+}
+
 module.exports = {
   formatTime: formatTime,
-  convertUTCTimeToLocalTime: convertUTCTimeToLocalTime
+  convertUTCTimeToLocalTime: convertUTCTimeToLocalTime,
+  getHours: getHours
+
 }
