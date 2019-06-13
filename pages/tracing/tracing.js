@@ -88,13 +88,20 @@ Page({
               } 
                 break;
               case "SEND": //经销商已发货
-                wx.reLaunch({
-                  url: '/pages/check/check?id=' + id,
-                })
+                if (wx.getStorageSync("userInfo").role_type == "curier"){
+                  wx.reLaunch({
+                    url: '/pages/send/send?id=' + id,
+                  })
+                }else{
+                  wx.reLaunch({
+                    url: '/pages/check/check?id=' + id,
+                  })
+                }
+                
                 break;
               case "EXPRESSED": //已绑定快递信息
                 wx.reLaunch({
-                  url: '/pages/send/send?id=' + id,
+                  url: '/pages/check/check?id=' + id,
                 })
                 break;
               case "RECEIVED": //客户已收货

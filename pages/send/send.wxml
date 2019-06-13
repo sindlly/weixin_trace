@@ -1,84 +1,49 @@
 <!--pages/check/check.wxml-->
-<view wx:if="{{showCommit}}">
-<van-switch-cell
-  title="{{switch_title}}"
-  checked="{{ switch_checked }}"
-  bind:change="switchOnChange"
-/>
-<van-cell title="选择经销商" wx:if="{{ switch_checked }}">
-  <van-icon slot="right-icon" name="add-o" class="custom-icon" bindtap='openPicker' />
-</van-cell>
-<van-cell title="{{business_name}}" wx:if="{{ business_name }}">
-  
-</van-cell>
+<view wx:if="{{showCommit || !isCourier}}">
+  <van-switch-cell title="{{switch_title}}" checked="{{ switch_checked }}" bind:change="switchOnChange" />
+  <van-cell title="选择经销商" wx:if="{{ switch_checked }}">
+    <van-icon slot="right-icon" name="add-o" class="custom-icon" bindtap='openPicker' />
+  </van-cell>
+  <van-cell title="{{business_name}}" wx:if="{{ business_name }}">
+  </van-cell>
 </view>
 
 <view class='height-30'></view>
 <van-panel title="商品列表" status="已绑定商品">
-    <view wx:for-items='{{bind_goods}}' wx:key="{{item}}">
-      <van-cell title="{{item.name}}" value="{{item.barcode}}" >
-      </van-cell>
-    </view>
+  <view wx:for-items='{{bind_goods}}' wx:key="{{item}}">
+    <van-cell title="{{item.name}}" value="{{item.barcode}}">
+    </van-cell>
+  </view>
 </van-panel>
 <view class='height-30'></view>
 <van-panel title="客户信息" wx:if="{{ !switch_checked }}">
-  <van-field
-    label="客户姓名:"
-    placeholder="请输入客户姓名"
-    bind:blur="onChange"
-    data-obj="record"
-    data-item="reciver_name"
-  />
-  <van-field
-    bind:blur="onChange"
-    label="客户电话:"
-    placeholder="请输入电话号码"
-    data-obj="record"
-    data-item="reciver_phone"
-  />
-  <van-field
-    bind:blur="onChange"
-    label="收货地址:"
-    placeholder="请输入收货地址"
-    data-obj="record"
-    data-item="reciver_address"
-  />
-      
+  <van-field label="客户姓名:" placeholder="请输入客户姓名" bind:blur="onChange" data-obj="record" data-item="reciver_name" />
+  <van-field bind:blur="onChange" label="客户电话:" placeholder="请输入电话号码" data-obj="record" data-item="reciver_phone" />
+  <van-field bind:blur="onChange" label="收货地址:" placeholder="请输入收货地址" data-obj="record" data-item="reciver_address" />
 </van-panel>
 
-<!-- <view class='height-30'></view> -->
-<!-- <van-field
-    value="{{ barcode }}"
-    clearable
-    label="快递单号"
-    placeholder="请输入或扫描快递单号"
-    bind:change="scodeInput"
-    use-button-slot
-    data-obj="scode"
-    data-item="barcode"
-    bind:blur="onChange"
-  >
-  <van-button slot="button" size="small" type="primary" bindtap='getScode'>扫描条形码</van-button>
-  </van-field> -->
-<view class='my_center_container' wx:if="{{showCommit}}">
-  <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>提交</van-button>
+<view wx:if="{{role_type=='courier'}}">
+  <view class='height-30'></view>
+  <van-field value="{{ express_name }}" clearable label="快递名称" placeholder="请输入快递公司名称" bind:change="onChange" data-obj="express" data-item="express_name">
+  </van-field>
+  <van-field value="{{ barcode }}" clearable label="快递单号" placeholder="请输入或扫描快递单号" bind:change="onChange" use-button-slot data-obj="express" data-item="express_no">
+    <van-button slot="button" size="small" type="primary" bindtap='getScode'>扫描条形码</van-button>
+  </van-field>
+</view>
+
+
+<view class='my_center_container' wx:if="{{showCommit || !isCourier}}">
+  <van-button type="danger" class='commit-btn' size="large" bindtap='commit'>提交</van-button>
   <view class='tips' bindtap='goHome'>返回首页></view>
 </view>
+
 <view class='my_center_container' wx:if="{{!showCommit}}">
-  <van-button type="danger" class='commit-btn'  size="large" bindtap='goHome'>返回首页</van-button>
+  <van-button type="danger" class='commit-btn' size="large" bindtap='goHome'>返回首页</van-button>
   <view class='tips'>非自己的溯源码不能操作></view>
 </view>
 
-<van-picker 
-  wx:if='{{showPicker}}' 
-  columns="{{ columns }}"
-  show-toolbar
-  title="经销商名称"
-  bind:confirm="picked"
-  bind:cancel="onCancel"
-  custom-class="{{'my_picker'}}"
-/>
+<van-picker wx:if='{{showPicker}}' columns="{{ columns }}" show-toolbar title="经销商名称" bind:confirm="picked" bind:cancel="onCancel" custom-class="{{'my_picker'}}" />
 
 <van-dialog id="van-dialog" show="{{showDialog}}" bind:close="goHome" bind:confirm="goHome" title="提示" message="还未绑定商品,请先扫描袋内码绑定商品" show-cancel-button="true" />
 
-<van-dialog id="van-dialog" show="{{showDialogToBusiness}}"  bind:close="onClose"  title="提示" bind:confirm="goInvatBusiness" message="您还未邀请过经销商，是否前往邀请" show-cancel-button="true" />
+<van-dialog id="van-dialog" show="{{showDialogToBusiness}}" bind:close="onClose" title="提示" bind:confirm="goInvatBusiness" message="您还未邀请过经销商，是否前往邀请" show-cancel-button="true" />

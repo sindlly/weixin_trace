@@ -10,6 +10,7 @@ Page({
   data: {
     id:'',
     baseUrl: baseUrl,
+    role_type:userInfo.role_type,
     switch_title:'发货至经销商',
     switch_checked:true,   //true：发送至经销商，false：发送至C端客户
     showPicker:false,
@@ -23,6 +24,8 @@ Page({
     showDialog:false,
     showDialogToBusiness:false,
     showCommit: false,
+    isCourier: userInfo.role_type == "courier"?true:false,
+    express:{}
   },
 
   /**
@@ -43,7 +46,8 @@ Page({
   },
   onChange: function (e) {
     let dataset = e.target.dataset
-    this.data[dataset.obj][dataset.item] = e.detail.value
+    this.data[dataset.obj][dataset.item] = e.detail.value || e.detail
+
   },
   openPicker:function(){
     if (this.data.columns.length == 0) {
@@ -114,7 +118,7 @@ Page({
     }
     return flag
   },
-  //发货  
+  //重新发货  
   send: function () {
     var _this = this;
     // 允许从相机和相册扫码
@@ -154,6 +158,10 @@ Page({
         reciver: _this.data.business_id, //经销商ID
       }
     }
+    let courierData = {
+      operation: "express",
+      record: _this.data.express
+    }
     if (_this.data.switch_checked){
       if (!_this.data.business_id){
         wx.showToast({
@@ -178,7 +186,7 @@ Page({
     wx.request({
       url: baseUrl + '/tracings/' + _this.data.id,
       method:'put',
-      data: _this.data.switch_checked ? businessData : comsumerData,
+      data: _this.data.isCourier ?courierData:_this.data.switch_checked ? businessData : comsumerData,
       success:function(res){
         if (res.data.code == 0) {
           wx.showModal({
