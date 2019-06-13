@@ -34,14 +34,7 @@ const convertUTCTimeToLocalTime= UTCDateString => {
   return dateStr;
 }
 //2017-11-16 PM 01:23
-<<<<<<< HEAD
 
-const getHours = date => {
-  let now = new Date().getTime()
-  let old = date.getTime()
-  console.log(now-old)
-}
-=======
 const getHours = date => {
   let now = new Date()
   let old = new Date(date)
@@ -49,13 +42,8 @@ const getHours = date => {
   return time
 }
 
->>>>>>> 14b1ecf2a0378d776c82bf576836bcf9c15c6778
 module.exports = {
   formatTime: formatTime,
   convertUTCTimeToLocalTime: convertUTCTimeToLocalTime,
   getHours: getHours
-<<<<<<< HEAD
-=======
-
->>>>>>> 14b1ecf2a0378d776c82bf576836bcf9c15c6778
 }

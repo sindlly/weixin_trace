@@ -102,10 +102,10 @@
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
     </view>
   </view>
-  <view class='home-content' name="快递员账号首页 " wx:if="{{home_type==5}}">
+  <view class='home-content' name="快递员账号首页 " wx:if="{{home_type=='courier'}}">
     <view class='flex-row-center content-hover'>
       <image src='../../img/saoma.png' class="cell-left-img"></image>
-      <van-cell class='home-cell' title="扫码取件" label="销售人员认证后可以促成商家采购溯源防伪方案" clickable />
+      <van-cell class='home-cell' title="扫码取件" label="销售人员认证后可以促成商家采购溯源防伪方案" clickable bindtap='send'/>
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
     </view>
     <view class='flex-row-center'>
@@ -134,6 +134,7 @@
     <view class='footer-text'>发货</view>
   </view>
 </view>
+
 <view class='footer flex-row' wx:if="{{home_type=='salesman'||home_type==4}}">
   <view class='footer-item flex-column-center'>
   </view>
@@ -152,6 +153,17 @@
     <view class='footer-text'>用户审核</view>
   </view>
   <view class='footer-item flex-column-center'>
+  </view>
+</view>
+
+<view class='footer flex-row' wx:if="{{home_type=='courier'}}">
+  <view class='footer-item flex-column-center center-item-border' bindtap='check'>
+    <image src='../../img/icon-yanhuo.png' class='footer-img'></image>
+    <view class='footer-text'>验货</view>
+  </view>
+  <view class='footer-item flex-column-center' bindtap='send'>
+    <image src='../../img/icon-fahuo.png' class='footer-img'></image>
+    <view class='footer-text'>发货</view>
   </view>
 </view>
 <van-dialog id="van-dialog" show="{{showDialog}}" confirm-button-open-type="getUserInfo" bind:close="onClose" bind:getuserinfo="getUserInfo" title="提示" message="授权登录溯源实物链平台" show-cancel-button="true" />

@@ -1,41 +1,26 @@
 <!--pages/check/check.wxml-->
-<van-notice-bar
-  text="{{notice_text}}"
-/>
+<van-notice-bar text="{{notice_text}}" />
 <image src='{{baseUrl}}/files/{{banner}}' class="banner"></image>
-<view  wx:for-items='{{bind_goods}}' wx:key="{{item}}">
-<view class='height-30'></view>
-<van-panel title="{{item.name}}">
-    <van-card
-    commission="{{item.attributes[0].name}}:{{item.attributes[0].value}}"
-    desc="生产厂商：{{item.manufacturer}}"
-    title="条形码：{{item.barcode}}"
-    stageProportion="描述：{{item.description}}"
-    thumb="{{baseUrl}}/files/{{ item.image }}"
-    />
-</van-panel>
+<view wx:for-items='{{bind_goods}}' wx:key="{{item}}">
+  <view class='height-30'></view>
+  <van-panel title="{{item.name}}">
+    <van-card commission="{{item.attributes[0].name}}:{{item.attributes[0].value}}" desc="生产厂商：{{item.manufacturer}}" title="条形码：{{item.barcode}}" stageProportion="描述：{{item.description}}" thumb="{{baseUrl}}/files/{{ item.image }}" />
+  </van-panel>
 </view>
 <view class='height-30'></view>
 <van-panel title="溯源码生命周期">
-  <van-steps
-  steps="{{ steps }}"
-  active="{{ active }}"
-  direction="vertical"
-  active-color="#27a9e7"
-/>
+  <van-steps steps="{{ steps }}" active="{{ active }}" direction="vertical" active-color="#27a9e7" />
 </van-panel>
 <view class='height-30'></view>
-<view class='my_center_container' wx:if="{{!showCommit & !isReceved &isOwner}}"> 
-  <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>确认收货</van-button>
+<view class='my_center_container' wx:if="{{!showCommit & !isReceved &isOwner & !hasReseverInfo}}">
+  <van-button type="danger" class='commit-btn' size="large" bindtap='commit'>确认收货</van-button>
   <view class='tips' bindtap='gohome'>返回首页></view>
-  </view>
-  
+</view>
+
 <view class='my_center_container' wx:if="{{isReceved || showBackHome}}">
-  <van-button type="danger" class='commit-btn'  size="large" bindtap='goHome'>返回首页</van-button>
+  <van-button type="danger" class='commit-btn' size="large" bindtap='goHome'>返回首页</van-button>
 </view>
 
 <view class='my_center_container danger' wx:if="{{isReceved & showCommit == true}}">
   <text type="danger" class='danger' bindtap='goToRight'>发现假货，需要维权</text>
 </view>
-
- 
