@@ -54,7 +54,7 @@
     data-obj="scode"
     data-item="barcode"
     bind:blur="onChange"
-    disable="{{!isEdit}}"
+    disabled="{{isEdit}}"
   >
     <van-button slot="button" size="small" type="default" class="scan-button" bindtap='getScode' wx:if="{{!isEdit}}">扫描条形码</van-button>
   </van-field>

@@ -1,4 +1,4 @@
-// pages/intro/intro.js
+// pages/intro/out.js
 Page({
 
   /**
@@ -7,16 +7,7 @@ Page({
   data: {
 
   },
-  jump:function(){
-    wx.navigateTo({
-      url: '/pages/shop/shop',
-    })
-  },
-  jump2: function () {
-    wx.navigateTo({
-      url: '/pages/intro/out/out',
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

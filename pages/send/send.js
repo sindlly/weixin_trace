@@ -215,7 +215,7 @@ Page({
     })
   },
   onLoad: function (options) {
-    let id = options.id ||"01c825a971d647d89b05fd10d3f6090dca81ebd5125ea7167e6d9a39ceb1fd3e0a06dbc5b4e68b4c199fd48764e3a8d564abcf0e417d765f73f618e89f4042e4c2"
+    let id = options.id ||"01e0c84c8da2773c93eba4dff4e67bd90af2dd7b2764d3843318e19fe59ba0cd4d0b029acc1db463c7fab67d1fd22f2d277b144ff9a5c7d1ec01e9ce75c91e47a9"
     this.data.id = id
     wx.request({
       url: baseUrl +'/tracings/'+id,

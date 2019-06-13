@@ -21,7 +21,8 @@ Page({
     imgSrc:"",
     isUpdateImg:false,
     barcode_id:'',
-    isEdit:false, //是否是编辑
+    isEdit: false, //是否是编辑
+    scodeEnable: true
   },
 
   /**
@@ -118,13 +119,13 @@ Page({
         success(res) {
           initData.image = JSON.parse(res.data).data.data.id
           wx.request({
-            url: baseUrl + '/barcodes',
+            url: baseUrl + '/barcodes/' + _this.data.barcode_id,
             method: _this.data.isEdit ? "put" :"post",
             data: initData,
             success: function (res) {
               if(res.data.code === 0) {
                 wx.showToast({
-                  title: '条形码添加成功',
+                  title: _this.data.isEdit ? '条形码修改成功' : '条形码添加成功',
                   icon: 'none',
                   duration: 2000,
                   success: function() {
@@ -179,26 +180,28 @@ Page({
   },
   onLoad: function (options) {
     if(options.id){
-      this.data.isEdit = true
-      this.data.barcode_id = options.id
+      this.setData({
+        isEdit: true,
+        barcode_id: options.id
+      })
       wx.request({
         url: baseUrl + '/barcodes/' + options.id,
         success: (res) => {
-          let data = res.data.data.data
+          const data = res.data.data.data
           this.setData({
             editscode:data,
             imgSrc: baseUrl + '/files/'+data.image,
-            barcode: data.barcode
-          })
-          this.data.scode={
             barcode: data.barcode,
-            description: data.description,
-            image: data.image,
-            manufacturer: data.manufacturer,
-            name: data.manufacturer,
-            attributes_name: data.attributes[0].name,
-            attributes_value: data.attributes[0].value
-          }
+            scode: {
+              barcode: data.barcode,
+              description: data.description,
+              image: data.image,
+              manufacturer: data.manufacturer,
+              name: data.manufacturer,
+              attributes_name: data.attributes[0].name,
+              attributes_value: data.attributes[0].value
+            }
+          })
         }
       })
     }
