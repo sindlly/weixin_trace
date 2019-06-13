@@ -3,12 +3,18 @@
     "pages/check/check",
     "pages/send/send",
     "pages/home/home",
+<<<<<<< HEAD
     "pages/tracing/tracing",
    
+=======
+    "pages/check/check",
+    
+    "pages/send/send",
+    
+>>>>>>> 14b1ecf2a0378d776c82bf576836bcf9c15c6778
     "pages/bind/bind",
     "pages/scode_manage/scode_manage",
     "pages/rights/rights",
-   
     "pages/mySalesInfo/mySalesInfo",
     "pages/invatCourier/invatCourier",
     "pages/invatSalesman/invatSalesman",
@@ -17,10 +23,10 @@
     "pages/mySalesInfo/myFactory/myFactory",
     "pages/bigdata/bigdata",
     "pages/bigdata/counterfeit/counterfeit",
-    
+    "pages/bigdata/tracingManage/tracingManage",
+    "pages/tracing/tracing",
     "pages/user/user",
     "pages/business_card/business_card",
-   
     "pages/shop/shop",
     "pages/order_manage/order_manage",
     "pages/courier/courier",
@@ -42,13 +48,13 @@
     "pages/apply/apply",
     "pages/logistic/logistic",
     "pages/scode_manage/add_scode/add_scode"
-    
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
   },
   "sitemapLocation": "sitemap.json"
 }

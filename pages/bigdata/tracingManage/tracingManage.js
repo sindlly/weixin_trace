@@ -8,59 +8,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-    mycode: {
-      totalTracings: '',
-      unUsedTracings: '',
-      barcodes: '',
-      role_type: userInfo.role_type
-    },
-    counterfeitsCount: 0
-
-  },
-  goToScode: function() {
-    wx.navigateTo({
-      url: '/pages/scode_manage/scode_manage',
-    })
-  },
-  gotoMyInfo: function() {
-    wx.navigateTo({
-      url: '/pages/mySalesInfo/mySalesInfo'
-    })
-  },
-  goToTracing: function() {
-    wx.navigateTo({
-      url: '/pages/bigdata/tracingManage/tracingManage'
-    })
+    baseUrl: baseUrl,
+    count: 0,
+    counterfeits: [],
+    results: ['误把新包装当做假货', '其它']
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    wx.request({
-      url: baseUrl + '/users/' + userInfo.user_id + '/statistics',
-      success: res => {
-        this.setData({
-          mycode: res.data.data.data.data
-        })
-      }
-    })
-
     // 获假货
     wx.request({
-      url: baseUrl + '/counterfeits',
+      url: baseUrl + '/tracings?owner=' + userInfo.user_id,
       success: res => {
-        console.log(res)
+        const data = res.data.data
         this.setData({
-          counterfeitsCount: res.data.data.meta.count
+          count: data.meta.count,
+          counterfeits: data.data
         })
       }
-    })
-  },
-
-  showCounterfeit: function() {
-    wx.navigateTo({
-      url: '/pages/bigdata/counterfeit/counterfeit',
     })
   },
 

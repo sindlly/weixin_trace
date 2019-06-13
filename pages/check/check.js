@@ -89,13 +89,13 @@ Page({
           notice_text="正品待售"
         }else if(state == "SEND"){
           if (records[records.length - 1].reciver_type =="consumer"){
-            notice_text = "正品已出售时间:" + util.convertUTCTimeToLocalTime(records[records.length - 1].send_at)
+            notice_text = "正品在" + util.getHours(records[records.length - 1].send_at) +"小时前被出售"
           }else{
             notice_text = "正品待售"
           }
         } else if (state == "RECEIVED"){
           if (res.data.data.data.isEnd == true){
-            notice_text = "正品签收时间:" + util.convertUTCTimeToLocalTime(records[records.length - 1].reciver_at)
+            notice_text = "正品在:" + util.getHours(records[records.length - 1].reciver_at) + "小时前被签收"
           } else {
             notice_text = "正品待售"
           }
