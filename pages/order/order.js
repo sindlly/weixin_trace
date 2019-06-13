@@ -30,63 +30,67 @@ Page({
   },
 
   validate(data) {
-    let flag = true
+    let flag = true;
     for (let i in data) {
       if (!data[i]) {
-        flag = false
+        flag = false;
         wx.showToast({
           title: '请填写所有内容',
           icon: 'none',
           duration: 1000
-        })
+        });
         break;
       } else {
         if (i === 'remarks') {
-          this.validate(data[i])
+          this.validate(data[i]);
         }
       }
     }
-    return flag
+    return flag;
   },
 
   countMinus: function() {
-    if (this.data.count > 1) this.setData({
-      count: parseInt(this.data.count) - 1
-    })
-    else this.setData({
-      disabled: true,
-    })
+    if (this.data.count > 1)
+      this.setData({
+        count: parseInt(this.data.count) - 1
+      });
+    else
+      this.setData({
+        disabled: true
+      });
   },
 
   countAdd: function() {
     this.setData({
       count: parseInt(this.data.count) + 1,
       disabled: false
-    })
-    console.log(this.data)
+    });
+    console.log(this.data);
   },
 
   // 商品信息
   onProductChange: function(e) {
-    this.data.product = e.detail
+    this.data.product = e.detail;
   },
   onLengthChange: function(e) {
-    this.data.length = e.detail
+    this.data.length = e.detail;
   },
   onWidthChange: function(e) {
-    this.data.width = e.detail
+    this.data.width = e.detail;
   },
   onHeightChange: function(e) {
-    this.data.height = e.detail
+    this.data.height = e.detail;
   },
   onThickChange: function(e) {
-    this.data.thick = e.detail
+    this.data.thick = e.detail;
   },
 
   inviteFactory: function() {
     wx.navigateTo({
-      url: `/pages/invatFactory/invatFactory?invat_name=${this.data.invat_name}&invat_id=${this.data.invat_id}`,
-    })
+      url: `/pages/invatFactory/invatFactory?invat_name=${
+        this.data.invat_name
+      }&invat_id=${this.data.invat_id}`
+    });
   },
 
   uploadImg: function() {
@@ -97,45 +101,45 @@ Page({
       sourceType: ['album', 'camera'],
       success: function(res) {
         _this.setData({
-          imgSrc: res.tempFilePaths[0],
-        })
+          imgSrc: res.tempFilePaths[0]
+        });
       }
-    })
+    });
   },
   bindInput: function(e) {
     this.setData({
       count: e.detail.value
-    })
+    });
   },
   pickerChange: function(e) {
-    const selectedFactory = this.data.factories[e.detail.value]._id
+    const selectedFactory = this.data.factories[e.detail.value]._id;
     this.setData({
       selectedFactory,
       index: e.detail.value
-    })
+    });
   },
   submitOrder: function() {
     let _this = this;
-    wx.showLoading()
+    wx.showLoading();
     if (_this.data.goods_detail.isCustom) {
       if (!this.data.imgSrc) {
         wx.showToast({
           title: '请上传logo',
           icon: 'none',
           duration: 1000
-        })
-        return
+        });
+        return;
       }
       wx.uploadFile({
         url: baseUrl + '/files',
-        method: "POST",
+        method: 'POST',
         filePath: _this.data.imgSrc,
-        name: "files",
+        name: 'files',
         header: {
           'content-type': 'application/json'
         },
         success(res) {
-          _this.data.logo = JSON.parse(res.data).data.data.id
+          _this.data.logo = JSON.parse(res.data).data.data.id;
           let subData = {
             commodity: _this.data.commodityId,
             count: parseInt(_this.data.count),
@@ -145,23 +149,24 @@ Page({
               width: _this.data.width,
               height: _this.data.height,
               length: _this.data.length,
-              thick: _this.data.thick,
+              thick: _this.data.thick
             },
-            logo: _this.data.logo,
-          }
-          if (_this.data.selectedFactory) subData.buyer = _this.data.selectedFactory
-          console.log(subData)
+            logo: _this.data.logo
+          };
+          if (_this.data.selectedFactory)
+            subData.buyer = _this.data.selectedFactory;
+          console.log(subData);
           if (_this.validate(subData)) {
             wx.request({
               url: baseUrl + '/orders',
-              method: "post",
+              method: 'post',
               data: subData,
               header: {
-                'content-type': 'application/json',
+                'content-type': 'application/json'
               },
               success: function(res) {
-                wx.hideLoading()
-                console.log(res)
+                wx.hideLoading();
+                console.log(res);
                 if (res.data.code === 0) {
                   wx.showToast({
                     title: '订单生成成功',
@@ -171,40 +176,40 @@ Page({
                       setTimeout(() => {
                         wx.navigateTo({
                           url: '/pages/order_manage/order_manage'
-                        })
-                      }, 1000)
+                        });
+                      }, 1000);
                     }
-                  })
+                  });
                 } else {
                   wx.showToast({
                     title: res.data.msg,
                     icon: 'none',
-                    duration: 2000,
-                  })
+                    duration: 2000
+                  });
                 }
               }
-            })
+            });
           } else {
-            wx.hideLoading()
+            wx.hideLoading();
           }
         }
-      })
+      });
     } else {
       let subData = {
         commodity: _this.data.commodityId,
         count: parseInt(_this.data.count),
-        buyer: userInfo.user_id,
-      }
+        buyer: userInfo.user_id
+      };
       wx.request({
         url: baseUrl + '/orders',
-        method: "post",
+        method: 'post',
         data: subData,
         header: {
-          'content-type': 'application/json',
+          'content-type': 'application/json'
         },
         success: function(res) {
-          wx.hideLoading()
-          console.log(res)
+          wx.hideLoading();
+          console.log(res);
           if (res.data.code === 0) {
             wx.showToast({
               title: '订单生成成功',
@@ -214,73 +219,71 @@ Page({
                 setTimeout(() => {
                   wx.navigateTo({
                     url: '/pages/order_manage/order_manage'
-                  })
-                }, 1000)
+                  });
+                }, 1000);
               }
-            })
+            });
           } else {
             wx.showToast({
               title: res.data.msg,
               icon: 'none',
-              duration: 2000,
-            })
+              duration: 2000
+            });
           }
         }
-      })
+      });
     }
   },
 
   onLoad: function(options) {
-    const id = options.id
-    const _this = this
+    const userInfo = wx.getStorageSync('userInfo');
+    const id = options.id;
+    const _this = this;
     _this.setData({
       commodityId: id
-    })
+    });
     //获取商品信息
     wx.request({
       url: baseUrl + '/commodities/' + id,
-      method: "GET",
+      method: 'GET',
       header: {
-        'content-type': 'application/json',
+        'content-type': 'application/json'
       },
       success: function(res) {
-        let temp = res.data.data.data
+        let temp = res.data.data.data;
         _this.setData({
           goods_detail: temp
-        })
+        });
       }
-    })
+    });
     // 销售获取被其邀请的厂家信息
     if (this.data.role_type === 'salesman') {
       wx.request({
         url: baseUrl + '/users/' + userInfo.user_id + '/factories',
-        method: "GET",
+        method: 'GET',
         header: {
-          'content-type': 'application/json',
+          'content-type': 'application/json'
         },
         success: function(res) {
-          const {
-            users
-          } = res.data.data.data
+          const { users } = res.data.data.data;
           const selectFactories = users.map(item => {
-            return item.factory.name
-          })
+            return item.factory.name;
+          });
           _this.setData({
             factories: users,
             selectFactories
-          })
+          });
         }
-      })
+      });
     }
   },
 
   onPullDownRefresh: function() {
     // const userInfo = wx.getStorageSync('user_info');
     // const _this = this;
-
     // _this.setData({
     //   userInfo
     // })
     // wx.stopPullDownRefresh();
   }
-})
+});
