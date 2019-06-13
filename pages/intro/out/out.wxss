@@ -1,0 +1,4 @@
+/* pages/intro/out.wxss */
+page{
+  background: #e8ebf6;
+}
