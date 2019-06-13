@@ -2,7 +2,6 @@
 const app = getApp();
 const baseUrl = app.globalData.HOST;
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -11,21 +10,21 @@ Page({
       address: null,
       name: null,
       phone: null,
-      contact: null,
+      contact: null
     },
-    inviter:'',
-    imgSrc: null,
+    inviter: '',
+    imgSrc: null
   },
   onChange: function(e) {
-    let dataset = e.target.dataset
-    this.data[dataset.obj][dataset.item] = e.detail
+    let dataset = e.target.dataset;
+    this.data[dataset.obj][dataset.item] = e.detail;
   },
   commit: function() {
-    let _this = this
+    let _this = this;
     if (_this.validate(this.data.business)) {
       wx.request({
         url: baseUrl + '/users',
-        method: "POST",
+        method: 'POST',
         header: {
           'content-type': 'application/json'
         },
@@ -45,107 +44,92 @@ Page({
                 if (res.confirm) {
                   wx.reLaunch({
                     url: '/pages/home/home'
-                  })
+                  });
                 }
               }
-            })
+            });
           } else if (res.data.code == 10004) {
             wx.showToast({
               title: res.data.msg,
               icon: 'none',
               duration: 2000,
-              success: function () {
+              success: function() {
                 setTimeout(() => {
                   wx.reLaunch({
                     url: '/pages/home/home'
-                  })
-                }, 1000)
+                  });
+                }, 1000);
               }
-            })
-          }else {
+            });
+          } else {
             wx.showToast({
               title: res.data.msg,
               icon: 'none',
               duration: 1000
-            })
+            });
           }
         }
-      })
+      });
     }
   },
   //校验
   validate(data) {
-    let flag = true
+    let flag = true;
     //校验有空数据
     for (let i in data) {
       if (!data[i]) {
-        flag = false
+        flag = false;
         wx.showToast({
           title: '请填写所有内容',
           icon: 'none',
           duration: 1000
-        })
+        });
         break;
       }
     }
-    return flag
+    return flag;
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log("invat-id" + options.invat_id)
     this.setData({
       inviter: options.invat_id
-    })
+    });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
-    
-  },
+  onReady: function() {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
-
-  },
+  onShow: function() {},
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
-
-  },
+  onHide: function() {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
-
-  },
+  onUnload: function() {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
-
-  },
+  onPullDownRefresh: function() {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
-
-  },
+  onReachBottom: function() {},
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
-
-  }
-})
+  onShareAppMessage: function() {}
+});
