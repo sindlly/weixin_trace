@@ -1,17 +1,10 @@
 {
   "pages": [
     "pages/home/home",
-<<<<<<< HEAD
-    "pages/check/check",
-    "pages/send/send",
-   
     "pages/courier/courier",
-    
-=======
-    "pages/send/send",
-    "pages/check/check",
     "pages/intro/intro",
->>>>>>> 2bf9076ce9c878ddef12f3027fa97b7e1757ed0a
+    "pages/check/check",
+    "pages/send/send",
     "pages/bind/bind",
     "pages/scode_manage/scode_manage",
     "pages/rights/rights",
@@ -29,7 +22,6 @@
     "pages/business_card/business_card",
     "pages/shop/shop",
     "pages/order_manage/order_manage",
-    
     "pages/salesman/salesman",
     "pages/intro/out/out",
     "pages/order_manage/goods_detail/goods_detail",
