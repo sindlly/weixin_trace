@@ -106,12 +106,17 @@ Page({
                     duration: 3000
                   })
                   return
+                } else {
+                  _this.setData({
+                    showDetail: true
+                  })
                 }
                 const latestRecord = records.slice(recordsLength - 1, recordsLength)[0]
                 let hasCommitRight = true // 如果收货人为商家，则验证是否为
-                console.log(recordsLength)
                 if (latestRecord.reciver_type === 'business') {
                   hasCommitRight = latestRecord.reciver === userInfo.user_id
+                } else {
+                  hasCommitRight = latestRecord.sender === userInfo.user_id
                 }
                 let steps_temp = []
                 let banner = ''
