@@ -12,15 +12,13 @@
   <van-steps steps="{{ steps }}" active="{{ active }}" direction="vertical" active-color="#27a9e7" />
 </van-panel>
 <view class='height-30'></view>
-<view class='my_center_container' wx:if="{{!showCommit & !isReceved &isOwner & !hasReseverInfo}}">
+<view class='my_center_container' wx:if="{{showCommit}}">
   <van-button type="danger" class='commit-btn' size="large" bindtap='commit'>确认收货</van-button>
   <view class='tips' bindtap='gohome'>返回首页></view>
 </view>
-
-<view class='my_center_container' wx:if="{{isReceved || showBackHome}}">
+<view class='my_center_container' wx:if="{{!showCommit}}">
   <van-button type="danger" class='commit-btn' size="large" bindtap='goHome'>返回首页</van-button>
 </view>
-
-<view class='my_center_container danger' wx:if="{{isReceved & showCommit == true}}">
+<view class='my_center_container danger' wx:if="{{isReceved & showCommit}}">
   <text type="danger" class='danger' bindtap='goToRight'>发现假货，需要维权</text>
 </view>
