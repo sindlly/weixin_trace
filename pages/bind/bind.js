@@ -105,40 +105,88 @@ Page({
     })
   },
   onLoad: function(options) {
-    let id = options.id || '01422ec7950351540937c7b9876a22c3fe990bc489626e0ead1fefd85df0b9e63cdf94360e7d0d610664387615946e79746732f0ba3de5ab0f93efa45f02dcaada'
-    this.setData({
+    const _this = this
+    let id = options.id || '018d3dfe2f4ef80eef3e0ee813bfa8918550c2bb0fc09d74b5869151847c5369cb711b2e032d06290aea80fda3d4aebbeb0b9c199b5cf2b1b65a15dd4b6ca1aaac'
+    _this.setData({
       id: id
     })
-    wx.request({
-      url: baseUrl + '/tracings/' + id,
+    wx.login({
       success: res => {
-        const isBind = res.data.data.data.state == "UNBIND" ? false : true;
-        this.setData({
-          isBind,
-          bind_goods: res.data.data.data.products
-        })
-        if (isBind) {
-          wx.showToast({
-            title: '',
-            icon: 'none',
-            duration: 2000,
-          })
-        }
-      }
-    })
-    wx.request({
-      url: baseUrl + '/barcodes',
-      success: res => {
-        let temp = res.data.data.data
-        let goods_temp = []
-        for (let i = 0; i < temp.length; i++) {
-          goods_temp[i] = {
-            text: temp[i].name,
-            value: temp[i]._id,
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        wx.showLoading()
+        wx.request({
+          url: baseUrl + '/auth/login',
+          method: "post",
+          data: {
+            "code": res.code
+          },
+          success: function(res) {
+            wx.hideLoading()
+            let role_type = ''
+            let user_id = ''
+            const result = res.data.data.data
+            if (result.isRegistered == false) {
+              role_type = 4
+            } else {
+              role_type = result.user.role_type
+              user_id = result.user._id
+            }
+            const userInfo = {
+              role_type: role_type,
+              user_id: user_id
+            }
+            wx.setStorageSync('userInfo', userInfo)
+            wx.request({
+              url: baseUrl + '/tracings/' + id,
+              success: res => {
+                const result = res.data.data.data
+                const isBind = result.state == "UNBIND" ? false : true;
+                const hasBindRight = result.owner._id === userInfo.user_id
+                _this.setData({
+                  isBind,
+                  bind_goods: result.products
+                })
+                if (!hasBindRight) {
+                  wx.showToast({
+                    title: '你不是我的主人，无法使用该内码',
+                    icon: 'none',
+                    duration: 2000,
+                    success: () => {
+                      setTimeout(() => {
+                        wx.reLaunch({
+                          url: '/pages/home/home',
+                        })
+                      }, 1000)
+                    }
+                  })
+                } else {
+                  if (isBind) {
+                    wx.showToast({
+                      title: '您已经绑定过商品，无法再次绑定',
+                      icon: 'none',
+                      duration: 2000,
+                    })
+                  }
+                }
+              }
+            })
+            wx.request({
+              url: baseUrl + '/barcodes',
+              success: res => {
+                let temp = res.data.data.data
+                let goods_temp = []
+                for (let i = 0; i < temp.length; i++) {
+                  goods_temp[i] = {
+                    text: temp[i].name,
+                    value: temp[i]._id,
+                  }
+                }
+                _this.setData({
+                  columns: goods_temp
+                })
+              }
+            })
           }
-        }
-        this.setData({
-          columns: goods_temp
         })
       }
     })

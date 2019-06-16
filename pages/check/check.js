@@ -110,6 +110,11 @@ Page({
                   _this.setData({
                     showDetail: true
                   })
+                  wx.showToast({
+                    title: '主人好，请鉴',
+                    icon: 'none',
+                    duration: 3000
+                  })
                 }
                 const latestRecord = records.slice(recordsLength - 1, recordsLength)[0]
                 let hasCommitRight = true // 如果收货人为商家，则验证是否为
