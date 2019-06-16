@@ -21,6 +21,7 @@ Page({
     isReceved: false,
     showBackHome: true,
     hasReseverInfo: false,
+    showDetail: false
   },
   goToRight: function() {
     wx.navigateTo({
@@ -59,7 +60,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let id = options.id || "015ceda323bfab56cdcdc640d69b7b31f164e65881d0f4291666b7d01744e9020e139ac1c08fbb152babcb966ba02b43d3bca2ec3e7d9daec220b6942183d38a01"
+    let id = options.id || "01e0c84c8da2773c93eba4dff4e67bd90af2dd7b2764d3843318e19fe59ba0cd4d0b029acc1db463c7fab67d1fd22f2d277b144ff9a5c7d1ec01e9ce75c91e47a9"
     this.data.id = id
     let _this = this
     wx.login({
@@ -98,8 +99,17 @@ Page({
                 })
                 let records = result.records;
                 const recordsLength = records.length
+                if (recordsLength === 0 || ['BIND', 'UNBIND'].includes(result.state)) {
+                  wx.showToast({
+                    title: '未发货，无法查看溯源码详情',
+                    icon: 'none',
+                    duration: 3000
+                  })
+                  return
+                }
                 const latestRecord = records.slice(recordsLength - 1, recordsLength)[0]
                 let hasCommitRight = true // 如果收货人为商家，则验证是否为
+                console.log(recordsLength)
                 if (latestRecord.reciver_type === 'business') {
                   hasCommitRight = latestRecord.reciver === userInfo.user_id
                 }
