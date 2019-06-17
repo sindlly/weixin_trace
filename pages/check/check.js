@@ -21,7 +21,9 @@ Page({
     isReceved: false,
     showBackHome: true,
     hasReseverInfo: false,
-    showDetail: false
+    showDetail: false,
+    hasRight: false,
+    showDialog: true
   },
   goToRight: function() {
     wx.navigateTo({
@@ -56,11 +58,14 @@ Page({
       }
     })
   },
+  getPhoneNumber: function(res) {
+    console.log(res)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let id = options.id || "01e0c84c8da2773c93eba4dff4e67bd90af2dd7b2764d3843318e19fe59ba0cd4d0b029acc1db463c7fab67d1fd22f2d277b144ff9a5c7d1ec01e9ce75c91e47a9"
+    let id = options.id || "01de2b026a849596592e8bf2c2c7a3c6566a24f6bac386dacfa5ecfc55335c978325b8e3df19be2f0b8c4f0e72798d1df7398194958f0e4c10e73eee7a480591a8"
     this.data.id = id
     let _this = this
     wx.login({
@@ -121,7 +126,7 @@ Page({
                 if (latestRecord.reciver_type === 'business') {
                   hasCommitRight = latestRecord.reciver === userInfo.user_id
                 } else {
-                  hasCommitRight = latestRecord.sender === userInfo.user_id
+                  hasCommitRight = latestRecord.sender !== userInfo.user_id
                 }
                 let steps_temp = []
                 let banner = ''
@@ -158,6 +163,9 @@ Page({
                     notice_text = "正品待售"
                   }
                 } else if (state == "RECEIVED") {
+                  if (owner._id === userInfo.user_id) _this.setData({
+                    hasRight: true
+                  })
                   if (res.data.data.data.isEnd == true) {
                     notice_text = "正品在:" + util.getHours(latestRecord.reciver_at) + "小时前被签收"
                   } else {

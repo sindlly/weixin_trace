@@ -8,19 +8,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    scode:{
-      name:null,
+    scode: {
+      name: null,
       description: null,
       attributes_name: null,
       attributes_value: null,
       manufacturer: null,
       barcode: null,
     },
-    editscode:{},
-    barcode:'',
-    imgSrc:"",
-    isUpdateImg:false,
-    barcode_id:'',
+    editscode: {},
+    barcode: '',
+    imgSrc: "",
+    isUpdateImg: false,
+    barcode_id: '',
     isEdit: false, //是否是编辑
     scodeEnable: true
   },
@@ -28,11 +28,11 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onChange: function (e) {
+  onChange: function(e) {
     let dataset = e.target.dataset
     this.data[dataset.obj][dataset.item] = e.detail.value
   },
-  getScode: function () {
+  getScode: function() {
     const _this = this;
     // 允许从相机和相册扫码
     wx.scanCode({
@@ -40,6 +40,7 @@ Page({
         _this.setData({
           barcode: res.result
         })
+        _this.data.scode.barcode = res.result
       }
     })
   },
@@ -60,23 +61,23 @@ Page({
     }
     return flag
   },
-  uploadImg: function () {
+  uploadImg: function() {
     var _this = this;
     wx.chooseImage({
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
-      success: function (res) {
+      success: function(res) {
         _this.setData({
           imgSrc: res.tempFilePaths[0],
-          isUpdateImg:true
+          isUpdateImg: true
         })
       }
     })
   },
-  commit:function(){
-    let _this =this
+  commit: function() {
+    let _this = this
     let initData = this.data.scode
-    if (initData.barcode&&initData.barcode.length >= 30) {
+    if (initData.barcode && initData.barcode.length >= 30) {
       wx.showToast({
         title: '条形码最多30位',
         icon: 'none',
@@ -84,8 +85,8 @@ Page({
       })
       return
     }
-    
-    if (!initData.image){
+
+    if (!initData.image) {
       if (!_this.data.isUpdateImg) {
         wx.showToast({
           title: '请上传商品图片',
@@ -95,19 +96,19 @@ Page({
         return
       }
     }
-    
-    if (!_this.validate(initData)){
+
+    if (!_this.validate(initData)) {
       return
     }
-    
-    initData.attributes=[{
+
+    initData.attributes = [{
       name: initData.attributes_name,
       value: initData.attributes_value
     }]
     delete initData.attributes_name
     delete initData.attributes_value
     //先上传图片数据
-    if(_this.data.isUpdateImg){
+    if (_this.data.isUpdateImg) {
       wx.uploadFile({
         url: baseUrl + '/files',
         method: "POST",
@@ -120,10 +121,10 @@ Page({
           initData.image = JSON.parse(res.data).data.data.id
           wx.request({
             url: baseUrl + '/barcodes/' + _this.data.barcode_id,
-            method: _this.data.isEdit ? "put" :"post",
+            method: _this.data.isEdit ? "put" : "post",
             data: initData,
-            success: function (res) {
-              if(res.data.code === 0) {
+            success: function(res) {
+              if (res.data.code === 0) {
                 wx.showToast({
                   title: _this.data.isEdit ? '条形码修改成功' : '条形码添加成功',
                   icon: 'none',
@@ -133,7 +134,7 @@ Page({
                       wx.navigateTo({
                         url: '/pages/scode_manage/scode_manage',
                       })
-                    } , 1000)
+                    }, 1000)
                   }
                 })
               } else {
@@ -147,19 +148,19 @@ Page({
           })
         }
       })
-    }else{
+    } else {
       //没有图片更新的修改
       wx.request({
         url: baseUrl + '/barcodes/' + _this.data.barcode_id,
         method: "put",
         data: initData,
-        success: function (res) {
+        success: function(res) {
           if (res.data.code === 0) {
             wx.showToast({
               title: '条形码修改成功',
               icon: 'none',
               duration: 2000,
-              success: function () {
+              success: function() {
                 setTimeout(() => {
                   wx.navigateTo({
                     url: '/pages/scode_manage/scode_manage',
@@ -178,8 +179,8 @@ Page({
       })
     }
   },
-  onLoad: function (options) {
-    if(options.id){
+  onLoad: function(options) {
+    if (options.id) {
       this.setData({
         isEdit: true,
         barcode_id: options.id
@@ -189,8 +190,8 @@ Page({
         success: (res) => {
           const data = res.data.data.data
           this.setData({
-            editscode:data,
-            imgSrc: baseUrl + '/files/'+data.image,
+            editscode: data,
+            imgSrc: baseUrl + '/files/' + data.image,
             barcode: data.barcode,
             scode: {
               barcode: data.barcode,
@@ -210,49 +211,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

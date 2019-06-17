@@ -44,7 +44,6 @@ Page({
         })
       }
     })
-
   },
   jump: function () {
     wx.navigateTo({

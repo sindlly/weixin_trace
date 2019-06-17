@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/check/check",
     "pages/home/home",
     "pages/bind/bind",
-    "pages/check/check",
     "pages/send/send",
     "pages/courier/courier",
     "pages/intro/intro",
