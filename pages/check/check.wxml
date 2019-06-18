@@ -29,4 +29,4 @@
     <van-button type="danger" class='commit-btn' size="large" bindtap='goHome'>返回首页</van-button>
   </view>
 </view>
-<!-- <van-dialog id="van-dialog" show="{{showDialog}}" confirm-button-open-type="getPhoneNumber" bind:close="onClose"  bindgetphonenumber="getPhoneNumber" title="提示" message="授权溯源实物链平台获取手机号" show-cancel-button="true" /> -->
+<van-dialog id="van-dialog" show="{{showDialog}}" confirm-button-open-type="getPhoneNumber" bind:close="onClose"  bindgetphonenumber="getPhoneNumber" title="提示" message="授权溯源实物链平台获取手机号" show-cancel-button="true" />

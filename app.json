@@ -1,9 +1,10 @@
 {
   "pages": [
-    "pages/check/check",
     "pages/home/home",
+    "pages/check/check",
     "pages/bind/bind",
     "pages/send/send",
+    "pages/tracing/tracing",
     "pages/courier/courier",
     "pages/intro/intro",
     "pages/scode_manage/scode_manage",
@@ -17,7 +18,6 @@
     "pages/bigdata/bigdata",
     "pages/bigdata/counterfeit/counterfeit",
     "pages/bigdata/tracingManage/tracingManage",
-    "pages/tracing/tracing",
     "pages/user/user",
     "pages/business_card/business_card",
     "pages/shop/shop",
