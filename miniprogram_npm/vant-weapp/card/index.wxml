@@ -28,7 +28,7 @@
       <view wx:if="{{ desc }}" class="van-card__desc desc-class">{{ desc }}</view>
       <slot wx:else name="desc" />
 
-      <view wx:if="{{ commission }}" class="van-card__desc desc-class">{{ commission }}</view>
+      <view wx:if="{{ commission }}" class="van-card__desc commission desc-class">{{ commission }}</view>
       <slot wx:else name="commission" />
 
       <view wx:if="{{ stageProportion }}" class="van-card__desc desc-class">{{ stageProportion }}</view>

@@ -184,6 +184,7 @@ Page({
                 _this.setData({
                   columns: goods_temp
                 })
+                _this.openPicker()
               }
             })
           }

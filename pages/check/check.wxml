@@ -4,7 +4,7 @@
   <image src='{{baseUrl}}/files/{{banner}}' class="banner"></image>
   <view wx:for-items='{{bind_goods}}' wx:key="{{item}}">
     <view class='height-30'></view>
-    <van-panel title="{{item.name}}">
+    <van-panel title="{{item.name}}" style="color:#565656;font-weight:bold">
       <van-card commission="{{item.attributes[0].name}}:{{item.attributes[0].value}}" desc="生产厂商：{{item.manufacturer}}" title="条形码：{{item.barcode}}" stageProportion="描述：{{item.description}}" thumb="{{baseUrl}}/files/{{ item.image }}" />
     </van-panel>
   </view>

@@ -12,7 +12,7 @@
   color: red;
 }
 .commit-btn button{
-  margin-top: 48rpx;
+  margin-top: 200rpx;
   background: #1C92FF;
   border-radius: 40.5px;
   width: 580rpx;

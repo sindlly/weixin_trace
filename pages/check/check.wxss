@@ -30,3 +30,7 @@ page{
   letter-spacing: 0;
   margin-top: 23rpx;
 }
+.commission{
+  background: red !important;
+  color: #fff !important
+}

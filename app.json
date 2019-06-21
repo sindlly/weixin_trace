@@ -2,8 +2,8 @@
   "pages": [
     "pages/home/home",
     "pages/check/check",
-    "pages/bind/bind",
     "pages/send/send",
+    "pages/bind/bind",
     "pages/tracing/tracing",
     "pages/courier/courier",
     "pages/intro/intro",
