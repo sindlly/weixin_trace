@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/home/home",
     "pages/check/check",
     "pages/regest/regest",
-    "pages/home/home",
     
+  
     "pages/send/send",
     "pages/bind/bind",
     "pages/tracing/tracing",

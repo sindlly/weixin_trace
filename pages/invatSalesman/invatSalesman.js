@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    invat_id: '',
+    invat_name: ''
   },
 
   /**
@@ -52,7 +53,7 @@ Page({
   },
   jump:function(){
     wx.navigateTo({
-      url: '/pages/regest/partner_regest/partner_regest',
+      url: '/pages/regest/partner_regest/partner_regest?invat_id=' + this.data.invat_id,
     })
   },
   backHome:function(){
@@ -61,7 +62,10 @@ Page({
     })
   },
   onLoad: function (options) {
-
+    this.setData({
+      invat_name: decodeURI(options.invat_name) || "溯源码",
+      invat_id: options.invat_id || 0
+    })
   },
 
   /**
@@ -110,6 +114,8 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      path: "/pages/regest/partner_regest/partner_regest?invat_id=" + this.data.invat_id + "&invat_name=" + this.data.invat_name
+    }
   }
 })
