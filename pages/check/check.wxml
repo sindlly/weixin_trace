@@ -1,18 +1,16 @@
 <!--pages/check/check.wxml-->
 <view wx:if="{{showDetail}}">
-  <van-notice-bar text="{{notice_text}}" />
-  <image src='{{baseUrl}}/files/{{banner}}' class="banner"></image>
-  <view wx:for-items='{{bind_goods}}' wx:key="{{item}}">
-    <view class='height-30'></view>
-    <van-panel title="{{item.name}}" style="color:#565656;font-weight:bold">
-      <van-card commission="{{item.attributes[0].name}}:{{item.attributes[0].value}}" desc="生产厂商：{{item.manufacturer}}" title="条形码：{{item.barcode}}" stageProportion="描述：{{item.description}}" thumb="{{baseUrl}}/files/{{ item.image }}" />
-    </van-panel>
+  <view class='displayFirst'>
+    <image src='{{baseUrl}}/files/{{firstGoods.image}}' class="banner"></image>
+    <view class='item first-name'>{{firstGoods.name}}</view>
+    <view class='item first-manufacturer'>{{firstGoods.manufacturer}}</view>
+    <view class='item first-description'>{{firstGoods.description}}</view>
+    <text class='item first-attributes'>{{firstGoods.attributes[0].name}}:{{firstGoods.attributes[0].value}}</text>
+    
   </view>
-  <view class='height-30'></view>
-  <van-panel title="溯源码生命周期">
-    <van-steps steps="{{ steps }}" active="{{ active }}" direction="vertical" active-color="#27a9e7" />
-  </van-panel>
-  <view class='height-30'></view>
+
+  <van-notice-bar text="{{notice_text}}" />
+
   <view class='my_center_container' wx:if="{{showCommit}}">
     <van-button type="danger" class='commit-btn' size="large" bindtap='commit'>确认收货</van-button>
     <view class='tips' bindtap='gohome'>返回首页></view>
@@ -23,10 +21,33 @@
   <view class='my_center_container danger' wx:if="{{isReceved & hasRight}}">
     <text type="danger" class='danger' bindtap='goToRight'>发现假货，需要维权</text>
   </view>
+ <!-- 多个商品展示 老版本-->
+  <!-- <view wx:for-items='{{bind_goods}}' wx:key="{{item}}">
+    <view class='height-30'></view>
+    <van-panel title="{{item.name}}" style="color:#565656;font-weight:bold">
+      <van-card commission="{{item.attributes[0].name}}:{{item.attributes[0].value}}" desc="生产厂商：{{item.manufacturer}}" title="条形码：{{item.barcode}}" stageProportion="描述：{{item.description}}" thumb="{{baseUrl}}/files/{{ item.image }}" />
+    </van-panel>
+  </view> -->
+  <!-- 多个商品展示 新版本-->
+  <van-panel title="共{{goodsTotal}}件商品" style="color:#565656;font-weight:bold">
+      <view class='goodsImg'>
+        <image class='item' wx:for-items='{{bind_goods}}' wx:key="{{item}}" src="{{baseUrl}}/files/{{ item.image }}" ></image>
+      </view>
+  </van-panel>
+
+  <view class='height-30'></view>
+  <van-panel title="溯源码生命周期">
+    <van-steps steps="{{ steps }}" active="{{ active }}" direction="vertical" active-color="#27a9e7" />
+  </van-panel>
+<image src='{{baseUrl}}/files/{{banner}}' class="banner"></image>
+<view type="danger" class='danger' bindtap='goIntro'>点击了解“想鉴你”</view>
+
 </view>
 <view wx:else>
   <view class='my_center_container' wx:if="{{!showCommit}}">
     <van-button type="danger" class='commit-btn' size="large" bindtap='goHome'>返回首页</van-button>
   </view>
 </view>
+ 
+
 <van-dialog id="van-dialog" show="{{showDialog}}" confirm-button-open-type="getPhoneNumber" bind:close="onClose"  bindgetphonenumber="getPhoneNumber" title="提示" message="授权溯源实物链平台获取手机号" show-cancel-button="true" />

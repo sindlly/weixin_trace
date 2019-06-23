@@ -24,7 +24,9 @@ Page({
     showDetail: false,
     hasRight: false,
     showDialog: true,
-    wechatPhone: ''
+    wechatPhone: '',
+    firstGoods:{},
+    goodsTotal:0
   },
   goToRight: function() {
     wx.navigateTo({
@@ -34,6 +36,11 @@ Page({
   goHome: function() {
     wx.reLaunch({
       url: '/pages/home/home',
+    })
+  },
+  goIntro:function(){
+    wx.navigateTo({
+      url: "/pages/intro/intro",
     })
   },
   commit: function() {
@@ -187,6 +194,8 @@ Page({
                     }
                     _this.setData({
                       bind_goods: result.products,
+                      firstGoods: result.products[0],
+                      goodsTotal: result.products.length,
                       steps: steps_temp,
                       banner: banner,
                       id: id,

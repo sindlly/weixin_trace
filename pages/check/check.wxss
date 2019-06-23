@@ -1,12 +1,12 @@
 /* pages/check/check.wxss */
 page{
-  background: #e8ebf6;
+  /* background: #e8ebf6; */
 }
 .banner{
   width: 100%;
 }
 .commit-btn button{
-  margin-top: 48rpx;
+  /* margin-top: 48rpx; */
   background: #1C92FF;
   border-radius: 40.5px;
   width: 580rpx;
@@ -22,7 +22,8 @@ page{
   margin-top: 0;
   padding: 0 0 20rpx 0;
   font-size: 26rpx;
-  text-decoration: underline
+  text-decoration: underline;
+  text-align: center
 }
 .tips{
   font-size: 26rpx;
@@ -33,4 +34,32 @@ page{
 .commission{
   background: red !important;
   color: #fff !important
+}
+.displayFirst .item{
+  padding:0 15px;
+  font-size: 14px;
+  color: #7d7e80
+}
+.displayFirst .first-name{
+  font-weight: bold;
+  color: #000;
+  font-size: 15px
+}
+.displayFirst .first-attributes{
+  color: #fff;
+  background: red;
+  padding: 0 ;
+  margin-left: 15px;
+}
+.goodsImg{
+  display: flex;
+  padding: 0 15px;
+  flex-wrap:nowrap;
+  overflow: auto;
+}
+.goodsImg .item{
+  width: 79px;
+  height: 78px;
+  margin-right: 15px;
+  flex-shrink:0;
 }
