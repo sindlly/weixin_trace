@@ -9,3 +9,6 @@
     </view>
   </view>
 </van-panel>
+<van-cell title="成交总额" value="{{ totalPrice }}"></van-cell>
+<van-cell title="佣金总额" value="{{ totalCommission }}"></van-cell>
+<van-cell title="邀请厂家" value="{{ factoryCount }}"></van-cell>

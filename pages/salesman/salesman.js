@@ -11,7 +11,10 @@ Page({
     name: '',
     phone: '',
     address: '',
-    id_card:''
+    id_card:'',
+    totalPrice:'',
+    totalCommission:'',
+    factoryCount:''
     
   },
 
@@ -19,13 +22,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let selesman=JSON.parse(options.salesman)
-    this.setData({
-      name: selesman.name,
-      phone: selesman.phone,
-      address: selesman.address,
-      id_card: selesman.id_card
+    let salesman=JSON.parse(options.salesman)
+    console.log()
+    wx.request({
+      url: baseUrl + '/users/' + salesman._id +'/statistics?type=salesman',
+      success:res=>{
+        let data = res.data.data.data.data
+        this.setData({
+          name: salesman.salesman.name,
+          phone: salesman.salesman.phone,
+          address: salesman.salesman.address,
+          id_card: salesman.salesman.id_card,
+          totalPrice: data.totalPrice || 0,
+          totalCommission: data.totalCommission || 0,
+          factoryCount: data.factoryCount || 0
+        })
+      }
     })
+    
   },
 
   /**
