@@ -32,7 +32,7 @@
 </view>
 
 
-<view class='my_center_container' wx:if="{{showCommit || !isCourier && !showPicker}}">
+<view class='my_center_container' wx:if="{{showCommit || isCourier && !showPicker}}">
   <van-button type="danger" class='commit-btn' size="large" bindtap='commit'>提交</van-button>
   <view class='tips' bindtap='goHome'>返回首页></view>
 </view>

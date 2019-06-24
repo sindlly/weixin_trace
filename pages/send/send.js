@@ -247,6 +247,7 @@ Page({
         this.setData({
           columns: goods_temp
         })
+        if (!isCourier)
         this.openPicker()
       }
     })

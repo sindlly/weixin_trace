@@ -17,7 +17,10 @@ Page({
     goods: [],
     isBind: false,
     bind_goods: [],
-    showDialog: false
+    showDialog: false,
+    switch_title:'绑定商品',
+    switch_checked:true,
+    tracing_products:[],
   },
 
   /**
@@ -25,8 +28,50 @@ Page({
    */
   switchOnChange: function(e) {
     this.setData({
-      switch_title: e.detail ? '发货至经销商' : '发货给消费者',
-      switch_checked: e.detail
+      switch_title: e.detail ? '绑定商品' : '绑定小溯源袋',
+      switch_checked: e.detail,
+      showPicker:false
+    })
+  },
+  addScode:function(e){
+    wx.scanCode({
+      success: (res) => {
+        let id = res.result.split('id=')[1]
+        wx.request({
+          url: baseUrl + '/tracings/' + id,
+          success:res=>{
+            let temp = res.data.data.data._id
+            let ownerId = res.data.data.data.owner._id
+            if (ownerId == userInfo.user_id){
+              let arr = this.data.tracing_products
+              arr.push(temp)
+              this.setData({
+                tracing_products: arr
+              })
+              let _this = this
+              wx.showModal({
+                title: '提示',
+                content: '添加成功',
+                // showCancel: false,
+                confirmText: '再次绑定',
+                success(res) {
+                  if (res.confirm) {
+                    _this.addScode()
+                  }
+                }
+              })
+            }else{
+              wx.showToast({
+                title: '非自己的溯源码不能绑定',
+                icon: 'none',
+                duration: 2000,
+              })
+            }
+            
+          }
+        })
+        
+      }
     })
   },
   openPicker: function() {
@@ -61,6 +106,14 @@ Page({
       goods: goods_temp
     })
   },
+  deleteTracing: function (e) {
+    let index = e.target.dataset.index
+    let goods_temp = this.data.tracing_products
+    goods_temp.splice(index, 1)
+    this.setData({
+      tracing_products: goods_temp
+    })
+  },
   gohome: function() {
     wx.reLaunch({
       url: '/pages/home/home',
@@ -77,10 +130,15 @@ Page({
       operation: 'bind',
       products: products,
     }
+    let tracingData = {
+      operation: 'bind',
+      isFactoryTracing: true,
+      tracing_products: _this.data.tracing_products
+    }
     wx.request({
       url: baseUrl + '/tracings/' + _this.data.id,
       method: 'put',
-      data: commitData,
+      data: _this.data.switch_checked ? commitData : tracingData,
       success: function(res) {
         if (res.data.code == 0) {
           wx.showToast({
@@ -106,7 +164,7 @@ Page({
   },
   onLoad: function(options) {
     const _this = this
-    let id = options.id || '018d3dfe2f4ef80eef3e0ee813bfa8918550c2bb0fc09d74b5869151847c5369cb711b2e032d06290aea80fda3d4aebbeb0b9c199b5cf2b1b65a15dd4b6ca1aaac'
+    let id = options.id || '018fabbfcfca1bea36395d09f9f8f62e852b2f3de0176ba34d21eb57cd838a1bc7b31b5fc4966dcdfb434a9dc87459b7b773cdc58190439bb3ee4d6fc2cbf5b2e0'
     _this.setData({
       id: id
     })
@@ -146,6 +204,7 @@ Page({
                   isBind,
                   bind_goods: result.products
                 })
+                return
                 if (!hasBindRight) {
                   wx.showToast({
                     title: '你不是我的主人，无法使用该内码',

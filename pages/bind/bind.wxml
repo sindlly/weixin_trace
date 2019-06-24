@@ -1,19 +1,33 @@
 <!--pages/check/check.wxml-->
 <van-cell title="溯源A码:" value="{{id}}" value-class="{{'myValue'}}">
 </van-cell>
-<van-cell title="添加商品" wx:if='{{!isBind}}'>
-  <van-icon slot="right-icon" name="add-o" class="custom-icon" bindtap='openPicker' />
+<view wx:if='{{!isBind}}'>
+    <van-switch-cell title="{{switch_title}}" checked="{{ switch_checked }}" bind:change="switchOnChange" />
+    <van-cell title="添加商品" wx:if="{{switch_checked}}">
+      <van-icon slot="right-icon" name="add-o" class="custom-icon" bindtap='openPicker' />
+    </van-cell>
+    <van-cell title="添加小溯源袋" wx:if="{{!switch_checked}}">
+  <van-icon slot="right-icon" name="add-o" class="custom-icon" bindtap='addScode' />
 </van-cell>
-<view wx:for-items='{{goods}}' wx:key="{{item}}">
+</view>
+
+<view wx:for-items='{{goods}}' wx:key="{{item}}" >
 <van-cell title="{{item.text}}" value="{{item.value}}" >
   <van-icon slot="right-icon" name="delete" class="custom-icon  icon-delete" data-index='{{index}}' bindtap='deleteGoods' />
 </van-cell>
 </view>
-<van-cell title="我的条形码" is-link url="/pages/scode_manage/scode_manage" >
+
+<view wx:for-items='{{tracing_products}}' wx:key="{{item}}" >
+<van-cell title="小溯源袋" value-class="{{'myValue'}}" value="{{item}}" >
+  <van-icon slot="right-icon" name="delete" class="custom-icon  icon-delete" data-index='{{index}}' bindtap='deleteTracing' />
+</van-cell>
+</view>
+
+<van-cell title="我的条形码" is-link url="/pages/scode_manage/scode_manage" wx:if="{{switch_checked}}" >
 
 </van-cell>
 <!-- 已绑定商品，只展示 -->
-<van-panel title="商品列表" wx:if='{{isBind}}' >
+<van-panel title="商品列表" wx:if='{{isBind && switch_checked}}' >
     <view wx:for-items='{{bind_goods}}' wx:key="{{item}}">
       <van-cell title="{{item.name}}" value="{{item.barcode}}" >
       </van-cell>

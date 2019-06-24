@@ -32,7 +32,7 @@ Page({
         if (res.data.code === 0) {
           let data = res.data.data.data
           _this.data.isOwner = data.owner._id == wx.getStorageSync('userInfo').user_id?true:false
-          debugger
+          
           // 溯源袋内码
           if (type == "inner_code") {
             //都跳到绑定商品页，若已绑定，只显示列表，不能进行操作
