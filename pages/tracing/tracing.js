@@ -88,7 +88,7 @@ Page({
               } 
                 break;
               case "SEND": //经销商已发货
-                if (wx.getStorageSync("userInfo").role_type == "curier"){
+                if (wx.getStorageSync("userInfo").role_type == "courier"){
                   wx.reLaunch({
                     url: '/pages/send/send?id=' + id,
                   })
