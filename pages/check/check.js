@@ -32,6 +32,22 @@ Page({
       url: '/pages/rights/rights?key=' + this.data.id + '&id=' + this.data.key,
     })
   },
+  onClose: function(event) {
+    if (event.detail !== 'confirm') {
+      wx.showToast({
+        title: '未授权获取手机号，无法查看溯源详情',
+        icon: 'none',
+        duration: 2000,
+        success: function() {
+          setTimeout(() => {
+            wx.navigateTo({
+              url: '/pages/home/home',
+            })
+          }, 2000)
+        }
+      })
+    }
+  },
   goHome: function() {
     wx.reLaunch({
       url: '/pages/home/home',
