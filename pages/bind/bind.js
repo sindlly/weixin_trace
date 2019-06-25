@@ -44,10 +44,20 @@ Page({
             let ownerId = res.data.data.data.owner._id
             if (ownerId == userInfo.user_id){
               let arr = this.data.tracing_products
-              arr.push(temp)
-              this.setData({
-                tracing_products: arr
-              })
+              console.log(arr.indexOf(temp))
+              if (arr.length == 0 ||arr.indexOf(temp)==-1){
+                arr.push(temp)
+                this.setData({
+                  tracing_products: arr
+                })
+              }else{
+                wx.showToast({
+                  title: '请勿重复绑定相同的小溯源码',
+                  icon: 'none',
+                  duration: 2000,
+                })
+                return
+              }
               let _this = this
               wx.showModal({
                 title: '提示',
@@ -204,7 +214,6 @@ Page({
                   isBind,
                   bind_goods: result.products
                 })
-                return
                 if (!hasBindRight) {
                   wx.showToast({
                     title: '你不是我的主人，无法使用该内码',
@@ -243,7 +252,7 @@ Page({
                 _this.setData({
                   columns: goods_temp
                 })
-                _this.openPicker()
+                if (!this.data.isBind) _this.openPicker()
               }
             })
           }

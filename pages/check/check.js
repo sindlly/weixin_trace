@@ -230,7 +230,7 @@ Page({
                   firstGoods: result.products[0],
                   goodsTotal: result.products.length,
                   steps: steps_temp,
-                  banner: banner,
+                  banner: baseUrl+"/files/"+banner,
                   id: id,
                   showCommit: ["SEND", "EXPRESSED"].includes(state) && hasCommitRight ? true : false,
                   isReceved: state == "RECEIVED" ? true : false,

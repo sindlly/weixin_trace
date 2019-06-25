@@ -4,6 +4,11 @@ page{
 }
 .banner{
   width: 100%;
+  box-sizing: border-box;
+  padding: 0 15px;
+}
+.no-padding{
+  padding: 0;
 }
 .commit-btn button{
   /* margin-top: 48rpx; */
@@ -62,4 +67,12 @@ page{
   height: 78px;
   margin-right: 15px;
   flex-shrink:0;
+}
+.notice{
+  margin-top:20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size:32rpx;
+  color: #173261
 }
