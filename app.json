@@ -1,11 +1,9 @@
 {
   "pages": [
+    "pages/home/home",
     "pages/check/check",
     "pages/intro/intro",
-    "pages/home/home",
-    
     "pages/invatBussiness/invatBussiness",
-    
     "pages/bind/bind",
     "pages/regest/regest",
     "pages/send/send",
