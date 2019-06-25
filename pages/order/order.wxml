@@ -15,7 +15,11 @@
 
   <view wx:if="{{goods_detail.isCustom}}">
     <van-cell-group>
-      <van-field value="{{ product }}" label="商品名称:" placeholder="请输入名称" border="{{ false }}" bind:change="onProductChange" />
+      <!-- <van-field value="{{ product }}" label="商品名称:" placeholder="请输入名称" border="{{ false }}" bind:change="onProductChange" /> -->
+      <picker mode="selector" bindchange='pickerChange' value="{{index}}" range="{{barcodePickers}}">
+        <view class='img-title'> {{barcodePickers[index] || "添加商品"}}
+        </view>
+      </picker>
     </van-cell-group>
     <van-cell-group>
       <van-field value="{{ length }}" label="长度(厘米):" placeholder="请输入长度" border="{{ false }}" bind:change="onLengthChange" />
@@ -37,7 +41,7 @@
     <view class="factory-container" wx:if="{{role_type == 'salesman'}}">
       <picker mode="selector" bindchange="pickerChange" value="{{index}}" range="{{selectFactories}}">
         <view class="picker">
-           {{selectFactories[index] || "请选择厂家"}}
+          {{selectFactories[index] || "请选择厂家"}}
         </view>
       </picker>
     </view>

@@ -26,7 +26,10 @@ Page({
     index: undefined,
     invat_name: userInfo.nickName,
     invat_id: userInfo.user_id,
-    role_type: userInfo.role_type
+    role_type: userInfo.role_type,
+    barcodPickers: [], // 条形码选择数组
+    barcods: [], // 条形码
+    index: ''
   },
 
   validate(data) {
@@ -49,6 +52,13 @@ Page({
     return flag;
   },
 
+  pickerChange: function (e) {
+    const index = e.detail.value
+    this.setData({
+      index,
+    })
+  },
+
   countMinus: function() {
     if (this.data.count > 1)
       this.setData({
@@ -65,7 +75,6 @@ Page({
       count: parseInt(this.data.count) + 1,
       disabled: false
     });
-    console.log(this.data);
   },
 
   // 商品信息
@@ -112,9 +121,7 @@ Page({
     });
   },
   pickerChange: function(e) {
-    const selectedFactory = this.data.factories[e.detail.value]._id;
     this.setData({
-      selectedFactory,
       index: e.detail.value
     });
   },
@@ -140,12 +147,13 @@ Page({
         },
         success(res) {
           _this.data.logo = JSON.parse(res.data).data.data.id;
+          const { index, barcodes } = _this.data
+          const product = barcodes[index]._id
           let subData = {
             commodity: _this.data.commodityId,
             count: parseInt(_this.data.count),
-            // buyer: _this.data.selectedFactory,
             remarks: {
-              product: _this.data.product,
+              product,
               width: _this.data.width,
               height: _this.data.height,
               length: _this.data.length,
@@ -155,7 +163,6 @@ Page({
           };
           if (_this.data.selectedFactory)
             subData.buyer = _this.data.selectedFactory;
-          console.log(subData);
           if (_this.validate(subData)) {
             wx.request({
               url: baseUrl + '/orders',
@@ -166,7 +173,6 @@ Page({
               },
               success: function(res) {
                 wx.hideLoading();
-                console.log(res);
                 if (res.data.code === 0) {
                   wx.showToast({
                     title: '订单生成成功',
@@ -209,7 +215,6 @@ Page({
         },
         success: function(res) {
           wx.hideLoading();
-          console.log(res);
           if (res.data.code === 0) {
             wx.showToast({
               title: '订单生成成功',
@@ -256,6 +261,24 @@ Page({
         });
       }
     });
+    // 获取厂家用户下的条形码信息
+    if (this.data.role_type === 'factory') {
+      wx.request({
+        url: baseUrl + '/barcodes',
+        method: 'GET',
+        header: {
+          'content-type': 'application/json'
+        },
+        success: function(res) {
+          const barcodes = res.data.data.data
+          const barcodePickers = barcodes.map(item => { return item.name})
+          _this.setData({
+            barcodes,
+            barcodePickers,
+          });
+        }
+      });
+    }
     // 销售获取被其邀请的厂家信息
     if (this.data.role_type === 'salesman') {
       wx.request({
@@ -265,7 +288,9 @@ Page({
           'content-type': 'application/json'
         },
         success: function(res) {
-          const { users } = res.data.data.data;
+          const {
+            users
+          } = res.data.data.data;
           const selectFactories = users.map(item => {
             return item.factory.name;
           });
