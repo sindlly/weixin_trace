@@ -29,7 +29,10 @@
   />
   <van-field
     value="{{ editscode.attributes[0].value }}"
-    clearable
+    clearableshowDialogshowDialog
+
+
+    
     label="商品属性值"
     placeholder="如：1KG，30片装，NB666"
     data-obj="scode"
