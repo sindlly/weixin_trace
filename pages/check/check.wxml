@@ -10,7 +10,7 @@
   </view>
 
   <view class='notice'>
-    <image src='../../img/check.png' style='width:142rpx;height:108rpx'></image>
+    <image src='../../img/check.png' style='width:146rpx;height:88rpx'></image>
     <text style='width:440rpx'>{{notice_text}}</text>
   </view>
   <!-- <van-notice-bar text="{{notice_text}}" /> -->

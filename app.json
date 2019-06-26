@@ -1,9 +1,11 @@
 {
   "pages": [
-    "pages/invatBussiness/invatBussiness",
-    "pages/invatFactory/invatFactory",
     "pages/home/home",
     "pages/check/check",
+    "pages/invatBussiness/invatBussiness",
+    "pages/invatFactory/invatFactory",
+    
+    
     "pages/intro/intro",
     
     "pages/bind/bind",
