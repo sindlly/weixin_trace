@@ -13,7 +13,7 @@
     value="{{ editscode.description }}"
     clearable
     label="商品描述"
-    placeholder="请输入商品描述"
+    placeholder="如：商品核心卖点"
     data-obj="scode"
     data-item="description"
     bind:blur="onChange"
@@ -22,7 +22,7 @@
     value="{{ editscode.attributes[0].name }}"
     clearable
     label="商品属性名"
-    placeholder="请输入商品属性"
+    placeholder="如：净含量，套装规格，型号"
     data-obj="scode"
     data-item="attributes_name"
     bind:blur="onChange"
@@ -31,7 +31,7 @@
     value="{{ editscode.attributes[0].value }}"
     clearable
     label="商品属性值"
-    placeholder="请输入商品属性值"
+    placeholder="如：1KG，30片装，NB666"
     data-obj="scode"
     data-item="attributes_value"
     bind:blur="onChange"

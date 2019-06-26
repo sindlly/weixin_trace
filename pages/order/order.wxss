@@ -28,6 +28,10 @@
   margin-top: 1vh; */
 }
 
+.bigger-font {
+  font-weight: bold
+}
+
 .order-address {
   flex-direction: row;
   justify-content: space-between;

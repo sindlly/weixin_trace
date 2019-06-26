@@ -2,22 +2,15 @@
 <view class="product-info">
   <van-card desc="{{goods_detail.brands}}" title="{{goods_detail.name}}" price="{{goods_detail.act_price}}" origin-price="{{goods_detail.price}}" thumb="{{baseUrl}}/files/{{goods_detail.pictures[0]._id}}" border="{{true}}" />
   <view class='order-number'>
-    <text class='smaller-font'>购买数量:</text>
+    <text class='smaller-font bigger-font'>购买数量:</text>
     <view class='smaller-font'>
-      <!-- <button bindtap="countMinus" disabled="{{disabled}}">-</button> -->
-      <input class='order-number-input' placeholder="{{count}}" type="number" bindinput="bindInput" auto-focus/>
-      <!-- <button bindtap="countAdd">+</button> -->
+      <input class='order-number-input bigger-font' placeholder="{{count}}" type="number" bindinput="bindInput" auto-focus/>
     </view>
   </view>
-  <!-- <van-cell-group wx:if="{{goods_detail.isCustom}}">
-    <van-field value="{{ remark }}" bind:blur="onChange" label="备注" placeholder="请输入型号大小" border="{{ false }}" input-class="{{'textarea'}}" />
-  </van-cell-group> -->
-
   <view wx:if="{{goods_detail.isCustom}}">
     <van-cell-group>
-      <!-- <van-field value="{{ product }}" label="商品名称:" placeholder="请输入名称" border="{{ false }}" bind:change="onProductChange" /> -->
       <picker mode="selector" bindchange='pickerChange' value="{{index}}" range="{{barcodePickers}}">
-        <view class='img-title'> {{barcodePickers[index] || "添加商品"}}
+        <view class='img-title'> {{barcodePickers[index] || "添加条形码"}}
         </view>
       </picker>
     </van-cell-group>
@@ -53,14 +46,6 @@
       <image mode='aspectFit' src="{{imgSrc}}" wx:if="{{imgSrc}}"></image>
     </view>
   </view>
-
-  <!-- <view class='order-count'>
-    <text class='smaller-font'>共 {{count}} 件商品</text>
-    <view class='smaller-font'>
-      小计
-      <text class="item-price">¥ {{count * (goods_detail.act_price || goods_detail.price) || 0}}</text>
-    </view>
-  </view> -->
 </view>
 <view class='order-sum'>
   <view class='sum-price'>合计金额：
