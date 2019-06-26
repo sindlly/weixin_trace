@@ -2,7 +2,8 @@
 <view class='back-home' bindtap='backHome'>
   <van-icon name="wap-home" />
 </view>
-<image src='../../img/bussiness1.png' class='intro-img' mode='aspectFill'></image>
+<image src='../../img/bussiness1.png' class='up-img' mode='aspectFill'></image>
+<image src='../../img/invat1.jpg' class='intro-img' mode='aspectFill'></image>
 <view class='action-area'>
   <van-button class='btn btn1'  size="large" open-type="getUserInfo" 
 	bindgetuserinfo="bindGetUserInfo">厂家注册</van-button>

@@ -4,17 +4,22 @@ page{
 }
 .action-area{
   widows: 100%;
-  height: 100rpx;
+  height: 130rpx;
   display: flex;
   justify-content: space-around;
-  margin:30rpx;
+  margin:-120rpx;
 }
 .btn button{
  width:700rpx;
  border-radius:10rpx;
 }
 .btn1 button{
-  background: #173261;
+  background: #1C92FF;
+  border-radius: 40.5px;
+  width: 580rpx;
+  height: 81rpx;
+  line-height: 81rpx;
+  border: none;
   color: #fff;
 }
 .btn2 button{
@@ -22,13 +27,21 @@ page{
   color: #173261;
   background: #e8ebf6;
 }
-.intro-img{
+.up-img{
   width: 100%;
   height: 360rpx;
+  position: absolute;
+  top: 0;
+  z-index: 100
+}
+.intro-img{
+  width: 100%;
+  height: 710rpx;
 }
 .intro-img2{
   width: 100%;
   height: 1397rpx;
+  margin-top:100rpx;
 }
 .back-home{
 position:absolute;

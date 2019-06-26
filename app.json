@@ -2,8 +2,12 @@
   "pages": [
     "pages/home/home",
     "pages/check/check",
-    "pages/intro/intro",
     "pages/invatBussiness/invatBussiness",
+    "pages/invatFactory/invatFactory",
+    
+    
+    "pages/intro/intro",
+    
     "pages/bind/bind",
     "pages/regest/regest",
     "pages/send/send",
@@ -15,7 +19,7 @@
     "pages/mySalesInfo/mySalesInfo",
     "pages/invatCourier/invatCourier",
     "pages/invatSalesman/invatSalesman",
-    "pages/invatFactory/invatFactory",
+    
     
     "pages/mySalesInfo/myFactory/myFactory",
     "pages/bigdata/bigdata",
