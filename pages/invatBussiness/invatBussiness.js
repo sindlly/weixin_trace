@@ -72,7 +72,7 @@ Page({
     if (options.invat_id) {
       this.setData({
         invat_name: decodeURI(options.invat_name),
-        invat_id: options.invat_id
+        invat_id: options.invat_id || ''
       });
     }
   },

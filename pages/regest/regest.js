@@ -58,7 +58,12 @@ Page({
           'content-type': 'application/json'
         },
         success(res) {
-
+          const data = {
+            role_type: 'factory',
+            role_id: 20,
+            factory: _this.data.factory,
+          }
+          if (_this.data.inviter) data.inviter = _this.data.inviter
           _this.data.factory.license = JSON.parse(res.data).data.data.id
           wx.request({
             url: baseUrl + '/users',
@@ -66,12 +71,7 @@ Page({
             header: {
               'content-type': 'application/json'
             },
-            data: {
-              role_type: 'factory',
-              role_id: 20,
-              factory: _this.data.factory,
-              inviter: _this.data.inviter
-            },
+            data,
             success(res) {
               if (res.data.code == 0) {
                 wx.showModal({
@@ -125,9 +125,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      inviter: options.invat_id
-    })
+    if (options.invat_id) {
+      this.setData({
+        inviter: options.invat_id
+      })
+    }
   },
 
   /**

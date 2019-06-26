@@ -22,18 +22,19 @@ Page({
   commit: function() {
     let _this = this;
     if (_this.validate(this.data.business)) {
+      const data = {
+        role_type: 'business',
+        role_id: 30,
+        business: _this.data.business,
+      }
+      if (_this.data.inviter) data.inviter = _this.data.inviter
       wx.request({
         url: baseUrl + '/users',
         method: 'POST',
         header: {
           'content-type': 'application/json'
         },
-        data: {
-          role_type: 'business',
-          role_id: 30,
-          business: _this.data.business,
-          inviter: _this.data.inviter
-        },
+        data,
         success(res) {
           if (res.data.code == 0) {
             wx.showModal({
@@ -93,9 +94,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.setData({
-      inviter: options.invat_id
-    });
+    if (options.invat_id) {
+      this.setData({
+        inviter: options.invat_id
+      });
+    }
   },
 
   /**
