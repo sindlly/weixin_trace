@@ -14,6 +14,10 @@
     <van-cell title="{{item.name}}" value="{{item.barcode}}">
     </van-cell>
   </view>
+  <view wx:for-items='{{bind_tracing}}' wx:key="{{item}}">
+    <van-cell title="小溯源袋" value="{{item.outer_code}}">
+    </van-cell>
+  </view>
 </van-panel>
 <view class='height-30'></view>
 <van-panel title="客户信息" wx:if="{{ !switch_checked }}">
@@ -32,9 +36,9 @@
 </view>
 
 
-<view class='my_center_container' wx:if="{{showCommit || isCourier && !showPicker}}">
-  <van-button type="danger" class='commit-btn' size="large" bindtap='commit'>提交</van-button>
-  <view class='tips' bindtap='goHome'>返回首页></view>
+<view class='my_center_container' wx:if="{{showCommit || isCourier }}">
+  <van-button type="danger" wx:if='{{!showPicker}}' class='commit-btn' size="large" bindtap='commit'>提交</van-button>
+  <view class='tips' bindtap='goHome' wx:if='{{!showPicker}}'>返回首页></view>
 </view>
 
 <view class='my_center_container' wx:else>

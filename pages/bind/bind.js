@@ -17,6 +17,7 @@ Page({
     goods: [],
     isBind: false,
     bind_goods: [],
+    bind_tracing:[],
     showDialog: false,
     switch_title:'绑定商品',
     switch_checked:true,
@@ -174,7 +175,7 @@ Page({
   },
   onLoad: function(options) {
     const _this = this
-    let id = options.id || '018fabbfcfca1bea36395d09f9f8f62e852b2f3de0176ba34d21eb57cd838a1bc7b31b5fc4966dcdfb434a9dc87459b7b773cdc58190439bb3ee4d6fc2cbf5b2e0'
+    let id = options.id || '01bc689ae6af0ac3856be4b048b39f52b2c5c9b5613432962b608051026f2918483b10eb97993fb66c320bdfc45f7c3ea43605d09e50ae3d0ea40153569b938c32'
     _this.setData({
       id: id
     })
@@ -210,9 +211,11 @@ Page({
                 const result = res.data.data.data
                 const isBind = result.state == "UNBIND" ? false : true;
                 const hasBindRight = result.owner._id === userInfo.user_id
+                
                 _this.setData({
-                  isBind,
-                  bind_goods: result.products
+                  isBind: isBind,
+                  bind_goods: result.products,
+                  bind_tracing: result.tracing_products
                 })
                 if (!hasBindRight) {
                   wx.showToast({
@@ -236,6 +239,7 @@ Page({
                     })
                   }
                 }
+                if (!isBind) _this.openPicker()
               }
             })
             wx.request({
@@ -252,7 +256,7 @@ Page({
                 _this.setData({
                   columns: goods_temp
                 })
-                if (!this.data.isBind) _this.openPicker()
+                
               }
             })
           }
