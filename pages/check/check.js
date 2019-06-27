@@ -25,7 +25,8 @@ Page({
     hasRight: false,
     showDialog: false,
     firstGoods: {},
-    goodsTotal: 0
+    goodsTotal: 0,
+    disableSignButton: true
   },
   goToRight: function() {
     wx.navigateTo({
@@ -105,7 +106,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let id = options.id || "01de2b026a849596592e8bf2c2c7a3c6566a24f6bac386dacfa5ecfc55335c978325b8e3df19be2f0b8c4f0e72798d1df7398194958f0e4c10e73eee7a480591a8"
+    let id = options.id || "01c825a971d647d89b05fd10d3f6090dca81ebd5125ea7167e6d9a39ceb1fd3e0a06dbc5b4e68b4c199fd48764e3a8d564abcf0e417d765f73f618e89f4042e4c2"
     this.data.id = id
     const _this = this
     wx.login({
@@ -164,14 +165,17 @@ Page({
                 }
                 const latestRecord = records.slice(recordsLength - 1, recordsLength)[0]
                 let hasCommitRight = true
+                let disableSignButton = true
                 if (latestRecord.reciver_type === 'business') {
                   hasCommitRight = latestRecord.reciver === userInfo.user_id
+                  disableSignButton = false
                 } else {
                   // 若为消费者，则判断是否需要获取手机号
                   if (latestRecord.reciver_phone) {
                     // 指定了收货人电话
                     if (userInfo.wechat_phone) {
                       hasCommitRight = latestRecord.reciver_phone === userInfo.wechat_phone
+                      disableSignButton = !hasCommitRight
                     } else {
                       _this.setData({
                         showDialog: true
@@ -179,6 +183,7 @@ Page({
                     }
                   } else {
                     hasCommitRight = latestRecord.sender !== userInfo.user_id
+                    disableSignButton = false
                   }
                 }
                 let steps_temp = []
@@ -230,8 +235,9 @@ Page({
                   firstGoods: result.products[0],
                   goodsTotal: result.products.length,
                   steps: steps_temp,
-                  banner: baseUrl+"/files/"+banner,
-                  id: id,
+                  banner: baseUrl + "/files/" + banner,
+                  id,
+                  disableSignButton,
                   showCommit: ["SEND", "EXPRESSED"].includes(state) && hasCommitRight ? true : false,
                   isReceved: state == "RECEIVED" ? true : false,
                   notice_text: notice_text,
