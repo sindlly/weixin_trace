@@ -106,7 +106,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let id = options.id || "01c825a971d647d89b05fd10d3f6090dca81ebd5125ea7167e6d9a39ceb1fd3e0a06dbc5b4e68b4c199fd48764e3a8d564abcf0e417d765f73f618e89f4042e4c2"
+    let id = options.id || "0156239c0e71cdc922f1377521278ee0d58e6ab4847d53d698c0ec51811dabd2e468fe0fbf50c2fa3b6135ca950783da29e0f5186465d477c9670b139cdc9ab004"
     this.data.id = id
     const _this = this
     wx.login({
@@ -124,7 +124,8 @@ Page({
             let user_id = ''
             const result = res.data.data.data
             if (result.isRegistered == false) {
-              role_type = 4
+              role_type = 4,
+              user_id = result.user._id
             } else {
               role_type = result.user.role_type
               user_id = result.user._id
@@ -146,14 +147,14 @@ Page({
                 })
                 let records = result.records;
                 const recordsLength = records.length
-                if (recordsLength === 0 || ['BIND', 'UNBIND'].includes(result.state)) {
-                  wx.showToast({
-                    title: '未发货，无法查看溯源码详情',
-                    icon: 'none',
-                    duration: 3000
-                  })
-                  return
-                } else {
+                // if (recordsLength === 0 || ['BIND', 'UNBIND'].includes(result.state)) {
+                //   wx.showToast({
+                //     title: '未发货，无法查看溯源码详情',
+                //     icon: 'none',
+                //     duration: 3000
+                //   })
+                //   return
+                // } else {
                   _this.setData({
                     showDetail: true
                   })
@@ -162,16 +163,16 @@ Page({
                     icon: 'none',
                     duration: 3000
                   })
-                }
-                const latestRecord = records.slice(recordsLength - 1, recordsLength)[0]
+                // }
+                const latestRecord = records.slice(recordsLength - 1, recordsLength)[0] || {sender: {}}
                 let hasCommitRight = true
                 let disableSignButton = true
-                if (latestRecord.reciver_type === 'business') {
+                if (latestRecord & latestRecord.reciver_type & latestRecord.reciver_type === 'business') {
                   hasCommitRight = latestRecord.reciver === userInfo.user_id
                   disableSignButton = false
                 } else {
                   // 若为消费者，则判断是否需要获取手机号
-                  if (latestRecord.reciver_phone) {
+                  if (latestRecord & latestRecord.reciver_phone) {
                     // 指定了收货人电话
                     if (userInfo.wechat_phone) {
                       hasCommitRight = latestRecord.reciver_phone === userInfo.wechat_phone
@@ -182,12 +183,13 @@ Page({
                       })
                     }
                   } else {
-                    hasCommitRight = latestRecord.sender !== userInfo.user_id
+                    hasCommitRight = latestRecord & latestRecord.sender !== userInfo.user_id
                     disableSignButton = false
                   }
                 }
                 let steps_temp = []
-                let banner = ''
+                const owner = result.owner
+                let banner = owner[owner.role_type].banner
                 for (let i = 0; i < records.length; i++) {
                   const sender = records[i].sender
                   const name = sender[sender.role_type].name
@@ -202,10 +204,9 @@ Page({
                     })
                   }
                 }
-                const owner = result.owner
                 const state = result.state
                 let notice_text = ""
-                if (latestRecord.sender._id === userInfo.user_id & state === 'SEND') {
+                if (latestRecord.sender & latestRecord.sender._id === userInfo.user_id & state === 'SEND') {
                   wx.showToast({
                     title: '您已发货，只能查看溯源码详情',
                     icon: 'none',
