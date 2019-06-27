@@ -1,16 +1,14 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/bind/bind",
+    "pages/send/send",
     "pages/check/check",
     "pages/invatBussiness/invatBussiness",
     "pages/invatFactory/invatFactory",
-    
-    
     "pages/intro/intro",
-    
-    "pages/bind/bind",
     "pages/regest/regest",
-    "pages/send/send",
+    
     "pages/tracing/tracing",
     "pages/courier/courier",
     

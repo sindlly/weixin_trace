@@ -32,6 +32,10 @@
       <van-cell title="{{item.name}}" value="{{item.barcode}}" >
       </van-cell>
     </view>
+    <view wx:for-items='{{bind_tracing}}' wx:key="{{item}}">
+    <van-cell title="小溯源袋" value="{{item.outer_code}}">
+    </van-cell>
+  </view>
 </van-panel>
 
 <view class='my_center_container' wx:if='{{!showPicker}}' >
