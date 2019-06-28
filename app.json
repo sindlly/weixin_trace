@@ -1,8 +1,12 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/bind/bind",
+    "pages/shop/shop",
+    
     "pages/send/send",
+   
+    "pages/bind/bind",
+   
     "pages/check/check",
     "pages/invatBussiness/invatBussiness",
     "pages/invatFactory/invatFactory",
@@ -17,15 +21,13 @@
     "pages/mySalesInfo/mySalesInfo",
     "pages/invatCourier/invatCourier",
     "pages/invatSalesman/invatSalesman",
-    
-    
     "pages/mySalesInfo/myFactory/myFactory",
     "pages/bigdata/bigdata",
     "pages/bigdata/counterfeit/counterfeit",
     "pages/bigdata/tracingManage/tracingManage",
     "pages/user/user",
     "pages/business_card/business_card",
-    "pages/shop/shop",
+    
     "pages/order_manage/order_manage",
     "pages/salesman/salesman",
     "pages/intro/out/out",

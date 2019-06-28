@@ -164,7 +164,7 @@ Page({
       record: _this.data.express
     }
     if (_this.data.switch_checked){
-      if (!_this.data.business_id){
+      if (!_this.data.business_id && !_this.data.isCourier){
         wx.showToast({
           title: "请选择经销售",
           icon: 'none',
@@ -231,6 +231,7 @@ Page({
           showCommit: res.data.data.data.owner._id == userInfo.user_id ? true : false,
           bind_goods:res.data.data.data.products,
           bind_tracing: res.data.data.data.tracing_products
+        
         })
       }
     })
