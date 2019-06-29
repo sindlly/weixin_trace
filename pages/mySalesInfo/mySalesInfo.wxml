@@ -10,6 +10,6 @@
   </van-card>
 </van-panel>
 
-<van-cell title="成交总额" value="{{totalCommission}}（RMB）" />
-<van-cell title="交易总额" value="{{totalPrice}}（RMB）" />
+<van-cell title="佣金总额" value="{{totalCommission}}（RMB）" />
+<van-cell title="成交总额" value="{{totalPrice}}（RMB）" />
 <van-cell title="邀请厂家" is-link url="/pages/mySalesInfo/myFactory/myFactory" value="{{factory}}个" />

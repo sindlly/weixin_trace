@@ -129,6 +129,15 @@ Page({
     let _this = this;
     wx.showLoading();
     if (_this.data.goods_detail.isCustom) {
+      const { index, barcodes } = _this.data
+      if (!barcodes[index]) {
+        wx.showToast({
+          title: '未选择条形码',
+          icon: 'none',
+          duration: 1000
+        });
+        return;
+      }
       if (!this.data.imgSrc) {
         wx.showToast({
           title: '请上传logo',

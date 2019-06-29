@@ -5,7 +5,8 @@
     "van-button": "../../../miniprogram_npm/vant-weapp/button/index",
     "van-tab": "../../../miniprogram_npm/vant-weapp/tab/index",
     "van-tabs": "../../../miniprogram_npm/vant-weapp/tabs/index",
-    "goods_card":"goods_card/goods_card"
+    "goods_card": "goods_card/goods_card"
   },
-  "navigationBarTitleText": "我的订单"
+  "navigationBarTitleText": "我的订单",
+  "enablePullDownRefresh": true
 }

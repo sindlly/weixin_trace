@@ -175,14 +175,12 @@ Page({
         canIUse: false,
         // userInfo: userInfo,
         showLoading: false
-        
       })
     } else {
       _this.setData({
         showDialog: true
       })
     }
-
   },
 
   /**
@@ -197,9 +195,7 @@ Page({
    */
   onShow: function() {
     let _this = this;
-    // wx.showLoading()
     if (wx.getStorageSync('userInfo') && wx.getStorageSync('userInfo').role_type == 4){
-      console.log(userInfo.role_type)
       _this.setData({
         showLoading: true
       })
@@ -238,8 +234,6 @@ Page({
                         })
                       );
                       _this.onLoad()
-                      
-                      // wx.hideLoading()
                       if (_this.userInfoReadyCallback) {
                         _this.userInfoReadyCallback(_this.globalData.userInfo);
                       }

@@ -48,7 +48,6 @@ Page({
   onChange: function (e) {
     let dataset = e.target.dataset
     this.data[dataset.obj][dataset.item] = e.detail.value || e.detail
-
   },
   openPicker:function(){
     if (this.data.columns.length == 0) {
