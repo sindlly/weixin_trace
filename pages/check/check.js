@@ -214,7 +214,8 @@ Page({
                     })
                   }
                   if (i == records.length - 1) {
-                    banner = sender[sender.role_type].banner
+                    const senderBanner = sender[sender.role_type].banner
+                    if (senderBanner) banner = senderBanner
                     _this.setData({
                       hasReseverInfo: records[i].reciver_name ? true : false
                     })
@@ -254,7 +255,7 @@ Page({
                   firstGoods: result.products[0],
                   goodsTotal: result.products.length,
                   steps: steps_temp,
-                  banner: baseUrl + "/files/" + banner,
+                  banner: banner ? baseUrl + "/files/" + banner : undefined,
                   id,
                   disableSignButton,
                   showCommit: ["SEND", "EXPRESSED"].includes(state) & hasCommitRight ? true : false,
