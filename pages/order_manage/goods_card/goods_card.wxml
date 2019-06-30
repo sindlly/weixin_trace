@@ -17,7 +17,7 @@
         <van-button size="small" round type="danger" wx:if="{{item.status=='FINISHED'&&item.isLastPayed&&!item.isLastPaymentConfirmed}}" catchtap='ensureMoney' data-id="{{item._id}}">确认尾款</van-button>
         <!-- 待发货 -->
         <!-- <van-button size="small" round type="default" plain style='margin-right:10px'wx:if="{{item.status=='HALF_PAYED'||item.status=='ALL_PAYED'}}">销售人员</van-button> -->
-        <van-button size="small" round type="default" plain style='margin-right:10px' wx:if="{{item.status=='PAYMENT_CONFIRMED'}}" catchtap='submitCourier' data-id="{{item._id}}">提交快递</van-button>
+        <van-button size="small" round type="default" plain style='margin-right:10px' wx:if="{{item.status=='PRINTED'}}" catchtap='submitCourier' data-id="{{item._id}}">提交快递</van-button>
         <van-button size="small" round type="danger" wx:if="{{item.status=='HALF_PAYED'}}" data-id="{{item._id}}">支付尾款</van-button>
         <!-- 已发货 -->
         <!-- <van-button size="small" round type="default" plain style='margin-right:10px'wx:if="{{item.status=='SHIPMENT'}}">销售人员</van-button> -->
@@ -28,6 +28,7 @@
 
       <!-- 厂家订单footer -->
       <view slot="footer" wx:if="{{role_type=='factory'}}">
+        <!-- <van-button size="small" wx:if="{{item.buyer.inviter}}" round type="default" plain style='margin-right:10px' catchtap='salesmanDetail' data-salesman='{{item.salesman}}'>销售人员</van-button> -->
         <van-button size="small" round type="danger" wx:if="{{item.status=='QUOTED'}}" data-id="{{item._id}}" catchtap="pay">支付款项</van-button>
         <!-- <van-button size="small" round type="danger" wx:if="{{item.status=='FINISHED'&&item.isLastPayed==false&&item.isStagePay}}" data-id="{{item._id}}" catchtap="pay">支付尾款</van-button> -->
         <van-button size="small" round type="default" plain style='margin-right:10px' wx:if="{{item.status=='SHIPPED'}}" data-express="{{item.express}}" catchtap='lookLogistics'>查看物流</van-button>

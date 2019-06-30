@@ -3,7 +3,7 @@
   <image src='../../img/qrcode.png' class='shop-title-img' data-url="../../img/bigdata.png" bindtap='preview' show-menu-by-longpress></image>
   <view class='title-tip'>
     <view>如需定制溯源袋，请联系市场总裁（扫码添加）</view>
-    <view>hi@goodstracing.net</view>
+    <view>官方微信:goodstracing</view>
   </view>
 </view>
 <view wx:if="{{goods.length === 0}}">

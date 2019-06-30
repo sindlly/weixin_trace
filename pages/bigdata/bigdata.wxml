@@ -2,7 +2,7 @@
 <van-panel header-class="{{'panel-title'}}">
   <view slot='header' class='my-panel-header'>
     <view class='panel-title'>我的溯源码</view>
-    <view class='my-button' bindtap='goToTracing'>溯源码管理</view>
+    <view class='my-button' bindtap='goToTracing'>用码详情</view>
   </view>
   <van-cell title="已使用溯源码" value="{{mycode.totalTracings-mycode.unUsedTracings || 0}}个" value-class="{{'cell-value'}}" />
   <van-cell title="剩余溯源码" value="{{mycode.unUsedTracings || 0}}个" border="{{false}}" value-class="{{'cell-value'}}" />

@@ -48,18 +48,19 @@ Page({
         },
         success(res) {
           _this.data.salesman.id_card = JSON.parse(res.data).data.data.id
+          const data = {
+            role_type: 'salesman',
+            role_id: 40,
+            salesman: _this.data.salesman,
+          }
+          if (_this.data.inviter) data.inviter = _this.data.inviter
           wx.request({
             url: baseUrl + '/users',
             method: "POST",
             header: {
               'content-type': 'application/json'
             },
-            data: {
-              role_type: 'salesman',
-              role_id: 40,
-              salesman: _this.data.salesman,
-              inviter: _this.data.inviter
-            },
+            data,
             success(res) {
               if (res.data.code == 0) {
                 wx.showModal({
@@ -121,9 +122,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      inviter: options.invat_id
-    });
+    console.log(options)
+    if (options.invat_id) {
+      this.setData({
+        inviter: options.invat_id
+      });
+    }
   },
 
   /**

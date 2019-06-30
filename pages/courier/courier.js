@@ -8,31 +8,51 @@ Page({
    */
   data: {
     baseUrl: baseUrl,
-    id:'',
-    scode:'',
+    id: '',
+    scode: '',
     name: ''
   },
-  getScode:function(){
+  getScode: function() {
     const _this = this;
     // 允许从相机和相册扫码
     wx.scanCode({
       success: (res) => {
         _this.setData({
-          scode:res.result
+          scode: res.result
         })
       }
     })
   },
   nameInput: function(event) {
-    this.setData({name: event.detail})
+    this.setData({
+      name: event.detail
+    })
   },
-  scodeInput: function (event) {
-    this.setData({ scode: event.detail })
+  scodeInput: function(event) {
+    this.setData({
+      scode: event.detail
+    })
   },
   commit: function() {
     const express = {}
-    express.id = this.data.scode;
-    express.name = this.data.name;
+    const { scode, name } = this.data
+    express.id = scode;
+    express.name = name;
+    if (!scode) {
+      wx.showToast({
+        title: '请输入快递单号',
+        icon: 'none'
+      })
+      return
+    }
+    if(!name) {
+      wx.showToast({
+        title: '请输入快递名称',
+        icon: 'none'
+      })
+      return
+    }
+    wx.showLoading()
     wx.request({
       url: baseUrl + '/orders/' + this.data.id,
       method: 'PUT',
@@ -42,26 +62,34 @@ Page({
       },
       header: {
         'content-type': 'application/json',
-        // 'access_token': $data.token,
       },
-      success: function (res) {
-        wx.navigateTo({
-          url: '/pages/order_manage/order_manage?active=4',
-        })
+      success: function(res) {
+        wx.hideLoading()
+        if (res.data.code === 0) {
+          wx.navigateTo({
+            url: '/pages/order_manage/order_manage?active=4',
+          })
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none',
+            duration: 2000
+          });
+        }
       }
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     let id = options.id
     let _this = this
     _this.data.id = id;
-    
+
     wx.request({
       url: baseUrl + '/orders/' + id + '?embed=salesman',
-      success: function (res) {
+      success: function(res) {
         let data = res.data.data.data
         _this.setData({
           goods: data,
@@ -74,49 +102,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

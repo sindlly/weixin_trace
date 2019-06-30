@@ -17,6 +17,7 @@ Page({
     columns: [{text:'杭州',value:"23445"}, '宁波', '温州', '嘉兴', '湖州'],
     goods:[],
     bind_goods:[],
+    bind_tracing:[],
     barcode:'',
     record:{},
     business_id:'',
@@ -47,7 +48,6 @@ Page({
   onChange: function (e) {
     let dataset = e.target.dataset
     this.data[dataset.obj][dataset.item] = e.detail.value || e.detail
-
   },
   openPicker:function(){
     if (this.data.columns.length == 0) {
@@ -163,7 +163,7 @@ Page({
       record: _this.data.express
     }
     if (_this.data.switch_checked){
-      if (!_this.data.business_id){
+      if (!_this.data.business_id && !_this.data.isCourier){
         wx.showToast({
           title: "请选择经销售",
           icon: 'none',
@@ -221,14 +221,16 @@ Page({
       url: baseUrl +'/tracings/'+id,
       success:res=>{
         
-        if (res.data.data.data.products.length == 0){
+        if (res.data.data.data.products.length == 0 && res.data.data.data.tracing_products.length==0){
           this.setData({
             showDialog:true
           })
         }
         this.setData({
           showCommit: res.data.data.data.owner._id == userInfo.user_id ? true : false,
-          bind_goods:res.data.data.data.products
+          bind_goods:res.data.data.data.products,
+          bind_tracing: res.data.data.data.tracing_products
+        
         })
       }
     })
@@ -247,7 +249,7 @@ Page({
         this.setData({
           columns: goods_temp
         })
-        if (!isCourier)
+        if (!this.data.isCourier)
         this.openPicker()
       }
     })

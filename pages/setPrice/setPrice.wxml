@@ -3,45 +3,18 @@
   <image src='{{imgUrl}}' mode='aspectFit'></image>
 </van-panel>
 <view class='my_panle'>
-  <van-cell title="商品名称：{{remark.product}}"  label="尺寸（长*宽*高*厚）：{{remark.length}}cm*{{remark.width}}cm*{{remark.height}}cm*{{remark.thick}}cm" border="{{ false }}" /> 
+  <van-cell title="商品名称：{{remark.product}}" label="尺寸（长*宽*高*厚）：{{remark.length}}cm*{{remark.width}}cm*{{remark.height}}cm*{{remark.thick}}cm" border="{{ false }}" />
 </view>
-
 <view class='my_panle'>
-  <van-field
-      label="首付百分比"
-      data-obj="obj"
-      data-item="stageProportion"
-      bind:change="onChange"
-    />
-    <van-field
-      label="尾款时限"
-      
-      use-button-slot
-      disabled
-      input-class="{{'disabled'}}"
-    >
-    
-    <van-radio-group slot="button" value="{{ '2' }}" >
-        <!-- <van-radio name="1">发货前</van-radio> -->
-        <van-radio name="2">发货后</van-radio>
+  <van-field title-width="100px" label="首付百分比(%)" data-obj="obj" data-item="stageProportion" bind:change="onChange" />
+  <van-field title-width="100px" label="尾款时限" use-button-slot disabled input-class="{{'disabled'}}">
+    <van-radio-group slot="button" value="{{ '2' }}">
+      <van-radio name="2">发货后</van-radio>
     </van-radio-group>
-    </van-field>
-    <van-field
-      label="总报价"
-      data-obj="obj"
-      data-item="price"
-      type="number"
-      bind:change="onChange"
-    />
-    <van-field
-      label="抽佣百分比"
-      data-obj="obj"
-      data-item="commisionProportion"
-      bind:change="onChange"
-    />
+  </van-field>
+  <van-field title-width="100px" label="总报价" data-obj="obj" data-item="price" type="number" bind:change="onChange" />
+  <van-field title-width="100px" label="抽佣百分比(%)" data-obj="obj" data-item="commisionProportion" bind:change="onChange" />
 </view>
-
 <view class='my_footer'>
- <van-button type="danger" class='commit-btn'  size="large" bindtap='commit'>完成</van-button>
+  <van-button type="danger" class='commit-btn' size="large" bindtap='commit'>完成</van-button>
 </view>
-
