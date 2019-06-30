@@ -1,9 +1,13 @@
 /* pages/bigdata/bigdata.wxss */
 
-.panel-title {
+.panel-title, .code {
   font-family: PingFangSC-Regular;
   font-size: 28rpx;
   color: #666 !important;
+}
+
+.code {
+  float: right;
 }
 
 .cell-value {

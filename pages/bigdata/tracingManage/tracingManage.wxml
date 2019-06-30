@@ -1,18 +1,25 @@
-<!--pages/bigdata/bigdata.wxml-->
+<!-- pages/bigdata/bigdata.wxml -->
 <van-panel>
   <view slot='header' class='my-panel-header'>
-    <view class='panel-title'>溯源码列表</view>
+    <text class='panel-title'>已激活溯源码</text>
+    <text class="code">{{statistics.totalTracings||0}}</text>
+  </view>
+  <view slot='header' class='my-panel-header'>
+    <text class='panel-title'>未激活溯源码</text>
+    <text class="code">{{statistics.unUsedTracings||0}}</text>
   </view>
   <view wx:for="{{counterfeits}}" wx:key="{{index}}" class='counterfeit-container'>
     <view class='counterfeit-left'>
       <image mode='aspectFit' src="{{baseUrl + '/files/' + item.barcode.image}}" mode='scaleToFill'></image>
     </view>
-    <view class='counterfeit-right'>
-      <text>商品名：{{item.barcode.name}}</text>
-      <text>制造商：{{item.barcode.manufacturer}}</text>
-      <text>源头：{{item.factory && item.factory[item.factory.role_type].name || '未知'}}</text>
-      <text>上家：{{item.sender && item.sender[item.sender.role_type].name || '未知'}}</text>
-      <button type="default" size="mini" data-id="{{item._id}}" bindtap='closeCase'>一键结案</button>
+    <view wx:if="{{item.state==='BIND'}}" class='counterfeit-right'>
+      <text>状态：{{item.state_display}}</text>
+    </view>
+    <view wx:else class='counterfeit-right'>
+      <text>状态：{{item.state_display}}</text>
+      <text>最新发货人：{{lastRecord.sender}}</text>
+      <text>发货时间：{{lastRecord.send_at_display}}</text>
+      <text>发货对象：{{lastRecord.reciver}}</text>
     </view>
   </view>
 </van-panel>
