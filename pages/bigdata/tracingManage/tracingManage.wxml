@@ -8,7 +8,7 @@
     <text class='panel-title'>未激活溯源码</text>
     <text class="code">{{statistics.unUsedTracings||0}}</text>
   </view>
-  <view wx:for="{{counterfeits}}" wx:key="{{index}}" class='counterfeit-container'>
+  <view wx:for="{{tracingList}}" wx:key="{{index}}" class='counterfeit-container'>
     <view class='counterfeit-left'>
       <image mode='aspectFit' src="{{baseUrl + '/files/' + item.barcode.image}}" mode='scaleToFill'></image>
     </view>
