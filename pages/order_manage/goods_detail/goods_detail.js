@@ -93,7 +93,7 @@ Page({
               }, {
                 text: '待报价',
                 desc: "定制的商品尺寸不同，需要时间评估费用"
-              },]
+              }]
             active = 2
               break;
           case "QUOTED":   //待付款。对于普通商品，没有报价过程。通过isStagePay来区分
@@ -325,7 +325,7 @@ Page({
         }
         _this.setData({
           goods: data,
-          steps: steps,
+          steps,
           active: active,
           // salesman: data.salesman.salesman||null
         })

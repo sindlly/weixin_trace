@@ -157,14 +157,16 @@ Page({
         success(res) {
           _this.data.logo = JSON.parse(res.data).data.data.id;
           const { index, barcodes } = _this.data
-          const product = barcodes[index]._id
           const remarks = {
             width: _this.data.width,
             height: _this.data.height,
             length: _this.data.length,
             thick: _this.data.thick
           }
-          if (product) remarks.product = product
+          if (barcodes.length > 0 & index) {
+            const product = barcodes[index]._id
+            if (product) remarks.product = product
+          }
           let subData = {
             commodity: _this.data.commodityId,
             count: parseInt(_this.data.count),
