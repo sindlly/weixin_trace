@@ -10,4 +10,4 @@
   <van-button class='btn' type='info'  size="large"  open-type="getUserInfo" 
 	bindgetuserinfo="bindGetUserInfo" round>注册成为荣誉商家</van-button>
 </view>
-<image src='../../img/bussiness2.png' class='intro-img2' mode='aspectFill'></image>
+<image src='../../img/bussiness2.jpg' class='intro-img2' mode='aspectFill'></image>
