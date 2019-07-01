@@ -1,21 +1,27 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/invatFactory/invatFactory",
+    "pages/intro/intro",
+    "pages/invatCourier/invatCourier",
+    "pages/invatBussiness/invatBussiness",
+   
+    
+    "pages/invatSalesman/invatSalesman",
+   
     "pages/shop/shop",
     "pages/send/send",
     "pages/bind/bind",
     "pages/check/check",
-    "pages/invatBussiness/invatBussiness",
-    "pages/invatFactory/invatFactory",
-    "pages/intro/intro",
+    
+   
     "pages/regest/regest",
     "pages/tracing/tracing",
     "pages/courier/courier",
     "pages/scode_manage/scode_manage",
     "pages/rights/rights", 
     "pages/mySalesInfo/mySalesInfo",
-    "pages/invatCourier/invatCourier",
-    "pages/invatSalesman/invatSalesman",
+    
     "pages/mySalesInfo/myFactory/myFactory",
     "pages/bigdata/bigdata",
     "pages/bigdata/counterfeit/counterfeit",
