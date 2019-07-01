@@ -130,14 +130,14 @@ Page({
     wx.showLoading();
     if (_this.data.goods_detail.isCustom) {
       const { index, barcodes } = _this.data
-      if (!barcodes[index]) {
-        wx.showToast({
-          title: '未选择条形码',
-          icon: 'none',
-          duration: 1000
-        });
-        return;
-      }
+      // if (!barcodes[index]) {
+      //   wx.showToast({
+      //     title: '未选择条形码',
+      //     icon: 'none',
+      //     duration: 1000
+      //   });
+      //   return;
+      // }
       if (!this.data.imgSrc) {
         wx.showToast({
           title: '请上传logo',
@@ -158,16 +158,17 @@ Page({
           _this.data.logo = JSON.parse(res.data).data.data.id;
           const { index, barcodes } = _this.data
           const product = barcodes[index]._id
+          const remarks = {
+            width: _this.data.width,
+            height: _this.data.height,
+            length: _this.data.length,
+            thick: _this.data.thick
+          }
+          if (product) remarks.product = product
           let subData = {
             commodity: _this.data.commodityId,
             count: parseInt(_this.data.count),
-            remarks: {
-              product,
-              width: _this.data.width,
-              height: _this.data.height,
-              length: _this.data.length,
-              thick: _this.data.thick
-            },
+            remarks,
             logo: _this.data.logo
           };
           if (_this.data.selectedFactory)
