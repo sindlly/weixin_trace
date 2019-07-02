@@ -234,7 +234,7 @@ Page({
                 }
                 if (state == "BIND") {
                   notice_text = "正品待售"
-                } else if (state == "SEND") {
+                } else if (state == "SEND" || state == "EXPRESSED") {
                   if (latestRecord.reciver_type == "consumer") {
                     notice_text = "正品在" + util.getHours(latestRecord.send_at) + "小时前被出售"
                   } else {
