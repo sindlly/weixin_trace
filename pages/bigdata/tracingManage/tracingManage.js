@@ -21,6 +21,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const userInfo = wx.getStorageSync('userInfo');
+    console.log(userInfo);
     this.setData({userInfo: userInfo});
     this.getStatisticsData();
     this.getTracingsData();
@@ -30,13 +32,14 @@ Page({
    * 获取溯源码使用情况的接口
    */
   getStatisticsData: function () {
-    const {baseUrl, userInfo} = this,
+    const {baseUrl, userInfo} = this.data,
         {user_id} = userInfo;
     wx.request({
       url: `${baseUrl}/users/${user_id}/statistics`,
       success: res => {
+        console.log('getStatisticsData');
         console.log(res);
-        const data = res.data.data;
+        const data = res.data.data.data.data;
         this.setData({statistics: data});
       }
     });
@@ -46,7 +49,7 @@ Page({
    * 获取溯源码列表的接口
    */
   getTracingsData: function () {
-    const {baseUrl, userInfo, tracingList, paginationPars} = this,
+    const {baseUrl, userInfo, tracingList, paginationPars} = this.data,
         {user_id} = userInfo,
         {limit, offset, sortByState, sort} = paginationPars;
     const format = data => {
@@ -78,11 +81,11 @@ Page({
     wx.request({
       url: `${baseUrl}/tracings?owner=${user_id}&limit=${limit}&offset=${offset}&sortByState=${sortByState}&sort=${sort}`,
       success: res => {
+        console.log('getTracingsData');
         console.log(res);
-        const data = format(res.data.data),
-            newTracingList = tracingList.push(data);
+        const data = format(res.data.data.data);
         this.setData({
-          tracingList: newTracingList
+          tracingList: [...tracingList, ...data]
         });
       }
     });
