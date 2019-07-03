@@ -10,16 +10,16 @@
   </view>
   <view wx:for="{{tracingList}}" wx:key="{{index}}" class='counterfeit-container'>
     <view class='counterfeit-left'>
-      <image mode='aspectFit' src="{{baseUrl + '/files/' + item.barcode.image}}" mode='scaleToFill'></image>
+      <image mode='aspectFit' src="{{item.logo}}" mode='scaleToFill'></image>
     </view>
     <view wx:if="{{item.state==='BIND'}}" class='counterfeit-right'>
       <text>状态：{{item.state_display}}</text>
     </view>
     <view wx:else class='counterfeit-right'>
       <text>状态：{{item.state_display}}</text>
-      <text>最新发货人：{{lastRecord.sender}}</text>
-      <text>发货时间：{{lastRecord.send_at_display}}</text>
-      <text>发货对象：{{lastRecord.reciver}}</text>
+      <text>最新发货人：{{item.lastRecord.sender}}</text>
+      <text>发货时间：{{item.lastRecord.send_at_display}}</text>
+      <text>发货对象：{{item.lastRecord.reciver_name}}</text>
     </view>
   </view>
 </van-panel>

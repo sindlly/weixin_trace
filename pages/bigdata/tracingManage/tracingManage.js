@@ -13,7 +13,10 @@ Page({
     // counterfeits: [],
     statistics: {},
     tracingList: [],
-    paginationPars: {limit: 10, offset: 0, sortByState: false, sort: '-created_at'},
+    paginationPars: {
+      limit: 10, offset: 0, sortByState: false, sort: '-created_at',
+      embed: 'product,sender,reciver'
+    },
     results: ['误把新包装当做假货', '其它']
   },
 
@@ -51,7 +54,7 @@ Page({
   getTracingsData: function () {
     const {baseUrl, userInfo, tracingList, paginationPars} = this.data,
         {user_id} = userInfo,
-        {limit, offset, sortByState, sort} = paginationPars;
+        {limit, offset, sortByState, sort, embed} = paginationPars;
     const format = data => {
       return data.map(item => {
         if (item.state === 'BIND') {
@@ -62,10 +65,15 @@ Page({
           // SEND EXPRESSED
           item.state_display = '已发货';
         }
+        if (item.products.length > 0) {
+          item.logo = '../../../img/default_logo.png';
+        } else {
+          item.logo = '../../../img/default_logo.png';
+        }
         item.lastRecord = {};
         if (item.records.length > 0) {
-          item.lastRecord = item.records.slice(-1);
-          let send_time = new Date(item.send_at),
+          item.lastRecord = item.records.slice(-1)[0];
+          let send_time = new Date(item.lastRecord.send_at),
               year = send_time.getFullYear(),
               month = send_time.getMonth() + 1,
               day = send_time.getDate(),
@@ -79,13 +87,20 @@ Page({
       });
     }
     wx.request({
-      url: `${baseUrl}/tracings?owner=${user_id}&limit=${limit}&offset=${offset}&sortByState=${sortByState}&sort=${sort}`,
+      // url: `${baseUrl}/tracings?owner=${user_id}&limit=${limit}&offset=${offset}&sortByState=${sortByState}&sort=${sort}`,
+      // todo 待替换成以下地址
+      url: `${baseUrl}/tracings?owner=${user_id}&limit=${limit}&offset=${offset}&sortByState=${sortByState}&sort=${sort}&embed=${embed}`,
       success: res => {
         console.log('getTracingsData');
         console.log(res);
         const data = format(res.data.data.data);
+        let newPaginationPars = Object.assign(
+            {}, paginationPars, {offset: offset + limit}
+        );
+        console.log(newPaginationPars);
         this.setData({
-          tracingList: [...tracingList, ...data]
+          tracingList: [...tracingList, ...data],
+          paginationPars: newPaginationPars
         });
       }
     });
