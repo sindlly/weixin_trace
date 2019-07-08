@@ -91,11 +91,6 @@
       <van-cell class='home-cell' title="成为快递员" label="销售人员认证后可以促成商家采购溯源防伪方案" url="/pages/invatCourier/invatCourier" clickable />
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
     </view>
-    <view class='flex-row-center'>
-      <image src='../../img/partner.png' class="cell-left-img"></image>
-      <van-cell class='home-cell' title="成为销售合伙人" label="成功邀请的生产厂家，他的所有订单你能从中获益" url="/pages/invatSalesman/invatSalesman" clickable />
-      <image src='../../img/Chevron.png' class="cell-right-img"></image>
-    </view>
     <view class='flex-row-center content-hover'>
       <image src='../../img/bussiness.png' class="cell-left-img"></image>
       <van-cell class='home-cell' title="认证商家" label="因为我们溯源无死角，所有假货无处藏身" url="/pages/invatFactory/invatFactory" border="{{ false }}" clickable />

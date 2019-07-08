@@ -1,27 +1,32 @@
 /* pages/pay/pay.wxss */
-.card-detail{
+
+.card-detail {
   background-color: #fff !important;
-  margin-bottom: 15rpx
+  margin-bottom: 15rpx;
 }
-.price{
-  color: red !important
+
+.price {
+  color: red !important;
 }
-.img-container{
+
+.img-container {
   width: 180rpx;
   height: 180rpx;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px dashed #CCCCCC;
-  margin-left:15px;
+  border: 2px dashed #ccc;
+  margin-left: 15px;
 }
-.img-title{
+
+.img-title {
   font-size: 28rpx;
-  color: #333333;
+  color: #333;
   line-height: 24px;
   padding: 15px;
 }
-.commit-btn button{
+
+.commit-btn button {
   margin-top: 48rpx;
   background: #f44;
   border-radius: 40.5px;
@@ -30,9 +35,18 @@
   line-height: 81rpx;
   border: none;
 }
-.tips{
+
+.tips {
   font-size: 26rpx;
-  color: #666666;
+  color: #666;
   letter-spacing: 0;
   margin-top: 23rpx;
+}
+
+.cell-value-class {
+  flex: 2 !important;
+}
+
+.cell-title-class {
+  flex: 2 !important;
 }

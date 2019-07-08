@@ -23,6 +23,11 @@ Page({
       url: '/pages/scode_manage/add_scode/add_scode?id=' + id,
     })
   },
+  goHome: function() {
+    wx.reLaunch({
+      url: '/pages/home/home',
+    })
+  },
   /*
    * 生命周期函数--监听页面加载
    */

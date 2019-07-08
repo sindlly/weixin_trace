@@ -106,7 +106,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let id = options.id || "014a8d3f6c6086359336630bc8466e8e82cd2c6aed38fe26b03e1f8b0262a250aa47d3128c8fe7cd6aeb2e1b0b52b9fe04cf5f80168e753b3ecb85b167f8c34c88"
+    let id = options.id || "01de2b026a849596592e8bf2c2c7a3c6566a24f6bac386dacfa5ecfc55335c978325b8e3df19be2f0b8c4f0e72798d1df7398194958f0e4c10e73eee7a480591a8"
     this.data.id = id
     const _this = this
     wx.login({
@@ -190,7 +190,7 @@ Page({
                 const owner = result.owner
                 let steps_temp = []
                 let banner = owner[owner.role_type].banner
-                for (let i = 0; i < records.length; i++) {
+                for (let i = records.length - 1; i >= 0 ; i--) {
                   const sender = records[i].sender
                   const name = sender[sender.role_type].name
                   if (records[i].reciver_type === 'business' & result.state === 'RECEIVED') {
