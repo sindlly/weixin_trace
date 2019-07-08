@@ -3,7 +3,7 @@
   <van-cell-group>
     <van-cell title-class="cell-title-class" title="{{goods.commodity.name}}" value="{{goods.status=='CREATED'?'待报价':goods.status=='QUOTED'?'待付款':goods.status=='ALL_PAYED'?'待核收':goods.status=='SHIPMENT'?'待发货':''}}" />
   </van-cell-group>
-  <van-card desc="销售个数：{{goods.count}}" title="规格：{{goods.commodity.brands}}" stageProportion="销售价：¥{{goods.price}}{{goods.isStagePay?'（首付比例：'+goods.stageProportion+'）':''}}" thumb="{{baseUrl}}/files/{{goods.commodity.pictures[0]}}" custom-class="{{'card-detail'}}">
+  <van-card desc="销售个数：{{goods.count}}" title="规格：{{goods.commodity.brands}}" stageProportion="销售价：¥{{goods.price}}{{goods.isStagePay?'（首付比例：'+goods.stageProportion*100+'%）':''}}" thumb="{{baseUrl}}/files/{{goods.commodity.pictures[0]}}" custom-class="{{'card-detail'}}">
   </van-card>
   <van-cell-group>
     <van-cell value-class="cell-value-class" title="厂家名称" value="{{goods.buyer.factory.name}}" />

@@ -14,7 +14,7 @@
     <van-button size="small " round type="danger " wx:if="{{goods.status=='FINISHED' &&goods.isLastPayed && !goods.isLastPaymentConfirmed}} " catchtap='ensureMoney' data-id="{{goods._id}} " >确认尾款</van-button>
   </view>
 </van-card>
-<van-cell title="购买方 " value="{{goods.buyer.factory.name}} " />
+<van-cell title="购买方 "  value-class="cell-value-class" value="{{goods.buyer.factory.name}} " />
 <van-panel title="订单详情 ">
 <van-steps
   steps="{{ steps }}"
