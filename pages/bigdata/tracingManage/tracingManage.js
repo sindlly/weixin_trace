@@ -13,11 +13,12 @@ Page({
     // counterfeits: [],
     statistics: {},
     tracingList: [],
+    hasMoreList: true,
     paginationPars: {
       limit: 10, offset: 0, sortByState: false, sort: '-created_at',
       embed: 'product,sender,reciver'
     },
-    results: ['误把新包装当做假货', '其它']
+    // results: ['误把新包装当做假货', '其它']
   },
 
   /**
@@ -40,7 +41,6 @@ Page({
     wx.request({
       url: `${baseUrl}/users/${user_id}/statistics`,
       success: res => {
-        console.log('getStatisticsData');
         console.log(res);
         const data = res.data.data.data.data;
         this.setData({statistics: data});
@@ -83,21 +83,20 @@ Page({
           minute = minute > 9 ? minute : '0' + minute;
           item.lastRecord.send_at_display = `${year}/${month}/${day} ${hour}:${minute}`;
         }
+        item.lastRecord.is_business = item.lastRecord.reciver_type === 'business';
         return item;
       });
     }
     wx.request({
-      // url: `${baseUrl}/tracings?owner=${user_id}&limit=${limit}&offset=${offset}&sortByState=${sortByState}&sort=${sort}`,
-      // todo 待替换成以下地址
       url: `${baseUrl}/tracings?owner=${user_id}&limit=${limit}&offset=${offset}&sortByState=${sortByState}&sort=${sort}&embed=${embed}`,
       success: res => {
-        console.log('getTracingsData');
         console.log(res);
+        let {count} = res.data.data.meta;
         const data = format(res.data.data.data);
+        this.data.hasMoreList = limit + offset < count;
         let newPaginationPars = Object.assign(
             {}, paginationPars, {offset: offset + limit}
         );
-        console.log(newPaginationPars);
         this.setData({
           tracingList: [...tracingList, ...data],
           paginationPars: newPaginationPars
@@ -139,7 +138,11 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.getTracingsData();
+    if (this.data.hasMoreList) {
+      this.getTracingsData();
+    } else {
+      console.log('没有更多');
+    }
   },
 
   /**

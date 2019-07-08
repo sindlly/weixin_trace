@@ -17,9 +17,10 @@
     </view>
     <view wx:else class='counterfeit-right'>
       <text>状态：{{item.state_display}}</text>
-      <text>最新发货人：{{item.lastRecord.sender}}</text>
+      <text>最新发货人：{{item.lastRecord.sender_info.factory.name}}</text>
       <text>发货时间：{{item.lastRecord.send_at_display}}</text>
-      <text>发货对象：{{item.lastRecord.reciver_name}}</text>
+      <text wx:if="{{item.lastRecord.is_business}}">发货对象：{{item.lastRecord.reciver_info.business.name}}</text>
+      <text wx:else>发货对象：{{item.lastRecord.reciver_name}}</text>
     </view>
   </view>
 </van-panel>
