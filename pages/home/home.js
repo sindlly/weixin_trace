@@ -18,7 +18,6 @@ Page({
   },
   bindGetUserInfo: function(res) {
     let userInfo = res.detail.userInfo
-    // wx.setStorageSync('userInfo',res.detail.userInfo)
     let _this = this
     wx.login({
       success: res => {
@@ -45,28 +44,6 @@ Page({
             wx.reLaunch({
               url: '/pages/home/home',
             })
-            // 获取用户信息
-            // wx.getSetting({
-            //   success: res => {
-            //     if (res.authSetting['scope.userInfo']) {
-
-            //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-            //       wx.getUserInfo({
-            //         success: res => {
-            //           wx.setStorageSync('userInfo', Object.assign(res.userInfo, { role_type: role_type, user_id: user_id }))
-            //           // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-            //           // 所以此处加入 callback 以防止这种情况
-            //           if (_this.userInfoReadyCallback) {
-            //             _this.userInfoReadyCallback(res)
-            //           }
-            //           wx.reLaunch({
-            //             url: '/pages/home/home',
-            //           })
-            //         }
-            //       })
-            //     }
-            //   }
-            // })
           }
         })
       }
@@ -174,7 +151,6 @@ Page({
         home_type: userInfo.role_type || 4,
         canIUse: false,
         // userInfo: userInfo,
-        showLoading: false
       })
     } else {
       _this.setData({
@@ -195,11 +171,6 @@ Page({
    */
   onShow: function() {
     let _this = this;
-    if (wx.getStorageSync('userInfo') && wx.getStorageSync('userInfo').role_type == 4){
-      _this.setData({
-        showLoading: true
-      })
-    }
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
@@ -214,7 +185,6 @@ Page({
             let user_id = '';
             if (res.data.data.data.isRegistered == false) {
               role_type = 4;
-              // user_id = res.data.data.data.user._id;
             } else {
               role_type = res.data.data.data.user.role_type;
               user_id = res.data.data.data.user._id;
@@ -229,8 +199,8 @@ Page({
                      wx.setStorageSync(
                         'userInfo',
                         Object.assign(res.userInfo, {
-                          role_type: role_type,
-                          user_id: user_id
+                          role_type,
+                          user_id,
                         })
                       );
                       _this.onLoad()

@@ -106,7 +106,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let id = options.id || "0156239c0e71cdc922f1377521278ee0d58e6ab4847d53d698c0ec51811dabd2e468fe0fbf50c2fa3b6135ca950783da29e0f5186465d477c9670b139cdc9ab004"
+    let id = options.id || "014a8d3f6c6086359336630bc8466e8e82cd2c6aed38fe26b03e1f8b0262a250aa47d3128c8fe7cd6aeb2e1b0b52b9fe04cf5f80168e753b3ecb85b167f8c34c88"
     this.data.id = id
     const _this = this
     wx.login({
@@ -125,7 +125,7 @@ Page({
             const result = res.data.data.data
             if (result.isRegistered == false) {
               role_type = 4,
-              user_id = result.user._id
+                user_id = result.user._id
             } else {
               role_type = result.user.role_type
               user_id = result.user._id
@@ -155,24 +155,24 @@ Page({
                 //   })
                 //   return
                 // } else {
-                  _this.setData({
-                    showDetail: true
-                  })
-                  wx.showToast({
-                    title: '主人好，请鉴',
-                    icon: 'none',
-                    duration: 3000
-                  })
+                _this.setData({
+                  showDetail: true
+                })
+                wx.showToast({
+                  title: '主人好，请鉴',
+                  icon: 'none',
+                  duration: 3000
+                })
                 // }
-                const latestRecord = records.slice(recordsLength - 1, recordsLength)[0] || {sender: {}}
+                const latestRecord = records.slice(recordsLength - 1, recordsLength)[0] || {}
                 let hasCommitRight = true
                 let disableSignButton = true
-                if (latestRecord & latestRecord.reciver_type & latestRecord.reciver_type === 'business') {
+                if (latestRecord.reciver_type === 'business') {
                   hasCommitRight = latestRecord.reciver === userInfo.user_id
                   disableSignButton = false
                 } else {
                   // 若为消费者，则判断是否需要获取手机号
-                  if (latestRecord & latestRecord.reciver_phone) {
+                  if (latestRecord.reciver_phone) {
                     // 指定了收货人电话
                     if (userInfo.wechat_phone) {
                       hasCommitRight = latestRecord.reciver_phone === userInfo.wechat_phone
@@ -183,22 +183,39 @@ Page({
                       })
                     }
                   } else {
-                    hasCommitRight = latestRecord & latestRecord.sender !== userInfo.user_id
+                    hasCommitRight = latestRecord.sender !== userInfo.user_id
                     disableSignButton = false
                   }
                 }
-                let steps_temp = []
                 const owner = result.owner
+                let steps_temp = []
                 let banner = owner[owner.role_type].banner
                 for (let i = 0; i < records.length; i++) {
                   const sender = records[i].sender
                   const name = sender[sender.role_type].name
-                  steps_temp[i] = {
-                    text: records[i].express_name || name,
-                    desc: records[i].express_no || util.convertUTCTimeToLocalTime(records[i].send_at),
+                  if (records[i].reciver_type === 'business' & result.state === 'RECEIVED') {
+                    const reciver = records[i].reciver
+                    const reciverName = reciver[reciver.role_type].name
+                    steps_temp.push({
+                      text: `收货人： ${reciverName}`,
+                      desc: `签收时间： ${util.convertUTCTimeToLocalTime(records[i].reciver_at)}`,
+                    })
+                  }
+                  if (records[i].express_name) {
+                    steps_temp.push({
+                      text: `快递： ${records[i].express_name}`,
+                      desc: `运单号： ${records[i].express_no}` || util.convertUTCTimeToLocalTime(records[i].send_at),
+                    })
+                  }
+                  if (name) {
+                    steps_temp.push({
+                      text: `发货人: ${name}`,
+                      desc: `发货时间： ${util.convertUTCTimeToLocalTime(records[i].send_at)}`,
+                    })
                   }
                   if (i == records.length - 1) {
-                    banner = sender[sender.role_type].banner
+                    const senderBanner = sender[sender.role_type].banner
+                    if (senderBanner) banner = senderBanner
                     _this.setData({
                       hasReseverInfo: records[i].reciver_name ? true : false
                     })
@@ -206,16 +223,18 @@ Page({
                 }
                 const state = result.state
                 let notice_text = ""
-                if (latestRecord.sender & latestRecord.sender._id === userInfo.user_id & state === 'SEND') {
-                  wx.showToast({
-                    title: '您已发货，只能查看溯源码详情',
-                    icon: 'none',
-                    duration: 3000
-                  })
+                if (latestRecord.sender & state === 'SEND') {
+                  if (latestRecord.sender._id === userInfo.user_id) {
+                    wx.showToast({
+                      title: '您已发货，只能查看溯源码详情',
+                      icon: 'none',
+                      duration: 3000
+                    })
+                  }
                 }
                 if (state == "BIND") {
                   notice_text = "正品待售"
-                } else if (state == "SEND") {
+                } else if (state == "SEND" || state == "EXPRESSED") {
                   if (latestRecord.reciver_type == "consumer") {
                     notice_text = "正品在" + util.getHours(latestRecord.send_at) + "小时前被出售"
                   } else {
@@ -236,10 +255,10 @@ Page({
                   firstGoods: result.products[0],
                   goodsTotal: result.products.length,
                   steps: steps_temp,
-                  banner: baseUrl + "/files/" + banner,
+                  banner: banner ? baseUrl + "/files/" + banner : undefined,
                   id,
                   disableSignButton,
-                  showCommit: ["SEND", "EXPRESSED"].includes(state) && hasCommitRight ? true : false,
+                  showCommit: ["SEND", "EXPRESSED"].includes(state) & hasCommitRight ? true : false,
                   isReceved: state == "RECEIVED" ? true : false,
                   notice_text: notice_text,
                 })

@@ -1,6 +1,5 @@
 const app = getApp();
 const baseUrl = app.globalData.HOST;
-const userInfo = wx.getStorageSync('userInfo');
 
 Page({
   data: {
@@ -24,9 +23,10 @@ Page({
     selectFactories: [],
     logo: null,
     index: undefined,
-    invat_name: userInfo.nickName,
-    invat_id: userInfo.user_id,
-    role_type: userInfo.role_type,
+    invat_name: '',
+    invat_id: '',
+    role_type: '',
+    userInfo: {},
     barcodPickers: [], // 条形码选择数组
     barcods: [], // 条形码
     index: ''
@@ -130,14 +130,14 @@ Page({
     wx.showLoading();
     if (_this.data.goods_detail.isCustom) {
       const { index, barcodes } = _this.data
-      if (!barcodes[index]) {
-        wx.showToast({
-          title: '未选择条形码',
-          icon: 'none',
-          duration: 1000
-        });
-        return;
-      }
+      // if (!barcodes[index]) {
+      //   wx.showToast({
+      //     title: '未选择条形码',
+      //     icon: 'none',
+      //     duration: 1000
+      //   });
+      //   return;
+      // }
       if (!this.data.imgSrc) {
         wx.showToast({
           title: '请上传logo',
@@ -157,17 +157,20 @@ Page({
         success(res) {
           _this.data.logo = JSON.parse(res.data).data.data.id;
           const { index, barcodes } = _this.data
-          const product = barcodes[index]._id
+          const remarks = {
+            width: _this.data.width,
+            height: _this.data.height,
+            length: _this.data.length,
+            thick: _this.data.thick
+          }
+          if (barcodes.length > 0 & index != '') {
+            const product = barcodes[parseInt(index)]._id
+            if (product) remarks.product = product
+          }
           let subData = {
             commodity: _this.data.commodityId,
             count: parseInt(_this.data.count),
-            remarks: {
-              product,
-              width: _this.data.width,
-              height: _this.data.height,
-              length: _this.data.length,
-              thick: _this.data.thick
-            },
+            remarks,
             logo: _this.data.logo
           };
           if (_this.data.selectedFactory)
@@ -213,7 +216,7 @@ Page({
       let subData = {
         commodity: _this.data.commodityId,
         count: parseInt(_this.data.count),
-        buyer: userInfo.user_id
+        buyer: _this.data.userInfo.user_id
       };
       wx.request({
         url: baseUrl + '/orders',
@@ -251,6 +254,12 @@ Page({
 
   onLoad: function(options) {
     const userInfo = wx.getStorageSync('userInfo');
+    this.setData({
+      invat_name: userInfo.nickName,
+      invat_id: userInfo.user_id,
+      role_type: userInfo.role_type,
+      userInfo
+    })
     const id = options.id;
     const _this = this;
     _this.setData({
@@ -291,7 +300,7 @@ Page({
     // 销售获取被其邀请的厂家信息
     if (this.data.role_type === 'salesman') {
       wx.request({
-        url: baseUrl + '/users/' + userInfo.user_id + '/factories',
+        url: baseUrl + '/users/' + this.data.userInfo.user_id + '/factories',
         method: 'GET',
         header: {
           'content-type': 'application/json'
@@ -312,12 +321,24 @@ Page({
     }
   },
 
-  onPullDownRefresh: function() {
-    // const userInfo = wx.getStorageSync('user_info');
-    // const _this = this;
-    // _this.setData({
-    //   userInfo
-    // })
-    // wx.stopPullDownRefresh();
+  onShow: function() {
+    // 获取厂家用户下的条形码信息
+    if (this.data.role_type === 'factory') {
+      wx.request({
+        url: baseUrl + '/barcodes',
+        method: 'GET',
+        header: {
+          'content-type': 'application/json'
+        },
+        success: function (res) {
+          const barcodes = res.data.data.data
+          const barcodePickers = barcodes.map(item => { return item.name })
+          _this.setData({
+            barcodes,
+            barcodePickers,
+          });
+        }
+      });
+    }
   }
 });

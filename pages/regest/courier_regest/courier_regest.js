@@ -12,24 +12,24 @@ Page({
       name: null,
       phone: null,
       email: null,
-      employee_card: null,     
+      employee_card: null,
     },
     imgSrc: null,
-    errorMsg:{
+    errorMsg: {
       company: null,
       name: null,
       phone: null,
       email: null,
-      employee_card: null, 
+      employee_card: null,
     }
   },
-  uploadImg: function () {
+  uploadImg: function() {
     var _this = this;
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
-      success: function (res) {
+      success: function(res) {
         _this.data.courier.employee_card = res.tempFilePaths[0]
         _this.setData({
           imgSrc: res.tempFilePaths[0],
@@ -37,14 +37,14 @@ Page({
       }
     })
   },
-  onChange: function (e) {
+  onChange: function(e) {
     let dataset = e.target.dataset
     this.data[dataset.obj][dataset.item] = e.detail.value
   },
-  commit: function () {
+  commit: function() {
     let _this = this
     _this.validate(this.data.courier)
-    if (_this.validate(this.data.courier)){
+    if (_this.validate(this.data.courier)) {
       //先上传图片数据
       wx.uploadFile({
         url: baseUrl + '/files',
@@ -55,31 +55,30 @@ Page({
           'content-type': 'application/json'
         },
         success(res) {
-        
           _this.data.courier.employee_card = JSON.parse(res.data).data.data.id
-           wx.request({
-            url: baseUrl + '/users', 
-            method:"POST",
+          wx.request({
+            url: baseUrl + '/users',
+            method: "POST",
             header: {
-              'content-type': 'application/json' 
+              'content-type': 'application/json'
             },
-            data:{
-              role_type:'courier',
-              role_id:50,
+            data: {
+              role_type: 'courier',
+              role_id: 50,
               courier: _this.data.courier
             },
             success(res) {
-              if(res.data.code == 0){
+              if (res.data.code == 0) {
                 wx.showModal({
                   title: '恭喜您',
                   content: '注册成功，等待管理员审核',
-                  showCancel:false,
+                  showCancel: false,
                   success(res) {
                     if (res.confirm) {
                       wx.reLaunch({
                         url: '/pages/home/home'
                       })
-                    } 
+                    }
                   }
                 })
               } else if (res.data.code == 10004) {
@@ -87,7 +86,7 @@ Page({
                   title: res.data.msg,
                   icon: 'none',
                   duration: 2000,
-                  success: function () {
+                  success: function() {
                     setTimeout(() => {
                       wx.reLaunch({
                         url: '/pages/home/home'
@@ -95,10 +94,9 @@ Page({
                     }, 1000)
                   }
                 })
-              }
-              else{
+              } else {
                 wx.showToast({
-                  title: res.msg,
+                  title: res.data.msg,
                   icon: 'none',
                   duration: 1000
                 })
@@ -108,19 +106,19 @@ Page({
         }
       })
     }
- 
+
   },
   //校验
-  validate(data){
+  validate(data) {
     let flag = true
     //校验有空数据
-    for (let i in data){
-      if(!data[i]){
+    for (let i in data) {
+      if (!data[i]) {
         flag = false
         wx.showToast({
           title: '请填写所有内容',
-          icon:'none',
-          duration:1000
+          icon: 'none',
+          duration: 1000
         })
         break;
       }
@@ -130,56 +128,56 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
 
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

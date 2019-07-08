@@ -1,6 +1,6 @@
 <!--pages/order_manage/goods_card/goods_card.wxml-->
 
-<view class='order_container' wx:for-items='{{perentData}}' wx:key="{{item}}">
+<view class='order_container' wx:for-items='{{perentData}}' wx:key="{{index}}">
   <van-panel data-id="{{item._id}}" bindtap='todetail'>
     <van-card tag="{{item.status=='CREATED'?'待报价':item.status=='QUOTED'?'待付款':item.status=='ALL_PAYED'||item.status=='FIRST_PAYED'?'待核收':item.status=='SHIPMENT'||item.status=='PAYMENT_CONFIRMED'||item.status=='PRINTED'?'待发货':item.status=='SHIPPED'?'已发货':item.status=='FINISHED'?item.isLastPayed&&!item.isLastPaymentConfirmed?'待核收':'已结束':''}}"
       price="{{item.price}}" desc="{{item.commodity.description}}" num='{{item.count}}' title="{{item.commodity.name}}" thumb="{{baseUrl}}/files/{{item.commodity.pictures[0]}}">
