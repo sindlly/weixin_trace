@@ -323,6 +323,7 @@ Page({
 
   onShow: function() {
     // 获取厂家用户下的条形码信息
+    const _this = this
     if (this.data.role_type === 'factory') {
       wx.request({
         url: baseUrl + '/barcodes',

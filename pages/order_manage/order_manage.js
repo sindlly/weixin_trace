@@ -1,7 +1,6 @@
 // pages/order_manage/order_manage.js
 const app = getApp();
 const baseUrl = app.globalData.HOST;
-const userInfo = wx.getStorageSync('userInfo')
 Page({
 
   /**
@@ -14,7 +13,8 @@ Page({
     daifahuo_goods: [],
     yifahuo_goods: [],
     active: 0,
-    title: ["全部", "待报价", "待付款", "待发货", "已发货"]
+    title: ["全部", "待报价", "待付款", "待发货", "已发货"],
+    userInfo: wx.getStorageSync('userInfo')
   },
 
   /**
@@ -22,11 +22,15 @@ Page({
    */
 
   onLoad: function(options) {
+    const userInfo = wx.getStorageSync('userInfo')
     this.setData({
-      active: options.active || 0
+      active: options.active || 0,
+      userInfo,
+      role_type: userInfo.role_type
     })
     this.getData()
   },
+
   getData: function(callback) {
     const _this = this
     wx.request({
@@ -46,7 +50,7 @@ Page({
         let unPaid = res.data.data.data.unPaid // 厂家 销售  待付款（销售只是看看）
         let unCheck = res.data.data.data.unCheck //平台  待核收
         let unPaidOrUnCheck = unPaid
-        if (userInfo.role_type == "platform") {
+        if (_this.data.userInfo.role_type == "platform") {
           _this.setData({
             title: ["全部", "待报价", "待核收", "待发货", "已发货"]
           })
@@ -112,5 +116,5 @@ Page({
    */
   onShareAppMessage: function() {
 
-  }
+  },
 })

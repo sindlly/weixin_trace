@@ -9,40 +9,39 @@ Page({
    */
   data: {
     baseUrl: baseUrl,
-    role_type:wx.getStorageSync('userInfo').role_type,
-    goods:{},
-    salesman:{},
-    active:-1,
-    steps: [
-    ]
+    role_type: wx.getStorageSync('userInfo').role_type,
+    goods: {},
+    salesman: {},
+    active: -1,
+    steps: []
   },
-  ensureMoney: function (data) {
+  ensureMoney: function(data) {
     let id = data.currentTarget.dataset.id
     wx.navigateTo({
       url: '/pages/ensureMoney/ensureMoney?id=' + id,
     })
   },
-  pay: function (data) {
+  pay: function(data) {
     let id = data.currentTarget.dataset.id
     wx.navigateTo({
       url: '/pages/pay/pay?id=' + id,
     })
   },
   //提交快递
-  submitCourier: function (data) {
+  submitCourier: function(data) {
     let id = data.currentTarget.dataset.id
     wx.navigateTo({
       url: '/pages/courier/courier?id=' + id,
     })
   },
   //查看快递
-  lookLogistics: function (e) {
+  lookLogistics: function(e) {
     let express = e.currentTarget.dataset.express
     wx.navigateTo({
       url: '/pages/logistic/logistic?id=' + express.id + "&name=" + express.name,
     })
   },
-  conform: function (e) {
+  conform: function(e) {
     let id = e.currentTarget.dataset.id
     wx.showModal({
       title: '确认收货',
@@ -55,7 +54,7 @@ Page({
             data: {
               status: 'FINISHED'
             },
-            success: function () {
+            success: function() {
               wx.navigateTo({
                 url: '/pages/order_manage/order_manage',
               })
@@ -71,67 +70,45 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     let id = options.id
     let _this = this
     wx.request({
       url: baseUrl + '/orders/' + id,
-      success:function(res){
+      success: function(res) {
         let data = res.data.data.data
         let steps = []
         let active = -1
         //待报价
-        switch(data.status){
+        switch (data.status) {
           case "CREATED":
-            steps= [
-              {
+            steps = [{
+              text: '订单编号',
+              desc: data.no
+            }, {
+              text: '创建时间',
+              desc: util.convertUTCTimeToLocalTime(data.created_at)
+            }, {
+              text: '待报价',
+              desc: "定制的商品尺寸不同，需要时间评估费用"
+            }]
+            active = 2
+            break;
+          case "QUOTED": //待付款。对于普通商品，没有报价过程。通过isStagePay来区分
+            if (!data.isStagePay) {
+              //普通商品
+              steps = [{
                 text: '订单编号',
                 desc: data.no
               }, {
                 text: '创建时间',
                 desc: util.convertUTCTimeToLocalTime(data.created_at)
               }, {
-                text: '待报价',
-                desc: "定制的商品尺寸不同，需要时间评估费用"
-              }]
-            active = 2
-              break;
-          case "QUOTED":   //待付款。对于普通商品，没有报价过程。通过isStagePay来区分
-            if (!data.isStagePay){
-              //普通商品
-              steps = [
-                {
-                  text: '订单编号',
-                  desc: data.no
-                }, {
-                  text: '创建时间',
-                  desc: util.convertUTCTimeToLocalTime(data.created_at)
-                }, {
-                  text: '待付款',
-                  desc: "点击支付款项，上传付款账户和截图后，完成付款步骤"
-                },]  
-            }else{
-              steps = [
-                {
-                  text: '订单编号',
-                  desc: data.no
-                }, {
-                  text: '创建时间',
-                  desc: util.convertUTCTimeToLocalTime(data.created_at)
-                }, {
-                  text: '报价时间',
-                  desc: util.convertUTCTimeToLocalTime(data.quote_at)
-                }, {
-                  text: _this.data.role_type=='platform'?'待收款':'待付款',
-                  desc: _this.data.role_type == 'platform' ? "买家在‘付款明细’页，上传付款账户和截图后，完成付款步骤" :'点击支付款项，上传付款账户和截图后，完成付款步骤'
-                },]  
-            }
-            
-            active = 3
-              break;
-          case "FIRST_PAYED":  //支付了首付款，1、等待确认；2、已确认
-            steps = [
-              {
+                text: '待付款',
+                desc: "点击支付款项，上传付款账户和截图后，完成付款步骤"
+              }, ]
+            } else {
+              steps = [{
                 text: '订单编号',
                 desc: data.no
               }, {
@@ -141,59 +118,53 @@ Page({
                 text: '报价时间',
                 desc: util.convertUTCTimeToLocalTime(data.quote_at)
               }, {
-                text: '首付时间',
-                desc: util.convertUTCTimeToLocalTime(data.trade[0].pay_at)
-              }, {
-                text: '待确认',
-                desc: "待确认：等待平台核收款项"
-              }]
+                text: _this.data.role_type == 'platform' ? '待收款' : '待付款',
+                desc: _this.data.role_type == 'platform' ? "买家在‘付款明细’页，上传付款账户和截图后，完成付款步骤" : '点击支付款项，上传付款账户和截图后，完成付款步骤'
+              }, ]
+            }
+
+            active = 3
+            break;
+          case "FIRST_PAYED": //支付了首付款，1、等待确认；2、已确认
+            steps = [{
+              text: '订单编号',
+              desc: data.no
+            }, {
+              text: '创建时间',
+              desc: util.convertUTCTimeToLocalTime(data.created_at)
+            }, {
+              text: '报价时间',
+              desc: util.convertUTCTimeToLocalTime(data.quote_at)
+            }, {
+              text: '首付时间',
+              desc: util.convertUTCTimeToLocalTime(data.trade[0].pay_at)
+            }, {
+              text: '待确认',
+              desc: "待确认：等待平台核收款项"
+            }]
             active = 4
             break;
-          case "ALL_PAYED":  //待核收
-            steps = [
-              {
+          case "ALL_PAYED": //待核收
+            steps = [{
                 text: '订单编号',
                 desc: data.no
               }, {
                 text: '创建时间',
                 desc: util.convertUTCTimeToLocalTime(data.created_at)
-              }, 
+              },
               {
                 text: '付款时间',
                 desc: util.convertUTCTimeToLocalTime(data.trade[0].pay_at)
-              },  
+              },
               {
                 text: '待核收',
                 desc: "待核收：等待核收款项后发货"
-              },]
+              },
+            ]
             active = 5
             break;
-          case "PAYMENT_CONFIRMED":  //已核收，待发货（平台状态）
-            steps = [
-              {
-                text: '订单编号',
-                desc: data.no
-              }, {
-                text: '创建时间',
-                desc: util.convertUTCTimeToLocalTime(data.created_at)
-              },
-              {
-                text: '付款时间',
-                desc: util.convertUTCTimeToLocalTime(data.trade[0].pay_at)
-              },
-              {
-                text: data.allPaymentConfirm_at?'核收时间':'首付核收时间',
-                desc: data.allPaymentConfirm_at ? util.convertUTCTimeToLocalTime(data.allPaymentConfirm_at) : util.convertUTCTimeToLocalTime(data.firstPaymentConfirm_at)
-              },
-              {
-                text: '待发货',
-                desc: data.role_type=='platform'?"待发货：提交快递，发货至客户":"等待平台发送快递"
-              },]
-            active = 5
-            break;
-          case "PRINTED":  //已核收，待发货（平台状态）
-            steps = [
-              {
+          case "PAYMENT_CONFIRMED": //已核收，待发货（平台状态）
+            steps = [{
                 text: '订单编号',
                 desc: data.no
               }, {
@@ -211,13 +182,36 @@ Page({
               {
                 text: '待发货',
                 desc: data.role_type == 'platform' ? "待发货：提交快递，发货至客户" : "等待平台发送快递"
-              },]
+              },
+            ]
             active = 5
-            break;    
-          case "SHIPPED":  //已发货等待确定
-            if (!data.isStagePay){
-              steps = [
-                {
+            break;
+          case "PRINTED": //已核收，待发货（平台状态）
+            steps = [{
+                text: '订单编号',
+                desc: data.no
+              }, {
+                text: '创建时间',
+                desc: util.convertUTCTimeToLocalTime(data.created_at)
+              },
+              {
+                text: '付款时间',
+                desc: util.convertUTCTimeToLocalTime(data.trade[0].pay_at)
+              },
+              {
+                text: data.allPaymentConfirm_at ? '核收时间' : '首付核收时间',
+                desc: data.allPaymentConfirm_at ? util.convertUTCTimeToLocalTime(data.allPaymentConfirm_at) : util.convertUTCTimeToLocalTime(data.firstPaymentConfirm_at)
+              },
+              {
+                text: '待发货',
+                desc: data.role_type == 'platform' ? "待发货：提交快递，发货至客户" : "等待平台发送快递"
+              },
+            ]
+            active = 5
+            break;
+          case "SHIPPED": //已发货等待确定
+            if (!data.isStagePay) {
+              steps = [{
                   text: '订单编号',
                   desc: data.no
                 }, {
@@ -235,10 +229,10 @@ Page({
                 {
                   text: '待收货',
                   desc: "待收货：确认后完成交易"
-                },]
-            }else{
-              steps = [
-                {
+                },
+              ]
+            } else {
+              steps = [{
                   text: '订单编号',
                   desc: data.no
                 }, {
@@ -260,16 +254,16 @@ Page({
                 },
                 {
                   text: '确认收货-支付尾款',
-                  desc:'确认收货并支付尾款'
-                }]
+                  desc: '确认收货并支付尾款'
+                }
+              ]
             }
-            
+
             active = 6
             break;
-          case "FINISHED":  //确定
-            if (!data.isStagePay){
-              steps = [
-                {
+          case "FINISHED": //确定
+            if (!data.isStagePay) {
+              steps = [{
                   text: '订单编号',
                   desc: data.no
                 }, {
@@ -287,10 +281,10 @@ Page({
                 {
                   text: '确认时间',
                   desc: util.convertUTCTimeToLocalTime(data.finish_at)
-                },]
-            }else{
-              steps = [
-                {
+                },
+              ]
+            } else {
+              steps = [{
                   text: '订单编号',
                   desc: data.no
                 }, {
@@ -317,9 +311,10 @@ Page({
                 {
                   text: '尾款支付时间',
                   desc: util.convertUTCTimeToLocalTime(data.finish_at)
-                }]
+                }
+              ]
             }
-            
+
             active = 8
             break;
         }
@@ -329,7 +324,7 @@ Page({
           active: active,
           // salesman: data.salesman.salesman||null
         })
-        
+
       }
     })
   },
@@ -337,49 +332,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

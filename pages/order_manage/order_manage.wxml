@@ -2,7 +2,7 @@
 <!-- <view class='my_container'></view> -->
   <van-tabs active="{{ active }}" sticky animated>
   <van-tab title="{{title[0]}}">
-    <goods_card perentData="{{all_goods}}"></goods_card>
+    <goods_card perentData="{{all_goods}}" roleType="{{role_type}}"></goods_card>
     <view class='no_data' wx:if="{{!all_goods[0]}}">
       <image  src='../../img/no_data.png' class='img-nodata'></image>
       <text>暂无数据</text>

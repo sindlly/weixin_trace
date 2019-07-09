@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-      isOwner:false   //是否是自己的溯源码
+    isOwner: false //是否是自己的溯源码
   },
 
   /**
@@ -17,13 +17,13 @@ Page({
     wx.showLoading()
     let _this = this
     let type = options.type || "outer_code" //inner_code outer_code
-    let id = options.id ||"0169357e33e18d68fbdad233ac010e4d9d33bf90ead9715708ee8cf01c319b753fb36b865c91383ca49b04643b50fb38296a6867de22f92048a298dc6d40331c25"
-    if(options.q){
+    let id = options.id || "0169357e33e18d68fbdad233ac010e4d9d33bf90ead9715708ee8cf01c319b753fb36b865c91383ca49b04643b50fb38296a6867de22f92048a298dc6d40331c25"
+    if (options.q) {
       let q = decodeURIComponent(options.q)
       type = q.split("?")[1].split("&")[0].split("=")[1]
       id = q.split("?")[1].split("&")[1].split("=")[1]
     }
-  
+
     this.data.id = id
     wx.login({
       success: res => {
@@ -35,7 +35,7 @@ Page({
           data: {
             "code": res.code
           },
-          success: function (res) {
+          success: function(res) {
             let role_type = ''
             let user_id = ''
             const result = res.data.data.data
@@ -72,7 +72,7 @@ Page({
                         title: '非自己的溯源码，不能进行绑定操作',
                         duration: 3000,
                         icon: 'none',
-                        complete: function () {
+                        complete: function() {
                           setTimeout(() => {
                             wx.reLaunch({
                               url: '/pages/home/home',
@@ -93,7 +93,7 @@ Page({
                           title: '该溯源码未绑定商品，无法进入溯源流程',
                           duration: 3000,
                           icon: 'none',
-                          complete: function () {
+                          complete: function() {
                             setTimeout(() => {
                               wx.reLaunch({
                                 url: '/pages/home/home',
@@ -150,7 +150,7 @@ Page({
                     title: res.data.msg,
                     duration: 3000,
                     icon: 'none',
-                    success: function () {
+                    success: function() {
                       wx.reLaunch({
                         url: '/pages/home/home',
                       })
@@ -163,7 +163,6 @@ Page({
         })
       }
     })
-   
   },
 
   /**

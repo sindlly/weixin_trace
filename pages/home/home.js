@@ -2,19 +2,18 @@
 import Dialog from '../../miniprogram_npm/vant-weapp/dialog/dialog';
 const app = getApp();
 const baseUrl = app.globalData.HOST;
-const userInfo = wx.getStorageSync('userInfo')
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    home_type: userInfo.role_type || 4, //1显示商家首页，2显示平台账号首页，3显示销售首页，4显示无账号首页，5显示快递员首页
-    userInfo: userInfo,
+    home_type: wx.getStorageSync('userInfo').role_type || 4, //1显示商家首页，2显示平台账号首页，3显示销售首页，4显示无账号首页，5显示快递员首页
+    userInfo: wx.getStorageSync('userInfo'),
+    invat_name: '',
+    invat_id: '',
     showDialog: false,
-    invat_name: userInfo.nickName,
-    invat_id: userInfo.user_id,
-    showLoading:false
+    showLoading: false
   },
   bindGetUserInfo: function(res) {
     let userInfo = res.detail.userInfo
@@ -113,7 +112,7 @@ Page({
     })
   },
   //跳转到 平台介绍页
-  gotoIntro:function(){
+  gotoIntro: function() {
     wx.navigateTo({
       url: '/pages/intro/intro',
     })
@@ -150,7 +149,9 @@ Page({
       _this.setData({
         home_type: userInfo.role_type || 4,
         canIUse: false,
-        // userInfo: userInfo,
+        userInfo,
+        invat_name: userInfo.nickName,
+        invat_id: userInfo.user_id,
       })
     } else {
       _this.setData({
@@ -180,7 +181,7 @@ Page({
           data: {
             code: res.code
           },
-          success: function (res) {
+          success: function(res) {
             let role_type = '';
             let user_id = '';
             if (res.data.data.data.isRegistered == false) {
@@ -196,7 +197,7 @@ Page({
                   // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
                   wx.getUserInfo({
                     success: res => {
-                     wx.setStorageSync(
+                      wx.setStorageSync(
                         'userInfo',
                         Object.assign(res.userInfo, {
                           role_type,

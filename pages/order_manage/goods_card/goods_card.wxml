@@ -6,7 +6,7 @@
       price="{{item.price}}" desc="{{item.commodity.description}}" num='{{item.count}}' title="{{item.commodity.name}}" thumb="{{baseUrl}}/files/{{item.commodity.pictures[0]}}">
 
       <!-- 平台订单footer -->
-      <view slot="footer" wx:if="{{role_type=='platform'}}">
+      <view slot="footer" wx:if="{{roleType=='platform'}}">
         <van-cell title-class="cell-title-class" value-class="cell-value-class" title="厂家名称:" value="{{item.buyer.factory.name}}" />
         <van-button size="small" wx:if="{{item.buyer.inviter}}" round type="default" plain style='margin-right:10px' catchtap='salesmanDetail' data-salesman='{{item.salesman}}'>销售人员</van-button>
         <van-button size="small" round type="default" type="danger" plain style='margin-right:10px' wx:if="{{item.status=='CREATED'}}" catchtap='setPrice' data-id="{{item._id}}">填写报价</van-button>
@@ -19,7 +19,8 @@
       </view>
 
       <!-- 厂家订单footer -->
-      <view slot="footer" wx:if="{{role_type=='factory'}}">
+      <view slot="footer" wx:if="{{roleType=='factory'}}">
+        <van-cell title-class="cell-title-class" value-class="cell-value-class" title="厂家名称:" value="{{item.buyer.factory.name}}" />
         <van-button size="small" round type="danger" wx:if="{{item.status=='QUOTED'}}" data-id="{{item._id}}" catchtap="pay">支付款项</van-button>
         <van-button size="small" round type="default" plain style='margin-right:10px' wx:if="{{item.status=='SHIPPED'}}" data-express="{{item.express}}" catchtap='lookLogistics'>查看物流</van-button>
         <van-button size="small" round type="default" plain style='margin-right:10px' wx:if="{{item.status=='SHIPPED'&&!item.isStagePay}}" catchtap='conform' data-id="{{item._id}}">确认收货</van-button>
@@ -27,7 +28,8 @@
       </view>
 
       <!-- 销售订单footer -->
-      <view slot="footer" wx:if="{{role_type=='salesman'}}">
+      <view slot="footer" wx:if="{{roleType=='salesman'}}">
+        <van-cell title-class="cell-title-class" value-class="cell-value-class" title="厂家名称:" value="{{item.buyer.factory.name}}" />
         <van-button size="small" round type="default" wx:if="{{item.status=='ALL_PAYED'||item.status=='HALF_PAYED'}}" plain style='margin-right:10px' catchtap='salesmanDetail' data-salesman='{{item.salesman.salesman}}'>销售人员</van-button>
         <van-button size="small" round type="default" plain style='margin-right:10px' wx:if="{{item.status=='ALL_PAYED'}}" catchtap='submitCourier' data-id="{{item._id}}">提交快递</van-button>
         <van-button size="small" round type="default" plain style='margin-right:10px' wx:if="{{item.status=='HALF_PAYED'}}">核收尾款</van-button>
