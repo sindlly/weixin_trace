@@ -13,9 +13,9 @@
   </view>
   <view class='my_center_container no-padding' wx:if="{{showCommit}}">
     <van-button type="danger" class='commit-btn' size="large" bind:click='commit' disabled='{{disableSignButton}}'>确认签收</van-button>
-    <view class='tips' bindtap='gohome'>返回首页></view>
+    <view class='tips' bindtap='goHome'>返回首页></view>
   </view>
-  <view class='my_center_container no-padding' wx:if="{{!showCommit}}">
+  <view class='my_center_container no-padding' wx:else>
     <van-button type="danger" class='commit-btn' size="large" bind:click='goHome'>返回首页</van-button>
   </view>
   <view class='my_center_container danger' wx:if="{{isReceved & hasRight}}">

@@ -67,7 +67,7 @@ Page({
       }
     })
   },
-  
+
   onPullDownRefresh: function() {
     wx.showNavigationBarLoading()
     this.getData(() => {

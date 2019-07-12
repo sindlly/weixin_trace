@@ -51,6 +51,7 @@
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
     </view>
   </view>
+
   <view class='home-content' name="平台账号首页" wx:if="{{home_type=='platform'}}">
     <view class='flex-row-center content-hover'>
       <image src='../../img/zhaomu.png' class="cell-left-img"></image>
@@ -68,6 +69,7 @@
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
     </view>
   </view>
+
   <view class='home-content' name="销售账号首页" wx:if="{{home_type=='salesman'}}">
     <view class='flex-row-center content-hover'>
       <image src='../../img/new_order.png' class="cell-left-img"></image>
@@ -85,6 +87,7 @@
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
     </view>
   </view>
+
   <view class='home-content' name="无账号首页 " wx:if="{{home_type==4}}">
     <view class='flex-row-center content-hover'>
       <image src='../../img/courier.png' class="cell-left-img"></image>
@@ -97,6 +100,7 @@
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
     </view>
   </view>
+
   <view class='home-content' name="快递员账号首页 " wx:if="{{home_type=='courier'}}">
     <view class='flex-row-center content-hover'>
       <image src='../../img/saoma.png' class="cell-left-img"></image>

@@ -11,5 +11,6 @@
     "van-badge-group": "../../../miniprogram_npm/vant-weapp/badge-group/index"
     
   },
-  "navigationBarTitleText": "想鉴你"
+  "navigationBarTitleText": "想鉴你",
+  "enablePullDownRefresh": true
 }

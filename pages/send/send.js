@@ -38,7 +38,8 @@ Page({
     this.setData({
       switch_title: e.detail ? '发货至经销商' : '发货给消费者',
       switch_checked: e.detail,
-      business_name: null
+      business_name: null,
+      showPicker: false
     })
   },
   //没有经销商就先邀请

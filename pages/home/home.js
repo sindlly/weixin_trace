@@ -59,7 +59,7 @@ Page({
         let patt = new RegExp("https://buildupstep.cn/page/tracing/code?")
         if (patt.test(result)) {
           wx.navigateTo({
-            url: '/pages/tracing/tracing?' + result.split("?")[1],
+            url: '/pages/tracing/tracing?operation=check&' + result.split("?")[1],
           })
         } else {
           wx.showToast({
@@ -87,7 +87,7 @@ Page({
         let patt = new RegExp("https://buildupstep.cn/page/tracing/code?")
         if (patt.test(result)) {
           wx.navigateTo({
-            url: '/pages/tracing/tracing?' + result.split("?")[1],
+            url: '/pages/tracing/tracing?operation=send&' + result.split("?")[1],
           })
         } else {
           wx.showToast({
@@ -171,7 +171,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    this.getInfo()
+  },
+
+  getInfo: function(callback) {
     let _this = this;
+
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
@@ -181,7 +186,7 @@ Page({
           data: {
             code: res.code
           },
-          success: function(res) {
+          success: function (res) {
             let role_type = '';
             let user_id = '';
             if (res.data.data.data.isRegistered == false) {
@@ -208,6 +213,9 @@ Page({
                       if (_this.userInfoReadyCallback) {
                         _this.userInfoReadyCallback(_this.globalData.userInfo);
                       }
+                      if (callback && typeof callback === 'function') {
+                        callback()
+                      }
                     }
                   });
                 }
@@ -217,6 +225,15 @@ Page({
         });
       }
     });
+  },
+
+  onPullDownRefresh: function () {
+    console.log('asdf')
+    wx.showNavigationBarLoading()
+    this.getInfo(() => {
+      wx.hideNavigationBarLoading() //完成停止加载
+      wx.stopPullDownRefresh() //停止下拉刷新
+    })
   },
 
   /**
@@ -230,13 +247,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
 
   },
 

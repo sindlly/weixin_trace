@@ -78,6 +78,12 @@ Page({
               })
             }
           })
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none',
+            duration: 3000,
+          })
         }
       }
     })
@@ -168,7 +174,7 @@ Page({
                 let hasCommitRight = true
                 let disableSignButton = true
                 if (latestRecord.reciver_type === 'business') {
-                  hasCommitRight = latestRecord.reciver === userInfo.user_id
+                  hasCommitRight = latestRecord.reciver._id === userInfo.user_id
                   disableSignButton = false
                 } else {
                   // 若为消费者，则判断是否需要获取手机号
@@ -209,7 +215,7 @@ Page({
                   }
                   if (name) {
                     steps_temp.push({
-                      text: `发货人: ${name}`,
+                      text: `发货人: ${i==0 ? '【厂家】': '【商家】'}${name}`,
                       desc: `发货时间： ${util.convertUTCTimeToLocalTime(records[i].send_at)}`,
                     })
                   }
