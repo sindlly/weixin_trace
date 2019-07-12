@@ -17,7 +17,7 @@ Page({
     wx.showLoading()
     let _this = this
     let type = options.type || "outer_code" //inner_code outer_code
-    let id = options.id || "0169357e33e18d68fbdad233ac010e4d9d33bf90ead9715708ee8cf01c319b753fb36b865c91383ca49b04643b50fb38296a6867de22f92048a298dc6d40331c25"
+    let id = options.id || "01f7351c3d665209b1c69aae02a31953566c76c3ccc102fd7382d2a58b385859a2b5c5bfbae9419dd81aea1ad1b85fb6d91bf4f160ecf93885d7d148d80178fdaa"
     let operation = options.operation
     if (options.q) {
       let q = decodeURIComponent(options.q)

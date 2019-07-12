@@ -196,7 +196,7 @@ Page({
                 const owner = result.owner
                 let steps_temp = []
                 let banner = owner[owner.role_type].banner
-                for (let i = records.length - 1; i >= 0 ; i--) {
+                for (let i = records.length - 1; i >= 0; i--) {
                   const sender = records[i].sender
                   const name = sender[sender.role_type].name
                   if (records[i].reciver_type === 'business' & result.state === 'RECEIVED') {
@@ -256,10 +256,31 @@ Page({
                     notice_text = "正品待售"
                   }
                 }
+                // 统计商品数量
+                let goodsTotal = 0
+                let bind_goods = []
+                let firstGoods
+                if (result.isFactoryTracing) {
+                  if (result.isAllUnbind) goodsTotal = result.tracing_products.length
+                  else {
+                    firstGoods = result.bindSmallTracings[0].products[0] || {}
+                    result.bindSmallTracings.forEach(item => {
+                      goodsTotal += item.products.length
+                      item.products.forEach(product => {
+                        bind_goods.push(product)
+                      })
+                    })
+                  }
+                } else {
+                  goodsTotal = result.products.length
+                  bind_goods = result.products
+                  firstGoods = result.products[0]
+                }
+
                 _this.setData({
-                  bind_goods: result.products,
-                  firstGoods: result.products[0],
-                  goodsTotal: result.products.length,
+                  bind_goods,
+                  firstGoods,
+                  goodsTotal,
                   steps: steps_temp,
                   banner: banner ? baseUrl + "/files/" + banner : undefined,
                   id,

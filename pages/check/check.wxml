@@ -1,11 +1,11 @@
 <!--pages/check/check.wxml-->
 <view wx:if="{{showDetail}}">
   <view class='displayFirst'>
-    <image src='{{baseUrl}}/files/{{firstGoods.image}}' class="banner"></image>
-    <view class='item first-name'>{{firstGoods.name}}</view>
-    <view class='item first-manufacturer'>{{firstGoods.manufacturer}}</view>
-    <view class='item first-description'>{{firstGoods.description}}</view>
-    <text class='item first-attributes'>{{firstGoods.attributes[0].name}}:{{firstGoods.attributes[0].value}}</text>
+    <image src='{{baseUrl}}/files/{{firstGoods.image || "5d1c0d8c81e5ca22184a0ba2"}}' class="banner"></image>
+    <view class='item first-name' wx:if="{{firstGoods.name}}">{{firstGoods.name}}</view>
+    <view class='item first-manufacturer' wx:if="{{firstGoods.manufacturer}}">{{firstGoods.manufacturer}}</view>
+    <view class='item first-description' wx:if="{{firstGoods.description}}">{{firstGoods.description}}</view>
+    <text class='item first-attributes' wx:if="{{firstGoods.attributes[0].name}}">{{firstGoods.attributes[0].name}}:{{firstGoods.attributes[0].value}}</text>
   </view>
   <view class='notice'>
     <image src='../../img/check.png' style='width:146rpx;height:88rpx'></image>
@@ -21,13 +21,7 @@
   <view class='my_center_container danger' wx:if="{{isReceved & hasRight}}">
     <text type="danger" class='danger' bindtap='goToRight'>发现假货，需要维权</text>
   </view>
-  <!-- 多个商品展示 老版本-->
-  <!-- <view wx:for-items='{{bind_goods}}' wx:key="{{item}}">
-    <view class='height-30'></view>
-    <van-panel title="{{item.name}}" style="color:#565656;font-weight:bold">
-      <van-card commission="{{item.attributes[0].name}}:{{item.attributes[0].value}}" desc="生产厂商：{{item.manufacturer}}" title="条形码：{{item.barcode}}" stageProportion="描述：{{item.description}}" thumb="{{baseUrl}}/files/{{ item.image }}" />
-    </van-panel>
-  </view> -->
+
   <!-- 多个商品展示 新版本-->
   <van-panel title="共{{goodsTotal}}件商品" style="color:#565656;font-weight:bold">
     <view class='goodsImg'>
