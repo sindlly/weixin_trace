@@ -1,41 +1,39 @@
 <!--pages/order_manage/order_manage.wxml-->
 <!-- <view class='my_container'></view> -->
-  <van-tabs active="{{ active }}" sticky animated>
+<van-tabs active="{{ active }}" sticky animated>
   <van-tab title="{{title[0]}}">
-    <goods_card perentData="{{all_goods}}"></goods_card>
+    <goods_card perentData="{{all_goods}}" roleType="{{role_type}}"></goods_card>
     <view class='no_data' wx:if="{{!all_goods[0]}}">
-      <image  src='../../img/no_data.png' class='img-nodata'></image>
+      <image src='../../img/no_data.png' class='img-nodata'></image>
       <text>暂无数据</text>
     </view>
   </van-tab>
   <van-tab title="{{title[1]}}">
     <goods_card perentData="{{daibaojia_goods}}"></goods_card>
     <view class='no_data' wx:if="{{!all_goods[0]}}">
-      <image  src='../../img/no_data.png' class='img-nodata'></image>
+      <image src='../../img/no_data.png' class='img-nodata'></image>
       <text>暂无数据</text>
     </view>
   </van-tab>
   <van-tab title="{{title[2]}}">
     <goods_card perentData="{{daifukuan_goods}}"></goods_card>
     <view class='no_data' wx:if="{{!all_goods[0]}}">
-      <image  src='../../img/no_data.png' class='img-nodata'></image>
+      <image src='../../img/no_data.png' class='img-nodata'></image>
       <text>暂无数据</text>
     </view>
   </van-tab>
   <van-tab title="{{title[3]}}">
     <goods_card perentData="{{daifahuo_goods}}"></goods_card>
     <view class='no_data' wx:if="{{!all_goods[0]}}">
-      <image  src='../../img/no_data.png' class='img-nodata'></image>
+      <image src='../../img/no_data.png' class='img-nodata'></image>
       <text>暂无数据</text>
     </view>
   </van-tab>
   <van-tab title="{{title[4]}}">
     <goods_card perentData="{{yifahuo_goods}}"></goods_card>
     <view class='no_data' wx:if="{{!all_goods[0]}}">
-      <image  src='../../img/no_data.png' class='img-nodata'></image>
+      <image src='../../img/no_data.png' class='img-nodata'></image>
       <text>暂无数据</text>
     </view>
-    </van-tab>
+  </van-tab>
 </van-tabs>
-  
-

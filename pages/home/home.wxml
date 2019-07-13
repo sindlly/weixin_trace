@@ -51,6 +51,7 @@
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
     </view>
   </view>
+
   <view class='home-content' name="平台账号首页" wx:if="{{home_type=='platform'}}">
     <view class='flex-row-center content-hover'>
       <image src='../../img/zhaomu.png' class="cell-left-img"></image>
@@ -68,6 +69,7 @@
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
     </view>
   </view>
+
   <view class='home-content' name="销售账号首页" wx:if="{{home_type=='salesman'}}">
     <view class='flex-row-center content-hover'>
       <image src='../../img/new_order.png' class="cell-left-img"></image>
@@ -85,15 +87,11 @@
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
     </view>
   </view>
+
   <view class='home-content' name="无账号首页 " wx:if="{{home_type==4}}">
     <view class='flex-row-center content-hover'>
       <image src='../../img/courier.png' class="cell-left-img"></image>
       <van-cell class='home-cell' title="成为快递员" label="销售人员认证后可以促成商家采购溯源防伪方案" url="/pages/invatCourier/invatCourier" clickable />
-      <image src='../../img/Chevron.png' class="cell-right-img"></image>
-    </view>
-    <view class='flex-row-center'>
-      <image src='../../img/partner.png' class="cell-left-img"></image>
-      <van-cell class='home-cell' title="成为销售合伙人" label="成功邀请的生产厂家，他的所有订单你能从中获益" url="/pages/invatSalesman/invatSalesman" clickable />
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
     </view>
     <view class='flex-row-center content-hover'>
@@ -102,6 +100,7 @@
       <image src='../../img/Chevron.png' class="cell-right-img"></image>
     </view>
   </view>
+
   <view class='home-content' name="快递员账号首页 " wx:if="{{home_type=='courier'}}">
     <view class='flex-row-center content-hover'>
       <image src='../../img/saoma.png' class="cell-left-img"></image>
@@ -168,5 +167,5 @@
 </view>
 <van-dialog id="van-dialog" show="{{showDialog}}" confirm-button-open-type="getUserInfo" bind:close="onClose" bind:getuserinfo="getUserInfo" title="提示" message="授权登录溯源实物链平台" show-cancel-button="true" />
 <view class='loading' wx:if="{{showLoading &!showDialog}}">
-  <van-loading  wx:if="{{showLoading &!showDialog}}" type="spinner" />
+  <van-loading wx:if="{{showLoading &!showDialog}}" type="spinner" />
 </view>

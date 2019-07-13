@@ -1,8 +1,9 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/check/check",
     "pages/tracing/tracing",
+    "pages/scode_manage/scode_manage",
+    "pages/check/check",
     "pages/invatFactory/invatFactory",
     "pages/intro/intro",
     "pages/invatCourier/invatCourier",
@@ -13,7 +14,6 @@
     "pages/bind/bind",
     "pages/regest/regest",
     "pages/courier/courier",
-    "pages/scode_manage/scode_manage",
     "pages/rights/rights",
     "pages/mySalesInfo/mySalesInfo",
     "pages/mySalesInfo/myFactory/myFactory",

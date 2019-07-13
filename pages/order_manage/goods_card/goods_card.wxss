@@ -1,19 +1,30 @@
 /* pages/order_manage/goods_card/goods_card.wxss */
-page{
+
+page {
   background: #eee;
 }
-.order_container{
+
+.order_container {
   /* padding: 5px 10px 5px 10px; */
   background: #fff;
   border-radius: 30rpx;
   margin: 15rpx 0;
-  
 }
-.slot-footer{
+
+.slot-footer {
   margin-top: -107rpx;
 }
-.van-card__content{
+
+.van-card__content {
   display: flex;
   flex-direction: column;
-  justify-content: space-around
+  justify-content: space-around;
+}
+
+.cell-value-class {
+  flex: 2 !important;
+}
+
+.cell-title-class {
+  text-align: left;
 }

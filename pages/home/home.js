@@ -2,19 +2,18 @@
 import Dialog from '../../miniprogram_npm/vant-weapp/dialog/dialog';
 const app = getApp();
 const baseUrl = app.globalData.HOST;
-const userInfo = wx.getStorageSync('userInfo')
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    home_type: userInfo.role_type || 4, //1显示商家首页，2显示平台账号首页，3显示销售首页，4显示无账号首页，5显示快递员首页
-    userInfo: userInfo,
+    home_type: wx.getStorageSync('userInfo').role_type || 4, //1显示商家首页，2显示平台账号首页，3显示销售首页，4显示无账号首页，5显示快递员首页
+    userInfo: wx.getStorageSync('userInfo'),
+    invat_name: '',
+    invat_id: '',
     showDialog: false,
-    invat_name: userInfo.nickName,
-    invat_id: userInfo.user_id,
-    showLoading:false
+    showLoading: false
   },
   bindGetUserInfo: function(res) {
     let userInfo = res.detail.userInfo
@@ -60,7 +59,7 @@ Page({
         let patt = new RegExp("https://buildupstep.cn/page/tracing/code?")
         if (patt.test(result)) {
           wx.navigateTo({
-            url: '/pages/tracing/tracing?' + result.split("?")[1],
+            url: '/pages/tracing/tracing?operation=check&' + result.split("?")[1],
           })
         } else {
           wx.showToast({
@@ -88,7 +87,7 @@ Page({
         let patt = new RegExp("https://buildupstep.cn/page/tracing/code?")
         if (patt.test(result)) {
           wx.navigateTo({
-            url: '/pages/tracing/tracing?' + result.split("?")[1],
+            url: '/pages/tracing/tracing?operation=send&' + result.split("?")[1],
           })
         } else {
           wx.showToast({
@@ -113,7 +112,7 @@ Page({
     })
   },
   //跳转到 平台介绍页
-  gotoIntro:function(){
+  gotoIntro: function() {
     wx.navigateTo({
       url: '/pages/intro/intro',
     })
@@ -150,7 +149,9 @@ Page({
       _this.setData({
         home_type: userInfo.role_type || 4,
         canIUse: false,
-        // userInfo: userInfo,
+        userInfo,
+        invat_name: userInfo.nickName,
+        invat_id: userInfo.user_id,
       })
     } else {
       _this.setData({
@@ -170,7 +171,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    this.getInfo()
+  },
+
+  getInfo: function(callback) {
     let _this = this;
+
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
@@ -196,7 +202,7 @@ Page({
                   // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
                   wx.getUserInfo({
                     success: res => {
-                     wx.setStorageSync(
+                      wx.setStorageSync(
                         'userInfo',
                         Object.assign(res.userInfo, {
                           role_type,
@@ -207,6 +213,9 @@ Page({
                       if (_this.userInfoReadyCallback) {
                         _this.userInfoReadyCallback(_this.globalData.userInfo);
                       }
+                      if (callback && typeof callback === 'function') {
+                        callback()
+                      }
                     }
                   });
                 }
@@ -216,6 +225,15 @@ Page({
         });
       }
     });
+  },
+
+  onPullDownRefresh: function () {
+    console.log('asdf')
+    wx.showNavigationBarLoading()
+    this.getInfo(() => {
+      wx.hideNavigationBarLoading() //完成停止加载
+      wx.stopPullDownRefresh() //停止下拉刷新
+    })
   },
 
   /**
@@ -229,13 +247,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
 
   },
 

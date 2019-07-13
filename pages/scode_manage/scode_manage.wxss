@@ -1,21 +1,32 @@
 /* pages/scode_manage/scode_manage.wxss */
-.van-card__content{
+
+.van-card__content {
   display: flex;
   flex-direction: column;
-  justify-content: space-around
+  justify-content: space-around;
 }
-.van-card{
-  background: #fff !important
+
+.van-card {
+  background: #fff !important;
 }
-.van-cell__value{
-  color: red !important
+
+.van-cell__value {
+  color: red !important;
 }
-.commit-btn button{
+
+.commit-btn button {
   margin-top: 48rpx;
-  background: #1C92FF;
+  background: #1c92ff;
   border-radius: 40.5px;
   width: 580rpx;
   height: 81rpx;
   line-height: 81rpx;
   border: none;
+}
+
+.tips {
+  font-size: 26rpx;
+  color: #666;
+  letter-spacing: 0;
+  margin-top: 23rpx;
 }

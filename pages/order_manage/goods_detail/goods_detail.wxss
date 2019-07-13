@@ -1,28 +1,38 @@
 /* pages/order_manage/goods_detail/goods_detail.wxss */
-.card-detail{
+
+.card-detail {
   background-color: #fff !important;
-  margin-bottom: 15rpx
+  margin-bottom: 15rpx;
 }
-.step-desc{
-  margin-left: 0 !important
+
+.step-desc {
+  margin-left: 0 !important;
 }
-.selesman{
+
+.selesman {
   display: flex;
   justify-content: space-between;
   padding: 30rpx;
 }
-.selesman_img{
+
+.selesman_img {
   width: 180rpx;
   height: 180rpx;
 }
-.selesman_info{
+
+.selesman_info {
   text-align: right;
-  font-size:28rpx;
+  font-size: 28rpx;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  color: #666
+  color: #666;
 }
-.salesman_name{
-  font-weight:800
+
+.salesman_name {
+  font-weight: 800;
+}
+
+.cell-value-class {
+  flex: 2 !important;
 }

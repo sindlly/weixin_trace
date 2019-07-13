@@ -1,5 +1,6 @@
 /* pages/order_manage/order_manage.wxss */
-.no_data{
+
+.no_data {
   margin-top: 100rpx;
   display: flex;
   flex-direction: column;
@@ -8,7 +9,8 @@
   font-size: 32rpx;
   color: #999;
 }
-.img-nodata{
+
+.img-nodata {
   width: 200rpx;
-  height: 200rpx
+  height: 200rpx;
 }

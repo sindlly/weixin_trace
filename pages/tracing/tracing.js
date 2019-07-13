@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-      isOwner:false   //是否是自己的溯源码
+    isOwner: false //是否是自己的溯源码
   },
 
   /**
@@ -17,13 +17,14 @@ Page({
     wx.showLoading()
     let _this = this
     let type = options.type || "outer_code" //inner_code outer_code
-    let id = options.id ||"0169357e33e18d68fbdad233ac010e4d9d33bf90ead9715708ee8cf01c319b753fb36b865c91383ca49b04643b50fb38296a6867de22f92048a298dc6d40331c25"
-    if(options.q){
+    let id = options.id || "01f7351c3d665209b1c69aae02a31953566c76c3ccc102fd7382d2a58b385859a2b5c5bfbae9419dd81aea1ad1b85fb6d91bf4f160ecf93885d7d148d80178fdaa"
+    let operation = options.operation
+    if (options.q) {
       let q = decodeURIComponent(options.q)
       type = q.split("?")[1].split("&")[0].split("=")[1]
       id = q.split("?")[1].split("&")[1].split("=")[1]
     }
-  
+
     this.data.id = id
     wx.login({
       success: res => {
@@ -35,7 +36,7 @@ Page({
           data: {
             "code": res.code
           },
-          success: function (res) {
+          success: function(res) {
             let role_type = ''
             let user_id = ''
             const result = res.data.data.data
@@ -59,38 +60,25 @@ Page({
                 if (res.data.code === 0) {
                   let data = res.data.data.data
                   _this.data.isOwner = data.owner._id == userInfo.user_id
-
-                  // 溯源袋内码
-                  if (type == "inner_code") {
-                    //都跳到绑定商品页，若已绑定，只显示列表，不能进行操作
-                    if (_this.data.isOwner) {
-                      wx.reLaunch({
-                        url: '/pages/bind/bind?id=' + id,
-                      })
-                    } else {
-                      wx.showToast({
-                        title: '非自己的溯源码，不能进行绑定操作',
-                        duration: 3000,
-                        icon: 'none',
-                        complete: function () {
-                          setTimeout(() => {
-                            wx.reLaunch({
-                              url: '/pages/home/home',
-                            })
-                          }, 2000)
-                        }
-                      })
-                    }
-
-                  }
-                  // 溯源码外袋
-                  else if (type == "outer_code") {
-                    switch (data.state) {
-                      case "UNBIND":
-                        // 提示未绑定商品
-                        wx.hideLoading();
+                  if (operation === 'check') {
+                    wx.reLaunch({
+                      url: '/pages/check/check?id=' + id,
+                    })
+                  } else if(operation === 'send') {
+                    wx.reLaunch({
+                      url: '/pages/send/send?id=' + id,
+                    })
+                  } else {
+                    // 溯源袋内码
+                    if (type == "inner_code") {
+                      //都跳到绑定商品页，若已绑定，只显示列表，不能进行操作
+                      if (_this.data.isOwner) {
+                        wx.reLaunch({
+                          url: '/pages/bind/bind?id=' + id,
+                        })
+                      } else {
                         wx.showToast({
-                          title: '该溯源码未绑定商品，无法进入溯源流程',
+                          title: '非自己的溯源码，不能进行绑定操作',
                           duration: 3000,
                           icon: 'none',
                           complete: function () {
@@ -101,48 +89,69 @@ Page({
                             }, 2000)
                           }
                         })
-                        break;
-                      case "BIND":
-                        //自己跳到发送页，其他人跳到check页
-                        if (_this.data.isOwner) {
-                          wx.reLaunch({
-                            url: '/pages/send/send?id=' + id,
+                      }
+                    }
+                    // 溯源码外袋
+                    else if (type == "outer_code") {
+                      switch (data.state) {
+                        case "UNBIND":
+                          // 提示未绑定商品
+                          wx.hideLoading();
+                          wx.showToast({
+                            title: '该溯源码未绑定商品，无法进入溯源流程',
+                            duration: 3000,
+                            icon: 'none',
+                            complete: function () {
+                              setTimeout(() => {
+                                wx.reLaunch({
+                                  url: '/pages/home/home',
+                                })
+                              }, 2000)
+                            }
                           })
-                        } else {
-                          wx.reLaunch({
-                            url: '/pages/check/check?id=' + id,
-                          })
-                        }
-                        break;
-                      case "SEND": //经销商已发货
-                        if (userInfo.role_type == "courier") {
-                          wx.reLaunch({
-                            url: '/pages/send/send?id=' + id,
-                          })
-                        } else {
-                          wx.reLaunch({
-                            url: '/pages/check/check?id=' + id,
-                          })
-                        }
+                          break;
+                        case "BIND":
+                          //自己跳到发送页，其他人跳到check页
+                          if (_this.data.isOwner) {
+                            wx.reLaunch({
+                              url: '/pages/send/send?id=' + id,
+                            })
+                          } else {
+                            wx.reLaunch({
+                              url: '/pages/check/check?id=' + id,
+                            })
+                          }
+                          break;
+                        case "SEND": //经销商已发货
+                          if (userInfo.role_type == "courier") {
+                            wx.reLaunch({
+                              url: '/pages/send/send?id=' + id,
+                            })
+                          } else {
+                            wx.reLaunch({
+                              url: '/pages/check/check?id=' + id,
+                            })
+                          }
 
-                        break;
-                      case "EXPRESSED": //已绑定快递信息
-                        wx.reLaunch({
-                          url: '/pages/check/check?id=' + id,
-                        })
-                        break;
-                      case "RECEIVED": //客户已收货
-                        //如果是经销商，则跳到send页
-                        if (userInfo.role_type == "business") {
-                          wx.reLaunch({
-                            url: '/pages/send/send?id=' + id,
-                          })
-                        } else {
+                          break;
+                        case "EXPRESSED": //已绑定快递信息
                           wx.reLaunch({
                             url: '/pages/check/check?id=' + id,
                           })
-                        }
-                        break;
+                          break;
+                        case "RECEIVED": //客户已收货
+                          //如果是经销商，则跳到send页
+                          if (userInfo.role_type == "business" && !data.isEnd) {
+                            wx.reLaunch({
+                              url: '/pages/send/send?id=' + id,
+                            })
+                          } else {
+                            wx.reLaunch({
+                              url: '/pages/check/check?id=' + id,
+                            })
+                          }
+                          break;
+                      }
                     }
                   }
                 } else {
@@ -150,7 +159,7 @@ Page({
                     title: res.data.msg,
                     duration: 3000,
                     icon: 'none',
-                    success: function () {
+                    success: function() {
                       wx.reLaunch({
                         url: '/pages/home/home',
                       })
@@ -163,7 +172,6 @@ Page({
         })
       }
     })
-   
   },
 
   /**

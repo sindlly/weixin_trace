@@ -6,22 +6,16 @@
 </van-cell-group>
 
 <view style='margin: 30rpx 0;background:#fff' wx:for-items="{{barcodes}}" wx:key="{{item}}">
- <van-panel title="{{item.barcode}}" status="已绑定条形码">
-    <van-card
-    commission="{{item.attributes[0].name}}:{{item.attributes[0].value}}"
-    desc="生产厂商：{{item.manufacturer}}"
-    title="商品名称：{{item.name}}"
-    stageProportion="描述：{{item.description}}"
-    thumb="{{baseUrl}}/files/{{ item.image }}"
-    >
-    <view slot="footer">
-      <van-button size="small" round type="info" data-id="{{item.barcode}}" bindtap='edit'>修改信息</van-button>
-    </view>
-  </van-card>
-</van-panel>
+  <van-panel title="{{item.barcode}}" status="已绑定条形码">
+    <van-card commission="{{item.attributes[0].name}}:{{item.attributes[0].value}}" desc="生产厂商：{{item.manufacturer}}" title="商品名称：{{item.name}}" stageProportion="描述：{{item.description}}" thumb="{{baseUrl}}/files/{{ item.image }}">
+      <view slot="footer">
+        <van-button size="small" round type="info" data-id="{{item.barcode}}" bindtap='edit'>修改信息</van-button>
+      </view>
+    </van-card>
+  </van-panel>
 </view>
 
 <view class='my_center_container'>
   <van-button type="danger" class='commit-btn' size="large" bindtap='goToAddScode'>点击添加条形码信息</van-button>
+  <view class='tips' bindtap='goHome'>返回首页></view>
 </view>
-
