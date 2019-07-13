@@ -65,9 +65,7 @@ Page({
           // SEND EXPRESSED
           item.state_display = '已发货';
         }
-        if (item.products.length > 0) {
-          item.logo = '../../../img/default_logo.png';
-        } else {
+        if (item.products.length === 0) {
           item.logo = '../../../img/default_logo.png';
         }
         item.lastRecord = {};

@@ -9,8 +9,11 @@
     <text class="code">{{statistics.unUsedTracings||0}}</text>
   </view>
   <view wx:for="{{tracingList}}" wx:key="{{index}}" class='counterfeit-container'>
-    <view class='counterfeit-left'>
+    <view wx:if="{{item.products.length===0}}" class='counterfeit-left'>
       <image mode='aspectFit' src="{{item.logo}}" mode='scaleToFill'></image>
+    </view>
+    <view wx:else class='counterfeit-left'>
+      <image mode='aspectFit' src="{{item.products[0]['image']}}" mode='scaleToFill'></image>
     </view>
     <view wx:if="{{item.state==='BIND'}}" class='counterfeit-right'>
       <text>状态：{{item.state_display}}</text>
