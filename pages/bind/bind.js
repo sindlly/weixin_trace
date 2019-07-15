@@ -1,7 +1,6 @@
 // pages/check/check.js
 const app = getApp();
 const baseUrl = app.globalData.HOST;
-const userInfo = wx.getStorageSync('userInfo')
 Page({
 
   /**
@@ -43,9 +42,8 @@ Page({
           success:res=>{
             let temp = res.data.data.data._id
             let ownerId = res.data.data.data.owner._id
-            if (ownerId == userInfo.user_id){
+            if (ownerId == this.data.userInfo.user_id){
               let arr = this.data.tracing_products
-              console.log(arr.indexOf(temp))
               if (arr.length == 0 ||arr.indexOf(temp)==-1){
                 arr.push(temp)
                 this.setData({
@@ -63,7 +61,6 @@ Page({
               wx.showModal({
                 title: '提示',
                 content: '添加成功',
-                // showCancel: false,
                 confirmText: '再次绑定',
                 success(res) {
                   if (res.confirm) {
@@ -174,6 +171,10 @@ Page({
     })
   },
   onLoad: function(options) {
+    const userInfo = wx.getStorageSync('userInfo')
+    this.setData({
+      userInfo
+    })
     const _this = this
     let id = options.id || '019f85a82c72f357674881fa26416d6e56f3e4d4a8be8816ac91fa4baffcac5c94f487e3f53ef3482bb125decf64bb8cb3ca302ea0b2fd616279a7b60ea599852e'
     _this.setData({
