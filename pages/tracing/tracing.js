@@ -60,11 +60,7 @@ Page({
                 if (res.data.code === 0) {
                   let data = res.data.data.data
                   _this.data.isOwner = data.owner._id == userInfo.user_id
-                  if (operation === 'check') {
-                    wx.reLaunch({
-                      url: '/pages/check/check?id=' + id,
-                    })
-                  } else if(operation === 'send') {
+                  if (operation === 'send') {
                     wx.reLaunch({
                       url: '/pages/send/send?id=' + id,
                     })
@@ -81,7 +77,7 @@ Page({
                           title: '非自己的溯源码，不能进行绑定操作',
                           duration: 3000,
                           icon: 'none',
-                          complete: function () {
+                          complete: function() {
                             setTimeout(() => {
                               wx.reLaunch({
                                 url: '/pages/home/home',
@@ -101,7 +97,7 @@ Page({
                             title: '该溯源码未绑定商品，无法进入溯源流程',
                             duration: 3000,
                             icon: 'none',
-                            complete: function () {
+                            complete: function() {
                               setTimeout(() => {
                                 wx.reLaunch({
                                   url: '/pages/home/home',
@@ -132,7 +128,6 @@ Page({
                               url: '/pages/check/check?id=' + id,
                             })
                           }
-
                           break;
                         case "EXPRESSED": //已绑定快递信息
                           wx.reLaunch({
