@@ -13,13 +13,19 @@
       <image mode='aspectFit' src="{{item.logo}}" mode='scaleToFill'></image>
     </view>
     <view wx:else class='counterfeit-left'>
-      <image mode='aspectFit' src="{{item.products[0]['image']}}" mode='scaleToFill'></image>
+      <image mode='aspectFit' src="{{baseUrl}}/files/{{item.products[0]['image']}}" mode='scaleToFill'></image>
     </view>
     <view wx:if="{{item.state==='BIND'}}" class='counterfeit-right'>
-      <text>状态：{{item.state_display}}</text>
+      <view class='tracing-state'>状态：
+        <text class='tracing-state-content'>{{item.state_display}}</text>
+      </view>
+      <text>商品类型：{{item.isTracingProduct ? '小溯源码' : '普通商品'}}</text>
+      <text>商品数量：{{item.isTracingProduct?item.products.length : item.tracing_products.length}}</text>
     </view>
     <view wx:else class='counterfeit-right'>
-      <text>状态：{{item.state_display}}</text>
+      <view class='tracing-state'>状态：
+        <text class='tracing-state-content'>{{item.state_display}}</text>
+      </view>
       <text>最新发货人：{{item.lastRecord.sender_info.factory.name}}</text>
       <text>发货时间：{{item.lastRecord.send_at_display}}</text>
       <text wx:if="{{item.lastRecord.is_business}}">发货对象：{{item.lastRecord.reciver_info.business.name}}</text>
