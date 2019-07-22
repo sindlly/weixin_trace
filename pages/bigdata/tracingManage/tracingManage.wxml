@@ -19,8 +19,8 @@
       <view class='tracing-state'>状态：
         <text class='tracing-state-content'>{{item.state_display}}</text>
       </view>
-      <text>商品类型：{{item.isTracingProduct ? '小溯源码' : '普通商品'}}</text>
-      <text>商品数量：{{item.isTracingProduct?item.products.length : item.tracing_products.length}}</text>
+      <text>商品类型：{{item.isFactoryTracing ? '小溯源码' : '普通商品'}}</text>
+      <text>商品数量：{{item.isFactoryTracing? item.tracing_products.length : item.products.length}}</text>
     </view>
     <view wx:else class='counterfeit-right'>
       <view class='tracing-state'>状态：
