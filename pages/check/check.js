@@ -193,12 +193,14 @@ Page({
                     disableSignButton = false
                   }
                 }
-                const owner = result.owner
+                const { owner, factory} = result
+                
                 let steps_temp = []
                 let banner = owner[owner.role_type].banner
                 for (let i = records.length - 1; i >= 0; i--) {
                   const sender = records[i].sender
                   const name = sender[sender.role_type].name
+                  
                   if (records[i].reciver_type === 'business' & result.state === 'RECEIVED') {
                     const reciver = records[i].reciver
                     const reciverName = reciver[reciver.role_type].name
@@ -215,7 +217,7 @@ Page({
                   }
                   if (name) {
                     steps_temp.push({
-                      text: `发货人: ${i==0 ? '【厂家】': '【商家】'}${name}`,
+                      text: `发货人: ${i == 0 && sender.role_type === 'factory'? '【厂家】': '【商家】'}${name}`,
                       desc: `发货时间： ${util.convertUTCTimeToLocalTime(records[i].send_at)}`,
                     })
                   }
@@ -227,6 +229,9 @@ Page({
                     })
                   }
                 }
+                steps_temp.push({
+                  text: `厂家信息： ${factory[factory.role_type].name}`,
+                })
                 const state = result.state
                 let notice_text = ""
                 if (latestRecord.sender & state === 'SEND') {
