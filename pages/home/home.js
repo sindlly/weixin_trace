@@ -30,6 +30,7 @@ Page({
           success: function(res) {
             let role_type = ''
             let user_id = ''
+            const role_id = res.data.data.data.user.role_id;
             if (res.data.data.data.isRegistered == false) {
               role_type = 4
             } else {
@@ -38,7 +39,8 @@ Page({
             }
             wx.setStorageSync('userInfo', Object.assign(userInfo, {
               role_type: role_type,
-              user_id: user_id
+              user_id: user_id,
+              role_id
             }))
             wx.reLaunch({
               url: '/pages/home/home',
@@ -150,8 +152,8 @@ Page({
         home_type: userInfo.role_type || 4,
         canIUse: false,
         userInfo,
-        invat_name: userInfo.nickName,
-        invat_id: userInfo.user_id,
+        invat_name: userInfo.nickName || '',
+        invat_id: userInfo.user_id || '',
       })
     } else {
       _this.setData({
@@ -189,6 +191,7 @@ Page({
           success: function (res) {
             let role_type = '';
             let user_id = '';
+            const role_id = res.data.data.data.user.role_id;
             if (res.data.data.data.isRegistered == false) {
               role_type = 4;
             } else {
@@ -207,6 +210,7 @@ Page({
                         Object.assign(res.userInfo, {
                           role_type,
                           user_id,
+                          role_id
                         })
                       );
                       _this.onLoad()

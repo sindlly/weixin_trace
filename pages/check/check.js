@@ -196,7 +196,7 @@ Page({
                 const { owner, factory} = result
                 
                 let steps_temp = []
-                let banner = owner[owner.role_type].banner
+                let banner = owner[owner.role_type] && owner[owner.role_type].banner || ''
                 for (let i = records.length - 1; i >= 0; i--) {
                   const sender = records[i].sender
                   const name = sender[sender.role_type].name

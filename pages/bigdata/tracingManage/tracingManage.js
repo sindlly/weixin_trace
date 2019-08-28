@@ -15,7 +15,7 @@ Page({
     tracingList: [],
     hasMoreList: true,
     paginationPars: {
-      limit: 10, offset: 0, sortByState: false, sort: '-created_at',
+      limit: 10, offset: 0, sortByState: false, sort: '-updated_at',
       embed: 'product,reciver,sender'
     },
     // results: ['误把新包装当做假货', '其它']
